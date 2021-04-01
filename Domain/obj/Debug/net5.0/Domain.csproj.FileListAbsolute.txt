@@ -1,0 +1,12 @@
+E:\ArtyFact\Domain\bin\Debug\net5.0\Domain.deps.json
+E:\ArtyFact\Domain\bin\Debug\net5.0\Domain.dll
+E:\ArtyFact\Domain\bin\Debug\net5.0\ref\Domain.dll
+E:\ArtyFact\Domain\bin\Debug\net5.0\Domain.pdb
+E:\ArtyFact\Domain\obj\Debug\net5.0\Domain.csprojAssemblyReference.cache
+E:\ArtyFact\Domain\obj\Debug\net5.0\Domain.GeneratedMSBuildEditorConfig.editorconfig
+E:\ArtyFact\Domain\obj\Debug\net5.0\Domain.AssemblyInfoInputs.cache
+E:\ArtyFact\Domain\obj\Debug\net5.0\Domain.AssemblyInfo.cs
+E:\ArtyFact\Domain\obj\Debug\net5.0\Domain.csproj.CoreCompileInputs.cache
+E:\ArtyFact\Domain\obj\Debug\net5.0\Domain.dll
+E:\ArtyFact\Domain\obj\Debug\net5.0\ref\Domain.dll
+E:\ArtyFact\Domain\obj\Debug\net5.0\Domain.pdb
