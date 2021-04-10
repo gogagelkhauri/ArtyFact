@@ -7,6 +7,7 @@ namespace Domain.Entities
     {
         public string Name { get; set; }
         public List<UserCategory> UserCategories { get; set; }
+        public List<Product> Products { get; set; }
     }
 
 }

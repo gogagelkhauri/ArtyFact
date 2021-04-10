@@ -13,5 +13,8 @@ namespace Domain.Entities.User
         public List<UserCategory> UserCategories { get; set; }
         public string UserId { get; set; }
         public ApplicationUser User { get; set; }
+        public List<Product> Products { get; set; }
+        public List<Post> Posts { get; set; }
+        public List<Order> Orders { get; set; }
     }
 }

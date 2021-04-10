@@ -12,7 +12,7 @@ namespace Infrastructure.Data.Configuration
     {
 
         /// <summary>
-        ///     Configure ApplicationUserConfiguration.
+        ///     Configure ApplicationUser.
         /// </summary>
         /// <param name="builder">Builder.</param>
         public void Configure(EntityTypeBuilder<ApplicationUser> builder)
