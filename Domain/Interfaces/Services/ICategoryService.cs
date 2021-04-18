@@ -1,6 +1,7 @@
 using System.Collections.Generic;
 using System.Threading.Tasks;
 using Domain.DTOs;
+using Domain.Entities;
 
 namespace Domain.Interfaces.Services
 {
@@ -8,8 +9,8 @@ namespace Domain.Interfaces.Services
     {
         Task<CategoryDTO> AddCategory(CategoryDTO categoryDTO);
         Task<CategoryDTO> GetCategory(int id);
-        List<Task<CategoryDTO>> GetAllCategories();
-        Task<CategoryDTO> UpdateCategory(CategoryDTO categoryDTO);
+        Task<List<CategoryDTO>> GetAllCategories();
+        Task UpdateCategory(int id,CategoryDTO categoryDTO);
         Task DeleteCategory(int id);
     }
 }

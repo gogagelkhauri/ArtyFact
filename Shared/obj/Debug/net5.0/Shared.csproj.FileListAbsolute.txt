@@ -9,3 +9,4 @@ E:\ArtyFact\Shared\obj\Debug\net5.0\Shared.csproj.CoreCompileInputs.cache
 E:\ArtyFact\Shared\obj\Debug\net5.0\Shared.dll
 E:\ArtyFact\Shared\obj\Debug\net5.0\ref\Shared.dll
 E:\ArtyFact\Shared\obj\Debug\net5.0\Shared.pdb
+E:\ArtyFact\Shared\obj\Debug\net5.0\Shared.csprojAssemblyReference.cache

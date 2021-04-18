@@ -10,3 +10,6 @@ E:\ArtyFact\Application\obj\Debug\net5.0\Application.csproj.CoreCompileInputs.ca
 E:\ArtyFact\Application\obj\Debug\net5.0\Application.dll
 E:\ArtyFact\Application\obj\Debug\net5.0\ref\Application.dll
 E:\ArtyFact\Application\obj\Debug\net5.0\Application.pdb
+E:\ArtyFact\Application\bin\Debug\net5.0\Domain.dll
+E:\ArtyFact\Application\bin\Debug\net5.0\Domain.pdb
+E:\ArtyFact\Application\obj\Debug\net5.0\Application.csproj.CopyComplete

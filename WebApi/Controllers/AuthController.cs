@@ -24,7 +24,6 @@ namespace MyMusic.Api.Controllers
     {
         private readonly UserManager<ApplicationUser> _userManager;
         private readonly IMapper _mapper;
-        private readonly RoleManager<IdentityRole> _roleManager;
         private readonly JwtSettings _jwtSettings;
         private readonly IEmailSender _emailSender;
 
@@ -32,13 +31,11 @@ namespace MyMusic.Api.Controllers
         public AuthController(
             IMapper mapper,
             UserManager<ApplicationUser> userManager,
-            RoleManager<IdentityRole> roleManager,
             IOptionsSnapshot<JwtSettings> jwtSettings,
             IEmailSender emailSender)
         {
             _mapper = mapper;
             _userManager = userManager;
-            _roleManager = roleManager;
             _jwtSettings = jwtSettings.Value;
             _emailSender = emailSender;
         }
@@ -114,44 +111,6 @@ namespace MyMusic.Api.Controllers
                 return BadRequest(new { Errors = errors });
             }
             return Ok();
-        }
-
-        [HttpPost("Roles")]
-        public async Task<IActionResult> CreateRole(string roleName)
-        {
-            if(string.IsNullOrWhiteSpace(roleName))
-            {
-                return BadRequest("Role name should be provided.");
-            }
-
-            var newRole = new IdentityRole
-            {
-                Name = roleName
-            };
-
-            var roleResult = await _roleManager.CreateAsync(newRole);
-
-            if (roleResult.Succeeded)
-            {
-                return Ok();
-            }
-
-            return Problem(roleResult.Errors.First().Description, null, 500);
-        }
-
-        [HttpPost("User/{userEmail}/Role")]
-        public async Task<IActionResult> AddUserToRole(string userEmail, /*[FromBody]*/ string roleName)
-        {
-            var user = _userManager.Users.SingleOrDefault(u => u.UserName == userEmail);
-
-            var result = await _userManager.AddToRoleAsync(user, roleName);
-
-            if (result.Succeeded)
-            {
-                return Ok();
-            }
-
-            return Problem(result.Errors.First().Description, null, 500);
         }
 
         private string GenerateJwt(ApplicationUser user, IList<string> roles)

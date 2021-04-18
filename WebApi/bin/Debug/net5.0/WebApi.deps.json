@@ -1971,6 +1971,10 @@
         }
       },
       "Application/1.0.0": {
+        "dependencies": {
+          "AutoMapper.Extensions.Microsoft.DependencyInjection": "8.1.1",
+          "Domain": "1.0.0"
+        },
         "runtime": {
           "Application.dll": {}
         },

@@ -21,6 +21,11 @@ using Microsoft.IdentityModel.Tokens;
 using System.Text;
 using AutoMapper;
 using Infrastructure.EmailService;
+using Domain.Interfaces.Services;
+using Aplication.Services;
+using Domain.Interfaces;
+using Domain.Entities;
+using Clean.Architecture.Infrastructure.Data;
 
 namespace WebApi
 {
@@ -122,6 +127,11 @@ namespace WebApi
                 .Get<EmailConfiguration>();
             services.AddSingleton(emailConfig);
             services.AddScoped<IEmailSender, EmailSender>();
+
+            //dependency Injection
+            //category
+            services.AddScoped<ICategoryService,CategoryService>();
+            services.AddScoped<IRepository<Category>,EfRepository<Category>>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

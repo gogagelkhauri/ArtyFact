@@ -2551,6 +2551,10 @@
       "Application/1.0.0": {
         "type": "project",
         "framework": ".NETCoreApp,Version=v5.0",
+        "dependencies": {
+          "AutoMapper.Extensions.Microsoft.DependencyInjection": "8.1.0",
+          "Domain": "1.0.0"
+        },
         "compile": {
           "bin/placeholder/Application.dll": {}
         },
