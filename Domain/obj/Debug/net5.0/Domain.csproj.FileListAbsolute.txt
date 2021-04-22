@@ -10,3 +10,15 @@ E:\ArtyFact\Domain\obj\Debug\net5.0\Domain.csproj.CoreCompileInputs.cache
 E:\ArtyFact\Domain\obj\Debug\net5.0\Domain.dll
 E:\ArtyFact\Domain\obj\Debug\net5.0\ref\Domain.dll
 E:\ArtyFact\Domain\obj\Debug\net5.0\Domain.pdb
+E:\c#\ArtyFact-Back\Domain\bin\Debug\net5.0\Domain.deps.json
+E:\c#\ArtyFact-Back\Domain\bin\Debug\net5.0\Domain.dll
+E:\c#\ArtyFact-Back\Domain\bin\Debug\net5.0\ref\Domain.dll
+E:\c#\ArtyFact-Back\Domain\bin\Debug\net5.0\Domain.pdb
+E:\c#\ArtyFact-Back\Domain\obj\Debug\net5.0\Domain.csprojAssemblyReference.cache
+E:\c#\ArtyFact-Back\Domain\obj\Debug\net5.0\Domain.GeneratedMSBuildEditorConfig.editorconfig
+E:\c#\ArtyFact-Back\Domain\obj\Debug\net5.0\Domain.AssemblyInfoInputs.cache
+E:\c#\ArtyFact-Back\Domain\obj\Debug\net5.0\Domain.AssemblyInfo.cs
+E:\c#\ArtyFact-Back\Domain\obj\Debug\net5.0\Domain.csproj.CoreCompileInputs.cache
+E:\c#\ArtyFact-Back\Domain\obj\Debug\net5.0\Domain.dll
+E:\c#\ArtyFact-Back\Domain\obj\Debug\net5.0\ref\Domain.dll
+E:\c#\ArtyFact-Back\Domain\obj\Debug\net5.0\Domain.pdb

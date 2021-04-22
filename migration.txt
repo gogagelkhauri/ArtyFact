@@ -1,10 +1,8 @@
 #adding migrations from web directory:
-#Identity
 dotnet ef migrations add InitialModel --context ApplicationDbContext -p ../Infrastructure/Infrastructure.csproj -s WebApi.csproj -o Data/Migrations
 
 
 #update database:
-#Identity
 dotnet ef database update -c ApplicationDbContext -p ../Infrastructure/Infrastructure.csproj -s WebApi.csproj
 
 

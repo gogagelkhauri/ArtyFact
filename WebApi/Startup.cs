@@ -22,10 +22,10 @@ using System.Text;
 using AutoMapper;
 using Infrastructure.EmailService;
 using Domain.Interfaces.Services;
-using Aplication.Services;
 using Domain.Interfaces;
 using Domain.Entities;
 using Clean.Architecture.Infrastructure.Data;
+using Application.Services;
 
 namespace WebApi
 {
@@ -131,7 +131,9 @@ namespace WebApi
             //dependency Injection
             //category
             services.AddScoped<ICategoryService,CategoryService>();
+            services.AddScoped<IUserProfileService,UserProfileService>();
             services.AddScoped<IRepository<Category>,EfRepository<Category>>();
+            services.AddScoped<IRepository<UserProfile>,EfRepository<UserProfile>>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

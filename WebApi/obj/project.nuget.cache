@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "ilT5ixHuhcfNII3U/nhEhoNkJvJBSFFE3JWF4ByZqmWwF0fq/st668QFbsEZxilwN+TaKDmgIQ45tFN86owtPw==",
+  "dgSpecHash": "fGLWXWk4p82lL5sP6I3ZLawkyfCRsg9y3i0e5IEBH7ShrkSaGKRPpu3NAei31cNqduOKMZ/TmduMHNup17Csyg==",
   "success": true,
-  "projectFilePath": "E:\\ArtyFact\\WebApi\\WebApi.csproj",
+  "projectFilePath": "E:\\c#\\ArtyFact-Back\\WebApi\\WebApi.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\gogag\\.nuget\\packages\\automapper\\10.1.1\\automapper.10.1.1.nupkg.sha512",
     "C:\\Users\\gogag\\.nuget\\packages\\automapper.extensions.microsoft.dependencyinjection\\8.1.1\\automapper.extensions.microsoft.dependencyinjection.8.1.1.nupkg.sha512",

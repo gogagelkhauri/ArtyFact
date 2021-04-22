@@ -953,7 +953,8 @@
   "projectFileDependencyGroups": {
     "net5.0": [
       "AutoMapper.Extensions.Microsoft.DependencyInjection >= 8.1.0",
-      "Domain >= 1.0.0"
+      "Domain >= 1.0.0",
+      "Microsoft.AspNetCore.Identity.EntityFrameworkCore >= 5.0.0"
     ]
   },
   "packageFolders": {
@@ -962,29 +963,27 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "E:\\ArtyFact\\Application\\Application.csproj",
+      "projectUniqueName": "E:\\c#\\ArtyFact-Back\\Application\\Application.csproj",
       "projectName": "Application",
-      "projectPath": "E:\\ArtyFact\\Application\\Application.csproj",
+      "projectPath": "E:\\c#\\ArtyFact-Back\\Application\\Application.csproj",
       "packagesPath": "C:\\Users\\gogag\\.nuget\\packages\\",
-      "outputPath": "E:\\ArtyFact\\Application\\obj\\",
+      "outputPath": "E:\\c#\\ArtyFact-Back\\Application\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
-        "C:\\Users\\gogag\\AppData\\Roaming\\NuGet\\NuGet.Config",
-        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        "C:\\Users\\gogag\\AppData\\Roaming\\NuGet\\NuGet.Config"
       ],
       "originalTargetFrameworks": [
         "net5.0"
       ],
       "sources": {
-        "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
         "https://api.nuget.org/v3/index.json": {}
       },
       "frameworks": {
         "net5.0": {
           "targetAlias": "net5.0",
           "projectReferences": {
-            "E:\\ArtyFact\\Domain\\Domain.csproj": {
-              "projectPath": "E:\\ArtyFact\\Domain\\Domain.csproj"
+            "E:\\c#\\ArtyFact-Back\\Domain\\Domain.csproj": {
+              "projectPath": "E:\\c#\\ArtyFact-Back\\Domain\\Domain.csproj"
             }
           }
         }
@@ -1002,6 +1001,10 @@
           "AutoMapper.Extensions.Microsoft.DependencyInjection": {
             "target": "Package",
             "version": "[8.1.0, )"
+          },
+          "Microsoft.AspNetCore.Identity.EntityFrameworkCore": {
+            "target": "Package",
+            "version": "[5.0.0, )"
           }
         },
         "imports": [

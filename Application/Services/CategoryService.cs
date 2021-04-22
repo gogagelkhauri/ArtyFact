@@ -7,7 +7,7 @@ using Domain.Interfaces;
 using Domain.Interfaces.Services;
 using System.Linq;
 
-namespace Aplication.Services
+namespace Application.Services
 {
     public class CategoryService : ICategoryService
     {
