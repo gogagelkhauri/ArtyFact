@@ -1,33 +1,35 @@
 {
   "format": 1,
   "restore": {
-    "E:\\c#\\ArtyFact-Back\\Infrastructure\\Infrastructure.csproj": {}
+    "C:\\Users\\gogag\\OneDrive\\Desktop\\ArtyFact-Back\\Infrastructure\\Infrastructure.csproj": {}
   },
   "projects": {
-    "E:\\c#\\ArtyFact-Back\\Application\\Application.csproj": {
+    "C:\\Users\\gogag\\OneDrive\\Desktop\\ArtyFact-Back\\Application\\Application.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "E:\\c#\\ArtyFact-Back\\Application\\Application.csproj",
+        "projectUniqueName": "C:\\Users\\gogag\\OneDrive\\Desktop\\ArtyFact-Back\\Application\\Application.csproj",
         "projectName": "Application",
-        "projectPath": "E:\\c#\\ArtyFact-Back\\Application\\Application.csproj",
+        "projectPath": "C:\\Users\\gogag\\OneDrive\\Desktop\\ArtyFact-Back\\Application\\Application.csproj",
         "packagesPath": "C:\\Users\\gogag\\.nuget\\packages\\",
-        "outputPath": "E:\\c#\\ArtyFact-Back\\Application\\obj\\",
+        "outputPath": "C:\\Users\\gogag\\OneDrive\\Desktop\\ArtyFact-Back\\Application\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "C:\\Users\\gogag\\AppData\\Roaming\\NuGet\\NuGet.Config"
+          "C:\\Users\\gogag\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
           "net5.0"
         ],
         "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
           "net5.0": {
             "targetAlias": "net5.0",
             "projectReferences": {
-              "E:\\c#\\ArtyFact-Back\\Domain\\Domain.csproj": {
-                "projectPath": "E:\\c#\\ArtyFact-Back\\Domain\\Domain.csproj"
+              "C:\\Users\\gogag\\OneDrive\\Desktop\\ArtyFact-Back\\Domain\\Domain.csproj": {
+                "projectPath": "C:\\Users\\gogag\\OneDrive\\Desktop\\ArtyFact-Back\\Domain\\Domain.csproj"
               }
             }
           }
@@ -70,22 +72,24 @@
         }
       }
     },
-    "E:\\c#\\ArtyFact-Back\\Domain\\Domain.csproj": {
+    "C:\\Users\\gogag\\OneDrive\\Desktop\\ArtyFact-Back\\Domain\\Domain.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "E:\\c#\\ArtyFact-Back\\Domain\\Domain.csproj",
+        "projectUniqueName": "C:\\Users\\gogag\\OneDrive\\Desktop\\ArtyFact-Back\\Domain\\Domain.csproj",
         "projectName": "Domain",
-        "projectPath": "E:\\c#\\ArtyFact-Back\\Domain\\Domain.csproj",
+        "projectPath": "C:\\Users\\gogag\\OneDrive\\Desktop\\ArtyFact-Back\\Domain\\Domain.csproj",
         "packagesPath": "C:\\Users\\gogag\\.nuget\\packages\\",
-        "outputPath": "E:\\c#\\ArtyFact-Back\\Domain\\obj\\",
+        "outputPath": "C:\\Users\\gogag\\OneDrive\\Desktop\\ArtyFact-Back\\Domain\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "C:\\Users\\gogag\\AppData\\Roaming\\NuGet\\NuGet.Config"
+          "C:\\Users\\gogag\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
           "net5.0"
         ],
         "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
@@ -128,33 +132,35 @@
         }
       }
     },
-    "E:\\c#\\ArtyFact-Back\\Infrastructure\\Infrastructure.csproj": {
+    "C:\\Users\\gogag\\OneDrive\\Desktop\\ArtyFact-Back\\Infrastructure\\Infrastructure.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "E:\\c#\\ArtyFact-Back\\Infrastructure\\Infrastructure.csproj",
+        "projectUniqueName": "C:\\Users\\gogag\\OneDrive\\Desktop\\ArtyFact-Back\\Infrastructure\\Infrastructure.csproj",
         "projectName": "Infrastructure",
-        "projectPath": "E:\\c#\\ArtyFact-Back\\Infrastructure\\Infrastructure.csproj",
+        "projectPath": "C:\\Users\\gogag\\OneDrive\\Desktop\\ArtyFact-Back\\Infrastructure\\Infrastructure.csproj",
         "packagesPath": "C:\\Users\\gogag\\.nuget\\packages\\",
-        "outputPath": "E:\\c#\\ArtyFact-Back\\Infrastructure\\obj\\",
+        "outputPath": "C:\\Users\\gogag\\OneDrive\\Desktop\\ArtyFact-Back\\Infrastructure\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "C:\\Users\\gogag\\AppData\\Roaming\\NuGet\\NuGet.Config"
+          "C:\\Users\\gogag\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
           "net5.0"
         ],
         "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
           "net5.0": {
             "targetAlias": "net5.0",
             "projectReferences": {
-              "E:\\c#\\ArtyFact-Back\\Application\\Application.csproj": {
-                "projectPath": "E:\\c#\\ArtyFact-Back\\Application\\Application.csproj"
+              "C:\\Users\\gogag\\OneDrive\\Desktop\\ArtyFact-Back\\Application\\Application.csproj": {
+                "projectPath": "C:\\Users\\gogag\\OneDrive\\Desktop\\ArtyFact-Back\\Application\\Application.csproj"
               },
-              "E:\\c#\\ArtyFact-Back\\Domain\\Domain.csproj": {
-                "projectPath": "E:\\c#\\ArtyFact-Back\\Domain\\Domain.csproj"
+              "C:\\Users\\gogag\\OneDrive\\Desktop\\ArtyFact-Back\\Domain\\Domain.csproj": {
+                "projectPath": "C:\\Users\\gogag\\OneDrive\\Desktop\\ArtyFact-Back\\Domain\\Domain.csproj"
               }
             }
           }

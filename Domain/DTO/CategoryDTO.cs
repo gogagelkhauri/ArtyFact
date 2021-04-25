@@ -1,6 +1,6 @@
 using System.Collections.Generic;
 
-namespace Domain.DTOs
+namespace Domain.DTO
 {
 
     public class CategoryDTO 

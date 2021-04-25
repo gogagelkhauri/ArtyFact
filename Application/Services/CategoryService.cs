@@ -1,7 +1,7 @@
 using System.Collections.Generic;
 using System.Threading.Tasks;
 using AutoMapper;
-using Domain.DTOs;
+using Domain.DTO;
 using Domain.Entities;
 using Domain.Interfaces;
 using Domain.Interfaces.Services;

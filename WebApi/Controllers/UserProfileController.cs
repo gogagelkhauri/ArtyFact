@@ -1,6 +1,6 @@
 using System.Collections.Generic;
 using System.Threading.Tasks;
-using Domain.DTOs;
+using Domain.DTO;
 using Domain.Entities;
 using Domain.Entities.User;
 using Domain.Interfaces.Services;
@@ -21,18 +21,18 @@ namespace WebApi.Controllers
         }
 
         [HttpGet("GetUserProfile")]
-        public UserProfile GetUserProfile(string userEmail)
+        public IActionResult GetUserProfile(string userEmail)
         {
             var userProfile = _userProfileService.GetUserProfile(userEmail);
-            return userProfile;
+            return Ok(userProfile);
         }
 
-        [HttpPost("AddUserProfile")]
-        public async Task<IActionResult> AddUserProfile(string userEmail,[FromBody] UserProfile userProfile)
+        [HttpPost("UpdateUserProfile")]
+        public async Task<IActionResult> UpdateUserProfile(string userEmail,[FromBody] UserProfileDTO userProfile)
         {
             if(ModelState.IsValid)
             {
-                await _userProfileService.AddUserProfile(userEmail,userProfile);
+                await _userProfileService.UpdateUserProfile(userEmail,userProfile);
                 return Ok();
             }
 

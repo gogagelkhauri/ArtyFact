@@ -45,6 +45,7 @@ namespace MyMusic.Api.Controllers
         public async Task<IActionResult> SignUp(UserSignUpResource userSignUpResource)
         {
             var user = _mapper.Map<UserSignUpResource, ApplicationUser>(userSignUpResource);
+            user.UserProfile = new UserProfile();
 
             var userCreateResult = await _userManager.CreateAsync(user, userSignUpResource.Password);
 

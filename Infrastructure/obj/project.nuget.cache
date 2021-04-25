@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "agSGX9zhxTQmdcNK/maYJkn7az1XXRKL2520ykGyNSdeMbF98JWsMuaVBvZTQzq1oInLNEFFUPVpgwfBb2gc6A==",
+  "dgSpecHash": "zC9VGV4VKBiMgxtoUH5H/ywidXme+jCHtlMQkzMkZCPLt88uB/PIS3dEfkN3mDr0oS8KQlp8UQWo3H9Bmck/rw==",
   "success": true,
-  "projectFilePath": "E:\\c#\\ArtyFact-Back\\Infrastructure\\Infrastructure.csproj",
+  "projectFilePath": "C:\\Users\\gogag\\OneDrive\\Desktop\\ArtyFact-Back\\Infrastructure\\Infrastructure.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\gogag\\.nuget\\packages\\automapper\\10.1.0\\automapper.10.1.0.nupkg.sha512",
     "C:\\Users\\gogag\\.nuget\\packages\\automapper.extensions.microsoft.dependencyinjection\\8.1.0\\automapper.extensions.microsoft.dependencyinjection.8.1.0.nupkg.sha512",

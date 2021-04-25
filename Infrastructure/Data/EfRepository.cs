@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
@@ -44,6 +45,18 @@ namespace Clean.Architecture.Infrastructure.Data
         {
             _dbContext.Entry(entity).State = EntityState.Modified;
             return _dbContext.SaveChangesAsync();
+        }
+        public void Update(T entity) 
+        {
+            try
+            {
+                _dbContext.Entry(entity).State = EntityState.Modified;
+                _dbContext.SaveChanges();
+            }
+            catch(Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
         }
 
         public Task DeleteAsync(T entity) 
