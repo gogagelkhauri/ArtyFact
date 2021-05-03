@@ -2,6 +2,44 @@
   "version": 3,
   "targets": {
     "net5.0": {
+      "Ardalis.GuardClauses/1.5.0": {
+        "type": "package",
+        "dependencies": {
+          "JetBrains.Annotations": "2019.1.3",
+          "NETStandard.Library": "1.6.1"
+        },
+        "compile": {
+          "lib/netstandard1.1/Ardalis.GuardClauses.dll": {}
+        },
+        "runtime": {
+          "lib/netstandard1.1/Ardalis.GuardClauses.dll": {}
+        }
+      },
+      "Ardalis.Specification/4.1.0": {
+        "type": "package",
+        "dependencies": {
+          "Ardalis.GuardClauses": "1.5.0"
+        },
+        "compile": {
+          "lib/netstandard2.0/Ardalis.Specification.dll": {}
+        },
+        "runtime": {
+          "lib/netstandard2.0/Ardalis.Specification.dll": {}
+        }
+      },
+      "Ardalis.Specification.EntityFrameworkCore/4.1.0": {
+        "type": "package",
+        "dependencies": {
+          "Ardalis.Specification": "4.1.0",
+          "Microsoft.EntityFrameworkCore": "3.1.6"
+        },
+        "compile": {
+          "lib/netstandard2.0/Ardalis.Specification.EntityFrameworkCore.dll": {}
+        },
+        "runtime": {
+          "lib/netstandard2.0/Ardalis.Specification.EntityFrameworkCore.dll": {}
+        }
+      },
       "AutoMapper/10.1.0": {
         "type": "package",
         "dependencies": {
@@ -36,6 +74,15 @@
         },
         "runtime": {
           "lib/netstandard2.0/Humanizer.dll": {}
+        }
+      },
+      "JetBrains.Annotations/2019.1.3": {
+        "type": "package",
+        "compile": {
+          "lib/netstandard2.0/JetBrains.Annotations.dll": {}
+        },
+        "runtime": {
+          "lib/netstandard2.0/JetBrains.Annotations.dll": {}
         }
       },
       "MailKit/2.6.0": {
@@ -2435,6 +2482,7 @@
         "type": "project",
         "framework": ".NETCoreApp,Version=v5.0",
         "dependencies": {
+          "Ardalis.Specification": "4.1.0",
           "Microsoft.AspNetCore.Identity.EntityFrameworkCore": "5.0.0"
         },
         "compile": {
@@ -2447,6 +2495,51 @@
     }
   },
   "libraries": {
+    "Ardalis.GuardClauses/1.5.0": {
+      "sha512": "XJExus33saWps2NDP0LyZj5t9Ro483sdM2WPpjbmXjWrmC5mif+8iqCBanKArLPrQoWfmAkqUbjXbMOiYUZudg==",
+      "type": "package",
+      "path": "ardalis.guardclauses/1.5.0",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "ardalis.guardclauses.1.5.0.nupkg.sha512",
+        "ardalis.guardclauses.nuspec",
+        "lib/net40/Ardalis.GuardClauses.dll",
+        "lib/net40/Ardalis.GuardClauses.pdb",
+        "lib/net40/Ardalis.GuardClauses.xml",
+        "lib/netstandard1.1/Ardalis.GuardClauses.dll",
+        "lib/netstandard1.1/Ardalis.GuardClauses.pdb",
+        "lib/netstandard1.1/Ardalis.GuardClauses.xml"
+      ]
+    },
+    "Ardalis.Specification/4.1.0": {
+      "sha512": "ZeOlp2wQCDHwdqanqtBJqjgVzJv7PXd3lGXnK4KXywRmZZ5jnvG1lgBb5VYyQtfsK6FldGtchsE2DuP0di0Jyg==",
+      "type": "package",
+      "path": "ardalis.specification/4.1.0",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "ardalis.specification.4.1.0.nupkg.sha512",
+        "ardalis.specification.nuspec",
+        "icon.png",
+        "lib/netstandard2.0/Ardalis.Specification.dll",
+        "lib/netstandard2.0/Ardalis.Specification.pdb"
+      ]
+    },
+    "Ardalis.Specification.EntityFrameworkCore/4.1.0": {
+      "sha512": "1F6sBstdqsTOLlzHURofyMF6cgh1i46vvWqLNqfiI16E3RsI3nQKKy5YZdnN7PRHgw9NZe42y6ND8xy5bRbRaw==",
+      "type": "package",
+      "path": "ardalis.specification.entityframeworkcore/4.1.0",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "ardalis.specification.entityframeworkcore.4.1.0.nupkg.sha512",
+        "ardalis.specification.entityframeworkcore.nuspec",
+        "icon.png",
+        "lib/netstandard2.0/Ardalis.Specification.EntityFrameworkCore.dll",
+        "lib/netstandard2.0/Ardalis.Specification.EntityFrameworkCore.pdb"
+      ]
+    },
     "AutoMapper/10.1.0": {
       "sha512": "qxn9+PpQJD53PAUHGXW3HTcq6Rxbv3Pyq/jTcc60ZYwOygyqUfHIY3HBChKbDwtTHdlwlQqJeJ1ckVcaoytxxw==",
       "type": "package",
@@ -2490,6 +2583,27 @@
         "lib/netstandard2.0/Humanizer.dll",
         "lib/netstandard2.0/Humanizer.xml",
         "logo.png"
+      ]
+    },
+    "JetBrains.Annotations/2019.1.3": {
+      "sha512": "E0x48BwZJKoNMNCekWGKsV4saQS89lf58ydT2szseV44CMYIbaHXjc7+305WLw6up3ibZN9yH6QdGSZo5tQhLg==",
+      "type": "package",
+      "path": "jetbrains.annotations/2019.1.3",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "jetbrains.annotations.2019.1.3.nupkg.sha512",
+        "jetbrains.annotations.nuspec",
+        "lib/net20/JetBrains.Annotations.dll",
+        "lib/net20/JetBrains.Annotations.xml",
+        "lib/netstandard1.0/JetBrains.Annotations.deps.json",
+        "lib/netstandard1.0/JetBrains.Annotations.dll",
+        "lib/netstandard1.0/JetBrains.Annotations.xml",
+        "lib/netstandard2.0/JetBrains.Annotations.deps.json",
+        "lib/netstandard2.0/JetBrains.Annotations.dll",
+        "lib/netstandard2.0/JetBrains.Annotations.xml",
+        "lib/portable40-net40+sl5+win8+wp8+wpa81/JetBrains.Annotations.dll",
+        "lib/portable40-net40+sl5+win8+wp8+wpa81/JetBrains.Annotations.xml"
       ]
     },
     "MailKit/2.6.0": {
@@ -8180,6 +8294,7 @@
   "projectFileDependencyGroups": {
     "net5.0": [
       "Application >= 1.0.0",
+      "Ardalis.Specification.EntityFrameworkCore >= 4.1.0",
       "Domain >= 1.0.0",
       "Microsoft.AspNetCore.Http.Features >= 5.0.4",
       "Microsoft.AspNetCore.Identity.EntityFrameworkCore >= 5.0.0",
@@ -8236,6 +8351,10 @@
       "net5.0": {
         "targetAlias": "net5.0",
         "dependencies": {
+          "Ardalis.Specification.EntityFrameworkCore": {
+            "target": "Package",
+            "version": "[4.1.0, )"
+          },
           "Microsoft.AspNetCore.Http.Features": {
             "target": "Package",
             "version": "[5.0.4, )"

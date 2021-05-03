@@ -28,11 +28,11 @@ namespace WebApi.Controllers
         }
 
         [HttpPost("UpdateUserProfile")]
-        public async Task<IActionResult> UpdateUserProfile(string userEmail,[FromBody] UserProfileDTO userProfile)
+        public async Task<IActionResult> UpdateUserProfile(int id,[FromBody] UserProfileDTO userProfile)
         {
             if(ModelState.IsValid)
             {
-                await _userProfileService.UpdateUserProfile(userEmail,userProfile);
+                await _userProfileService.UpdateUserProfile(id,userProfile);
                 return Ok();
             }
 

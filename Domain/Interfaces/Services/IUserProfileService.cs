@@ -10,8 +10,8 @@ namespace Domain.Interfaces.Services
     {
         //Task<CategoryDTO> AddCategory(CategoryDTO categoryDTO);
         UserProfileDTO GetUserProfile(string userEmail);
-        Task UpdateUserProfile(string userEmail,UserProfileDTO userProfile);
-        void UpdateUserProfile(string userEmail,UserProfileDTO userProfile);
+        Task UpdateUserProfile(int id,UserProfileDTO userProfile);
+        //void UpdateUserProfile(string userEmail,UserProfileDTO userProfile);
         //Task<List<CategoryDTO>> GetAllCategories();
         //Task UpdateCategory(int id,CategoryDTO categoryDTO);
         //Task DeleteCategory(int id);

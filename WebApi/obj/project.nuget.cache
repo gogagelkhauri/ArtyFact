@@ -1,12 +1,16 @@
 {
   "version": 2,
-  "dgSpecHash": "mcecEzEohZ0U5EOtsPfQdJk4OUImyPFfUyqTR9XaBy4LSRaHqprVhUmO1LzOdxcggiMolhUwQLlaClfsYH2yDg==",
+  "dgSpecHash": "wTUi/58kyfq9Bp7LnGpDkPyfMwWx6ujR/XvOGBPnUBxiaVuzO9u7nreH7H3Sna3WK/ef7N4bBnU+jfavmvagpg==",
   "success": true,
   "projectFilePath": "C:\\Users\\gogag\\OneDrive\\Desktop\\ArtyFact-Back\\WebApi\\WebApi.csproj",
   "expectedPackageFiles": [
+    "C:\\Users\\gogag\\.nuget\\packages\\ardalis.guardclauses\\1.5.0\\ardalis.guardclauses.1.5.0.nupkg.sha512",
+    "C:\\Users\\gogag\\.nuget\\packages\\ardalis.specification\\4.1.0\\ardalis.specification.4.1.0.nupkg.sha512",
+    "C:\\Users\\gogag\\.nuget\\packages\\ardalis.specification.entityframeworkcore\\4.1.0\\ardalis.specification.entityframeworkcore.4.1.0.nupkg.sha512",
     "C:\\Users\\gogag\\.nuget\\packages\\automapper\\10.1.1\\automapper.10.1.1.nupkg.sha512",
     "C:\\Users\\gogag\\.nuget\\packages\\automapper.extensions.microsoft.dependencyinjection\\8.1.1\\automapper.extensions.microsoft.dependencyinjection.8.1.1.nupkg.sha512",
     "C:\\Users\\gogag\\.nuget\\packages\\humanizer.core\\2.8.26\\humanizer.core.2.8.26.nupkg.sha512",
+    "C:\\Users\\gogag\\.nuget\\packages\\jetbrains.annotations\\2019.1.3\\jetbrains.annotations.2019.1.3.nupkg.sha512",
     "C:\\Users\\gogag\\.nuget\\packages\\mailkit\\2.6.0\\mailkit.2.6.0.nupkg.sha512",
     "C:\\Users\\gogag\\.nuget\\packages\\mediatr\\9.0.0\\mediatr.9.0.0.nupkg.sha512",
     "C:\\Users\\gogag\\.nuget\\packages\\mediatr.extensions.microsoft.dependencyinjection\\9.0.0\\mediatr.extensions.microsoft.dependencyinjection.9.0.0.nupkg.sha512",

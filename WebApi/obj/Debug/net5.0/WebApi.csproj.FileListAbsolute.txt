@@ -250,3 +250,7 @@ C:\Users\gogag\OneDrive\Desktop\ArtyFact-Back\WebApi\obj\Debug\net5.0\WebApi.dll
 C:\Users\gogag\OneDrive\Desktop\ArtyFact-Back\WebApi\obj\Debug\net5.0\ref\WebApi.dll
 C:\Users\gogag\OneDrive\Desktop\ArtyFact-Back\WebApi\obj\Debug\net5.0\WebApi.pdb
 C:\Users\gogag\OneDrive\Desktop\ArtyFact-Back\WebApi\obj\Debug\net5.0\WebApi.genruntimeconfig.cache
+C:\Users\gogag\OneDrive\Desktop\ArtyFact-Back\WebApi\bin\Debug\net5.0\Ardalis.GuardClauses.dll
+C:\Users\gogag\OneDrive\Desktop\ArtyFact-Back\WebApi\bin\Debug\net5.0\Ardalis.Specification.dll
+C:\Users\gogag\OneDrive\Desktop\ArtyFact-Back\WebApi\bin\Debug\net5.0\Ardalis.Specification.EntityFrameworkCore.dll
+C:\Users\gogag\OneDrive\Desktop\ArtyFact-Back\WebApi\bin\Debug\net5.0\JetBrains.Annotations.dll

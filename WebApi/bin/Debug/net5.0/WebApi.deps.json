@@ -329,6 +329,50 @@
           "WebApi.dll": {}
         }
       },
+      "Ardalis.GuardClauses/1.5.0": {
+        "dependencies": {
+          "JetBrains.Annotations": "2019.1.3",
+          "NETStandard.Library": "1.6.1"
+        },
+        "runtime": {
+          "lib/netstandard1.1/Ardalis.GuardClauses.dll": {
+            "assemblyVersion": "1.5.0.0",
+            "fileVersion": "1.5.0.0"
+          }
+        },
+        "compile": {
+          "lib/netstandard1.1/Ardalis.GuardClauses.dll": {}
+        }
+      },
+      "Ardalis.Specification/4.1.0": {
+        "dependencies": {
+          "Ardalis.GuardClauses": "1.5.0"
+        },
+        "runtime": {
+          "lib/netstandard2.0/Ardalis.Specification.dll": {
+            "assemblyVersion": "4.1.0.0",
+            "fileVersion": "4.1.0.0"
+          }
+        },
+        "compile": {
+          "lib/netstandard2.0/Ardalis.Specification.dll": {}
+        }
+      },
+      "Ardalis.Specification.EntityFrameworkCore/4.1.0": {
+        "dependencies": {
+          "Ardalis.Specification": "4.1.0",
+          "Microsoft.EntityFrameworkCore": "5.0.0"
+        },
+        "runtime": {
+          "lib/netstandard2.0/Ardalis.Specification.EntityFrameworkCore.dll": {
+            "assemblyVersion": "4.1.0.0",
+            "fileVersion": "4.1.0.0"
+          }
+        },
+        "compile": {
+          "lib/netstandard2.0/Ardalis.Specification.EntityFrameworkCore.dll": {}
+        }
+      },
       "AutoMapper/10.1.1": {
         "dependencies": {
           "Microsoft.CSharp": "4.7.0",
@@ -366,6 +410,17 @@
             "assemblyVersion": "2.8.0.0",
             "fileVersion": "2.8.26.1919"
           }
+        }
+      },
+      "JetBrains.Annotations/2019.1.3": {
+        "runtime": {
+          "lib/netstandard2.0/JetBrains.Annotations.dll": {
+            "assemblyVersion": "2019.1.3.0",
+            "fileVersion": "2019.1.3.0"
+          }
+        },
+        "compile": {
+          "lib/netstandard2.0/JetBrains.Annotations.dll": {}
         }
       },
       "MailKit/2.6.0": {
@@ -1985,6 +2040,7 @@
       },
       "Domain/1.0.0": {
         "dependencies": {
+          "Ardalis.Specification": "4.1.0",
           "Microsoft.AspNetCore.Identity.EntityFrameworkCore": "5.0.0"
         },
         "runtime": {
@@ -1997,6 +2053,7 @@
       "Infrastructure/1.0.0": {
         "dependencies": {
           "Application": "1.0.0",
+          "Ardalis.Specification.EntityFrameworkCore": "4.1.0",
           "Domain": "1.0.0",
           "Microsoft.AspNetCore.Http.Features": "5.0.4",
           "Microsoft.AspNetCore.Identity.EntityFrameworkCore": "5.0.0",
@@ -3706,6 +3763,27 @@
       "serviceable": false,
       "sha512": ""
     },
+    "Ardalis.GuardClauses/1.5.0": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-XJExus33saWps2NDP0LyZj5t9Ro483sdM2WPpjbmXjWrmC5mif+8iqCBanKArLPrQoWfmAkqUbjXbMOiYUZudg==",
+      "path": "ardalis.guardclauses/1.5.0",
+      "hashPath": "ardalis.guardclauses.1.5.0.nupkg.sha512"
+    },
+    "Ardalis.Specification/4.1.0": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-ZeOlp2wQCDHwdqanqtBJqjgVzJv7PXd3lGXnK4KXywRmZZ5jnvG1lgBb5VYyQtfsK6FldGtchsE2DuP0di0Jyg==",
+      "path": "ardalis.specification/4.1.0",
+      "hashPath": "ardalis.specification.4.1.0.nupkg.sha512"
+    },
+    "Ardalis.Specification.EntityFrameworkCore/4.1.0": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-1F6sBstdqsTOLlzHURofyMF6cgh1i46vvWqLNqfiI16E3RsI3nQKKy5YZdnN7PRHgw9NZe42y6ND8xy5bRbRaw==",
+      "path": "ardalis.specification.entityframeworkcore/4.1.0",
+      "hashPath": "ardalis.specification.entityframeworkcore.4.1.0.nupkg.sha512"
+    },
     "AutoMapper/10.1.1": {
       "type": "package",
       "serviceable": true,
@@ -3726,6 +3804,13 @@
       "sha512": "sha512-OiKusGL20vby4uDEswj2IgkdchC1yQ6rwbIkZDVBPIR6al2b7n3pC91elBul9q33KaBgRKhbZH3+2Ur4fnWx2A==",
       "path": "humanizer.core/2.8.26",
       "hashPath": "humanizer.core.2.8.26.nupkg.sha512"
+    },
+    "JetBrains.Annotations/2019.1.3": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-E0x48BwZJKoNMNCekWGKsV4saQS89lf58ydT2szseV44CMYIbaHXjc7+305WLw6up3ibZN9yH6QdGSZo5tQhLg==",
+      "path": "jetbrains.annotations/2019.1.3",
+      "hashPath": "jetbrains.annotations.2019.1.3.nupkg.sha512"
     },
     "MailKit/2.6.0": {
       "type": "package",
