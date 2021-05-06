@@ -48,12 +48,12 @@ namespace Application.Services
             userProfileInDb.Gender = userProfile.Gender;
             userProfileInDb.Image = userProfile.Image;
             userProfileInDb.WorkDescription = userProfile.WorkDescription;
-            _profileRepository.TryUpdateManyToMany(userProfileInDb.UserCategories, userProfile.UserCategories
-            .Select(x => new UserCategory
-            {
-                UserId = userProfileInDb.UserId,
-                CategoryId = x.CategoryId
-            }), x => x.CategoryId);
+            // _profileRepository.TryUpdateManyToMany(userProfileInDb.UserCategories, userProfile.UserCategories)
+            // .Select(x => new UserCategory
+            // {
+            //     UserId = userProfileInDb.UserId,
+            //     CategoryId = x.CategoryId
+            // }), x => x.CategoryId);
             
             // if(userProfileDTO.UserCategories.Count > 0)
             // {
