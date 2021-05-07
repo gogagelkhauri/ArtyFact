@@ -7,10 +7,10 @@ namespace Domain.Interfaces.Services
 {
     public interface IProductService
     {
-        Task<ProductDTO> AddProduct(ProductDTO categoryDTO);
+        Task<ProductDTO> AddProduct(ProductDTO productDTO);
         Task<ProductDTO> GetProduct(int id);
         Task<List<ProductDTO>> GetAllproducts();
-        Task UpdateProduct(int id, ProductDTO categoryDTO);
+        Task UpdateProduct(int id, ProductDTO productDTO);
         Task DeleteProduct(int id);
     }
 }
