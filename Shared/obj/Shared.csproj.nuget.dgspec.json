@@ -1,20 +1,23 @@
 {
   "format": 1,
   "restore": {
-    "E:\\ArtyFact\\Shared\\Shared.csproj": {}
+    "D:\\work\\ArtyFact-Back\\Shared\\Shared.csproj": {}
   },
   "projects": {
-    "E:\\ArtyFact\\Shared\\Shared.csproj": {
+    "D:\\work\\ArtyFact-Back\\Shared\\Shared.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "E:\\ArtyFact\\Shared\\Shared.csproj",
+        "projectUniqueName": "D:\\work\\ArtyFact-Back\\Shared\\Shared.csproj",
         "projectName": "Shared",
-        "projectPath": "E:\\ArtyFact\\Shared\\Shared.csproj",
-        "packagesPath": "C:\\Users\\gogag\\.nuget\\packages\\",
-        "outputPath": "E:\\ArtyFact\\Shared\\obj\\",
+        "projectPath": "D:\\work\\ArtyFact-Back\\Shared\\Shared.csproj",
+        "packagesPath": "C:\\Users\\g.gelkhauri\\.nuget\\packages\\",
+        "outputPath": "D:\\work\\ArtyFact-Back\\Shared\\obj\\",
         "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
+        ],
         "configFilePaths": [
-          "C:\\Users\\gogag\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\g.gelkhauri\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -54,7 +57,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.100\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.202\\RuntimeIdentifierGraph.json"
         }
       }
     }

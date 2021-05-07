@@ -34,3 +34,15 @@ C:\Users\gogag\OneDrive\Desktop\ArtyFact-Back\Domain\obj\Debug\net5.0\Domain.csp
 C:\Users\gogag\OneDrive\Desktop\ArtyFact-Back\Domain\obj\Debug\net5.0\Domain.dll
 C:\Users\gogag\OneDrive\Desktop\ArtyFact-Back\Domain\obj\Debug\net5.0\ref\Domain.dll
 C:\Users\gogag\OneDrive\Desktop\ArtyFact-Back\Domain\obj\Debug\net5.0\Domain.pdb
+D:\work\ArtyFact-Back\Domain\bin\Debug\net5.0\Domain.deps.json
+D:\work\ArtyFact-Back\Domain\bin\Debug\net5.0\Domain.dll
+D:\work\ArtyFact-Back\Domain\bin\Debug\net5.0\ref\Domain.dll
+D:\work\ArtyFact-Back\Domain\bin\Debug\net5.0\Domain.pdb
+D:\work\ArtyFact-Back\Domain\obj\Debug\net5.0\Domain.csprojAssemblyReference.cache
+D:\work\ArtyFact-Back\Domain\obj\Debug\net5.0\Domain.GeneratedMSBuildEditorConfig.editorconfig
+D:\work\ArtyFact-Back\Domain\obj\Debug\net5.0\Domain.AssemblyInfoInputs.cache
+D:\work\ArtyFact-Back\Domain\obj\Debug\net5.0\Domain.AssemblyInfo.cs
+D:\work\ArtyFact-Back\Domain\obj\Debug\net5.0\Domain.csproj.CoreCompileInputs.cache
+D:\work\ArtyFact-Back\Domain\obj\Debug\net5.0\Domain.dll
+D:\work\ArtyFact-Back\Domain\obj\Debug\net5.0\ref\Domain.dll
+D:\work\ArtyFact-Back\Domain\obj\Debug\net5.0\Domain.pdb

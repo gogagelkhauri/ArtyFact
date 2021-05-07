@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "cpaFmj1cem3lDKiB+lMIJZFistBpfef/2pqFRoFT7c6ckEKVcfTXMVTxpaWj6QU5xzSyuv7fnoalhmu7FMPQnQ==",
+  "dgSpecHash": "BBFQjuz90Db84mOx8EZr525A/Lzlh5Xh0K2qKUZ9YzXY13/wUX9n4dvZTMBfPvDB7XSov+BuowExSgSDYljtYA==",
   "success": true,
-  "projectFilePath": "E:\\ArtyFact\\Shared\\Shared.csproj",
+  "projectFilePath": "D:\\work\\ArtyFact-Back\\Shared\\Shared.csproj",
   "expectedPackageFiles": [],
   "logs": []
 }

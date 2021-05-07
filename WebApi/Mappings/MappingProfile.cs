@@ -12,6 +12,7 @@ namespace MyMusic.Api.Mapping
         {
             CreateMap<UserSignUpResource, ApplicationUser>()
                 .ForMember(u => u.UserName, opt => opt.MapFrom(ur => ur.Email));
+
             CreateMap<CategoryDTO,Category>();
             CreateMap<Category,CategoryDTO>();
 
@@ -42,7 +43,10 @@ namespace MyMusic.Api.Mapping
             CreateMap<UserCategoryDTO,UserCategory>()
                 .ForMember(dest => dest.CategoryId, o => o.MapFrom(src => src.CategoryId))
                 .ForMember(dest => dest.UserId, o => o.MapFrom(src => src.UserId))
-                .ForAllOtherMembers(x=>x.Ignore()); 
+                .ForAllOtherMembers(x=>x.Ignore());
+
+            CreateMap<PaintTypeDTO, PaintType>();
+            CreateMap<PaintType, PaintTypeDTO>();
         }
     }
 }
