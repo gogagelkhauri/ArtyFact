@@ -9,8 +9,8 @@ namespace Domain.DTO
     public class ProductDetailDTO
     {
         public int Id { get; set; }
-        public int ProductId { get; set; }
+       // public int ProductId { get; set; }
         public string Size { get; set; }
-        public int PaintTypeId { get; set; }
+        public PaintTypeDTO PaintType { get; set; }
     }
 }

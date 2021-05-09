@@ -22,7 +22,8 @@ namespace Infrastructure.Data.Configuration
             builder
             .HasOne<ProductDetail>(p => p.ProductDetail)
             .WithOne(p => p.Product)
-            .HasForeignKey<ProductDetail>(p => p.ProductId);
+            .HasForeignKey<ProductDetail>(p => p.ProductId)
+            .OnDelete(DeleteBehavior.Cascade);
 
             //One To Many Relationship Between Product and Category
             builder

@@ -36,6 +36,12 @@ namespace Clean.Architecture.Infrastructure.Data
             return await specificationResult.FirstAsync();
         }
 
+        public async Task<IList<T>> GetAllBySpecification(ISpecification<T> spec) 
+        {
+            var specificationResult = ApplySpecification(spec);
+            return await specificationResult.ToListAsync();
+        }
+
         public Task<List<T>> ListAsync() 
         {
             return _dbContext.Set<T>().ToListAsync();
@@ -79,20 +85,19 @@ namespace Clean.Architecture.Infrastructure.Data
             return evaluator.GetQuery(_dbContext.Set<T>().AsQueryable(), spec);
         }
 
-        public void UpdateMany<K,TKey>(IEnumerable<T> currentItems,IEnumerable<T> newItems,Func<T, TKey> getKeyFunc)
+        public void UpdateMany(ISpecification<T> spec)
         {
-            //var entity = this.GetBySpecification(spec);
-            _dbContext.TryUpdateManyToMany(currentItems,newItems,getKeyFunc);
+            var entity = this.GetBySpecification(spec);
             //_dbContext.TryUpdateManyToMany();
-           // _dbContext.Entry(entity).State = EntityState.Modified;
-           // _dbContext.SaveChangesAsync();
+            _dbContext.Entry(entity).State = EntityState.Modified;
+            _dbContext.SaveChangesAsync();
         }
 
         // public void TryUpdateManyToMany<T, TKey>(IEnumerable<T> currentItems, IEnumerable<T> newItems, Func<T, TKey> getKey) where T : BaseEntity
         // {
-        //     // _dbContext.Set<T>().RemoveRange(currentItems.Except(newItems, getKey));
-        //     // _dbContext.Set<T>().AddRange(newItems.Except(currentItems, getKey));
-        //     _dbContext.TryUpdateManyToMany(currentItems,newItems,getKey);
+        //     _dbContext.Set<T>().RemoveRange(currentItems.Except(newItems, getKey));
+        //     _dbContext.Set<T>().AddRange(newItems.Except(currentItems, getKey));
+        //     //_dbContext.TryUpdateManyToMany(currentItems,newItems,getKey);
         // }
 
     }

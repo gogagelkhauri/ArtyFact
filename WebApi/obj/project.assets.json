@@ -8639,23 +8639,19 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\g.gelkhauri\\.nuget\\packages\\": {},
-    "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder": {}
+    "C:\\Users\\gogag\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "D:\\work\\ArtyFact-Back\\WebApi\\WebApi.csproj",
+      "projectUniqueName": "C:\\Users\\gogag\\OneDrive\\Desktop\\ArtyFact-Back\\WebApi\\WebApi.csproj",
       "projectName": "WebApi",
-      "projectPath": "D:\\work\\ArtyFact-Back\\WebApi\\WebApi.csproj",
-      "packagesPath": "C:\\Users\\g.gelkhauri\\.nuget\\packages\\",
-      "outputPath": "D:\\work\\ArtyFact-Back\\WebApi\\obj\\",
+      "projectPath": "C:\\Users\\gogag\\OneDrive\\Desktop\\ArtyFact-Back\\WebApi\\WebApi.csproj",
+      "packagesPath": "C:\\Users\\gogag\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\gogag\\OneDrive\\Desktop\\ArtyFact-Back\\WebApi\\obj\\",
       "projectStyle": "PackageReference",
-      "fallbackFolders": [
-        "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
-      ],
       "configFilePaths": [
-        "C:\\Users\\g.gelkhauri\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\gogag\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
@@ -8669,11 +8665,11 @@
         "net5.0": {
           "targetAlias": "net5.0",
           "projectReferences": {
-            "D:\\work\\ArtyFact-Back\\Domain\\Domain.csproj": {
-              "projectPath": "D:\\work\\ArtyFact-Back\\Domain\\Domain.csproj"
+            "C:\\Users\\gogag\\OneDrive\\Desktop\\ArtyFact-Back\\Domain\\Domain.csproj": {
+              "projectPath": "C:\\Users\\gogag\\OneDrive\\Desktop\\ArtyFact-Back\\Domain\\Domain.csproj"
             },
-            "D:\\work\\ArtyFact-Back\\Infrastructure\\Infrastructure.csproj": {
-              "projectPath": "D:\\work\\ArtyFact-Back\\Infrastructure\\Infrastructure.csproj"
+            "C:\\Users\\gogag\\OneDrive\\Desktop\\ArtyFact-Back\\Infrastructure\\Infrastructure.csproj": {
+              "projectPath": "C:\\Users\\gogag\\OneDrive\\Desktop\\ArtyFact-Back\\Infrastructure\\Infrastructure.csproj"
             }
           }
         }
@@ -8767,7 +8763,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.202\\RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.100\\RuntimeIdentifierGraph.json"
       }
     }
   }

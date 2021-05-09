@@ -128,12 +128,23 @@ namespace WebApi
             services.AddSingleton(emailConfig);
             services.AddScoped<IEmailSender, EmailSender>();
 
-            //dependency Injection
-            //category
+            //Dependency Injection
+
+            //Category
             services.AddScoped<ICategoryService,CategoryService>();
-            services.AddScoped<IUserProfileService,UserProfileService>();
             services.AddScoped<IRepository<Category>,EfRepository<Category>>();
+
+            //User profile
+            services.AddScoped<IUserProfileService,UserProfileService>();
             services.AddScoped<IRepository<UserProfile>,EfRepository<UserProfile>>();
+            
+            //Paint type
+            services.AddScoped<IPaintTypeService,PaintTypeService>();
+            services.AddScoped<IRepository<PaintType>,EfRepository<PaintType>>();
+
+            //Product
+            services.AddScoped<IProductService,ProductService>();
+            services.AddScoped<IRepository<Product>,EfRepository<Product>>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

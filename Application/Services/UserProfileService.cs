@@ -38,7 +38,7 @@ namespace Application.Services
             var userCategories = new List<UserCategory>();
             var userProfile = _mapper.Map<UserProfile>(userProfileDTO);
             //var userProfileInDb = _profileRepository.ListAsync().Result.Where(x => x.User.UserName == userEmail).Single();
-            var spec = new BasketWithItemsSpecification(id);
+            var spec = new UserWithCategoriesSpecification(id);
             
 
             var userProfileInDb = _profileRepository.GetBySpecification(spec).Result;

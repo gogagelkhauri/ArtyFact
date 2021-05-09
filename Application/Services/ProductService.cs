@@ -1,7 +1,9 @@
-﻿using Domain.DTO;
+﻿using AutoMapper;
+using Domain.DTO;
 using Domain.Entities;
 using Domain.Interfaces;
 using Domain.Interfaces.Services;
+using Domain.Specifications;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -13,36 +15,68 @@ namespace Application.Services
     public class ProductService : IProductService
     {
         private readonly IRepository<Product> _productRepository;
+        private readonly IRepository<Category> _categoryRepo;
+        private readonly IRepository<PaintType> _paintTypeRepository;
+        private readonly IMapper _mapper;
 
-        public ProductService(IRepository<Product> productRepository)
+        public ProductService(IRepository<Product> productRepository,
+        IRepository<PaintType> paintTypeRepository,
+        IRepository<Category> categoryRepo,
+        IMapper mapper)
         {
             _productRepository = productRepository;
+            _categoryRepo = categoryRepo;
+            _mapper = mapper;
+            _paintTypeRepository = paintTypeRepository;
         }
 
 
-        public Task<ProductDTO> AddProduct(ProductDTO productDTO)
+        public async Task<ProductDTO> AddProduct(ProductDTO productDTO)
         {
-            throw new NotImplementedException();
+            var product = _mapper.Map<Product>(productDTO);
+
+            var category = _categoryRepo.GetByIdAsync(product.Category.Id).Result;
+            product.Category = category;
+
+            if(product.ProductDetail != null)
+            {
+                var paintType = _paintTypeRepository.GetByIdAsync(product.Category.Id).Result;
+                product.ProductDetail.PaintType = paintType;
+            }
+
+            var productInDb = await _productRepository.AddAsync(product);
+            var productDTOFromDb = _mapper.Map<ProductDTO>(productInDb);
+
+            return productDTOFromDb;
         }
 
-        public Task DeleteProduct(int id)
+        public async Task DeleteProduct(int id)
         {
-            throw new NotImplementedException();
+            var category = await _productRepository.GetByIdAsync(id);
+            await _productRepository.DeleteAsync(category);
         }
 
-        public Task<List<ProductDTO>> GetAllproducts()
+        public async Task<List<ProductDTO>> GetAllproducts()
         {
-            throw new NotImplementedException();
+            var spec = new ProductsWithDetailAndPaintType();
+            var paintTypes = await _productRepository.GetAllBySpecification(spec);
+            var paintTypeDTO = paintTypes.Select(x => _mapper.Map<ProductDTO>(x)).ToList();
+            
+            return paintTypeDTO;
         }
 
-        public Task<ProductDTO> GetProduct(int id)
+        public async Task<ProductDTO> GetProduct(int id)
         {
-            throw new NotImplementedException();
+            var spec = new ProductWithDetailAndPaintType(id);
+            var product = await _productRepository.GetBySpecification(spec);
+            var productDTO = _mapper.Map<ProductDTO>(product);
+            return productDTO;
         }
 
-        public Task UpdateProduct(int id, ProductDTO productDTO)
+        public async Task UpdateProduct(int id, ProductDTO productDTO)
         {
-            throw new NotImplementedException();
+            var product = _mapper.Map<Product>(productDTO);
+            await _productRepository.UpdateAsync(product);
         }
     }
 }

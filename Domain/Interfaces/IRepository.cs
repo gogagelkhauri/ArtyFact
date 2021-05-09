@@ -15,6 +15,7 @@ namespace Domain.Interfaces
         void Update(T entity);
         Task DeleteAsync(T entity);
         Task<T> GetBySpecification(ISpecification<T> spec);
+        Task<IList<T>> GetAllBySpecification(ISpecification<T> spec);
         //void TryUpdateManyToMany<T, TKey>(IEnumerable<T> currentItems, IEnumerable<T> newItems, Func<T, TKey> getKey);
     }
 }

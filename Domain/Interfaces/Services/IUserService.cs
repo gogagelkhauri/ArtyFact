@@ -7,10 +7,12 @@ namespace Domain.Interfaces.Services
 {
     public interface IUserService
     {
-        Task<CategoryDTO> AddCategory(CategoryDTO categoryDTO);
+        Task<CategoryDTO> AddUser(CategoryDTO categoryDTO);
         Task<CategoryDTO> GetCategory(int id);
         Task<List<CategoryDTO>> GetAllCategories();
         Task UpdateCategory(int id,CategoryDTO categoryDTO);
         Task DeleteCategory(int id);
+
+        Task DeleteUserAccount(int id);
     }
 }
