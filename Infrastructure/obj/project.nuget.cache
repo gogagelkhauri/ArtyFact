@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "RD+DFnqEqLgpvAPlA2VPQSgOJ+5q6fGNa+9sWNNe2u+uFVRcL9lB+oQjuL3V6ZLyUsX3NtwrxjmKCEFbmxGS9Q==",
+  "dgSpecHash": "j5AYZpdMdlZ9u8vC4yEpjQ0FmlbVYw4rfrpiekOepkFVXNpEAfSBmtiLpJtqO7eiwJc5qG5cHq9n3ynkKn4PDA==",
   "success": true,
-  "projectFilePath": "C:\\Users\\gogag\\OneDrive\\Desktop\\ArtyFact-Back\\Infrastructure\\Infrastructure.csproj",
+  "projectFilePath": "E:\\c#\\ArtyFact-Back\\Infrastructure\\Infrastructure.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\gogag\\.nuget\\packages\\ardalis.guardclauses\\1.5.0\\ardalis.guardclauses.1.5.0.nupkg.sha512",
     "C:\\Users\\gogag\\.nuget\\packages\\ardalis.specification\\4.1.0\\ardalis.specification.4.1.0.nupkg.sha512",

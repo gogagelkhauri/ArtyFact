@@ -13,6 +13,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WebApi", "WebApi\WebApi.csp
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Shared", "Shared\Shared.csproj", "{7A81FB7B-6E56-45B3-B970-F1027F4A0F0B}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Web", "Web\Web.csproj", "{F82D7086-70FE-417C-B246-ED996663B468}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -86,5 +88,17 @@ Global
 		{7A81FB7B-6E56-45B3-B970-F1027F4A0F0B}.Release|x64.Build.0 = Release|Any CPU
 		{7A81FB7B-6E56-45B3-B970-F1027F4A0F0B}.Release|x86.ActiveCfg = Release|Any CPU
 		{7A81FB7B-6E56-45B3-B970-F1027F4A0F0B}.Release|x86.Build.0 = Release|Any CPU
+		{F82D7086-70FE-417C-B246-ED996663B468}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F82D7086-70FE-417C-B246-ED996663B468}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F82D7086-70FE-417C-B246-ED996663B468}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{F82D7086-70FE-417C-B246-ED996663B468}.Debug|x64.Build.0 = Debug|Any CPU
+		{F82D7086-70FE-417C-B246-ED996663B468}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{F82D7086-70FE-417C-B246-ED996663B468}.Debug|x86.Build.0 = Debug|Any CPU
+		{F82D7086-70FE-417C-B246-ED996663B468}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F82D7086-70FE-417C-B246-ED996663B468}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F82D7086-70FE-417C-B246-ED996663B468}.Release|x64.ActiveCfg = Release|Any CPU
+		{F82D7086-70FE-417C-B246-ED996663B468}.Release|x64.Build.0 = Release|Any CPU
+		{F82D7086-70FE-417C-B246-ED996663B468}.Release|x86.ActiveCfg = Release|Any CPU
+		{F82D7086-70FE-417C-B246-ED996663B468}.Release|x86.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal

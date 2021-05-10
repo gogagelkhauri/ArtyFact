@@ -75,7 +75,25 @@ namespace Application.Services
 
         public async Task UpdateProduct(int id, ProductDTO productDTO)
         {
-            var product = _mapper.Map<Product>(productDTO);
+            //var product = _mapper.Map<Product>(productDTO);
+            var spec = new ProductWithDetailAndPaintType(id);
+            var product = await _productRepository.GetBySpecification(spec);
+
+            product.Name = productDTO.Name;
+            product.InStock = productDTO.InStock;
+            product.Description = productDTO.Description;
+            product.ImageURL = productDTO.ImageURL;
+            product.Price = productDTO.Price;
+            product.Price = productDTO.Price;
+            if(productDTO.Category == null)
+            {
+                product.Category = null;
+            }
+            else if (_categoryRepo.GetByIdAsync(productDTO.Category.Id).Result.Id != productDTO.Category.Id)
+            {
+                var cat = _categoryRepo.GetByIdAsync(productDTO.Category.Id).Result;
+                product.Category = cat;
+            }
             await _productRepository.UpdateAsync(product);
         }
     }
