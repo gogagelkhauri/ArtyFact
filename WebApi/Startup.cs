@@ -24,7 +24,6 @@ using Infrastructure.EmailService;
 using Domain.Interfaces.Services;
 using Domain.Interfaces;
 using Domain.Entities;
-using Clean.Architecture.Infrastructure.Data;
 using Application.Services;
 
 namespace WebApi

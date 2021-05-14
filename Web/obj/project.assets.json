@@ -10089,30 +10089,32 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "E:\\c#\\ArtyFact-Back\\Web\\Web.csproj",
+      "projectUniqueName": "C:\\Users\\gogag\\OneDrive\\Desktop\\ArtyFact-Back\\Web\\Web.csproj",
       "projectName": "Web",
-      "projectPath": "E:\\c#\\ArtyFact-Back\\Web\\Web.csproj",
+      "projectPath": "C:\\Users\\gogag\\OneDrive\\Desktop\\ArtyFact-Back\\Web\\Web.csproj",
       "packagesPath": "C:\\Users\\gogag\\.nuget\\packages\\",
-      "outputPath": "E:\\c#\\ArtyFact-Back\\Web\\obj\\",
+      "outputPath": "C:\\Users\\gogag\\OneDrive\\Desktop\\ArtyFact-Back\\Web\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
-        "C:\\Users\\gogag\\AppData\\Roaming\\NuGet\\NuGet.Config"
+        "C:\\Users\\gogag\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
         "net5.0"
       ],
       "sources": {
+        "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
         "https://api.nuget.org/v3/index.json": {}
       },
       "frameworks": {
         "net5.0": {
           "targetAlias": "net5.0",
           "projectReferences": {
-            "E:\\c#\\ArtyFact-Back\\Domain\\Domain.csproj": {
-              "projectPath": "E:\\c#\\ArtyFact-Back\\Domain\\Domain.csproj"
+            "C:\\Users\\gogag\\OneDrive\\Desktop\\ArtyFact-Back\\Domain\\Domain.csproj": {
+              "projectPath": "C:\\Users\\gogag\\OneDrive\\Desktop\\ArtyFact-Back\\Domain\\Domain.csproj"
             },
-            "E:\\c#\\ArtyFact-Back\\Infrastructure\\Infrastructure.csproj": {
-              "projectPath": "E:\\c#\\ArtyFact-Back\\Infrastructure\\Infrastructure.csproj"
+            "C:\\Users\\gogag\\OneDrive\\Desktop\\ArtyFact-Back\\Infrastructure\\Infrastructure.csproj": {
+              "projectPath": "C:\\Users\\gogag\\OneDrive\\Desktop\\ArtyFact-Back\\Infrastructure\\Infrastructure.csproj"
             }
           }
         }

@@ -9,7 +9,7 @@ using Domain.Interfaces;
 using Infrastructure.Data;
 using Microsoft.EntityFrameworkCore;
 
-namespace Clean.Architecture.Infrastructure.Data
+namespace Infrastructure.Data
 {
     public class EfRepository<T> : IRepository<T> where T : BaseEntity
     {

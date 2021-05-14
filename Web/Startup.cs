@@ -12,6 +12,12 @@ using Infrastructure.Data;
 using Domain.Entities.User;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.AspNetCore.Identity;
+using AutoMapper;
+using Infrastructure.EmailService;
+using Domain.Interfaces.Services;
+using Domain.Interfaces;
+using Domain.Entities;
+using Application.Services;
 
 namespace Web
 {
@@ -35,9 +41,47 @@ namespace Web
             
             services.AddDefaultIdentity<ApplicationUser>(options => options.SignIn.RequireConfirmedAccount = false)
                 .AddRoles<IdentityRole>()
-                .AddEntityFrameworkStores<ApplicationDbContext>();
+                .AddEntityFrameworkStores<ApplicationDbContext>()
+                .AddDefaultTokenProviders();;
 
-            services.AddRazorPages();
+            services.ConfigureApplicationCookie(options =>  
+            {  
+                options.LoginPath = $"/Identity/account/login";  
+                options.LogoutPath = $"/Identity/account/logout";  
+            });  
+
+            //automapper
+            services.AddAutoMapper(typeof(Startup));
+
+            //EmailServices
+            var emailConfig = Configuration
+                .GetSection("EmailConfiguration")
+                .Get<EmailConfiguration>();
+            services.AddSingleton(emailConfig);
+            services.AddScoped<IEmailSender, EmailSender>();
+
+            services.Configure<DataProtectionTokenProviderOptions>(opt =>
+                opt.TokenLifespan = TimeSpan.FromHours(2));
+
+            //Dependency Injection
+
+            //Category
+            services.AddScoped<ICategoryService,CategoryService>();
+            services.AddScoped<IRepository<Category>,EfRepository<Category>>();
+
+            //User profile
+            services.AddScoped<IUserProfileService,UserProfileService>();
+            services.AddScoped<IRepository<UserProfile>,EfRepository<UserProfile>>();
+            
+            //Paint type
+            services.AddScoped<IPaintTypeService,PaintTypeService>();
+            services.AddScoped<IRepository<PaintType>,EfRepository<PaintType>>();
+
+            //Product
+            services.AddScoped<IProductService,ProductService>();
+            services.AddScoped<IRepository<Product>,EfRepository<Product>>();
+
+            //services.AddRazorPages();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -66,9 +110,12 @@ namespace Web
             app.UseEndpoints(endpoints =>
             {
                 endpoints.MapControllerRoute(
+                    name: "MyArea",
+                    pattern: "{area:exists}/{controller=Home}/{action=Index}/{id?}");
+                endpoints.MapControllerRoute(
                     name: "default",
                     pattern: "{controller=Home}/{action=Index}/{id?}");
-                endpoints.MapRazorPages();
+               // endpoints.MapRazorPages();
             });
         }
     }

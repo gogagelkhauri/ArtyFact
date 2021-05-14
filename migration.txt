@@ -3,6 +3,7 @@ dotnet ef migrations add InitialModel --context ApplicationDbContext -p ../Infra
 
 
 #update database:
-dotnet ef database update -c ApplicationDbContext -p ../Infrastructure/Infrastructure.csproj -s WebApi.csproj
+dotnet ef database update -c ApplicationDbContext -p ../Infrastructure/Infrastructure.csproj -s Web.csproj
 
 
+dotnet ef migrations add AddFirsLastNamesToUsersTable --context ApplicationDbContext -p ../Infrastructure/Infrastructure.csproj -s WebApi.csproj -o Data/Migrations
