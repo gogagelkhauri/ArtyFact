@@ -3,7 +3,7 @@ using Domain.DTO;
 using Domain.Interfaces.Services;
 using Microsoft.AspNetCore.Mvc;
 
-namespace Areas.Identity.Controllers
+namespace Web.Areas.Admin.Controlles
 {
     [Area("Admin")]  
     public class CategoryController : Controller  
@@ -35,62 +35,44 @@ namespace Areas.Identity.Controllers
             }
             await  _categoryService.AddCategory(categoryDTO);
             return RedirectToAction("Index", "Category", new { area = "Admin" });
-
         }
-        // [HttpPost("AddCategory")]
-        // public async Task<IActionResult> AddCategory([FromBody]CategoryDTO categoryDTO)
-        // {
-        //     if(ModelState.IsValid)
-        //     {
-        //         var category = await  _categoryService.AddCategory(categoryDTO);
-        //         return Ok(category);
-        //     }
 
-        //     return BadRequest(ModelState.GetModelStateErrors());
-        // }
-
-        // [HttpGet("GetCategory")]
-        // public async Task<CategoryDTO> GetCategory([BindRequired]int id)
-        // {
-        //     return await _categoryService.GetCategory(id);
-        // }
-
-        // [HttpPost("AddCategory")]
-        // public async Task<IActionResult> AddCategory([FromBody]CategoryDTO categoryDTO)
-        // {
-        //     if(ModelState.IsValid)
-        //     {
-        //         var category = await  _categoryService.AddCategory(categoryDTO);
-        //         return Ok(category);
-        //     }
-
-        //     return BadRequest(ModelState.GetModelStateErrors());
-        // }
-
-        // [HttpDelete("DeleteCategory")]
-        // public async Task<IActionResult> DeleteCategory([BindRequired]int id)
-        // {
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> Delete(int id)
+        {
             
-        //     if(ModelState.IsValid)
-        //     {
-        //         await _categoryService.DeleteCategory(id);
-        //         return Ok("Success");
-        //     }
+            if(ModelState.IsValid)
+            {
+                await _categoryService.DeleteCategory(id);
+            }
 
-        //     return BadRequest(ModelState.GetModelStateErrors());
-        // }
+            return RedirectToAction("Index", "Category", new { area = "Admin" });
+        }
 
-        // [HttpPut("UpdateCategory")]
-        // public async Task<IActionResult> UpdateCategory([BindRequired]int id,CategoryDTO categoryDTO)
-        // {
+        public async Task<IActionResult> Edit(int id)
+        {
+            var category = await _categoryService.GetCategory(id);
+            if(category != null)
+                return View(category);
+            return RedirectToAction("Index", "Category", new { area = "Admin" });
             
-        //     if(ModelState.IsValid)
-        //     {
-        //         await _categoryService.UpdateCategory(id,categoryDTO);
-        //         return Ok("Success");
-        //     }
+        }
 
-        //     return BadRequest(ModelState.GetModelStateErrors());
-        // }
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> Update(CategoryDTO categoryDTO)
+        {
+            if (!ModelState.IsValid)
+            {
+                return View("edit", categoryDTO);
+            }
+
+            await _categoryService.UpdateCategory(categoryDTO.Id,categoryDTO);
+            return RedirectToAction("Index", "Category", new { area = "Admin" });
+            
+
+            //return BadRequest(ModelState.GetModelStateErrors());
+        }
     }
 }

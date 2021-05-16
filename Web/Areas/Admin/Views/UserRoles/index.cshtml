@@ -1,0 +1,51 @@
+@using Web.Areas.Admin.ViewModels
+@model List<UserRolesViewModel>
+@{
+    ViewData["Title"] = "Users";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<h1>User Roles</h1>
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th>User Name</th>
+            <th>Email</th>
+            <th>Roles</th>
+            <th>Action</th>
+        </tr>
+    </thead>
+    <tbody>
+        @Html.ActionLink(
+         linkText: "Add User",
+         actionName: "Create",
+         controllerName: "User",
+         routeValues: null,
+         htmlAttributes: new {@class = "btn btn-primary"}
+     )
+        @foreach (var user in Model)
+        {
+        <tr>
+            <td>@user.UserName</td>
+            <td>@user.Email</td>
+            <td>@string.Join(" , ", user.Roles.ToList())</td>
+            <td>
+                <a class="btn btn-primary" asp-controller="UserRoles" asp-action="Manage" asp-route-userId="@user.UserId">Manage Roles</a>
+            </td>
+            <td>
+                
+                @Html.ActionLink(
+              linkText: "Edit",
+              actionName: "Update",
+              controllerName: "User",
+              routeValues: new { id = @user.UserId},
+              htmlAttributes: new { @class = "btn btn-warning" }
+          )
+                <form asp-controller="User" asp-action="Delete" asp-route-id="@user.UserId" method="post">
+                    <button type="submit" class="btn btn-sm btn-danger">
+                        Delete
+                    </button>
+                </form>
+            </td>
+        </tr>}
+    </tbody>
+</table>

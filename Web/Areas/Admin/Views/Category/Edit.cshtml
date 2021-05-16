@@ -1,0 +1,20 @@
+@model Domain.DTO.CategoryDTO
+@{
+ViewData["Title"] = "Edit Category";
+Layout = "~/Views/Shared/_Layout.cshtml";  
+}
+
+<div class="container">
+    @Html.ActionLink("Back", "Index", "Category", new { Area = "Admin" }, new { @class = "btn btn-primary float-right mb-2" })
+    <form method="post" action="/Admin/Category/Update">
+        <input type="hidden" value="@Model.Id" name="Id">
+        @Html.AntiForgeryToken()
+        <div class="form-group">
+            @Html.LabelFor(m => m.Name)
+            @Html.TextBoxFor(m => m.Name, new { placeholder = "Enter Title", @class = "form-control" })
+            <span asp-validation-for="Name" class="text-danger"></span>
+        </div>
+        <button type="submit" class="btn btn-primary">Submit</button>
+    </form>
+
+</div>

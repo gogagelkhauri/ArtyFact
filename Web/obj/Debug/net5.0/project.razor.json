@@ -15624,6 +15624,11 @@
       "FileKind": "mvc"
     },
     {
+      "FilePath": "c:\\Users\\gogag\\OneDrive\\Desktop\\ArtyFact-Back\\Web\\Areas\\Admin\\Views\\UserRoles\\Manage.cshtml",
+      "TargetPath": "Areas\\Admin\\Views\\UserRoles\\Manage.cshtml",
+      "FileKind": "mvc"
+    },
+    {
       "FilePath": "c:\\Users\\gogag\\OneDrive\\Desktop\\ArtyFact-Back\\Web\\Areas\\Identity\\Views\\Account\\ForgotPassword.cshtml",
       "TargetPath": "Areas\\Identity\\Views\\Account\\ForgotPassword.cshtml",
       "FileKind": "mvc"
@@ -15644,6 +15649,11 @@
       "FileKind": "mvc"
     },
     {
+      "FilePath": "c:\\Users\\gogag\\OneDrive\\Desktop\\ArtyFact-Back\\Web\\Areas\\Admin\\Views\\Role\\Index.cshtml",
+      "TargetPath": "Areas\\Admin\\Views\\Role\\Index.cshtml",
+      "FileKind": "mvc"
+    },
+    {
       "FilePath": "c:\\Users\\gogag\\OneDrive\\Desktop\\ArtyFact-Back\\Web\\Views\\Shared\\Error.cshtml",
       "TargetPath": "Views\\Shared\\Error.cshtml",
       "FileKind": "mvc"
@@ -15651,6 +15661,11 @@
     {
       "FilePath": "c:\\Users\\gogag\\OneDrive\\Desktop\\ArtyFact-Back\\Web\\Areas\\Admin\\Views\\Category\\Create.cshtml",
       "TargetPath": "Areas\\Admin\\Views\\Category\\Create.cshtml",
+      "FileKind": "mvc"
+    },
+    {
+      "FilePath": "c:\\Users\\gogag\\OneDrive\\Desktop\\ArtyFact-Back\\Web\\Areas\\Admin\\Views\\User\\Update.cshtml",
+      "TargetPath": "Areas\\Admin\\Views\\User\\Update.cshtml",
       "FileKind": "mvc"
     },
     {
@@ -15684,6 +15699,21 @@
       "FileKind": "mvc"
     },
     {
+      "FilePath": "c:\\Users\\gogag\\OneDrive\\Desktop\\ArtyFact-Back\\Web\\Areas\\Admin\\Views\\User\\Create.cshtml",
+      "TargetPath": "Areas\\Admin\\Views\\User\\Create.cshtml",
+      "FileKind": "mvc"
+    },
+    {
+      "FilePath": "c:\\Users\\gogag\\OneDrive\\Desktop\\ArtyFact-Back\\Web\\Views\\UserAccount\\Profile.cshtml",
+      "TargetPath": "Views\\UserAccount\\Profile.cshtml",
+      "FileKind": "mvc"
+    },
+    {
+      "FilePath": "c:\\Users\\gogag\\OneDrive\\Desktop\\ArtyFact-Back\\Web\\Areas\\Admin\\Views\\UserRoles\\index.cshtml",
+      "TargetPath": "Areas\\Admin\\Views\\UserRoles\\index.cshtml",
+      "FileKind": "mvc"
+    },
+    {
       "FilePath": "c:\\Users\\gogag\\OneDrive\\Desktop\\ArtyFact-Back\\Web\\Areas\\Identity\\Views\\Account\\ResetPasswordConfirmation.cshtml",
       "TargetPath": "Areas\\Identity\\Views\\Account\\ResetPasswordConfirmation.cshtml",
       "FileKind": "mvc"
@@ -15691,6 +15721,11 @@
     {
       "FilePath": "c:\\Users\\gogag\\OneDrive\\Desktop\\ArtyFact-Back\\Web\\Views\\Shared\\_LoginPartial.cshtml",
       "TargetPath": "Views\\Shared\\_LoginPartial.cshtml",
+      "FileKind": "mvc"
+    },
+    {
+      "FilePath": "c:\\Users\\gogag\\OneDrive\\Desktop\\ArtyFact-Back\\Web\\Areas\\Admin\\Views\\Category\\Edit.cshtml",
+      "TargetPath": "Areas\\Admin\\Views\\Category\\Edit.cshtml",
       "FileKind": "mvc"
     },
     {

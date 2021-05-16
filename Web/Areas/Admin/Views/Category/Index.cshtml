@@ -22,8 +22,18 @@
                     <th scope="row">@item.Id</th>
                     <td>@item.Name</td>
                     <td>
-                        <a href="/Admin/Category/Edit" class = "btn btn-warning" >Edit</a>
+                        <a href="/Admin/Category/Edit/@item.Id" class = "btn btn-warning" >Edit</a>
                         <div>
+                            <form method="post" action="/Admin/Category/Delete">
+                                <input type="hidden" name="id" value="@item.Id" />
+                                @Html.AntiForgeryToken()
+                                <!-- Button trigger modal -->
+                                <button type="submit" class="btn btn-danger mt-2">
+                                    Delete
+                                </button>
+                            </form>
+                        </div>
+                        @* <div>
                             <form method="post" action="/Admin/Category/Delete">
                                 <input type="hidden" name="id" value="@item.Id" />
                                 @Html.AntiForgeryToken()
@@ -53,7 +63,7 @@
                                     </div>
                                 </div>
                             </form>
-                        </div>
+                        </div> *@
                     </td>
                 </tr>
             }

@@ -8,7 +8,7 @@ using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Web.Areas.Identity.ViewModels;
 
-namespace Areas.Identity.Controllers
+namespace Web.Areas.Identity.Controllers
 {
     [Area("Identity")]  
     public class AccountController : Controller  
