@@ -27,14 +27,14 @@ namespace Web.Controllers
         }
 
         [HttpGet]  
-        public async Task<IActionResult> Profile(string email)  
+        public IActionResult Profile(string username)  
         {  
-            var user = await _userManager.FindByEmailAsync(email);
-            var userProfile = _userProfileService.GetUserProfile(email);
+            //var user = await _userManager.FindByNameAsync(username);
+            var user = _userProfileService.GetUserProfile(username);
             var viewModel = new UserProfileViewModel
             {
-                User = user,
-                UserProfile = userProfile
+                User = user
+                //UserProfile = userProfile
             };
             return View(viewModel);  
         }  

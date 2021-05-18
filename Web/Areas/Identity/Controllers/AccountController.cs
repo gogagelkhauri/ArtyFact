@@ -52,7 +52,7 @@ namespace Web.Areas.Identity.Controllers
                     return View(model);  
                 }  
     
-                var result = await signInManager.PasswordSignInAsync(model.Email, model.Password, model.RememberMe, true);  
+                var result = await signInManager.PasswordSignInAsync(user.UserName, model.Password, model.RememberMe, false);  
     
                 if (result.Succeeded)  
                 {  
@@ -104,6 +104,7 @@ namespace Web.Areas.Identity.Controllers
                         Email = request.Email,  
                         EmailConfirmed = true,  
                         PhoneNumberConfirmed = true,  
+                        UserProfile = new UserProfile(),
                     };  
                     var result = await userManager.CreateAsync(user, request.Password);
                     await userManager.AddToRoleAsync(user, "Client");  

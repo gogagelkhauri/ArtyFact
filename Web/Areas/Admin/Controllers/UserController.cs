@@ -35,7 +35,8 @@ namespace Web.Areas.Admin.Controlles
                     UserName = user.UserName,
                     EmailConfirmed = true,
                     PhoneNumber = user.PhoneNumber.ToString(),
-                    Email = user.Email
+                    Email = user.Email,
+                    UserProfile = new UserProfile()
                 };
 
                 IdentityResult result = await userManager.CreateAsync(appUser, user.Password);

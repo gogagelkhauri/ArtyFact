@@ -42,10 +42,11 @@ namespace Web
             services.AddDefaultIdentity<ApplicationUser>(options => options.SignIn.RequireConfirmedAccount = false)
                 .AddRoles<IdentityRole>()
                 .AddEntityFrameworkStores<ApplicationDbContext>()
-                .AddDefaultTokenProviders();;
+                .AddDefaultTokenProviders();
 
             services.ConfigureApplicationCookie(options =>  
             {  
+                options.Cookie.IsEssential = true;
                 options.LoginPath = $"/Identity/account/login";  
                 options.LogoutPath = $"/Identity/account/logout";  
             });  
@@ -82,6 +83,9 @@ namespace Web
             services.AddScoped<IRepository<Product>,EfRepository<Product>>();
 
             //services.AddRazorPages();
+
+            //cookies
+            
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -104,6 +108,7 @@ namespace Web
 
             app.UseRouting();
 
+            //app.UseCookiePolicy();
             app.UseAuthentication();
             app.UseAuthorization();
 
