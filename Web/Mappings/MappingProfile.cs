@@ -34,6 +34,7 @@ namespace Web.Mapping
 
             CreateMap<UserCategory,UserCategoryDTO>()
                 .ForMember(dest => dest.CategoryId, o => o.MapFrom(src => src.CategoryId))
+                .ForMember(dest => dest.Category, o => o.MapFrom(src => src.Category))
                 .ForMember(dest => dest.UserId, o => o.MapFrom(src => src.UserId))
                 .ForAllOtherMembers(x=>x.Ignore()); 
 

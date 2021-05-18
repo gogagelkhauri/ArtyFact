@@ -1,4 +1,6 @@
+using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
 using AutoMapper;
@@ -8,6 +10,7 @@ using Domain.Entities.User;
 using Domain.Interfaces;
 using Domain.Interfaces.Services;
 using Domain.Specifications;
+using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 
@@ -19,18 +22,22 @@ namespace Application.Services
         private readonly UserManager<ApplicationUser> _userManager;
         private readonly IRepository<Category> _categoryRepository;
         private readonly IMapper _mapper;
+        private readonly IHostingEnvironment _env;
+
         public UserProfileService(IRepository<UserProfile> profileRepository,
         UserManager<ApplicationUser> userManager,
-        IRepository<Category> categoryRepository,        
+        IRepository<Category> categoryRepository,
+        IHostingEnvironment env,
         IMapper mapper)
         {
             _profileRepository = profileRepository;
             _userManager = userManager;
             _mapper = mapper;
             _categoryRepository = categoryRepository;
+            _env = env;
         }
 
-        public async Task UpdateUserProfile(int id, UserProfileDTO userProfileDTO)
+        public async Task UpdateUserProfile(UserProfileDTO userProfileDTO)
         {
             // var userProfile = _mapper.Map<UserProfile>(userProfileDTO);
              //var user = _userManager.Users.Include(x => x.UserProfile).SingleOrDefault(u => u.UserName == userEmail);
@@ -38,7 +45,7 @@ namespace Application.Services
             var userCategories = new List<UserCategory>();
             var userProfile = _mapper.Map<UserProfile>(userProfileDTO);
             //var userProfileInDb = _profileRepository.ListAsync().Result.Where(x => x.User.UserName == userEmail).Single();
-            var spec = new UserWithCategoriesSpecification(id);
+            var spec = new UserWithCategoriesSpecification(userProfileDTO.Id);
             
 
             var userProfileInDb = _profileRepository.GetBySpecification(spec).Result;
@@ -46,22 +53,42 @@ namespace Application.Services
             userProfileInDb.FacebookURL = userProfile.FacebookURL;
             userProfileInDb.InstagramURL = userProfile.InstagramURL;
             userProfileInDb.Gender = userProfile.Gender;
-            userProfileInDb.Image = userProfile.Image;
             userProfileInDb.WorkDescription = userProfile.WorkDescription;
+
+            if (userProfileDTO.ActualImage != null)
+            {
+                var OldfilePath = Path.Combine(_env.WebRootPath,  userProfileInDb.Image.Replace("/", "\\").Remove(0, 1));
+                File.Delete(OldfilePath);
+
+                //var a = "http://catalogbaseurltobereplaced/";
+                var fileName = Path.GetFileName(userProfileDTO.ActualImage.FileName);
+                var newName = Guid.NewGuid().ToString("n").Substring(0, 8) + Path.GetExtension(userProfileDTO.ActualImage.FileName);
+                var filePath = Path.Combine(_env.WebRootPath, "images\\profile", newName);
+
+
+                userProfileInDb.Image = "/images/profile/" + newName;
+
+
+
+                using (var fileSteam = new FileStream(filePath, FileMode.Create))
+                {
+                    await userProfileDTO.ActualImage.CopyToAsync(fileSteam);
+                }
+            }
             // _profileRepository.TryUpdateManyToMany(userProfileInDb.UserCategories, userProfile.UserCategories)
             // .Select(x => new UserCategory
             // {
             //     UserId = userProfileInDb.UserId,
             //     CategoryId = x.CategoryId
             // }), x => x.CategoryId);
-            
+
             // if(userProfileDTO.UserCategories.Count > 0)
             // {
-                
+
             //     foreach(var cat in userProfileDTO.UserCategories)
             //     {
             //         var category = _categoryRepository.GetByIdAsync(cat.CategoryId).Result; //_mapper.Map<Category>(cat);
-                   
+
             //         var usercat = new UserCategory
             //         {
             //             User = userProfileInDb,
@@ -75,8 +102,8 @@ namespace Application.Services
             //     userProfileInDb.UserCategories.AddRange(userCategories);
             // }
             //var user = _userManager.FindByEmailAsync(userEmail).Result;
-             //var user = _userManager.Users.Include(x => x.UserProfile).SingleOrDefault(u => u.UserName == userEmail);
-            
+            //var user = _userManager.Users.Include(x => x.UserProfile).SingleOrDefault(u => u.UserName == userEmail);
+
             //userProfile.Id = userProfileInDb.Id;
             await _profileRepository.UpdateAsync(userProfileInDb);
            
@@ -86,17 +113,31 @@ namespace Application.Services
             //await _profileRepository.AddAsync(userProfile);
         }
 
-        public UserProfileDTO GetUserProfile(string userEmail)
+        public UserProfileDTO GetUserProfileDTO(string userName)
         {
             //var userProfile = _profileRepository.GetByIdAsync(5);
-            var user = _userManager.Users.Include(u => u.UserProfile).Include(u => u.UserProfile.UserCategories).SingleOrDefault(u => u.UserName == userEmail);
-           // var user = _userManager.FindByEmailAsync(userEmail).Result;
+            var user = _userManager.Users
+                .Include(u => u.UserProfile)
+                .ThenInclude(u => u.UserCategories)
+                .ThenInclude(u => u.Category)
+                .SingleOrDefault(u => u.UserName == userName);
+            // var user = _userManager.FindByEmailAsync(userEmail).Result;
             var userProfile = user.UserProfile;
-           
 
-            
+
+
             var userProfileDTO = _mapper.Map<UserProfileDTO>(userProfile);
             return userProfileDTO;
+        }
+
+        public ApplicationUser GetUserProfile(string userEmail)
+        {
+            var user = _userManager.Users.Include(u => u.UserProfile)
+                                        .ThenInclude(u => u.UserCategories)
+                                        .ThenInclude(u => u.Category)
+                                        .SingleOrDefault(u => u.UserName == userEmail);
+
+            return user;
         }
 
     }

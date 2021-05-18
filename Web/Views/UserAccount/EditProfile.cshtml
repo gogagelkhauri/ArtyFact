@@ -1,0 +1,64 @@
+﻿@model Domain.DTO.UserProfileDTO
+@{
+    ViewData["Title"] = "Edit Profile";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="container">
+    //@Html.ActionLink("Back", "Index", "Category", new { Area = "Admin" }, new { @class = "btn btn-primary float-right mb-2" })
+    <a href="/UserAccount/Profile?username=@User.Identity.Name" class = "btn btn-primary float-right mb-2">Back</a>
+    <form method="post" action="/UserAccount/UpdateProfile" enctype="multipart/form-data">
+        @Html.AntiForgeryToken()
+        <input type="hidden" name="Id" value="@Model.Id" />
+        <div class="form-group">
+            @Html.LabelFor(m => m.FacebookURL)
+            @Html.TextBoxFor(m => m.FacebookURL, new { placeholder = "Enter Facebook URL", @class = "form-control" })
+            <span asp-validation-for="FacebookURL" class="text-danger"></span>
+        </div>
+        <div class="form-group">
+            @Html.LabelFor(m => m.InstagramURL)
+            @Html.TextBoxFor(m => m.InstagramURL, new { placeholder = "Enter Instagram URL", @class = "form-control" })
+            <span asp-validation-for="InstagramURL" class="text-danger"></span>
+        </div>
+        <div class="form-group">
+            @Html.LabelFor(m => m.Gender)
+            @*@Html.DropDownListFor(model => model.Gender, new SelectList(new string[] { "Male", "Female" }, Model.Gender), new { @class = "form-control" })*@
+            <select name="Gender" class="form-control">
+                <option value="value">Male</option>
+                <option value="value">Female</option>
+            </select>
+            <span asp-validation-for="Gender" class="text-danger"></span>
+        </div>
+        <div class="form-group">
+            @Html.LabelFor(m => m.WorkDescription)
+            @Html.TextAreaFor(m => m.WorkDescription, new { @class = "form-control" })
+            <span asp-validation-for="WorkDescription" class="text-danger"></span>
+        </div>
+      
+            <img class="esh-catalog-thumbnail" id="readImg" src="@Model.Image" />
+       
+        <div class="form-group">
+            @Html.LabelFor(m => m.Image)
+            <input type="file" onchange="readURL(this);" asp-for="@Model.ActualImage" class="form-control" />
+            <span asp-validation-for="Image" class="text-danger"></span>
+        </div>
+        <button type="submit" class="btn btn-primary">Submit</button>
+    </form>
+
+</div>
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+    <script>
+        function readURL(input) {
+            if (input.files && input.files[0]) {
+                var reader = new FileReader();
+                reader.onload = function (e) {
+                    $('#readImg')
+                        .attr('src', e.target.result);
+                };
+                reader.readAsDataURL(input.files[0]);
+            }
+        }
+    </script>
+}

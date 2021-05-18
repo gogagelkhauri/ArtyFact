@@ -32,7 +32,7 @@ namespace WebApi.Controllers
         {
             if(ModelState.IsValid)
             {
-                await _userProfileService.UpdateUserProfile(id,userProfile);
+                await _userProfileService.UpdateUserProfile(userProfile);
                 return Ok();
             }
 

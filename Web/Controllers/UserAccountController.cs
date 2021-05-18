@@ -1,6 +1,7 @@
 using System.Linq;
 using System.Security.Claims;
 using System.Threading.Tasks;
+using Domain.DTO;
 using Domain.Entities.User;
 using Domain.Interfaces.Services;
 using Infrastructure.EmailService;
@@ -37,7 +38,32 @@ namespace Web.Controllers
                 //UserProfile = userProfile
             };
             return View(viewModel);  
-        }  
+        }
+
+        [HttpGet]
+        public IActionResult EditProfile(string username)
+        {
+            //var user = await _userManager.FindByNameAsync(username);
+            var profileDTO = _userProfileService.GetUserProfileDTO(username);
+            return View(profileDTO);
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> UpdateProfile(UserProfileDTO userProfileDTO)
+        {
+            if (!ModelState.IsValid)
+            {
+                return View("/UserAccount/EditProfile?username=" + User.Identity.Name, userProfileDTO);
+            }
+
+            await _userProfileService.UpdateUserProfile(userProfileDTO);
+          
+
+            return Redirect("/UserAccount/Profile?username=" + User.Identity.Name);
+        }
+
+
+
     }  
 
 }
