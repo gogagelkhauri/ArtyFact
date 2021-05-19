@@ -1,9 +1,9 @@
 #adding migrations from web directory:
-dotnet ef migrations add InitialModel --context ApplicationDbContext -p ../Infrastructure/Infrastructure.csproj -s WebApi.csproj -o Data/Migrations
+dotnet ef migrations add InitialModel --context ApplicationDbContext -p ../Infrastructure/Infrastructure.csproj -s WebAp.csproj -o Data/Migrations
 
 
 #update database:
 dotnet ef database update -c ApplicationDbContext -p ../Infrastructure/Infrastructure.csproj -s Web.csproj
 
 
-dotnet ef migrations add AddFirsLastNamesToUsersTable --context ApplicationDbContext -p ../Infrastructure/Infrastructure.csproj -s WebApi.csproj -o Data/Migrations
+dotnet ef migrations add UserCategoryRemovedIdField --context ApplicationDbContext -p ../Infrastructure/Infrastructure.csproj -s Web.csproj -o Data/Migrations

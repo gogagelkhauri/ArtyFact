@@ -1,7 +1,7 @@
 using Domain.DTO;
 using Domain.Entities.User;
 
-namespace Web.VieModels
+namespace Web.ViewModels
 {
     public class UserProfileViewModel
     {

@@ -21,12 +21,14 @@ namespace Application.Services
         private readonly IRepository<UserProfile> _profileRepository;
         private readonly UserManager<ApplicationUser> _userManager;
         private readonly IRepository<Category> _categoryRepository;
+        //private readonly IRepository<UserCategory> _userCategoryRepository;
         private readonly IMapper _mapper;
         private readonly IHostingEnvironment _env;
 
         public UserProfileService(IRepository<UserProfile> profileRepository,
         UserManager<ApplicationUser> userManager,
         IRepository<Category> categoryRepository,
+        //IRepository<UserCategory> userCategoryRepository,
         IHostingEnvironment env,
         IMapper mapper)
         {
@@ -34,15 +36,16 @@ namespace Application.Services
             _userManager = userManager;
             _mapper = mapper;
             _categoryRepository = categoryRepository;
+            //_userCategoryRepository = userCategoryRepository;
             _env = env;
         }
 
-        public async Task UpdateUserProfile(UserProfileDTO userProfileDTO)
+        public async Task UpdateUserProfile(UserProfileDTO userProfileDTO,List<ManageUserCategories> userSelectedCategories)
         {
             // var userProfile = _mapper.Map<UserProfile>(userProfileDTO);
              //var user = _userManager.Users.Include(x => x.UserProfile).SingleOrDefault(u => u.UserName == userEmail);
             // userProfile.User = user;
-            var userCategories = new List<UserCategory>();
+            //var userCategories = new List<UserCategory>();
             var userProfile = _mapper.Map<UserProfile>(userProfileDTO);
             //var userProfileInDb = _profileRepository.ListAsync().Result.Where(x => x.User.UserName == userEmail).Single();
             var spec = new UserWithCategoriesSpecification(userProfileDTO.Id);
@@ -54,6 +57,24 @@ namespace Application.Services
             userProfileInDb.InstagramURL = userProfile.InstagramURL;
             userProfileInDb.Gender = userProfile.Gender;
             userProfileInDb.WorkDescription = userProfile.WorkDescription;
+            userProfileInDb.UserCategories.Clear();
+
+
+            //await _userCategoryRepository.DeleteRangeAsync(userProfileInDb.UserCategories);
+            if (userSelectedCategories.Count > 0)
+            {
+                foreach (var cat in userSelectedCategories)
+                {
+                    var categoryFromDbDTO = _categoryRepository.GetByIdAsync(cat.CategoryId).Result;
+                    var categoryFromDb = _mapper.Map<Category>(categoryFromDbDTO);
+                    if (categoryFromDb != null)
+                    {
+                        //await _userCategoryRepository.AddAsync(new UserCategory { UserId = userProfileInDb.Id, CategoryId = categoryFromDb.Id });
+                        userProfileInDb.UserCategories.Add(new UserCategory { User = userProfileInDb, Category = categoryFromDb });
+                    }
+                }
+
+            }
 
             if (userProfileDTO.ActualImage != null)
             {

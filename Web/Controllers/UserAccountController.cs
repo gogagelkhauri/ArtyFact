@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using System.Linq;
 using System.Security.Claims;
 using System.Threading.Tasks;
@@ -9,7 +10,7 @@ using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Web.Areas.Identity.ViewModels;
-using Web.VieModels;
+using Web.ViewModels;
 
 namespace Web.Controllers
 {
@@ -48,11 +49,34 @@ namespace Web.Controllers
         {
             //var user = await _userManager.FindByNameAsync(username);
             var profileDTO = _userProfileService.GetUserProfileDTO(username);
-            var categoryDTO = await _categoryService.GetAllCategories();
+            var manageCategories = new List<ManageUserCategories>();
+            var categoriesDTO = await _categoryService.GetAllCategories();
+            foreach(var category in categoriesDTO)
+            {
+                var manageUserCat = new ManageUserCategories()
+                {
+                    CategoryId = category.Id,
+                    CategoryName = category.Name
+                };
+
+                foreach(var userCat in profileDTO.UserCategories)
+                {
+                    if(userCat.Category.Name == category.Name)
+                    {
+                        manageUserCat.Selected = true;
+                    }
+                    else
+                    {
+                        manageUserCat.Selected = false;
+                    }
+                }
+                manageCategories.Add(manageUserCat);
+            }
             var viewModel = new EditProfileViewModel
             {
                 UserProfile = profileDTO,
-                Categories = categoryDTO
+                UserCategories = manageCategories
+               // Categories = categoryDTO
             };
 
 
@@ -67,7 +91,7 @@ namespace Web.Controllers
                 return View("/UserAccount/EditProfile?username=" + User.Identity.Name, viewModel);
             }
 
-            await _userProfileService.UpdateUserProfile(viewModel.UserProfile);
+            await _userProfileService.UpdateUserProfile(viewModel.UserProfile,viewModel.UserCategories);
           
 
             return Redirect("/UserAccount/Profile?username=" + User.Identity.Name);

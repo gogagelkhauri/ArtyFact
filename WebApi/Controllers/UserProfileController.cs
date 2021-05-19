@@ -27,16 +27,16 @@ namespace WebApi.Controllers
             return Ok(userProfile);
         }
 
-        [HttpPost("UpdateUserProfile")]
-        public async Task<IActionResult> UpdateUserProfile(int id,[FromBody] UserProfileDTO userProfile)
-        {
-            if(ModelState.IsValid)
-            {
-                await _userProfileService.UpdateUserProfile(userProfile);
-                return Ok();
-            }
+        //[HttpPost("UpdateUserProfile")]
+        //public async Task<IActionResult> UpdateUserProfile(int id,[FromBody] UserProfileDTO userProfile)
+        //{
+        //    if(ModelState.IsValid)
+        //    {
+        //        await _userProfileService.UpdateUserProfile(userProfile);
+        //        return Ok();
+        //    }
 
-            return BadRequest(ModelState.GetModelStateErrors());
-        }
+        //    return BadRequest(ModelState.GetModelStateErrors());
+        //}
     }
 }

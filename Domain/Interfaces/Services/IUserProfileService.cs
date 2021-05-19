@@ -11,7 +11,7 @@ namespace Domain.Interfaces.Services
         //Task<CategoryDTO> AddCategory(CategoryDTO categoryDTO);
         UserProfileDTO GetUserProfileDTO(string userEmail);
         ApplicationUser GetUserProfile(string userEmail);
-        Task UpdateUserProfile(UserProfileDTO userProfile);
+        Task UpdateUserProfile(UserProfileDTO userProfile, List<ManageUserCategories> userSelectedCategories);
         //void UpdateUserProfile(string userEmail,UserProfileDTO userProfile);
         //Task<List<CategoryDTO>> GetAllCategories();
         //Task UpdateCategory(int id,CategoryDTO categoryDTO);

@@ -79,6 +79,12 @@ namespace Infrastructure.Data
             return _dbContext.SaveChangesAsync();
         }
 
+        public Task DeleteRangeAsync(IList<T> entity)
+        {
+            _dbContext.Set<T>().RemoveRange(entity);
+            return _dbContext.SaveChangesAsync();
+        }
+
         private IQueryable<T> ApplySpecification(ISpecification<T> spec)
         {
             var evaluator = new SpecificationEvaluator<T>();

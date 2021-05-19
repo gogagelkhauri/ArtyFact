@@ -37,7 +37,7 @@ namespace Web
 
             services.AddDbContext<ApplicationDbContext>(options =>
                 options.UseSqlServer(
-                    Configuration.GetConnectionString("DefaultConnection")));
+                    Configuration.GetConnectionString("DefaultConnection1")));
             
             services.AddDefaultIdentity<ApplicationUser>(options => options.SignIn.RequireConfirmedAccount = false)
                 .AddRoles<IdentityRole>()
@@ -73,7 +73,11 @@ namespace Web
             //User profile
             services.AddScoped<IUserProfileService,UserProfileService>();
             services.AddScoped<IRepository<UserProfile>,EfRepository<UserProfile>>();
-            
+
+            //User profile
+            //services.AddScoped<IUserProfileService, UserProfileService>();
+            //services.AddScoped<IRepository<UserCategory>, EfRepository<UserCategory>>();
+
             //Paint type
             services.AddScoped<IPaintTypeService,PaintTypeService>();
             services.AddScoped<IRepository<PaintType>,EfRepository<PaintType>>();
