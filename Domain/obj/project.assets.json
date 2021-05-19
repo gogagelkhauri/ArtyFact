@@ -5316,30 +5316,24 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\g.gelkhauri\\.nuget\\packages\\": {},
-    "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder": {}
+    "C:\\Users\\gogag\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "D:\\work\\.netCore\\ArtyFact-Back\\Domain\\Domain.csproj",
+      "projectUniqueName": "E:\\c#\\ArtyFact-Back\\Domain\\Domain.csproj",
       "projectName": "Domain",
-      "projectPath": "D:\\work\\.netCore\\ArtyFact-Back\\Domain\\Domain.csproj",
-      "packagesPath": "C:\\Users\\g.gelkhauri\\.nuget\\packages\\",
-      "outputPath": "D:\\work\\.netCore\\ArtyFact-Back\\Domain\\obj\\",
+      "projectPath": "E:\\c#\\ArtyFact-Back\\Domain\\Domain.csproj",
+      "packagesPath": "C:\\Users\\gogag\\.nuget\\packages\\",
+      "outputPath": "E:\\c#\\ArtyFact-Back\\Domain\\obj\\",
       "projectStyle": "PackageReference",
-      "fallbackFolders": [
-        "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
-      ],
       "configFilePaths": [
-        "C:\\Users\\g.gelkhauri\\AppData\\Roaming\\NuGet\\NuGet.Config",
-        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        "C:\\Users\\gogag\\AppData\\Roaming\\NuGet\\NuGet.Config"
       ],
       "originalTargetFrameworks": [
         "net5.0"
       ],
       "sources": {
-        "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
         "https://api.nuget.org/v3/index.json": {}
       },
       "frameworks": {
@@ -5386,7 +5380,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.202\\RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.100\\RuntimeIdentifierGraph.json"
       }
     }
   }

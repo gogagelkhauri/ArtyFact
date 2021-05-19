@@ -18,12 +18,15 @@ namespace Web.Controllers
     {  
         private readonly IUserProfileService _userProfileService;
         private readonly UserManager<ApplicationUser> _userManager;
+        private readonly ICategoryService _categoryService;
         public UserAccountController(IUserProfileService userProfileService,
+        ICategoryService categoryService,
         UserManager<ApplicationUser> userManager
         )
         {
            _userProfileService = userProfileService;
            _userManager = userManager;
+           _categoryService = categoryService;
 
         }
 
@@ -41,22 +44,30 @@ namespace Web.Controllers
         }
 
         [HttpGet]
-        public IActionResult EditProfile(string username)
+        public async Task<IActionResult> EditProfile(string username)
         {
             //var user = await _userManager.FindByNameAsync(username);
             var profileDTO = _userProfileService.GetUserProfileDTO(username);
-            return View(profileDTO);
+            var categoryDTO = await _categoryService.GetAllCategories();
+            var viewModel = new EditProfileViewModel
+            {
+                UserProfile = profileDTO,
+                Categories = categoryDTO
+            };
+
+
+            return View(viewModel);
         }
 
         [HttpPost]
-        public async Task<IActionResult> UpdateProfile(UserProfileDTO userProfileDTO)
+        public async Task<IActionResult> UpdateProfile(EditProfileViewModel viewModel)
         {
             if (!ModelState.IsValid)
             {
-                return View("/UserAccount/EditProfile?username=" + User.Identity.Name, userProfileDTO);
+                return View("/UserAccount/EditProfile?username=" + User.Identity.Name, viewModel);
             }
 
-            await _userProfileService.UpdateUserProfile(userProfileDTO);
+            await _userProfileService.UpdateUserProfile(viewModel.UserProfile);
           
 
             return Redirect("/UserAccount/Profile?username=" + User.Identity.Name);

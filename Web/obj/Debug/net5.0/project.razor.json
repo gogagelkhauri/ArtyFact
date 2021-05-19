@@ -15704,6 +15704,11 @@
       "FileKind": "mvc"
     },
     {
+      "FilePath": "e:\\c#\\ArtyFact-Back\\Web\\Views\\UserAccount\\EditProfile.cshtml",
+      "TargetPath": "Views\\UserAccount\\EditProfile.cshtml",
+      "FileKind": "mvc"
+    },
+    {
       "FilePath": "e:\\c#\\ArtyFact-Back\\Web\\Views\\_ViewImports.cshtml",
       "TargetPath": "Views\\_ViewImports.cshtml",
       "FileKind": "mvc"

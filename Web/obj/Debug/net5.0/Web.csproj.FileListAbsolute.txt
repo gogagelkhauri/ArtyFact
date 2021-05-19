@@ -1421,3 +1421,4 @@ D:\work\.netCore\ArtyFact-Back\Web\obj\Debug\net5.0\Web.Views.pdb
 D:\work\.netCore\ArtyFact-Back\Web\obj\Debug\net5.0\Web.csproj.CopyComplete
 D:\work\.netCore\ArtyFact-Back\Web\obj\Debug\net5.0\Web.genruntimeconfig.cache
 D:\work\.netCore\ArtyFact-Back\Web\obj\Debug\net5.0\Razor\Views\UserAccount\EditProfile.cshtml.g.cs
+E:\c#\ArtyFact-Back\Web\obj\Debug\net5.0\Razor\Views\UserAccount\EditProfile.cshtml.g.cs

@@ -57,8 +57,11 @@ namespace Application.Services
 
             if (userProfileDTO.ActualImage != null)
             {
-                var OldfilePath = Path.Combine(_env.WebRootPath,  userProfileInDb.Image.Replace("/", "\\").Remove(0, 1));
-                File.Delete(OldfilePath);
+                if(userProfileInDb.Image != null)
+                {
+                    var OldfilePath = Path.Combine(_env.WebRootPath,  userProfileInDb.Image.Replace("/", "\\").Remove(0, 1));
+                    File.Delete(OldfilePath);
+                }
 
                 //var a = "http://catalogbaseurltobereplaced/";
                 var fileName = Path.GetFileName(userProfileDTO.ActualImage.FileName);

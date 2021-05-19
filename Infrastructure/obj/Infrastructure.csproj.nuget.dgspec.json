@@ -1,38 +1,33 @@
 {
   "format": 1,
   "restore": {
-    "D:\\work\\.netCore\\ArtyFact-Back\\Infrastructure\\Infrastructure.csproj": {}
+    "E:\\c#\\ArtyFact-Back\\Infrastructure\\Infrastructure.csproj": {}
   },
   "projects": {
-    "D:\\work\\.netCore\\ArtyFact-Back\\Application\\Application.csproj": {
+    "E:\\c#\\ArtyFact-Back\\Application\\Application.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\work\\.netCore\\ArtyFact-Back\\Application\\Application.csproj",
+        "projectUniqueName": "E:\\c#\\ArtyFact-Back\\Application\\Application.csproj",
         "projectName": "Application",
-        "projectPath": "D:\\work\\.netCore\\ArtyFact-Back\\Application\\Application.csproj",
-        "packagesPath": "C:\\Users\\g.gelkhauri\\.nuget\\packages\\",
-        "outputPath": "D:\\work\\.netCore\\ArtyFact-Back\\Application\\obj\\",
+        "projectPath": "E:\\c#\\ArtyFact-Back\\Application\\Application.csproj",
+        "packagesPath": "C:\\Users\\gogag\\.nuget\\packages\\",
+        "outputPath": "E:\\c#\\ArtyFact-Back\\Application\\obj\\",
         "projectStyle": "PackageReference",
-        "fallbackFolders": [
-          "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
-        ],
         "configFilePaths": [
-          "C:\\Users\\g.gelkhauri\\AppData\\Roaming\\NuGet\\NuGet.Config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+          "C:\\Users\\gogag\\AppData\\Roaming\\NuGet\\NuGet.Config"
         ],
         "originalTargetFrameworks": [
           "net5.0"
         ],
         "sources": {
-          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
           "net5.0": {
             "targetAlias": "net5.0",
             "projectReferences": {
-              "D:\\work\\.netCore\\ArtyFact-Back\\Domain\\Domain.csproj": {
-                "projectPath": "D:\\work\\.netCore\\ArtyFact-Back\\Domain\\Domain.csproj"
+              "E:\\c#\\ArtyFact-Back\\Domain\\Domain.csproj": {
+                "projectPath": "E:\\c#\\ArtyFact-Back\\Domain\\Domain.csproj"
               }
             }
           }
@@ -75,31 +70,26 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.202\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.100\\RuntimeIdentifierGraph.json"
         }
       }
     },
-    "D:\\work\\.netCore\\ArtyFact-Back\\Domain\\Domain.csproj": {
+    "E:\\c#\\ArtyFact-Back\\Domain\\Domain.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\work\\.netCore\\ArtyFact-Back\\Domain\\Domain.csproj",
+        "projectUniqueName": "E:\\c#\\ArtyFact-Back\\Domain\\Domain.csproj",
         "projectName": "Domain",
-        "projectPath": "D:\\work\\.netCore\\ArtyFact-Back\\Domain\\Domain.csproj",
-        "packagesPath": "C:\\Users\\g.gelkhauri\\.nuget\\packages\\",
-        "outputPath": "D:\\work\\.netCore\\ArtyFact-Back\\Domain\\obj\\",
+        "projectPath": "E:\\c#\\ArtyFact-Back\\Domain\\Domain.csproj",
+        "packagesPath": "C:\\Users\\gogag\\.nuget\\packages\\",
+        "outputPath": "E:\\c#\\ArtyFact-Back\\Domain\\obj\\",
         "projectStyle": "PackageReference",
-        "fallbackFolders": [
-          "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
-        ],
         "configFilePaths": [
-          "C:\\Users\\g.gelkhauri\\AppData\\Roaming\\NuGet\\NuGet.Config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+          "C:\\Users\\gogag\\AppData\\Roaming\\NuGet\\NuGet.Config"
         ],
         "originalTargetFrameworks": [
           "net5.0"
         ],
         "sources": {
-          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
@@ -146,42 +136,37 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.202\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.100\\RuntimeIdentifierGraph.json"
         }
       }
     },
-    "D:\\work\\.netCore\\ArtyFact-Back\\Infrastructure\\Infrastructure.csproj": {
+    "E:\\c#\\ArtyFact-Back\\Infrastructure\\Infrastructure.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\work\\.netCore\\ArtyFact-Back\\Infrastructure\\Infrastructure.csproj",
+        "projectUniqueName": "E:\\c#\\ArtyFact-Back\\Infrastructure\\Infrastructure.csproj",
         "projectName": "Infrastructure",
-        "projectPath": "D:\\work\\.netCore\\ArtyFact-Back\\Infrastructure\\Infrastructure.csproj",
-        "packagesPath": "C:\\Users\\g.gelkhauri\\.nuget\\packages\\",
-        "outputPath": "D:\\work\\.netCore\\ArtyFact-Back\\Infrastructure\\obj\\",
+        "projectPath": "E:\\c#\\ArtyFact-Back\\Infrastructure\\Infrastructure.csproj",
+        "packagesPath": "C:\\Users\\gogag\\.nuget\\packages\\",
+        "outputPath": "E:\\c#\\ArtyFact-Back\\Infrastructure\\obj\\",
         "projectStyle": "PackageReference",
-        "fallbackFolders": [
-          "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
-        ],
         "configFilePaths": [
-          "C:\\Users\\g.gelkhauri\\AppData\\Roaming\\NuGet\\NuGet.Config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+          "C:\\Users\\gogag\\AppData\\Roaming\\NuGet\\NuGet.Config"
         ],
         "originalTargetFrameworks": [
           "net5.0"
         ],
         "sources": {
-          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
           "net5.0": {
             "targetAlias": "net5.0",
             "projectReferences": {
-              "D:\\work\\.netCore\\ArtyFact-Back\\Application\\Application.csproj": {
-                "projectPath": "D:\\work\\.netCore\\ArtyFact-Back\\Application\\Application.csproj"
+              "E:\\c#\\ArtyFact-Back\\Application\\Application.csproj": {
+                "projectPath": "E:\\c#\\ArtyFact-Back\\Application\\Application.csproj"
               },
-              "D:\\work\\.netCore\\ArtyFact-Back\\Domain\\Domain.csproj": {
-                "projectPath": "D:\\work\\.netCore\\ArtyFact-Back\\Domain\\Domain.csproj"
+              "E:\\c#\\ArtyFact-Back\\Domain\\Domain.csproj": {
+                "projectPath": "E:\\c#\\ArtyFact-Back\\Domain\\Domain.csproj"
               }
             }
           }
@@ -246,7 +231,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.202\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.100\\RuntimeIdentifierGraph.json"
         }
       }
     }
