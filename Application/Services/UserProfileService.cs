@@ -40,7 +40,7 @@ namespace Application.Services
             _env = env;
         }
 
-        public async Task UpdateUserProfile(UserProfileDTO userProfileDTO,List<ManageUserCategories> userSelectedCategories)
+        public async Task UpdateUserProfile(UserProfileDTO userProfileDTO,List<ManageUserCategories> userCategories)
         {
             // var userProfile = _mapper.Map<UserProfile>(userProfileDTO);
              //var user = _userManager.Users.Include(x => x.UserProfile).SingleOrDefault(u => u.UserName == userEmail);
@@ -59,9 +59,9 @@ namespace Application.Services
             userProfileInDb.WorkDescription = userProfile.WorkDescription;
             userProfileInDb.UserCategories.Clear();
 
-
+            var userSelectedCategories = userCategories.Where(x => x.Selected == true);
             //await _userCategoryRepository.DeleteRangeAsync(userProfileInDb.UserCategories);
-            if (userSelectedCategories.Count > 0)
+            if (userSelectedCategories.Count() > 0)
             {
                 foreach (var cat in userSelectedCategories)
                 {

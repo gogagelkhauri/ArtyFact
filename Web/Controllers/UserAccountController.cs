@@ -58,18 +58,20 @@ namespace Web.Controllers
                     CategoryId = category.Id,
                     CategoryName = category.Name
                 };
-
-                foreach(var userCat in profileDTO.UserCategories)
+                var userCat = profileDTO.UserCategories.Where(x => x.Category.Name == category.Name);
+                if(userCat.Count() > 0)
                 {
-                    if(userCat.Category.Name == category.Name)
-                    {
-                        manageUserCat.Selected = true;
-                    }
-                    else
-                    {
-                        manageUserCat.Selected = false;
-                    }
+                    manageUserCat.Selected = true;
                 }
+                else
+                {
+                    manageUserCat.Selected = false;
+                }
+
+                // foreach(var userCat in profileDTO.UserCategories)
+                // {
+                    
+                // }
                 manageCategories.Add(manageUserCat);
             }
             var viewModel = new EditProfileViewModel
