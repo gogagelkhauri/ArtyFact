@@ -42,25 +42,18 @@ namespace Application.Services
 
         public async Task UpdateUserProfile(UserProfileDTO userProfileDTO,List<ManageUserCategories> userCategories)
         {
-            // var userProfile = _mapper.Map<UserProfile>(userProfileDTO);
-             //var user = _userManager.Users.Include(x => x.UserProfile).SingleOrDefault(u => u.UserName == userEmail);
-            // userProfile.User = user;
-            //var userCategories = new List<UserCategory>();
             var userProfile = _mapper.Map<UserProfile>(userProfileDTO);
-            //var userProfileInDb = _profileRepository.ListAsync().Result.Where(x => x.User.UserName == userEmail).Single();
             var spec = new UserWithCategoriesSpecification(userProfileDTO.Id);
-            
-
             var userProfileInDb = _profileRepository.GetBySpecification(spec).Result;
 
             userProfileInDb.FacebookURL = userProfile.FacebookURL;
             userProfileInDb.InstagramURL = userProfile.InstagramURL;
             userProfileInDb.Gender = userProfile.Gender;
             userProfileInDb.WorkDescription = userProfile.WorkDescription;
-            userProfileInDb.UserCategories.Clear();
 
+            //clear and assign user to categories
+            userProfileInDb.UserCategories.Clear();
             var userSelectedCategories = userCategories.Where(x => x.Selected == true);
-            //await _userCategoryRepository.DeleteRangeAsync(userProfileInDb.UserCategories);
             if (userSelectedCategories.Count() > 0)
             {
                 foreach (var cat in userSelectedCategories)
@@ -69,13 +62,12 @@ namespace Application.Services
                     var categoryFromDb = _mapper.Map<Category>(categoryFromDbDTO);
                     if (categoryFromDb != null)
                     {
-                        //await _userCategoryRepository.AddAsync(new UserCategory { UserId = userProfileInDb.Id, CategoryId = categoryFromDb.Id });
                         userProfileInDb.UserCategories.Add(new UserCategory { User = userProfileInDb, Category = categoryFromDb });
                     }
                 }
-
             }
 
+            //upload profile image
             if (userProfileDTO.ActualImage != null)
             {
                 if(userProfileInDb.Image != null)
@@ -84,14 +76,10 @@ namespace Application.Services
                     File.Delete(OldfilePath);
                 }
 
-                //var a = "http://catalogbaseurltobereplaced/";
                 var fileName = Path.GetFileName(userProfileDTO.ActualImage.FileName);
                 var newName = Guid.NewGuid().ToString("n").Substring(0, 8) + Path.GetExtension(userProfileDTO.ActualImage.FileName);
                 var filePath = Path.Combine(_env.WebRootPath, "images\\profile", newName);
-
-
                 userProfileInDb.Image = "/images/profile/" + newName;
-
 
 
                 using (var fileSteam = new FileStream(filePath, FileMode.Create))
@@ -99,56 +87,18 @@ namespace Application.Services
                     await userProfileDTO.ActualImage.CopyToAsync(fileSteam);
                 }
             }
-            // _profileRepository.TryUpdateManyToMany(userProfileInDb.UserCategories, userProfile.UserCategories)
-            // .Select(x => new UserCategory
-            // {
-            //     UserId = userProfileInDb.UserId,
-            //     CategoryId = x.CategoryId
-            // }), x => x.CategoryId);
 
-            // if(userProfileDTO.UserCategories.Count > 0)
-            // {
-
-            //     foreach(var cat in userProfileDTO.UserCategories)
-            //     {
-            //         var category = _categoryRepository.GetByIdAsync(cat.CategoryId).Result; //_mapper.Map<Category>(cat);
-
-            //         var usercat = new UserCategory
-            //         {
-            //             User = userProfileInDb,
-            //             Category = category
-            //         };
-            //         // if(!userProfileInDb.UserCategories.Contains(usercat))
-            //         // {
-            //             userCategories.Add(usercat);
-            //        // }
-            //     }
-            //     userProfileInDb.UserCategories.AddRange(userCategories);
-            // }
-            //var user = _userManager.FindByEmailAsync(userEmail).Result;
-            //var user = _userManager.Users.Include(x => x.UserProfile).SingleOrDefault(u => u.UserName == userEmail);
-
-            //userProfile.Id = userProfileInDb.Id;
             await _profileRepository.UpdateAsync(userProfileInDb);
-           
-            //user.UserProfile = userProfile;
-            //await _userManager.UpdateAsync(user);
-
-            //await _profileRepository.AddAsync(userProfile);
         }
 
         public UserProfileDTO GetUserProfileDTO(string userName)
         {
-            //var userProfile = _profileRepository.GetByIdAsync(5);
             var user = _userManager.Users
                 .Include(u => u.UserProfile)
                 .ThenInclude(u => u.UserCategories)
                 .ThenInclude(u => u.Category)
                 .SingleOrDefault(u => u.UserName == userName);
-            // var user = _userManager.FindByEmailAsync(userEmail).Result;
             var userProfile = user.UserProfile;
-
-
 
             var userProfileDTO = _mapper.Map<UserProfileDTO>(userProfile);
             return userProfileDTO;

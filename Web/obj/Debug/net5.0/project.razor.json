@@ -15649,6 +15649,11 @@
       "FileKind": "mvc"
     },
     {
+      "FilePath": "e:\\c#\\ArtyFact-Back\\Web\\Areas\\Admin\\Views\\Category copy\\Create.cshtml",
+      "TargetPath": "Areas\\Admin\\Views\\Category copy\\Create.cshtml",
+      "FileKind": "mvc"
+    },
+    {
       "FilePath": "e:\\c#\\ArtyFact-Back\\Web\\Areas\\Admin\\Views\\Role\\Index.cshtml",
       "TargetPath": "Areas\\Admin\\Views\\Role\\Index.cshtml",
       "FileKind": "mvc"
@@ -15681,6 +15686,11 @@
     {
       "FilePath": "e:\\c#\\ArtyFact-Back\\Web\\Areas\\Admin\\Views\\UserRoles\\index.cshtml",
       "TargetPath": "Areas\\Admin\\Views\\UserRoles\\index.cshtml",
+      "FileKind": "mvc"
+    },
+    {
+      "FilePath": "e:\\c#\\ArtyFact-Back\\Web\\Areas\\Admin\\Views\\Category copy\\Index.cshtml",
+      "TargetPath": "Areas\\Admin\\Views\\Category copy\\Index.cshtml",
       "FileKind": "mvc"
     },
     {
@@ -15721,6 +15731,11 @@
     {
       "FilePath": "e:\\c#\\ArtyFact-Back\\Web\\Areas\\Admin\\Views\\Category\\Index.cshtml",
       "TargetPath": "Areas\\Admin\\Views\\Category\\Index.cshtml",
+      "FileKind": "mvc"
+    },
+    {
+      "FilePath": "e:\\c#\\ArtyFact-Back\\Web\\Areas\\Admin\\Views\\Category copy\\Edit.cshtml",
+      "TargetPath": "Areas\\Admin\\Views\\Category copy\\Edit.cshtml",
       "FileKind": "mvc"
     },
     {
