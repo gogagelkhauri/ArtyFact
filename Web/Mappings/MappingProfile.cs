@@ -48,7 +48,7 @@ namespace Web.Mapping
 
             CreateMap<ProductDetail, ProductDetailDTO>()
                 .ForMember(dest => dest.Id, o => o.MapFrom(src => src.Id))
-                //.ForMember(dest => dest.ProductId, o => o.MapFrom(src => src.ProductId))
+                .ForMember(dest => dest.ProductId, o => o.MapFrom(src => src.ProductId))
                 .ForMember(dest => dest.Size, o => o.MapFrom(src => src.Size))
                 .ForMember(dest => dest.PaintType, o => o.MapFrom(src => src.PaintType))
                 .ForAllOtherMembers(x => x.Ignore());

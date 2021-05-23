@@ -4,8 +4,10 @@ using Domain.Entities;
 using Domain.Interfaces;
 using Domain.Interfaces.Services;
 using Domain.Specifications;
+using Microsoft.AspNetCore.Hosting;
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -17,17 +19,20 @@ namespace Application.Services
         private readonly IRepository<Product> _productRepository;
         private readonly IRepository<Category> _categoryRepo;
         private readonly IRepository<PaintType> _paintTypeRepository;
+        private readonly  IHostingEnvironment _env;
         private readonly IMapper _mapper;
 
         public ProductService(IRepository<Product> productRepository,
         IRepository<PaintType> paintTypeRepository,
         IRepository<Category> categoryRepo,
+        IHostingEnvironment env,
         IMapper mapper)
         {
             _productRepository = productRepository;
             _categoryRepo = categoryRepo;
             _mapper = mapper;
             _paintTypeRepository = paintTypeRepository;
+            _env = env;
         }
 
 
@@ -38,9 +43,29 @@ namespace Application.Services
             var category = _categoryRepo.GetByIdAsync(product.Category.Id).Result;
             product.Category = category;
 
-            if(product.ProductDetail != null)
+            if (productDTO.ActualImage != null)
             {
-                var paintType = _paintTypeRepository.GetByIdAsync(product.Category.Id).Result;
+                // if(userProfileInDb.Image != null)
+                // {
+                //     var OldfilePath = Path.Combine(_env.WebRootPath,  userProfileInDb.Image.Replace("/", "\\").Remove(0, 1));
+                //     File.Delete(OldfilePath);
+                // }
+
+                var fileName = Path.GetFileName(productDTO.ActualImage.FileName);
+                var newName = Guid.NewGuid().ToString("n").Substring(0, 8) + Path.GetExtension(productDTO.ActualImage.FileName);
+                var filePath = Path.Combine(_env.WebRootPath, "images\\product", newName);
+                product.ImageURL = "/images/product/" + newName;
+
+
+                using (var fileSteam = new FileStream(filePath, FileMode.Create))
+                {
+                    await productDTO.ActualImage.CopyToAsync(fileSteam);
+                }
+            }
+
+            if(product.ProductDetail.PaintType.Id != 0)
+            {
+                var paintType = await _paintTypeRepository.GetByIdAsync(product.ProductDetail.PaintType.Id);
                 product.ProductDetail.PaintType = paintType;
             }
 

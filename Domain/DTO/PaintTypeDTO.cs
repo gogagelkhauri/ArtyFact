@@ -6,7 +6,7 @@ namespace Domain.DTO
     public class PaintTypeDTO 
     {
         public int Id { get; set; }
-        [Required]
+        //[Required]
         public string Name { get; set; }
     }
 

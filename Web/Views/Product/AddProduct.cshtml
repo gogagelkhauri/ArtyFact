@@ -1,0 +1,68 @@
+@model Web.ViewModels.AddProductViewModel
+@{
+ViewData["Title"] = "Create Product";
+Layout = "~/Views/Shared/_Layout.cshtml";  
+}
+
+<div class="container">
+    @Html.ActionLink("Back", "Products", "Product", new { Area = "" }, new { @class = "btn btn-primary float-right mb-2" })
+    <form method="post" action="/Product/Store"  enctype="multipart/form-data">
+        @Html.AntiForgeryToken()
+        <div class="form-group">
+            @Html.LabelFor(m => m.Product.Name)
+            @Html.TextBoxFor(m => m.Product.Name, new { placeholder = "Enter Title", @class = "form-control" })
+            <span asp-validation-for="Product.Name" class="text-danger"></span>
+        </div>
+        <div class="form-group">
+            @Html.LabelFor(m => m.Product.Description)
+            <textarea asp-for="@Model.Product.Description" class = "form-control" cols="30" rows="10"></textarea>
+            <span asp-validation-for="Product.Description" class="text-danger"></span>
+        </div>
+        
+        <div class="form-group">
+            @Html.LabelFor(m => m.Product.Category)
+            <select asp-for="@Model.Product.Category.Id"  class="form-control">
+            @foreach (var item in @Model.Categories)
+            {
+                <option value="@item.Id">@item.Name</option>
+            }
+            </select>
+            <span asp-validation-for="Product.Category" class="text-danger"></span>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(m => m.Product.Price)
+            <input asp-for="@Model.Product.Price" type="number" class = "form-control" placeholder="Enter Price"/>
+            <span asp-validation-for="Product.Price" class="text-danger"></span>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(m => m.Product.ActualImage)
+            <input type="file" onchange="readURL(this);" asp-for="@Model.Product.ActualImage" class="form-control" />
+            <span asp-validation-for="Product.ActualImage" class="text-danger"></span>
+        </div>
+
+
+        <div class="form-group">
+            @Html.LabelFor(m => m.Product.ProductDetail.Size)
+            <input asp-for="@Model.Product.ProductDetail.Size" type="text" class = "form-control" placeholder="Enter Price"/>
+            <span asp-validation-for="Product.ProductDetail.Size" class="text-danger"></span>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(m => m.Product.ProductDetail.PaintType)
+            <select asp-for="@Model.Product.ProductDetail.PaintType.Id"  class="form-control">
+            <option value="">Enter PaintType</option>
+            @foreach (var item in @Model.PaintTypes)
+            {
+                <option value="@item.Id">@item.Name</option>
+            }
+            </select>
+            <span asp-validation-for="Product.ProductDetail.PaintType.Id" class="text-danger"></span>
+        </div>
+
+        
+        <button type="submit" class="btn btn-primary">Submit</button>
+    </form>
+
+</div>
