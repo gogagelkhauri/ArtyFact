@@ -43,6 +43,21 @@ namespace Web.Controllers
             return View(product);  
         }
 
+        public async Task<IActionResult> Product(int id)
+        {
+            if(id > 0)
+            {
+                var product = await _productService.GetProduct(id);
+
+                if (product != null)
+                    return Redirect("/Product/Products");
+
+                return View(product);
+            }
+
+            return Redirect("/Product/Products");
+        }
+
         [HttpGet]  
         public async Task<IActionResult> AddProduct()  
         {  
@@ -85,6 +100,8 @@ namespace Web.Controllers
 
             return RedirectToAction("Products", "Product");
         }
+
+
 
 
     }  
