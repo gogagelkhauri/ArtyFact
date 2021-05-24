@@ -14,7 +14,7 @@ namespace Domain.DTO
         public string Name { get; set; }
         public bool InStock { get; set; }
         public string Description { get; set; }
-        [Required]
+        //[Required]
         [DisplayFormat( NullDisplayText = "Choose Image" )]    
         public IFormFile ActualImage { get; set; }
         public string ImageURL { get; set; }

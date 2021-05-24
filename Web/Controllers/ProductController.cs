@@ -20,14 +20,18 @@ namespace Web.Controllers
         private readonly IProductService _productService;
         private readonly ICategoryService _categoryService;
         private readonly IPaintTypeService _paintTypeService;
+        private readonly UserManager<ApplicationUser> _userManager;
+
         public ProductController(IProductService productService,
         ICategoryService categoryService,
-        IPaintTypeService paintTypeService
+        IPaintTypeService paintTypeService,
+        UserManager<ApplicationUser> userManager
         )
         {
           _productService = productService;
           _categoryService = categoryService;
           _paintTypeService = paintTypeService;
+          _userManager = userManager;
         }
 
         [HttpGet]  
@@ -48,6 +52,7 @@ namespace Web.Controllers
             //var productDTO = 
             var viewModel = new AddProductViewModel
             {
+                Product = new ProductDTO(),
                 Categories = categories,
                 PaintTypes = paintTypes
             };
@@ -58,15 +63,27 @@ namespace Web.Controllers
         [HttpPost]
         public async Task<IActionResult> Store(AddProductViewModel viewModel)
         {
-            viewModel.Categories = new List<CategoryDTO>();
-            viewModel.Product.UserId = 9;
+            viewModel.Product.UserId = _userManager.GetUserAsync(HttpContext.User).Id;
             if (ModelState.IsValid)
             {
                 await _productService.AddProduct(viewModel.Product);
                 return Redirect("/Product/Products");
             }
-            return View("/Products", viewModel);
+            return View("/Product", viewModel);
 
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> Delete(int id)
+        {
+
+            if (ModelState.IsValid && id != 0)
+            {
+                await _productService.DeleteProduct(id);
+            }
+
+            return RedirectToAction("Products", "Product");
         }
 
 

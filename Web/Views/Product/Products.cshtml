@@ -24,7 +24,7 @@
                     <td>
                         <a href="/Admin/Category/Edit/@item.Id" class = "btn btn-warning" >Edit</a>
                         <div>
-                            <form method="post" action="/Admin/Category/Delete">
+                            <form method="post" action="/Product/Delete">
                                 <input type="hidden" name="id" value="@item.Id" />
                                 @Html.AntiForgeryToken()
                                 <!-- Button trigger modal -->

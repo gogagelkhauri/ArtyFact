@@ -9,6 +9,7 @@ namespace Domain.Interfaces.Services
     {
         Task<PaintTypeDTO> AddPaintType(PaintTypeDTO paintTypeDTO);
         Task<PaintTypeDTO> GetPaintType(int id);
+        Task<PaintTypeDTO> GetPaintTypeByName(string name);
         Task<List<PaintTypeDTO>> GetAllPaintTypes();
         Task UpdatePaintType(int id,PaintTypeDTO paintTypeDTO);
         Task DeletePaintType(int id);

@@ -6,6 +6,7 @@ using Domain.Entities;
 using Domain.Interfaces;
 using Domain.Interfaces.Services;
 using System.Linq;
+using Domain.Specifications;
 
 namespace Application.Services
 {
@@ -44,6 +45,14 @@ namespace Application.Services
         public async Task<PaintTypeDTO> GetPaintType(int id)
         {
             var paintType = await _repository.GetByIdAsync(id);
+            var paintTypeDTO = _mapper.Map<PaintTypeDTO>(paintType);
+            return paintTypeDTO;
+        }
+
+        public async Task<PaintTypeDTO> GetPaintTypeByName(string name)
+        {
+            var spec = new GetPaintTypeByName(name);
+            var paintType = await _repository.GetAllBySpecification(spec);
             var paintTypeDTO = _mapper.Map<PaintTypeDTO>(paintType);
             return paintTypeDTO;
         }

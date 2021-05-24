@@ -6,6 +6,7 @@ using Domain.Entities;
 using Domain.Interfaces;
 using Domain.Interfaces.Services;
 using System.Linq;
+using Domain.Specifications;
 
 namespace Application.Services
 {
@@ -54,6 +55,14 @@ namespace Application.Services
             var category = _mapper.Map<Category>(categoryDTO);
             category.Id = id;
             await _repository.UpdateAsync(category);
+        }
+
+        public async Task<CategoryDTO> GetCategoryByName(string name)
+        {
+            var spec = new GetCategoryByName(name);
+            var category = await _repository.GetAllBySpecification(spec);
+            var categoryDTO = _mapper.Map<CategoryDTO>(category);
+            return categoryDTO;
         }
     }
 }

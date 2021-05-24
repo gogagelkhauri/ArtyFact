@@ -9,6 +9,7 @@ namespace Domain.Interfaces.Services
     {
         Task<CategoryDTO> AddCategory(CategoryDTO categoryDTO);
         Task<CategoryDTO> GetCategory(int id);
+        Task<CategoryDTO> GetCategoryByName(string name);
         Task<List<CategoryDTO>> GetAllCategories();
         Task UpdateCategory(int id,CategoryDTO categoryDTO);
         Task DeleteCategory(int id);

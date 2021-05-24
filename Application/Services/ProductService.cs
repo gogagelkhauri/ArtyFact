@@ -39,8 +39,10 @@ namespace Application.Services
         public async Task<ProductDTO> AddProduct(ProductDTO productDTO)
         {
             var product = _mapper.Map<Product>(productDTO);
+            product.InStock = true;
 
-            var category = _categoryRepo.GetByIdAsync(product.Category.Id).Result;
+
+            var category = await _categoryRepo.GetByIdAsync(product.Category.Id);
             product.Category = category;
 
             if (productDTO.ActualImage != null)
@@ -65,6 +67,7 @@ namespace Application.Services
 
             if(product.ProductDetail.PaintType.Id != 0)
             {
+
                 var paintType = await _paintTypeRepository.GetByIdAsync(product.ProductDetail.PaintType.Id);
                 product.ProductDetail.PaintType = paintType;
             }
@@ -77,8 +80,9 @@ namespace Application.Services
 
         public async Task DeleteProduct(int id)
         {
-            var category = await _productRepository.GetByIdAsync(id);
-            await _productRepository.DeleteAsync(category);
+            var product = await _productRepository.GetByIdAsync(id);
+            if(product != null)
+                await _productRepository.DeleteAsync(product);
         }
 
         public async Task<List<ProductDTO>> GetAllproducts()
