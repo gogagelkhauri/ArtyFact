@@ -20,6 +20,7 @@ namespace Domain.DTO
         public string ImageURL { get; set; }
         public float Price { get; set; }
         public int UserId { get; set; }
+        public int CategoryId { get; set; }
         public CategoryDTO Category { get; set; }
         #nullable enable
         public ProductDetailDTO? ProductDetail { get; set; }

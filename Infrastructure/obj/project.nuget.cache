@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "bfbh6Zl+h2E0poj1LXhSXVljWIliZ6B4eY4RN8znNr5zj6pJE8dYv93CvphhTjLf5O3fLK3wywjzMSzE/gBsdQ==",
+  "dgSpecHash": "T8hw3wlL4GcH4IV0gS68nHDKai9wV4/5HQJ42E6tK/LUSMpKNPZIYwD6xseNCcCk0tnuHhZRNsvn86g5plawrw==",
   "success": true,
-  "projectFilePath": "D:\\work\\.netCore\\ArtyFact-Back\\Infrastructure\\Infrastructure.csproj",
+  "projectFilePath": "D:\\work\\.netCore\\v2\\ArtyFact-Back\\Infrastructure\\Infrastructure.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\g.gelkhauri\\.nuget\\packages\\ardalis.guardclauses\\1.5.0\\ardalis.guardclauses.1.5.0.nupkg.sha512",
     "C:\\Users\\g.gelkhauri\\.nuget\\packages\\ardalis.specification\\4.1.0\\ardalis.specification.4.1.0.nupkg.sha512",

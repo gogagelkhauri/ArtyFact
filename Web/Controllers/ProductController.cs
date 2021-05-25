@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Security.Claims;
@@ -9,6 +10,7 @@ using Infrastructure.EmailService;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using Web.Areas.Identity.ViewModels;
 using Web.ViewModels;
 
@@ -78,14 +80,22 @@ namespace Web.Controllers
         [HttpPost]
         public async Task<IActionResult> Store(AddProductViewModel viewModel)
         {
-            viewModel.Product.UserId = _userManager.GetUserAsync(HttpContext.User).Id;
+            var user = _userManager.Users.Include(u => u.UserProfile)
+                                        .SingleOrDefault(u => u.UserName == HttpContext.User.Identity.Name);
+            viewModel.Product.UserId = user.UserProfile.Id;
             if (ModelState.IsValid)
             {
-                await _productService.AddProduct(viewModel.Product);
-                return Redirect("/Product/Products");
+                try
+                {
+                    await _productService.AddProduct(viewModel.Product);
+                    return Redirect("/Product/Products");
+                }
+                catch(Exception)
+                {
+                    return Redirect("/Product/Products");
+                }
             }
             return View("/Product", viewModel);
-
         }
 
         [HttpPost]

@@ -5322,11 +5322,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "D:\\work\\.netCore\\ArtyFact-Back\\Domain\\Domain.csproj",
+      "projectUniqueName": "D:\\work\\.netCore\\v2\\ArtyFact-Back\\Domain\\Domain.csproj",
       "projectName": "Domain",
-      "projectPath": "D:\\work\\.netCore\\ArtyFact-Back\\Domain\\Domain.csproj",
+      "projectPath": "D:\\work\\.netCore\\v2\\ArtyFact-Back\\Domain\\Domain.csproj",
       "packagesPath": "C:\\Users\\g.gelkhauri\\.nuget\\packages\\",
-      "outputPath": "D:\\work\\.netCore\\ArtyFact-Back\\Domain\\obj\\",
+      "outputPath": "D:\\work\\.netCore\\v2\\ArtyFact-Back\\Domain\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"

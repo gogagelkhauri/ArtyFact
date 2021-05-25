@@ -21,13 +21,13 @@
 
         <div class="form-group">
             @Html.LabelFor(m => m.Product.Category)
-            <select asp-for="@Model.Product.Category.Id" class="form-control">
+            <select asp-for="@Model.Product.CategoryId" class="form-control">
                 @foreach (var item in @Model.Categories)
                 {
                     <option value="@item.Id">@item.Name</option>
                 }
             </select>
-            <span asp-validation-for="Product.Category.Id" class="text-danger"></span>
+            <span asp-validation-for="Product.CategoryId" class="text-danger"></span>
         </div>
 
         <div class="form-group">
@@ -42,23 +42,25 @@
             <span asp-validation-for="Product.ActualImage" class="text-danger"></span>
         </div>
 
+        <div style="display: none;">
 
-        <div class="form-group">
-            @Html.LabelFor(m => m.Product.ProductDetail.Size)
-            <input asp-for="@Model.Product.ProductDetail.Size" type="text" class="form-control" placeholder="Enter Price" />
-            <span asp-validation-for="Product.ProductDetail.Size" class="text-danger"></span>
-        </div>
+            <div class="form-group">
+                @Html.LabelFor(m => m.Product.ProductDetail.Size)
+                <input asp-for="@Model.Product.ProductDetail.Size" type="text" class="form-control" placeholder="Enter Price" />
+                <span asp-validation-for="Product.ProductDetail.Size" class="text-danger"></span>
+            </div>
 
-        <div class="form-group">
-            @Html.LabelFor(m => m.Product.ProductDetail.PaintType)
-            <select asp-for="@Model.Product.ProductDetail.PaintType.Id" class="form-control">
-                <option value="">Enter PaintType</option>
-                @foreach (var item in @Model.PaintTypes)
-                {
-                    <option value="@item.Id">@item.Name</option>
-                }
-            </select>
-            <span asp-validation-for="Product.ProductDetail.PaintType.Id" class="text-danger"></span>
+            <div class="form-group">
+                @Html.LabelFor(m => m.Product.ProductDetail.PaintType)
+                <select asp-for="@Model.Product.ProductDetail.PaintTypeId" class="form-control">
+                    <option value="">Enter PaintType</option>
+                    @foreach (var item in @Model.PaintTypes)
+                    {
+                        <option value="@item.Id">@item.Name</option>
+                    }
+                </select>
+                <span asp-validation-for="Product.ProductDetail.PaintTypeId" class="text-danger"></span>
+            </div>
         </div>
 
 

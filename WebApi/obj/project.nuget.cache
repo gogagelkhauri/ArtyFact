@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "da1stK/o/3KTQZ6BTWTzLm9apgIX6+GihZabHglZxARSIy8AV3pMtRC4jAy2bWcq/D/tggdA2tXcmvuQxKtaWQ==",
+  "dgSpecHash": "nkq2vbrVNxtxFQ66xWjJvDmJB2ICa2rDrOzDIGwRgIoCH+FHx7Zofv8MxFU2Ecwi6kam9tTFOqeeGuZxEZKzbw==",
   "success": true,
-  "projectFilePath": "D:\\work\\.netCore\\ArtyFact-Back\\WebApi\\WebApi.csproj",
+  "projectFilePath": "D:\\work\\.netCore\\v2\\ArtyFact-Back\\WebApi\\WebApi.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\g.gelkhauri\\.nuget\\packages\\ardalis.guardclauses\\1.5.0\\ardalis.guardclauses.1.5.0.nupkg.sha512",
     "C:\\Users\\g.gelkhauri\\.nuget\\packages\\ardalis.specification\\4.1.0\\ardalis.specification.4.1.0.nupkg.sha512",

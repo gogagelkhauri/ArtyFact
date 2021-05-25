@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "T/rRMy5DtTLM1XM4Ux0j9WLmdbOFMQvhvmigif4NbBejth8mDlTFlz++VKAU1m35NOBv0SHSXMVof858q+jwzw==",
+  "dgSpecHash": "HfAfNG2uRI//HlnZphvdaGNazhST3cHwCahj+lW+phzG3oVpUIoexF81G9YL1xYw9w4y93rphM1caO2zD9VQOg==",
   "success": true,
-  "projectFilePath": "D:\\work\\.netCore\\ArtyFact-Back\\Shared\\Shared.csproj",
+  "projectFilePath": "D:\\work\\.netCore\\v2\\ArtyFact-Back\\Shared\\Shared.csproj",
   "expectedPackageFiles": [],
   "logs": []
 }

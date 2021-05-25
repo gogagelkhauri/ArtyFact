@@ -51,6 +51,7 @@ namespace Web.Mapping
                 .ForMember(dest => dest.ProductId, o => o.MapFrom(src => src.ProductId))
                 .ForMember(dest => dest.Size, o => o.MapFrom(src => src.Size))
                 .ForMember(dest => dest.PaintType, o => o.MapFrom(src => src.PaintType))
+                .ForMember(dest => dest.PaintTypeId, o => o.MapFrom(src => src.PaintTypeId))
                 .ForAllOtherMembers(x => x.Ignore());
 
             CreateMap<ProductDetailDTO, ProductDetail>()
@@ -58,6 +59,7 @@ namespace Web.Mapping
                 //.ForMember(dest => dest.ProductId, o => o.MapFrom(src => src.ProductId))
                 .ForMember(dest => dest.Size, o => o.MapFrom(src => src.Size))
                 .ForMember(dest => dest.PaintType, o => o.MapFrom(src => src.PaintType))
+                .ForMember(dest => dest.PaintTypeId, o => o.MapFrom(src => src.PaintTypeId))
                 .ForAllOtherMembers(x => x.Ignore());
 
             CreateMap<Product, ProductDTO>()
@@ -69,6 +71,7 @@ namespace Web.Mapping
                 .ForMember(dest => dest.Price, o => o.MapFrom(src => src.Price))
                 .ForMember(dest => dest.UserId, o => o.MapFrom(src => src.UserId))
                 .ForMember(dest => dest.Category, o => o.MapFrom(src => src.Category))
+                .ForMember(dest => dest.CategoryId, o => o.MapFrom(src => src.CategoryId))
                 .ForMember(dest => dest.ProductDetail, o => o.MapFrom(src => src.ProductDetail))
                 .ForAllOtherMembers(x => x.Ignore());
 
@@ -81,6 +84,7 @@ namespace Web.Mapping
                 .ForMember(dest => dest.Price, o => o.MapFrom(src => src.Price))
                 .ForMember(dest => dest.UserId, o => o.MapFrom(src => src.UserId))
                 .ForMember(dest => dest.Category, o => o.MapFrom(src => src.Category))
+                .ForMember(dest => dest.CategoryId, o => o.MapFrom(src => src.CategoryId))
                 .ForMember(dest => dest.ProductDetail, o => o.MapFrom(src => src.ProductDetail))
                 .ForAllOtherMembers(x => x.Ignore());
 

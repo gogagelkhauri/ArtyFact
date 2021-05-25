@@ -10199,11 +10199,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "D:\\work\\.netCore\\ArtyFact-Back\\Web\\Web.csproj",
+      "projectUniqueName": "D:\\work\\.netCore\\v2\\ArtyFact-Back\\Web\\Web.csproj",
       "projectName": "Web",
-      "projectPath": "D:\\work\\.netCore\\ArtyFact-Back\\Web\\Web.csproj",
+      "projectPath": "D:\\work\\.netCore\\v2\\ArtyFact-Back\\Web\\Web.csproj",
       "packagesPath": "C:\\Users\\g.gelkhauri\\.nuget\\packages\\",
-      "outputPath": "D:\\work\\.netCore\\ArtyFact-Back\\Web\\obj\\",
+      "outputPath": "D:\\work\\.netCore\\v2\\ArtyFact-Back\\Web\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
@@ -10223,11 +10223,11 @@
         "net5.0": {
           "targetAlias": "net5.0",
           "projectReferences": {
-            "D:\\work\\.netCore\\ArtyFact-Back\\Domain\\Domain.csproj": {
-              "projectPath": "D:\\work\\.netCore\\ArtyFact-Back\\Domain\\Domain.csproj"
+            "D:\\work\\.netCore\\v2\\ArtyFact-Back\\Domain\\Domain.csproj": {
+              "projectPath": "D:\\work\\.netCore\\v2\\ArtyFact-Back\\Domain\\Domain.csproj"
             },
-            "D:\\work\\.netCore\\ArtyFact-Back\\Infrastructure\\Infrastructure.csproj": {
-              "projectPath": "D:\\work\\.netCore\\ArtyFact-Back\\Infrastructure\\Infrastructure.csproj"
+            "D:\\work\\.netCore\\v2\\ArtyFact-Back\\Infrastructure\\Infrastructure.csproj": {
+              "projectPath": "D:\\work\\.netCore\\v2\\ArtyFact-Back\\Infrastructure\\Infrastructure.csproj"
             }
           }
         }

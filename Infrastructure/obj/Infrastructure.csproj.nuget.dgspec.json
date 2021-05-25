@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "D:\\work\\.netCore\\ArtyFact-Back\\Infrastructure\\Infrastructure.csproj": {}
+    "D:\\work\\.netCore\\v2\\ArtyFact-Back\\Infrastructure\\Infrastructure.csproj": {}
   },
   "projects": {
-    "D:\\work\\.netCore\\ArtyFact-Back\\Application\\Application.csproj": {
+    "D:\\work\\.netCore\\v2\\ArtyFact-Back\\Application\\Application.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\work\\.netCore\\ArtyFact-Back\\Application\\Application.csproj",
+        "projectUniqueName": "D:\\work\\.netCore\\v2\\ArtyFact-Back\\Application\\Application.csproj",
         "projectName": "Application",
-        "projectPath": "D:\\work\\.netCore\\ArtyFact-Back\\Application\\Application.csproj",
+        "projectPath": "D:\\work\\.netCore\\v2\\ArtyFact-Back\\Application\\Application.csproj",
         "packagesPath": "C:\\Users\\g.gelkhauri\\.nuget\\packages\\",
-        "outputPath": "D:\\work\\.netCore\\ArtyFact-Back\\Application\\obj\\",
+        "outputPath": "D:\\work\\.netCore\\v2\\ArtyFact-Back\\Application\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
@@ -31,8 +31,8 @@
           "net5.0": {
             "targetAlias": "net5.0",
             "projectReferences": {
-              "D:\\work\\.netCore\\ArtyFact-Back\\Domain\\Domain.csproj": {
-                "projectPath": "D:\\work\\.netCore\\ArtyFact-Back\\Domain\\Domain.csproj"
+              "D:\\work\\.netCore\\v2\\ArtyFact-Back\\Domain\\Domain.csproj": {
+                "projectPath": "D:\\work\\.netCore\\v2\\ArtyFact-Back\\Domain\\Domain.csproj"
               }
             }
           }
@@ -79,14 +79,14 @@
         }
       }
     },
-    "D:\\work\\.netCore\\ArtyFact-Back\\Domain\\Domain.csproj": {
+    "D:\\work\\.netCore\\v2\\ArtyFact-Back\\Domain\\Domain.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\work\\.netCore\\ArtyFact-Back\\Domain\\Domain.csproj",
+        "projectUniqueName": "D:\\work\\.netCore\\v2\\ArtyFact-Back\\Domain\\Domain.csproj",
         "projectName": "Domain",
-        "projectPath": "D:\\work\\.netCore\\ArtyFact-Back\\Domain\\Domain.csproj",
+        "projectPath": "D:\\work\\.netCore\\v2\\ArtyFact-Back\\Domain\\Domain.csproj",
         "packagesPath": "C:\\Users\\g.gelkhauri\\.nuget\\packages\\",
-        "outputPath": "D:\\work\\.netCore\\ArtyFact-Back\\Domain\\obj\\",
+        "outputPath": "D:\\work\\.netCore\\v2\\ArtyFact-Back\\Domain\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
@@ -150,14 +150,14 @@
         }
       }
     },
-    "D:\\work\\.netCore\\ArtyFact-Back\\Infrastructure\\Infrastructure.csproj": {
+    "D:\\work\\.netCore\\v2\\ArtyFact-Back\\Infrastructure\\Infrastructure.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\work\\.netCore\\ArtyFact-Back\\Infrastructure\\Infrastructure.csproj",
+        "projectUniqueName": "D:\\work\\.netCore\\v2\\ArtyFact-Back\\Infrastructure\\Infrastructure.csproj",
         "projectName": "Infrastructure",
-        "projectPath": "D:\\work\\.netCore\\ArtyFact-Back\\Infrastructure\\Infrastructure.csproj",
+        "projectPath": "D:\\work\\.netCore\\v2\\ArtyFact-Back\\Infrastructure\\Infrastructure.csproj",
         "packagesPath": "C:\\Users\\g.gelkhauri\\.nuget\\packages\\",
-        "outputPath": "D:\\work\\.netCore\\ArtyFact-Back\\Infrastructure\\obj\\",
+        "outputPath": "D:\\work\\.netCore\\v2\\ArtyFact-Back\\Infrastructure\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
@@ -177,11 +177,11 @@
           "net5.0": {
             "targetAlias": "net5.0",
             "projectReferences": {
-              "D:\\work\\.netCore\\ArtyFact-Back\\Application\\Application.csproj": {
-                "projectPath": "D:\\work\\.netCore\\ArtyFact-Back\\Application\\Application.csproj"
+              "D:\\work\\.netCore\\v2\\ArtyFact-Back\\Application\\Application.csproj": {
+                "projectPath": "D:\\work\\.netCore\\v2\\ArtyFact-Back\\Application\\Application.csproj"
               },
-              "D:\\work\\.netCore\\ArtyFact-Back\\Domain\\Domain.csproj": {
-                "projectPath": "D:\\work\\.netCore\\ArtyFact-Back\\Domain\\Domain.csproj"
+              "D:\\work\\.netCore\\v2\\ArtyFact-Back\\Domain\\Domain.csproj": {
+                "projectPath": "D:\\work\\.netCore\\v2\\ArtyFact-Back\\Domain\\Domain.csproj"
               }
             }
           }

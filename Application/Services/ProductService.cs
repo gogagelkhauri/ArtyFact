@@ -1,10 +1,13 @@
 ﻿using AutoMapper;
 using Domain.DTO;
 using Domain.Entities;
+using Domain.Entities.User;
 using Domain.Interfaces;
 using Domain.Interfaces.Services;
 using Domain.Specifications;
 using Microsoft.AspNetCore.Hosting;
+using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Identity;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -18,6 +21,7 @@ namespace Application.Services
     {
         private readonly IRepository<Product> _productRepository;
         private readonly IRepository<Category> _categoryRepo;
+        private readonly UserManager<ApplicationUser> _userManager;
         private readonly IRepository<PaintType> _paintTypeRepository;
         private readonly  IHostingEnvironment _env;
         private readonly IMapper _mapper;
@@ -26,6 +30,7 @@ namespace Application.Services
         IRepository<PaintType> paintTypeRepository,
         IRepository<Category> categoryRepo,
         IHostingEnvironment env,
+        UserManager<ApplicationUser> userManager,
         IMapper mapper)
         {
             _productRepository = productRepository;
@@ -33,17 +38,27 @@ namespace Application.Services
             _mapper = mapper;
             _paintTypeRepository = paintTypeRepository;
             _env = env;
+            _userManager = userManager;
         }
 
 
         public async Task<ProductDTO> AddProduct(ProductDTO productDTO)
         {
             var product = _mapper.Map<Product>(productDTO);
-            product.InStock = true;
+            //var product = new Product();
+            //product.UserId = _userManager.GetUserAsync(HttpContext.User).Id;
+            //product.Name = productDTO.Name;
+            //product.Description = productDTO.Description;
+            //product.Price = productDTO.Price;
+            //product.CategoryId = productDTO.Category.Id;
+            //product.InStock = true;
+            //product.UserId = productDTO.UserId;
 
 
-            var category = await _categoryRepo.GetByIdAsync(product.Category.Id);
-            product.Category = category;
+            var category = await _categoryRepo.GetByIdAsync(product.CategoryId);
+            //product.Category = category;
+            if (category == null)
+                throw new Exception();
 
             if (productDTO.ActualImage != null)
             {
@@ -65,11 +80,12 @@ namespace Application.Services
                 }
             }
 
-            if(product.ProductDetail.PaintType.Id != 0)
+            if (product.ProductDetail.PaintTypeId != 0)
             {
 
-                var paintType = await _paintTypeRepository.GetByIdAsync(product.ProductDetail.PaintType.Id);
-                product.ProductDetail.PaintType = paintType;
+                var paintType = await _paintTypeRepository.GetByIdAsync(product.ProductDetail.PaintTypeId);
+                if (paintType == null)
+                    throw new Exception();
             }
 
             var productInDb = await _productRepository.AddAsync(product);
