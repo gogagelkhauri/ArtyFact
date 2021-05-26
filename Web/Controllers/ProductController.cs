@@ -51,7 +51,7 @@ namespace Web.Controllers
             {
                 var product = await _productService.GetProduct(id);
 
-                if (product != null)
+                if (product == null)
                     return Redirect("/Product/Products");
 
                 return View(product);

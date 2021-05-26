@@ -1,10 +1,7 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using Microsoft.AspNetCore.Http;
+using Shared.Validations;
 
 namespace Domain.DTO
 {
@@ -16,17 +13,19 @@ namespace Domain.DTO
         public bool InStock { get; set; }
         [Required]
         public string Description { get; set; }
-        //[Required]
+        
         [DisplayFormat( NullDisplayText = "Choose Image" )]
         [Required(ErrorMessage = "Pick an Image")]
+        #pragma warning disable 0436
         [AllowedExtensions(new string[] { ".jpg", ".jpeg", ".png" })]
         public IFormFile ActualImage { get; set; }
         public string ImageURL { get; set; }
 
-        [Range(0, float.MaxValue, ErrorMessage = "Please enter valid float Number")]
+        [Range(1, float.MaxValue, ErrorMessage = "Please enter valid float Number")]
+        //[Required]
         public float Price { get; set; }
         public int UserId { get; set; }
-        [Required]
+        [Required(ErrorMessage = "Pick an Category")]
         public int CategoryId { get; set; }
         public CategoryDTO Category { get; set; }
         #nullable enable

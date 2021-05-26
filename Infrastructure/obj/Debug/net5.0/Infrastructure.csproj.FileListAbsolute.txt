@@ -118,3 +118,5 @@ D:\work\.netCore\v2\ArtyFact-Back\Infrastructure\obj\Debug\net5.0\Infrastructure
 D:\work\.netCore\v2\ArtyFact-Back\Infrastructure\obj\Debug\net5.0\ref\Infrastructure.dll
 D:\work\.netCore\v2\ArtyFact-Back\Infrastructure\obj\Debug\net5.0\Infrastructure.pdb
 D:\work\.netCore\v2\ArtyFact-Back\Infrastructure\obj\Debug\net5.0\Infrastructure.genruntimeconfig.cache
+C:\Users\gogag\OneDrive\Desktop\ArtyFact-Back\Infrastructure\bin\Debug\net5.0\Shared.dll
+C:\Users\gogag\OneDrive\Desktop\ArtyFact-Back\Infrastructure\bin\Debug\net5.0\Shared.pdb

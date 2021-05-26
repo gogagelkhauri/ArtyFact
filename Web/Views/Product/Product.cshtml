@@ -1,0 +1,16 @@
+@model Domain.DTO.ProductDTO
+@{
+    ViewData["Title"] = "Create Product";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<div class="container">
+    <h1>@Model.Name</h1>
+    <div>
+        <img src="@Model.ImageURL" style="width:150px;height: 150px;" alt="Image">
+    </div>
+    <p>Description: <br> @Model.Description</p>
+    <p>Price: @Model.Price</p>
+    <p>Category: @Model.Category.Name</p>
+    <p>Size: @Model.ProductDetail.Size</p>
+    <p>Paint Type: @Model.ProductDetail.PaintType.Name</p>
+</div>

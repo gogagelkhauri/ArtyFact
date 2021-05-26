@@ -24,6 +24,7 @@
             @Html.LabelFor(m => m.UserProfile.Gender)
             @*@Html.DropDownListFor(model => model.Gender, new SelectList(new string[] { "Male", "Female" }, Model.Gender), new { @class = "form-control" })*@
             <select asp-for="@Model.UserProfile.Gender"  class="form-control">
+                <option value="">Choose Gender</option>
                 <option value="Male">Male</option>
                 <option value="Female">Female</option>
             </select>
@@ -59,7 +60,7 @@
                         </label>
                     </div>
                 }
-                <div asp-validation-summary="All" class="text-danger"></div>
+               
             </div>
         </div>
 
@@ -69,12 +70,12 @@
             <span asp-validation-for="UserProfile.WorkDescription" class="text-danger"></span>
         </div>
       
-            <img class="esh-catalog-thumbnail" id="readImg" src="@Model.UserProfile.Image" />
+            <img class="esh-catalog-thumbnail"style="width:150px;height: 150px;" id="readImg" src="@Model.UserProfile.Image" />
        
         <div class="form-group">
             @Html.LabelFor(m => m.UserProfile.Image)
             <input type="file" onchange="readURL(this);" asp-for="@Model.UserProfile.ActualImage" class="form-control" />
-            <span asp-validation-for="UserProfile.Image" class="text-danger"></span>
+            <span asp-validation-for="UserProfile.ActualImage" class="text-danger"></span>
         </div>
         <button type="submit" class="btn btn-primary">Submit</button>
     </form>

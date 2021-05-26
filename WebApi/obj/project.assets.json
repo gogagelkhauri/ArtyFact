@@ -2681,7 +2681,8 @@
         "dependencies": {
           "Ardalis.Specification": "4.1.0",
           "Microsoft.AspNetCore.Http.Features": "5.0.4",
-          "Microsoft.AspNetCore.Identity.EntityFrameworkCore": "5.0.0"
+          "Microsoft.AspNetCore.Identity.EntityFrameworkCore": "5.0.0",
+          "Shared": "1.0.0"
         },
         "compile": {
           "bin/placeholder/Domain.dll": {}
@@ -2709,6 +2710,19 @@
         },
         "runtime": {
           "bin/placeholder/Infrastructure.dll": {}
+        }
+      },
+      "Shared/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v5.0",
+        "dependencies": {
+          "Microsoft.AspNetCore.Http.Features": "5.0.4"
+        },
+        "compile": {
+          "bin/placeholder/Shared.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/Shared.dll": {}
         }
       }
     }
@@ -8754,6 +8768,11 @@
       "type": "project",
       "path": "../Infrastructure/Infrastructure.csproj",
       "msbuildProject": "../Infrastructure/Infrastructure.csproj"
+    },
+    "Shared/1.0.0": {
+      "type": "project",
+      "path": "../Shared/Shared.csproj",
+      "msbuildProject": "../Shared/Shared.csproj"
     }
   },
   "projectFileDependencyGroups": {
@@ -8776,23 +8795,19 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\g.gelkhauri\\.nuget\\packages\\": {},
-    "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder": {}
+    "C:\\Users\\gogag\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "D:\\work\\.netCore\\v2\\ArtyFact-Back\\WebApi\\WebApi.csproj",
+      "projectUniqueName": "C:\\Users\\gogag\\OneDrive\\Desktop\\ArtyFact-Back\\WebApi\\WebApi.csproj",
       "projectName": "WebApi",
-      "projectPath": "D:\\work\\.netCore\\v2\\ArtyFact-Back\\WebApi\\WebApi.csproj",
-      "packagesPath": "C:\\Users\\g.gelkhauri\\.nuget\\packages\\",
-      "outputPath": "D:\\work\\.netCore\\v2\\ArtyFact-Back\\WebApi\\obj\\",
+      "projectPath": "C:\\Users\\gogag\\OneDrive\\Desktop\\ArtyFact-Back\\WebApi\\WebApi.csproj",
+      "packagesPath": "C:\\Users\\gogag\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\gogag\\OneDrive\\Desktop\\ArtyFact-Back\\WebApi\\obj\\",
       "projectStyle": "PackageReference",
-      "fallbackFolders": [
-        "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
-      ],
       "configFilePaths": [
-        "C:\\Users\\g.gelkhauri\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\gogag\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
@@ -8806,11 +8821,11 @@
         "net5.0": {
           "targetAlias": "net5.0",
           "projectReferences": {
-            "D:\\work\\.netCore\\v2\\ArtyFact-Back\\Domain\\Domain.csproj": {
-              "projectPath": "D:\\work\\.netCore\\v2\\ArtyFact-Back\\Domain\\Domain.csproj"
+            "C:\\Users\\gogag\\OneDrive\\Desktop\\ArtyFact-Back\\Domain\\Domain.csproj": {
+              "projectPath": "C:\\Users\\gogag\\OneDrive\\Desktop\\ArtyFact-Back\\Domain\\Domain.csproj"
             },
-            "D:\\work\\.netCore\\v2\\ArtyFact-Back\\Infrastructure\\Infrastructure.csproj": {
-              "projectPath": "D:\\work\\.netCore\\v2\\ArtyFact-Back\\Infrastructure\\Infrastructure.csproj"
+            "C:\\Users\\gogag\\OneDrive\\Desktop\\ArtyFact-Back\\Infrastructure\\Infrastructure.csproj": {
+              "projectPath": "C:\\Users\\gogag\\OneDrive\\Desktop\\ArtyFact-Back\\Infrastructure\\Infrastructure.csproj"
             }
           }
         }
@@ -8904,7 +8919,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.202\\RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.100\\RuntimeIdentifierGraph.json"
       }
     }
   }

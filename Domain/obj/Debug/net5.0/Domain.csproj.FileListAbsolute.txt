@@ -70,3 +70,6 @@ D:\work\.netCore\v2\ArtyFact-Back\Domain\obj\Debug\net5.0\Domain.csproj.CoreComp
 D:\work\.netCore\v2\ArtyFact-Back\Domain\obj\Debug\net5.0\Domain.dll
 D:\work\.netCore\v2\ArtyFact-Back\Domain\obj\Debug\net5.0\ref\Domain.dll
 D:\work\.netCore\v2\ArtyFact-Back\Domain\obj\Debug\net5.0\Domain.pdb
+C:\Users\gogag\OneDrive\Desktop\ArtyFact-Back\Domain\bin\Debug\net5.0\Shared.dll
+C:\Users\gogag\OneDrive\Desktop\ArtyFact-Back\Domain\bin\Debug\net5.0\Shared.pdb
+C:\Users\gogag\OneDrive\Desktop\ArtyFact-Back\Domain\obj\Debug\net5.0\Domain.csproj.CopyComplete

@@ -9,15 +9,7 @@
       "DEBUG",
       "NET",
       "NET5_0",
-      "NETCOREAPP",
-      "NET5_0_OR_GREATER",
-      "NETCOREAPP1_0_OR_GREATER",
-      "NETCOREAPP1_1_OR_GREATER",
-      "NETCOREAPP2_0_OR_GREATER",
-      "NETCOREAPP2_1_OR_GREATER",
-      "NETCOREAPP2_2_OR_GREATER",
-      "NETCOREAPP3_0_OR_GREATER",
-      "NETCOREAPP3_1_OR_GREATER"
+      "NETCOREAPP"
     ],
     "languageVersion": "9.0",
     "platform": "",
@@ -2584,7 +2576,8 @@
         "dependencies": {
           "Ardalis.Specification": "4.1.0",
           "Microsoft.AspNetCore.Http.Features": "5.0.4",
-          "Microsoft.AspNetCore.Identity.EntityFrameworkCore": "5.0.0"
+          "Microsoft.AspNetCore.Identity.EntityFrameworkCore": "5.0.0",
+          "Shared": "1.0.0"
         },
         "runtime": {
           "Domain.dll": {}
@@ -2610,6 +2603,17 @@
         },
         "compile": {
           "Infrastructure.dll": {}
+        }
+      },
+      "Shared/1.0.0": {
+        "dependencies": {
+          "Microsoft.AspNetCore.Http.Features": "5.0.4"
+        },
+        "runtime": {
+          "Shared.dll": {}
+        },
+        "compile": {
+          "Shared.dll": {}
         }
       },
       "Microsoft.AspNetCore.Antiforgery/5.0.0.0": {
@@ -5682,6 +5686,11 @@
       "sha512": ""
     },
     "Infrastructure/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "Shared/1.0.0": {
       "type": "project",
       "serviceable": false,
       "sha512": ""

@@ -1,12 +1,10 @@
-﻿using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Http;
 using System;
-using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.IO;
 using System.Linq;
-using System.Threading.Tasks;
 
-namespace Web.Validations
+namespace Shared.Validations
 {
     public class AllowedExtensionsAttribute : ValidationAttribute
     {

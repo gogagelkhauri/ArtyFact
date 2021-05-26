@@ -37,7 +37,7 @@ namespace Web
 
             services.AddDbContext<ApplicationDbContext>(options =>
                 options.UseSqlServer(
-                    Configuration.GetConnectionString("DefaultConnection1")), ServiceLifetime.Transient);
+                    Configuration.GetConnectionString("DefaultConnection")), ServiceLifetime.Transient);
             
             services.AddDefaultIdentity<ApplicationUser>(options => options.SignIn.RequireConfirmedAccount = false)
                 .AddRoles<IdentityRole>()

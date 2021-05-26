@@ -1007,10 +1007,19 @@
         "dependencies": {
           "Ardalis.Specification": "4.1.0",
           "Microsoft.AspNetCore.Http.Features": "5.0.4",
-          "Microsoft.AspNetCore.Identity.EntityFrameworkCore": "5.0.0"
+          "Microsoft.AspNetCore.Identity.EntityFrameworkCore": "5.0.0",
+          "Shared": "1.0.0"
         },
         "runtime": {
           "Domain.dll": {}
+        }
+      },
+      "Shared/1.0.0": {
+        "dependencies": {
+          "Microsoft.AspNetCore.Http.Features": "5.0.4"
+        },
+        "runtime": {
+          "Shared.dll": {}
         }
       }
     }
@@ -1771,6 +1780,11 @@
       "hashPath": "system.xml.xdocument.4.3.0.nupkg.sha512"
     },
     "Domain/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "Shared/1.0.0": {
       "type": "project",
       "serviceable": false,
       "sha512": ""
