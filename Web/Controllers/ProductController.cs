@@ -112,8 +112,51 @@ namespace Web.Controllers
         }
 
 
+        public async Task<IActionResult> Edit(int id)
+        {
+            if (id > 0)
+            {
+                var product = await _productService.GetProduct(id);
+
+                if (product == null)
+                    return Redirect("/Product/Products");
+
+                var categories = await _categoryService.GetAllCategories();
+                var paintTypes = await _paintTypeService.GetAllPaintTypes();
+                var viewModel = new AddProductViewModel
+                {
+                    Product = product,
+                    Categories = categories,
+                    PaintTypes = paintTypes
+                };
 
 
+                return View(viewModel);
+            }
+
+            return Redirect("/Product/Products");
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> Update(AddProductViewModel viewModel)
+        {
+            if (!ModelState.IsValid)
+            {
+                //bad
+                return View("Edit", viewModel);
+            }
+
+            try
+            {
+                await _productService.UpdateProduct(viewModel.Product.Id, viewModel.Product);
+                return Redirect("/Product/Product/" + viewModel.Product.Id);
+            }
+            catch(Exception)
+            {
+                return Redirect("/Product/Products");
+            }
+            
+        }
     }  
 
 }

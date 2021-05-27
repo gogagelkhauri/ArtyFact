@@ -22,7 +22,7 @@
                     <th scope="row">@item.Id</th>
                     <td>@item.Name</td>
                     <td>
-                        <a href="/Admin/Category/Edit/@item.Id" class = "btn btn-warning" >Edit</a>
+                        <a href="/Product/Edit/@item.Id" class = "btn btn-warning" >Edit</a>
                         <div>
                             <form method="post" action="/Product/Delete">
                                 <input type="hidden" name="id" value="@item.Id" />

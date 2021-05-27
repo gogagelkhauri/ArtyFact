@@ -90,3 +90,5 @@ D:\work\.netCore\v2\ArtyFact-Back\Application\obj\Debug\net5.0\ref\Application.d
 D:\work\.netCore\v2\ArtyFact-Back\Application\obj\Debug\net5.0\Application.pdb
 C:\Users\gogag\OneDrive\Desktop\ArtyFact-Back\Application\bin\Debug\net5.0\Shared.dll
 C:\Users\gogag\OneDrive\Desktop\ArtyFact-Back\Application\bin\Debug\net5.0\Shared.pdb
+D:\work\.netCore\ArtyFact-Back\Application\bin\Debug\net5.0\Shared.dll
+D:\work\.netCore\ArtyFact-Back\Application\bin\Debug\net5.0\Shared.pdb

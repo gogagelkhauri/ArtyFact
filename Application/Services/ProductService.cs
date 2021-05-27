@@ -129,16 +129,41 @@ namespace Application.Services
             product.Description = productDTO.Description;
             product.ImageURL = productDTO.ImageURL;
             product.Price = productDTO.Price;
-            product.Price = productDTO.Price;
-            if(productDTO.Category == null)
+
+            if (productDTO.ActualImage != null)
             {
-                product.Category = null;
+                if (product.ImageURL != null)
+                {
+                    var OldfilePath = Path.Combine(_env.WebRootPath, product.ImageURL.Replace("/", "\\").Remove(0, 1));
+                    File.Delete(OldfilePath);
+                }
+
+                var fileName = Path.GetFileName(productDTO.ActualImage.FileName);
+                var newName = Guid.NewGuid().ToString("n").Substring(0, 8) + Path.GetExtension(productDTO.ActualImage.FileName);
+                var filePath = Path.Combine(_env.WebRootPath, "images\\product", newName);
+                product.ImageURL = "/images/product/" + newName;
+
+
+                using (var fileSteam = new FileStream(filePath, FileMode.Create))
+                {
+                    await productDTO.ActualImage.CopyToAsync(fileSteam);
+                }
             }
-            else if (_categoryRepo.GetByIdAsync(productDTO.Category.Id).Result.Id != productDTO.Category.Id)
+
+            if (product.ProductDetail.PaintTypeId != 0)
             {
-                var cat = _categoryRepo.GetByIdAsync(productDTO.Category.Id).Result;
-                product.Category = cat;
+
+                var paintType = await _paintTypeRepository.GetByIdAsync(product.ProductDetail.PaintTypeId);
+                if (paintType == null)
+                    throw new Exception();
             }
+
+
+            var category = await _categoryRepo.GetByIdAsync(productDTO.CategoryId);
+            if (category == null)
+                throw new Exception();
+
+            
             await _productRepository.UpdateAsync(product);
         }
     }

@@ -1919,3 +1919,7 @@ D:\work\.netCore\v2\ArtyFact-Back\Web\obj\Debug\net5.0\Web.genruntimeconfig.cach
 C:\Users\gogag\OneDrive\Desktop\ArtyFact-Back\Web\bin\Debug\net5.0\Shared.dll
 C:\Users\gogag\OneDrive\Desktop\ArtyFact-Back\Web\bin\Debug\net5.0\Shared.pdb
 C:\Users\gogag\OneDrive\Desktop\ArtyFact-Back\Web\obj\Debug\net5.0\Razor\Views\Product\Product.cshtml.g.cs
+D:\work\.netCore\ArtyFact-Back\Web\bin\Debug\net5.0\Shared.dll
+D:\work\.netCore\ArtyFact-Back\Web\bin\Debug\net5.0\Shared.pdb
+D:\work\.netCore\ArtyFact-Back\Web\obj\Debug\net5.0\Razor\Views\Product\Edit.cshtml.g.cs
+D:\work\.netCore\ArtyFact-Back\Web\obj\Debug\net5.0\Razor\Views\Product\Product.cshtml.g.cs

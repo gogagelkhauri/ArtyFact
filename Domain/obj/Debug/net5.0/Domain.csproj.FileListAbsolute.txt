@@ -73,3 +73,6 @@ D:\work\.netCore\v2\ArtyFact-Back\Domain\obj\Debug\net5.0\Domain.pdb
 C:\Users\gogag\OneDrive\Desktop\ArtyFact-Back\Domain\bin\Debug\net5.0\Shared.dll
 C:\Users\gogag\OneDrive\Desktop\ArtyFact-Back\Domain\bin\Debug\net5.0\Shared.pdb
 C:\Users\gogag\OneDrive\Desktop\ArtyFact-Back\Domain\obj\Debug\net5.0\Domain.csproj.CopyComplete
+D:\work\.netCore\ArtyFact-Back\Domain\bin\Debug\net5.0\Shared.dll
+D:\work\.netCore\ArtyFact-Back\Domain\bin\Debug\net5.0\Shared.pdb
+D:\work\.netCore\ArtyFact-Back\Domain\obj\Debug\net5.0\Domain.csproj.CopyComplete

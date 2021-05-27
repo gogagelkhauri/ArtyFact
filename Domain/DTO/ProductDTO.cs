@@ -17,7 +17,7 @@ namespace Domain.DTO
         [DisplayFormat( NullDisplayText = "Choose Image" )]
         [Required(ErrorMessage = "Pick an Image")]
         #pragma warning disable 0436
-        [AllowedExtensions(new string[] { ".jpg", ".jpeg", ".png" })]
+        [AllowedExtensions(new string[] { ".jpg", ".jpeg", ".png" }, ErrorMessage = "Your image's filetype is not valid.")]
         public IFormFile ActualImage { get; set; }
         public string ImageURL { get; set; }
 

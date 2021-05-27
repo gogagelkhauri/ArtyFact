@@ -434,3 +434,5 @@ D:\work\.netCore\ArtyFact-Back\WebApi\obj\Debug\net5.0\WebApi.dll
 D:\work\.netCore\ArtyFact-Back\WebApi\obj\Debug\net5.0\ref\WebApi.dll
 D:\work\.netCore\ArtyFact-Back\WebApi\obj\Debug\net5.0\WebApi.pdb
 D:\work\.netCore\ArtyFact-Back\WebApi\obj\Debug\net5.0\WebApi.genruntimeconfig.cache
+D:\work\.netCore\ArtyFact-Back\WebApi\bin\Debug\net5.0\Shared.dll
+D:\work\.netCore\ArtyFact-Back\WebApi\bin\Debug\net5.0\Shared.pdb
