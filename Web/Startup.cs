@@ -74,21 +74,9 @@ namespace Web
             services.AddScoped<IUserProfileService,UserProfileService>();
             services.AddScoped<IRepository<UserProfile>,EfRepository<UserProfile>>();
 
-            //User profile
-            //services.AddScoped<IUserProfileService, UserProfileService>();
-            //services.AddScoped<IRepository<UserCategory>, EfRepository<UserCategory>>();
-
-            //Paint type
-            services.AddScoped<IPaintTypeService,PaintTypeService>();
-            services.AddScoped<IRepository<PaintType>,EfRepository<PaintType>>();
-
             //Product
             services.AddScoped<IProductService,ProductService>();
             services.AddScoped<IRepository<Product>,EfRepository<Product>>();
-
-            //services.AddRazorPages();
-
-            //cookies
             
         }
 

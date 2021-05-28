@@ -18,13 +18,6 @@ namespace Infrastructure.Data.Configuration
         /// <param name="builder">Builder.</param>
         public void Configure(EntityTypeBuilder<Product> builder)
         {
-           //one to one relationship between Product and ProductDetail
-            builder
-            .HasOne<ProductDetail>(p => p.ProductDetail)
-            .WithOne(p => p.Product)
-            .HasForeignKey<ProductDetail>(p => p.ProductId)
-            .OnDelete(DeleteBehavior.Cascade);
-
             //One To Many Relationship Between Product and Category
             builder
             .HasOne<Category>(p => p.Category)

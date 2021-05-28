@@ -11,8 +11,8 @@ namespace Domain.Specifications
             .Where(b => b.Id == id)
             .Include(b => b.Category);
 
-            Query.Include(X => X.ProductDetail)
-                    .ThenInclude(X => X.PaintType);
+            //Query.Include(X => X.ProductDetail)
+            //        .ThenInclude(X => X.PaintType);
         }
     }
 }

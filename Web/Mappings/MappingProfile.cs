@@ -43,24 +43,24 @@ namespace Web.Mapping
                 .ForMember(dest => dest.UserId, o => o.MapFrom(src => src.UserId))
                 .ForAllOtherMembers(x=>x.Ignore());
 
-            CreateMap<PaintTypeDTO, PaintType>();
-            CreateMap<PaintType, PaintTypeDTO>();
+            //CreateMap<PaintTypeDTO, PaintType>();
+            //CreateMap<PaintType, PaintTypeDTO>();
 
-            CreateMap<ProductDetail, ProductDetailDTO>()
-                .ForMember(dest => dest.Id, o => o.MapFrom(src => src.Id))
-                .ForMember(dest => dest.ProductId, o => o.MapFrom(src => src.ProductId))
-                .ForMember(dest => dest.Size, o => o.MapFrom(src => src.Size))
-                .ForMember(dest => dest.PaintType, o => o.MapFrom(src => src.PaintType))
-                .ForMember(dest => dest.PaintTypeId, o => o.MapFrom(src => src.PaintTypeId))
-                .ForAllOtherMembers(x => x.Ignore());
+            //CreateMap<ProductDetail, ProductDetailDTO>()
+            //    .ForMember(dest => dest.Id, o => o.MapFrom(src => src.Id))
+            //    .ForMember(dest => dest.ProductId, o => o.MapFrom(src => src.ProductId))
+            //    .ForMember(dest => dest.Size, o => o.MapFrom(src => src.Size))
+            //    .ForMember(dest => dest.PaintType, o => o.MapFrom(src => src.PaintType))
+            //    .ForMember(dest => dest.PaintTypeId, o => o.MapFrom(src => src.PaintTypeId))
+            //    .ForAllOtherMembers(x => x.Ignore());
 
-            CreateMap<ProductDetailDTO, ProductDetail>()
-                .ForMember(dest => dest.Id, o => o.MapFrom(src => src.Id))
-                //.ForMember(dest => dest.ProductId, o => o.MapFrom(src => src.ProductId))
-                .ForMember(dest => dest.Size, o => o.MapFrom(src => src.Size))
-                .ForMember(dest => dest.PaintType, o => o.MapFrom(src => src.PaintType))
-                .ForMember(dest => dest.PaintTypeId, o => o.MapFrom(src => src.PaintTypeId))
-                .ForAllOtherMembers(x => x.Ignore());
+            //CreateMap<ProductDetailDTO, ProductDetail>()
+            //    .ForMember(dest => dest.Id, o => o.MapFrom(src => src.Id))
+            //    //.ForMember(dest => dest.ProductId, o => o.MapFrom(src => src.ProductId))
+            //    .ForMember(dest => dest.Size, o => o.MapFrom(src => src.Size))
+            //    .ForMember(dest => dest.PaintType, o => o.MapFrom(src => src.PaintType))
+            //    .ForMember(dest => dest.PaintTypeId, o => o.MapFrom(src => src.PaintTypeId))
+            //    .ForAllOtherMembers(x => x.Ignore());
 
             CreateMap<Product, ProductDTO>()
                 .ForMember(dest => dest.Id, o => o.MapFrom(src => src.Id))
@@ -72,7 +72,7 @@ namespace Web.Mapping
                 .ForMember(dest => dest.UserId, o => o.MapFrom(src => src.UserId))
                 .ForMember(dest => dest.Category, o => o.MapFrom(src => src.Category))
                 .ForMember(dest => dest.CategoryId, o => o.MapFrom(src => src.CategoryId))
-                .ForMember(dest => dest.ProductDetail, o => o.MapFrom(src => src.ProductDetail))
+                //.ForMember(dest => dest.ProductDetail, o => o.MapFrom(src => src.ProductDetail))
                 .ForAllOtherMembers(x => x.Ignore());
 
                 CreateMap<ProductDTO, Product>()
@@ -85,7 +85,7 @@ namespace Web.Mapping
                 .ForMember(dest => dest.UserId, o => o.MapFrom(src => src.UserId))
                 .ForMember(dest => dest.Category, o => o.MapFrom(src => src.Category))
                 .ForMember(dest => dest.CategoryId, o => o.MapFrom(src => src.CategoryId))
-                .ForMember(dest => dest.ProductDetail, o => o.MapFrom(src => src.ProductDetail))
+                //.ForMember(dest => dest.ProductDetail, o => o.MapFrom(src => src.ProductDetail))
                 .ForAllOtherMembers(x => x.Ignore());
 
 

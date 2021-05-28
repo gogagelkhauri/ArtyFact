@@ -28,7 +28,6 @@ namespace Domain.DTO
         [Required(ErrorMessage = "Pick an Category")]
         public int CategoryId { get; set; }
         public CategoryDTO Category { get; set; }
-        #nullable enable
-        public ProductDetailDTO? ProductDetail { get; set; }
+        
     }
 }

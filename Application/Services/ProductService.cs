@@ -22,12 +22,10 @@ namespace Application.Services
         private readonly IRepository<Product> _productRepository;
         private readonly IRepository<Category> _categoryRepo;
         private readonly UserManager<ApplicationUser> _userManager;
-        private readonly IRepository<PaintType> _paintTypeRepository;
         private readonly  IHostingEnvironment _env;
         private readonly IMapper _mapper;
 
         public ProductService(IRepository<Product> productRepository,
-        IRepository<PaintType> paintTypeRepository,
         IRepository<Category> categoryRepo,
         IHostingEnvironment env,
         UserManager<ApplicationUser> userManager,
@@ -36,7 +34,6 @@ namespace Application.Services
             _productRepository = productRepository;
             _categoryRepo = categoryRepo;
             _mapper = mapper;
-            _paintTypeRepository = paintTypeRepository;
             _env = env;
             _userManager = userManager;
         }
@@ -45,47 +42,22 @@ namespace Application.Services
         public async Task<ProductDTO> AddProduct(ProductDTO productDTO)
         {
             var product = _mapper.Map<Product>(productDTO);
-            //var product = new Product();
-            //product.UserId = _userManager.GetUserAsync(HttpContext.User).Id;
-            //product.Name = productDTO.Name;
-            //product.Description = productDTO.Description;
-            //product.Price = productDTO.Price;
-            //product.CategoryId = productDTO.Category.Id;
-            //product.InStock = true;
-            //product.UserId = productDTO.UserId;
-
 
             var category = await _categoryRepo.GetByIdAsync(product.CategoryId);
-            //product.Category = category;
             if (category == null)
                 throw new Exception();
 
             if (productDTO.ActualImage != null)
             {
-                // if(userProfileInDb.Image != null)
-                // {
-                //     var OldfilePath = Path.Combine(_env.WebRootPath,  userProfileInDb.Image.Replace("/", "\\").Remove(0, 1));
-                //     File.Delete(OldfilePath);
-                // }
-
                 var fileName = Path.GetFileName(productDTO.ActualImage.FileName);
                 var newName = Guid.NewGuid().ToString("n").Substring(0, 8) + Path.GetExtension(productDTO.ActualImage.FileName);
                 var filePath = Path.Combine(_env.WebRootPath, "images\\product", newName);
                 product.ImageURL = "/images/product/" + newName;
 
-
                 using (var fileSteam = new FileStream(filePath, FileMode.Create))
                 {
                     await productDTO.ActualImage.CopyToAsync(fileSteam);
                 }
-            }
-
-            if (product.ProductDetail.PaintTypeId != 0)
-            {
-
-                var paintType = await _paintTypeRepository.GetByIdAsync(product.ProductDetail.PaintTypeId);
-                if (paintType == null)
-                    throw new Exception();
             }
 
             var productInDb = await _productRepository.AddAsync(product);
@@ -120,7 +92,6 @@ namespace Application.Services
 
         public async Task UpdateProduct(int id, ProductDTO productDTO)
         {
-            //var product = _mapper.Map<Product>(productDTO);
             var spec = new ProductWithDetailAndPaintType(id);
             var product = await _productRepository.GetBySpecification(spec);
 
@@ -149,15 +120,6 @@ namespace Application.Services
                     await productDTO.ActualImage.CopyToAsync(fileSteam);
                 }
             }
-
-            if (product.ProductDetail.PaintTypeId != 0)
-            {
-
-                var paintType = await _paintTypeRepository.GetByIdAsync(product.ProductDetail.PaintTypeId);
-                if (paintType == null)
-                    throw new Exception();
-            }
-
 
             var category = await _categoryRepo.GetByIdAsync(productDTO.CategoryId);
             if (category == null)

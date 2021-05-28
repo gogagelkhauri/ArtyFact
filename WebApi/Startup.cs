@@ -136,10 +136,6 @@ namespace WebApi
             //User profile
             services.AddScoped<IUserProfileService,UserProfileService>();
             services.AddScoped<IRepository<UserProfile>,EfRepository<UserProfile>>();
-            
-            //Paint type
-            services.AddScoped<IPaintTypeService,PaintTypeService>();
-            services.AddScoped<IRepository<PaintType>,EfRepository<PaintType>>();
 
             //Product
             services.AddScoped<IProductService,ProductService>();

@@ -24,8 +24,6 @@ namespace Infrastructure.Data
         public DbSet<UserProfile> UserProfiles { get; set; }
         public DbSet<UserCategory> UserCategories { get; set; }
         public DbSet<Product> Products { get; set; }
-        public DbSet<ProductDetail> ProductDetails { get; set; }
-        public DbSet<PaintType> PaintTypes { get; set; }
         public DbSet<Post> Posts { get; set; }
         public DbSet<Basket> Baskets { get; set; }
         public DbSet<BasketItem> BasketItems { get; set; }
@@ -42,12 +40,6 @@ namespace Infrastructure.Data
             //change Identity table Default names
             builder.ChangeIdentityTableDefaultNames();
 
-            //One To Many Relationship Between ProductDetail and PaintType
-            builder.Entity<ProductDetail>()
-            .HasOne<PaintType>(p => p.PaintType)
-            .WithMany(p => p.ProductDetails)
-            .HasForeignKey(p => p.PaintTypeId);
-
             builder.Entity<Order>()
             .HasOne<UserProfile>(b => b.User)
             .WithMany(b => b.Orders)
@@ -59,7 +51,6 @@ namespace Infrastructure.Data
             .HasOne<UserProfile>(p => p.User)
             .WithMany(p => p.Posts)
             .HasForeignKey(p => p.UserId);
-            
         }
 
     }

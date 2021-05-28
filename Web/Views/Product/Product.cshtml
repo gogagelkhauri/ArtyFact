@@ -8,9 +8,7 @@
     <div>
         <img src="@Model.ImageURL" style="width:150px;height: 150px;" alt="Image">
     </div>
-    <p>Description: <br> @Model.Description</p>
+    <p>Description: <br> @Html.Raw(Model.Description)</p>
     <p>Price: @Model.Price</p>
     <p>Category: @Model.Category.Name</p>
-    <p>Size: @Model.ProductDetail.Size</p>
-    <p>Paint Type: @Model.ProductDetail.PaintType.Name</p>
 </div>

@@ -3,6 +3,10 @@
     ViewData["Title"] = "Edit Product";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
+@section Styles
+{
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Trumbowyg/2.23.0/ui/trumbowyg.min.css" integrity="sha512-iw/TO6rC/bRmSOiXlanoUCVdNrnJBCOufp2s3vhTPyP1Z0CtTSBNbEd5wIo8VJanpONGJSyPOZ5ZRjZ/ojmc7g==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+}
 
 <div class="container">
     @Html.ActionLink("Back", "Products", "Product", new { Area = "" }, new { @class = "btn btn-primary float-right mb-2" })
@@ -11,12 +15,12 @@
         <input type="hidden" asp-for="@Model.Product.Id" value="@Model.Product.Id" />
         <div class="form-group">
             @Html.LabelFor(m => m.Product.Name)
-            @Html.TextBoxFor(m => m.Product.Name,  new { placeholder = "Enter Title", @class = "form-control" })
+            @Html.TextBoxFor(m => m.Product.Name, new { placeholder = "Enter Title", @class = "form-control" })
             <span asp-validation-for="Product.Name" class="text-danger"></span>
         </div>
         <div class="form-group">
             @Html.LabelFor(m => m.Product.Description)
-            <textarea asp-for="@Model.Product.Description" class="form-control" cols="30" rows="10"></textarea>
+            <textarea asp-for="@Model.Product.Description" id="editor" class="form-control" cols="30" rows="10"></textarea>
             <span asp-validation-for="Product.Description" class="text-danger"></span>
         </div>
 
@@ -44,36 +48,16 @@
             <span asp-validation-for="Product.ActualImage" class="text-danger"></span>
         </div>
 
-
-
-        <div class="form-group">
-            @Html.LabelFor(m => m.Product.ProductDetail.Size)
-            <input asp-for="@Model.Product.ProductDetail.Size" type="text" class="form-control" placeholder="Enter Price" />
-            <span asp-validation-for="Product.ProductDetail.Size" class="text-danger"></span>
-        </div>
-
-        <div class="form-group">
-            @Html.LabelFor(m => m.Product.ProductDetail.PaintType)
-            <select asp-for="@Model.Product.ProductDetail.PaintTypeId" class="form-control">
-                <option value="">Enter PaintType</option>
-                @foreach (var item in @Model.PaintTypes)
-                {
-                    <option value="@item.Id">@item.Name</option>
-                }
-            </select>
-            <span asp-validation-for="Product.ProductDetail.PaintTypeId" class="text-danger"></span>
-        </div>
-
-
-
         <button type="submit" class="btn btn-primary">Submit</button>
     </form>
 
 </div>
 
 @section Scripts {
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Trumbowyg/2.23.0/trumbowyg.min.js" integrity="sha512-sffB9/tXFFTwradcJHhojkhmrCj0hWeaz8M05Aaap5/vlYBfLx5Y7woKi6y0NrqVNgben6OIANTGGlojPTQGEw==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
     <partial name="_ValidationScriptsPartial" />
     <script>
+        $('#editor').trumbowyg();
         function readURL(input) {
             if (input.files && input.files[0]) {
                 var reader = new FileReader();

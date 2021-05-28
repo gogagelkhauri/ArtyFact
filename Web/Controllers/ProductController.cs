@@ -21,18 +21,15 @@ namespace Web.Controllers
     {  
         private readonly IProductService _productService;
         private readonly ICategoryService _categoryService;
-        private readonly IPaintTypeService _paintTypeService;
         private readonly UserManager<ApplicationUser> _userManager;
 
         public ProductController(IProductService productService,
         ICategoryService categoryService,
-        IPaintTypeService paintTypeService,
         UserManager<ApplicationUser> userManager
         )
         {
           _productService = productService;
           _categoryService = categoryService;
-          _paintTypeService = paintTypeService;
           _userManager = userManager;
         }
 
@@ -65,13 +62,10 @@ namespace Web.Controllers
         {  
             //var user = await _userManager.FindByNameAsync(username);
             var categories = await  _categoryService.GetAllCategories();
-            var paintTypes = await  _paintTypeService.GetAllPaintTypes();
-            //var productDTO = 
             var viewModel = new AddProductViewModel
             {
                 Product = new ProductDTO(),
-                Categories = categories,
-                PaintTypes = paintTypes
+                Categories = categories
             };
             
             return View(viewModel);  
@@ -122,12 +116,10 @@ namespace Web.Controllers
                     return Redirect("/Product/Products");
 
                 var categories = await _categoryService.GetAllCategories();
-                var paintTypes = await _paintTypeService.GetAllPaintTypes();
                 var viewModel = new AddProductViewModel
                 {
                     Product = product,
-                    Categories = categories,
-                    PaintTypes = paintTypes
+                    Categories = categories
                 };
 
 

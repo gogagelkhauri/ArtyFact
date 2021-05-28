@@ -7,7 +7,7 @@ namespace Domain.DTO
     {
         public int Id { get; set; }
 
-        //[Required]
+        [Required]
         public string Name { get; set; }
     }
 

@@ -14,7 +14,6 @@ namespace Domain.Entities
         public UserProfile User { get; set; }
         public int CategoryId { get; set; }
         public Category Category { get; set; }
-        public ProductDetail ProductDetail { get; set; }
         public BasketItem BasketItem { get; set; }
         public OrderItem OrderItem { get; set; }
     }
