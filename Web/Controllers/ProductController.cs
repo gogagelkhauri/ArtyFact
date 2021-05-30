@@ -79,6 +79,7 @@ namespace Web.Controllers
             viewModel.Product.UserId = user.UserProfile.Id;
             if (ModelState.IsValid)
             {
+                viewModel.Product.SetActualImage(viewModel.ActualImage);
                 try
                 {
                     await _productService.AddProduct(viewModel.Product);
@@ -116,7 +117,7 @@ namespace Web.Controllers
                     return Redirect("/Product/Products");
 
                 var categories = await _categoryService.GetAllCategories();
-                var viewModel = new AddProductViewModel
+                var viewModel = new EditProductViewModel
                 {
                     Product = product,
                     Categories = categories
@@ -130,14 +131,18 @@ namespace Web.Controllers
         }
 
         [HttpPost]
-        public async Task<IActionResult> Update(AddProductViewModel viewModel)
+        public async Task<IActionResult> Update(EditProductViewModel viewModel)
         {
             if (!ModelState.IsValid)
             {
                 //bad
                 return View("Edit", viewModel);
             }
-
+            
+            if(viewModel.ActualImage != null)
+            {
+                viewModel.Product.SetActualImage(viewModel.ActualImage);
+            }
             try
             {
                 await _productService.UpdateProduct(viewModel.Product.Id, viewModel.Product);

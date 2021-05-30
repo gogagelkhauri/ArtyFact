@@ -29,7 +29,7 @@ namespace Web.Areas.Admin.Controlles
         [HttpPost]
         public async Task<IActionResult> Store(CategoryDTO categoryDTO)
         {
-            var existingCategory = _categoryService.GetCategoryByName(categoryDTO.Name);
+            var existingCategory = await _categoryService.GetCategoryByName(categoryDTO.Name);
             if(!ModelState.IsValid || existingCategory != null)
             {
                 return View("create", categoryDTO);
@@ -42,8 +42,8 @@ namespace Web.Areas.Admin.Controlles
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Delete(int id)
         {
-            
-            if(ModelState.IsValid)
+            var existingCategory = await _categoryService.GetCategory(id);
+            if(ModelState.IsValid  || existingCategory == null)
             {
                 await _categoryService.DeleteCategory(id);
             }
@@ -64,7 +64,8 @@ namespace Web.Areas.Admin.Controlles
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Update(CategoryDTO categoryDTO)
         {
-            if (!ModelState.IsValid)
+            var existingCategory = await _categoryService.GetCategory(categoryDTO.Id);
+            if (!ModelState.IsValid  || existingCategory != null)
             {
                 return View("edit", categoryDTO);
             }

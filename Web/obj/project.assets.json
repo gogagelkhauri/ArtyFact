@@ -10126,33 +10126,31 @@
       "Infrastructure >= 1.0.0",
       "MediatR.Extensions.Microsoft.DependencyInjection >= 9.0.0",
       "Microsoft.AspNetCore.Diagnostics.EntityFrameworkCore >= 5.0.0",
+      "Microsoft.AspNetCore.Http.Features >= 5.0.4",
       "Microsoft.AspNetCore.Identity.EntityFrameworkCore >= 5.0.0",
       "Microsoft.AspNetCore.Identity.UI >= 5.0.0",
       "Microsoft.AspNetCore.Mvc.Razor.RuntimeCompilation >= 5.0.0",
       "Microsoft.EntityFrameworkCore >= 5.0.0",
       "Microsoft.EntityFrameworkCore.SqlServer >= 5.0.0",
       "Microsoft.EntityFrameworkCore.Tools >= 5.0.0",
-      "Microsoft.VisualStudio.Web.CodeGeneration.Design >= 5.0.0"
+      "Microsoft.VisualStudio.Web.CodeGeneration.Design >= 5.0.0",
+      "Shared >= 1.0.0"
     ]
   },
   "packageFolders": {
-    "C:\\Users\\g.gelkhauri\\.nuget\\packages\\": {},
-    "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder": {}
+    "C:\\Users\\gogag\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "D:\\work\\.netCore\\ArtyFact-Back\\Web\\Web.csproj",
+      "projectUniqueName": "C:\\Users\\gogag\\OneDrive\\Desktop\\ArtyFact-Back\\Web\\Web.csproj",
       "projectName": "Web",
-      "projectPath": "D:\\work\\.netCore\\ArtyFact-Back\\Web\\Web.csproj",
-      "packagesPath": "C:\\Users\\g.gelkhauri\\.nuget\\packages\\",
-      "outputPath": "D:\\work\\.netCore\\ArtyFact-Back\\Web\\obj\\",
+      "projectPath": "C:\\Users\\gogag\\OneDrive\\Desktop\\ArtyFact-Back\\Web\\Web.csproj",
+      "packagesPath": "C:\\Users\\gogag\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\gogag\\OneDrive\\Desktop\\ArtyFact-Back\\Web\\obj\\",
       "projectStyle": "PackageReference",
-      "fallbackFolders": [
-        "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
-      ],
       "configFilePaths": [
-        "C:\\Users\\g.gelkhauri\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\gogag\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
@@ -10166,11 +10164,14 @@
         "net5.0": {
           "targetAlias": "net5.0",
           "projectReferences": {
-            "D:\\work\\.netCore\\ArtyFact-Back\\Domain\\Domain.csproj": {
-              "projectPath": "D:\\work\\.netCore\\ArtyFact-Back\\Domain\\Domain.csproj"
+            "C:\\Users\\gogag\\OneDrive\\Desktop\\ArtyFact-Back\\Domain\\Domain.csproj": {
+              "projectPath": "C:\\Users\\gogag\\OneDrive\\Desktop\\ArtyFact-Back\\Domain\\Domain.csproj"
             },
-            "D:\\work\\.netCore\\ArtyFact-Back\\Infrastructure\\Infrastructure.csproj": {
-              "projectPath": "D:\\work\\.netCore\\ArtyFact-Back\\Infrastructure\\Infrastructure.csproj"
+            "C:\\Users\\gogag\\OneDrive\\Desktop\\ArtyFact-Back\\Infrastructure\\Infrastructure.csproj": {
+              "projectPath": "C:\\Users\\gogag\\OneDrive\\Desktop\\ArtyFact-Back\\Infrastructure\\Infrastructure.csproj"
+            },
+            "C:\\Users\\gogag\\OneDrive\\Desktop\\ArtyFact-Back\\Shared\\Shared.csproj": {
+              "projectPath": "C:\\Users\\gogag\\OneDrive\\Desktop\\ArtyFact-Back\\Shared\\Shared.csproj"
             }
           }
         }
@@ -10192,6 +10193,10 @@
           "Microsoft.AspNetCore.Diagnostics.EntityFrameworkCore": {
             "target": "Package",
             "version": "[5.0.0, )"
+          },
+          "Microsoft.AspNetCore.Http.Features": {
+            "target": "Package",
+            "version": "[5.0.4, )"
           },
           "Microsoft.AspNetCore.Identity.EntityFrameworkCore": {
             "target": "Package",
@@ -10242,7 +10247,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.202\\RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.100\\RuntimeIdentifierGraph.json"
       }
     }
   }

@@ -41,9 +41,9 @@
         </div>
         <img class="esh-catalog-thumbnail" id="readImg" src="@Model.Product.ImageURL" style="width:100px;height:100px" />
         <div class="form-group">
-            @Html.LabelFor(m => m.Product.ActualImage)
-            <input type="file" onchange="readURL(this);" asp-for="@Model.Product.ActualImage" class="form-control" />
-            <span asp-validation-for="Product.ActualImage" class="text-danger"></span>
+            @Html.LabelFor(m => m.ActualImage)
+            <input type="file" onchange="readURL(this);" asp-for="@Model.ActualImage" class="form-control" />
+            <span asp-validation-for="ActualImage" class="text-danger"></span>
         </div>
 
         <button type="submit" class="btn btn-primary">Submit</button>

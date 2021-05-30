@@ -8,19 +8,21 @@
    
     <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet">
 }
-    <form method="post">
+    @* <form method="post"> *@
         <div class="container mt-2">
             <div class="wrapper wrapper-content animated fadeInRight">
                 <div class="row">
                     <div class="col-md-9">
                         <div class="ibox">
                             <div class="ibox-title">
-                                <span class="pull-right">(<strong>88</strong>) items</span>
+                                <span class="pull-right">(<strong>@Model.BasketItems.Count()</strong>) items</span>
                                 <h5>Items in your cart</h5>
                             </div>
                             @*@for (int i = 0; i < Model.BasketModel.Items.Count; i++)
                             {
                                 var item = Model.BasketModel.Items[i];*@
+                                @foreach (var item in @Model.BasketItems)
+                                {
                                 <div class="ibox-content">
                                     <div class="table-responsive">
                                         <table class="table shoping-cart-table">
@@ -34,7 +36,7 @@
                                                     <td class="desc">
                                                         <h3>
                                                             <a href="#" class="text-navy">
-                                                                 product1
+                                                                 @item.Product.Name
                                                             </a>
                                                         </h3>
                                                         <p class="small">
@@ -49,12 +51,18 @@
                                                         <div class="m-t-sm">
                                                             <a href="#" class="text-muted"><i class="fa fa-gift"></i> Add gift package</a>
                                                             |
-                                                            <a href="#" class="text-muted"><i class="fa fa-trash"></i> Remove item</a>
+                                                            <form id="remove_form" method="post" action="/Basket/Remove">
+                                                                <input type="hidden" name="productId" value="@item.ProductId" />
+                                                                @Html.AntiForgeryToken()
+                                                                <!-- Button trigger modal -->
+                                                                <button type="submit"><i class="fa fa-trash"></i> Remove item</button>
+                                                                @* <a href="" id="remove_button" class="text-muted"><i class="fa fa-trash"></i> Remove item</a>  *@
+                                                            </form>
                                                         </div>
                                                     </td>
 
                                                     <td>
-                                                        $222
+                                                        @item.Price
                                                         <s class="small text-muted">$230,00</s>
                                                     </td>
                                                     <td width="85">
@@ -75,6 +83,7 @@
                                     </div>
 
                                 </div>
+                                }
                             @*}*@
                             <div class="ibox-content">
                                 @*<a asp-page="./Checkout" class="btn btn-primary pull-right"><i class="fa fa fa-shopping-cart"></i> Checkout</a>*@
@@ -161,4 +170,15 @@
                 </div>
             </div>
         </div>
-    </form>
+    @* </form> *@
+@section Scripts
+{
+    <script>
+        $('#remove_button').on('click',function(){
+            console.log('clicked');
+            $('#remove_form')
+            .attr("action", '/Basket/Remove')
+            .submit();
+        });
+    </script>
+}

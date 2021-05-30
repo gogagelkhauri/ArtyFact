@@ -18,6 +18,7 @@ using Domain.Interfaces.Services;
 using Domain.Interfaces;
 using Domain.Entities;
 using Application.Services;
+using Domain.Entities.Basket;
 
 namespace Web
 {
@@ -37,7 +38,7 @@ namespace Web
 
             services.AddDbContext<ApplicationDbContext>(options =>
                 options.UseSqlServer(
-                    Configuration.GetConnectionString("DefaultConnection1")), ServiceLifetime.Transient);
+                    Configuration.GetConnectionString("DefaultConnection")), ServiceLifetime.Transient);
             
             services.AddDefaultIdentity<ApplicationUser>(options => options.SignIn.RequireConfirmedAccount = false)
                 .AddRoles<IdentityRole>()
@@ -77,6 +78,13 @@ namespace Web
             //Product
             services.AddScoped<IProductService,ProductService>();
             services.AddScoped<IRepository<Product>,EfRepository<Product>>();
+
+            //Basket
+            services.AddScoped<IBasketService,BasketService>();
+            services.AddScoped<IRepository<Basket>,EfRepository<Basket>>();
+
+            //basketItem
+            services.AddScoped<IRepository<BasketItem>,EfRepository<BasketItem>>();
             
         }
 

@@ -24,8 +24,18 @@
                     <td>
                         <a href="/Product/Edit/@item.Id" class = "btn btn-warning" >Edit</a>
                         <div>
+                            <form method="post" action="/Basket/Add">
+                                <input type="hidden" name="productId" value="@item.Id" />
+                                @Html.AntiForgeryToken()
+                                <!-- Button trigger modal -->
+                                <button type="submit" class="btn btn-warning mt-2">
+                                    Add To Card
+                                </button>
+                            </form>
+                        </div>
+                        <div>
                             <form method="post" action="/Product/Delete">
-                                <input type="hidden" name="id" value="@item.Id" />
+                                <input type="hidden" name="productId" value="@item.Id" />
                                 @Html.AntiForgeryToken()
                                 <!-- Button trigger modal -->
                                 <button type="submit" class="btn btn-danger mt-2">
