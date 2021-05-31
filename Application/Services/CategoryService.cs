@@ -60,7 +60,7 @@ namespace Application.Services
         public async Task<CategoryDTO> GetCategoryByName(string name)
         {
             var spec = new GetCategoryByName(name);
-            var category = await _repository.GetAllBySpecification(spec);
+            var category = await _repository.GetBySpecification(spec);
             var categoryDTO = _mapper.Map<CategoryDTO>(category);
             return categoryDTO;
         }

@@ -4,7 +4,7 @@ namespace Domain.Entities.Basket
 {
     public class BasketItem : BaseEntity
     {
-        public decimal Price { get; set; }
+        public float Price { get; set; }
 
         public int BasketId { get; set; }
         public Basket Basket { get; set; }

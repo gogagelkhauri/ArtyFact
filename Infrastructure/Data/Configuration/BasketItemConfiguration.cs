@@ -28,12 +28,15 @@ namespace Infrastructure.Data.Configuration
             //One To One Relationships between BasketItem and Product
             builder
             .HasOne<Product>(p => p.Product)
-            .WithOne(b => b.BasketItem)
-            .HasForeignKey<BasketItem>(p => p.ProductId);
+            .WithMany(b => b.BasketItems)
+            .HasForeignKey(p => p.ProductId);
 
             builder.Property(i => i.Price)
-                .IsRequired(true)
-                .HasColumnType("decimal(18,2)");
+            .IsRequired(true)
+            .HasColumnType("decimal(18,2)");
+                
+
+
         }
     }
 }

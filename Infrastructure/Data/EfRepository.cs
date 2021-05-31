@@ -33,7 +33,7 @@ namespace Infrastructure.Data
         public async Task<T> GetBySpecification(ISpecification<T> spec) 
         {
             var specificationResult = ApplySpecification(spec);
-            return await specificationResult.FirstAsync();
+            return await specificationResult.FirstOrDefaultAsync();
         }
 
         public async Task<IList<T>> GetAllBySpecification(ISpecification<T> spec) 

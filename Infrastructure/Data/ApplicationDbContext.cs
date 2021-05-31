@@ -51,6 +51,13 @@ namespace Infrastructure.Data
             .HasOne<UserProfile>(p => p.User)
             .WithMany(p => p.Posts)
             .HasForeignKey(p => p.UserId);
+
+            //one to one between userprofile and basket
+            builder.Entity<UserProfile>()
+                .HasOne<Basket>(s => s.Basket)
+                .WithOne(ad => ad.User)
+                .HasForeignKey<Basket>(ad => ad.UserId)
+                .OnDelete(DeleteBehavior.Restrict);
         }
 
     }

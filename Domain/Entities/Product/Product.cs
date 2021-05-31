@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using Domain.Entities.Basket;
 using Domain.Entities.User;
 
@@ -14,7 +15,7 @@ namespace Domain.Entities
         public UserProfile User { get; set; }
         public int CategoryId { get; set; }
         public Category Category { get; set; }
-        public BasketItem BasketItem { get; set; }
+        public List<BasketItem> BasketItems { get; set; }
         public OrderItem OrderItem { get; set; }
     }
 }

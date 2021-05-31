@@ -14,11 +14,11 @@ namespace Domain.DTO
         [Required]
         public string Description { get; set; }
         
-        [DisplayFormat( NullDisplayText = "Choose Image" )]
-        [Required(ErrorMessage = "Pick an Image")]
-        #pragma warning disable 0436
-        [AllowedExtensions(new string[] { ".jpg", ".jpeg", ".png" }, ErrorMessage = "Your image's filetype is not valid.")]
-        public IFormFile ActualImage { get; set; }
+        // [DisplayFormat( NullDisplayText = "Choose Image" )]
+        // [Required(ErrorMessage = "Pick an Image")]
+        // #pragma warning disable 0436
+        // [AllowedExtensions(new string[] { ".jpg", ".jpeg", ".png" }, ErrorMessage = "Your image's filetype is not valid.")]
+        //public IFormFile ActualImage { get; set; }
         public string ImageURL { get; set; }
 
         [Range(1, float.MaxValue, ErrorMessage = "Please enter valid float Number")]
@@ -28,6 +28,17 @@ namespace Domain.DTO
         [Required(ErrorMessage = "Pick an Category")]
         public int CategoryId { get; set; }
         public CategoryDTO Category { get; set; }
+        private IFormFile _actualImage;
+
+        public IFormFile GetActualImage()
+        {
+            return _actualImage;
+        }
+
+        public void SetActualImage(IFormFile image)
+        {
+           _actualImage = image;
+        }
         
     }
 }

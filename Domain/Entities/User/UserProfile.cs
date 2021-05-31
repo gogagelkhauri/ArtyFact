@@ -16,5 +16,6 @@ namespace Domain.Entities.User
         public List<Product> Products { get; set; }
         public List<Post> Posts { get; set; }
         public List<Order> Orders { get; set; }
+        public Basket.Basket Basket { get; set; }
     }
 }

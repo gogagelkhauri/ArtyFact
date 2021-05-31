@@ -47,16 +47,16 @@ namespace Application.Services
             if (category == null)
                 throw new Exception();
 
-            if (productDTO.ActualImage != null)
+            if (productDTO.GetActualImage() != null)
             {
-                var fileName = Path.GetFileName(productDTO.ActualImage.FileName);
-                var newName = Guid.NewGuid().ToString("n").Substring(0, 8) + Path.GetExtension(productDTO.ActualImage.FileName);
+                var fileName = Path.GetFileName(productDTO.GetActualImage().FileName);
+                var newName = Guid.NewGuid().ToString("n").Substring(0, 8) + Path.GetExtension(productDTO.GetActualImage().FileName);
                 var filePath = Path.Combine(_env.WebRootPath, "images\\product", newName);
                 product.ImageURL = "/images/product/" + newName;
 
                 using (var fileSteam = new FileStream(filePath, FileMode.Create))
                 {
-                    await productDTO.ActualImage.CopyToAsync(fileSteam);
+                    await productDTO.GetActualImage().CopyToAsync(fileSteam);
                 }
             }
 
@@ -70,7 +70,11 @@ namespace Application.Services
         {
             var product = await _productRepository.GetByIdAsync(id);
             if(product != null)
+            {
+                var OldfilePath = Path.Combine(_env.WebRootPath, product.ImageURL.Replace("/", "\\").Remove(0, 1));
+                File.Delete(OldfilePath);
                 await _productRepository.DeleteAsync(product);
+            }
         }
 
         public async Task<List<ProductDTO>> GetAllproducts()
@@ -98,10 +102,9 @@ namespace Application.Services
             product.Name = productDTO.Name;
             product.InStock = productDTO.InStock;
             product.Description = productDTO.Description;
-            product.ImageURL = productDTO.ImageURL;
             product.Price = productDTO.Price;
 
-            if (productDTO.ActualImage != null)
+            if (productDTO.GetActualImage() != null)
             {
                 if (product.ImageURL != null)
                 {
@@ -109,15 +112,15 @@ namespace Application.Services
                     File.Delete(OldfilePath);
                 }
 
-                var fileName = Path.GetFileName(productDTO.ActualImage.FileName);
-                var newName = Guid.NewGuid().ToString("n").Substring(0, 8) + Path.GetExtension(productDTO.ActualImage.FileName);
+                var fileName = Path.GetFileName(productDTO.GetActualImage().FileName);
+                var newName = Guid.NewGuid().ToString("n").Substring(0, 8) + Path.GetExtension(productDTO.GetActualImage().FileName);
                 var filePath = Path.Combine(_env.WebRootPath, "images\\product", newName);
                 product.ImageURL = "/images/product/" + newName;
 
 
                 using (var fileSteam = new FileStream(filePath, FileMode.Create))
                 {
-                    await productDTO.ActualImage.CopyToAsync(fileSteam);
+                    await productDTO.GetActualImage().CopyToAsync(fileSteam);
                 }
             }
 
