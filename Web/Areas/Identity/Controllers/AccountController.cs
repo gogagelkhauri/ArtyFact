@@ -107,7 +107,7 @@ namespace Web.Areas.Identity.Controllers
                         UserProfile = new UserProfile(),
                     };  
                     var result = await userManager.CreateAsync(user, request.Password);
-                    await userManager.AddToRoleAsync(user, "Client");  
+                    await userManager.AddToRoleAsync(user, "Default");  
                     if (result.Succeeded)  
                     {  
                         return RedirectToAction("Login");  

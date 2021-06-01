@@ -49,8 +49,6 @@
                                                         </dl>
 
                                                         <div class="m-t-sm">
-                                                            <a href="#" class="text-muted"><i class="fa fa-gift"></i> Add gift package</a>
-                                                            |
                                                             <form id="remove_form" method="post" action="/Basket/Remove">
                                                                 <input type="hidden" name="productId" value="@item.ProductId" />
                                                                 @Html.AntiForgeryToken()
@@ -62,21 +60,13 @@
                                                     </td>
 
                                                     <td>
-                                                        @item.Price
-                                                        <s class="small text-muted">$230,00</s>
+                                                        $@item.Price
                                                     </td>
                                                     <td width="85">
                                                         <input type="hidden" name="" value="" />
                                                         <input type="number" class="form-control" min="0" name="" value="">
-
-
                                                     </td>
-                                                    <td>
-                                                        <h4>
-
-                                                            
-                                                        </h4>
-                                                    </td>
+                                                    
                                                 </tr>
                                             </tbody>
                                         </table>
@@ -88,6 +78,7 @@
                             <div class="ibox-content">
                                 @*<a asp-page="./Checkout" class="btn btn-primary pull-right"><i class="fa fa fa-shopping-cart"></i> Checkout</a>*@
                                 <a href="/" class="btn btn-white"><i class="fa fa-arrow-left"></i> Continue shopping</a>
+                                <a href="/Basket/Checkout" class="btn btn-white float-right"><i class="fa fa-arrow-right"></i> Checkout</a>
 
                             </div>
                         </div>
@@ -119,49 +110,6 @@
                                             Update
                                         </button>
                                         <a href="#" class="btn btn-danger btn-sm"> Cancel</a>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="ibox">
-                            <div class="ibox-title">
-                                <h5>Support</h5>
-                            </div>
-                            <div class="ibox-content text-center">
-                                <h3><i class="fa fa-phone"></i> +43 100 783 001</h3>
-                                <span class="small">
-                                    Please contact with us if you have any questions. We are avalible 24h.
-                                </span>
-                            </div>
-                        </div>
-
-                        <div class="ibox">
-                            <div class="ibox-content">
-
-                                <p class="font-bold">
-                                    Other products you may be interested
-                                </p>
-                                <hr>
-                                <div>
-                                    <a href="#" class="product-name"> Product 1</a>
-                                    <div class="small m-t-xs">
-                                        Many desktop publishing packages and web page editors now.
-                                    </div>
-                                    <div class="m-t text-righ">
-
-                                        <a href="#" class="btn btn-xs btn-outline btn-primary">Info <i class="fa fa-long-arrow-right"></i> </a>
-                                    </div>
-                                </div>
-                                <hr>
-                                <div>
-                                    <a href="#" class="product-name"> Product 2</a>
-                                    <div class="small m-t-xs">
-                                        Many desktop publishing packages and web page editors now.
-                                    </div>
-                                    <div class="m-t text-righ">
-
-                                        <a href="#" class="btn btn-xs btn-outline btn-primary">Info <i class="fa fa-long-arrow-right"></i> </a>
                                     </div>
                                 </div>
                             </div>

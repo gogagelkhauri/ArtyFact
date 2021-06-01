@@ -38,7 +38,7 @@ namespace Web
 
             services.AddDbContext<ApplicationDbContext>(options =>
                 options.UseSqlServer(
-                    Configuration.GetConnectionString("DefaultConnection")), ServiceLifetime.Transient);
+                    Configuration.GetConnectionString("DefaultConnection1")), ServiceLifetime.Transient);
             
             services.AddDefaultIdentity<ApplicationUser>(options => options.SignIn.RequireConfirmedAccount = false)
                 .AddRoles<IdentityRole>()
@@ -85,7 +85,11 @@ namespace Web
 
             //basketItem
             services.AddScoped<IRepository<BasketItem>,EfRepository<BasketItem>>();
-            
+
+            //Order
+            services.AddScoped<IOrderService, OrderService>();
+            services.AddScoped<IRepository<Order>, EfRepository<Order>>();
+
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

@@ -34,14 +34,7 @@
               </div>
               <span class="text-muted">$5</span>
             </li>
-            <li class="list-group-item d-flex justify-content-between bg-light">
-              <div class="text-success">
-                <h6 class="my-0">Promo code</h6>
-                <small>EXAMPLECODE</small>
-              </div>
-              <span class="text-success">-$5</span>
-            </li>
-            <li class="list-group-item d-flex justify-content-between">
+            <li class="list-group-item d-flex justify-content-between text-success">
               <span>Total (USD)</span>
               <strong>$20</strong>
             </li>
@@ -50,40 +43,43 @@
           
         </div>
         <div class="col-md-8 order-md-1">
-          <h4 class="mb-3">Billing address</h4>
-          <form >
-            <div class="row">
-            </div>
+          <h4 class="mb-3">Billing Form</h4>
+          <form method="POST" action="/Basket/Order">
+              @Html.AntiForgeryToken()
 
-            
-
-            <div class="mb-3">
-              <label for="address">Address</label>
-              <input asp-for="@Model.Address" type="text" class="form-control" id="address" placeholder="1234 Main St" required>
-              <span asp-validation-for="Address" class="text-danger"></span>
-            </div>
-
-
-            <div class="row">
-              <div class="col-md-5 mb-3">
-                <label for="country">City</label>
-                <select class="custom-select d-block w-100" id="country" required>
-                  <option value="">Choose...</option>
-                  <option>Tbilisi</option>
-                </select>
-                <div class="invalid-feedback">
-                  Please select a valid country.
-                </div>
+              <div class="mb-3">
+                  <label for="address">Address</label>
+                  <input asp-for="@Model.Address" type="text" class="form-control" id="address" required>
+                  <span asp-validation-for="Address" class="text-danger"></span>
               </div>
-              <div class="col-md-3 mb-3">
-                <label for="zip">Zip</label>
-                <input type="text" class="form-control" id="zip" placeholder="" required>
-                <div class="invalid-feedback">
-                  Zip code required.
-                </div>
+
+              <div class="mb-3">
+                  <label for="phone">Phone</label>
+                  <input asp-for="@Model.Phone" type="text" class="form-control" id="phone" required>
+                  <span asp-validation-for="Phone" class="text-danger"></span>
               </div>
-            </div>
-            <button class="btn btn-primary btn-lg btn-block" type="submit">Continue to checkout</button>
+
+
+              <div class="row">
+                  <div class="col-md-5 mb-3">
+                      <label for="country">City</label>
+                      <select class="custom-select d-block w-100" id="country" asp-for="@Model.City" required>
+                          <option value="">Choose...</option>
+                          <option value="Tbilisi">Tbilisi</option>
+                      </select>
+                      <div class="invalid-feedback">
+                          Please select a valid country.
+                      </div>
+                  </div>
+                  <div class="col-md-3 mb-3">
+                      <label for="zip">Zip</label>
+                      <input type="text" class="form-control" asp-for="@Model.PostCode" id="zip" placeholder="" required>
+                      <div class="invalid-feedback">
+                          Zip code required.
+                      </div>
+                  </div>
+              </div>
+              <button class="btn btn-primary btn-lg btn-block" type="submit">Continue to checkout</button>
           </form>
         </div>
     </div>
