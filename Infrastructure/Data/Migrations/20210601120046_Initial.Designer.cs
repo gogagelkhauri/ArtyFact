@@ -10,8 +10,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Infrastructure.Data.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20210530172330_OneToManyBetweenProductAndBasketItem")]
-    partial class OneToManyBetweenProductAndBasketItem
+    [Migration("20210601120046_Initial")]
+    partial class Initial
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -128,8 +128,7 @@ namespace Infrastructure.Data.Migrations
 
                     b.HasIndex("OrderId");
 
-                    b.HasIndex("ProductId")
-                        .IsUnique();
+                    b.HasIndex("ProductId");
 
                     b.ToTable("OrderItem");
                 });
@@ -505,9 +504,9 @@ namespace Infrastructure.Data.Migrations
                         .IsRequired();
 
                     b.HasOne("Domain.Entities.Product", "Product")
-                        .WithOne("OrderItem")
-                        .HasForeignKey("Domain.Entities.OrderItem", "ProductId")
-                        .OnDelete(DeleteBehavior.Restrict)
+                        .WithMany("OrderItems")
+                        .HasForeignKey("ProductId")
+                        .OnDelete(DeleteBehavior.ClientNoAction)
                         .IsRequired();
 
                     b.Navigation("Order");
@@ -645,7 +644,7 @@ namespace Infrastructure.Data.Migrations
                 {
                     b.Navigation("BasketItems");
 
-                    b.Navigation("OrderItem");
+                    b.Navigation("OrderItems");
                 });
 
             modelBuilder.Entity("Domain.Entities.User.ApplicationUser", b =>

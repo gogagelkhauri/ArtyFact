@@ -23,7 +23,8 @@ namespace Infrastructure.Data.Configuration
             builder
             .HasOne<Basket>(b => b.Basket)
             .WithMany(b => b.BasketItems)
-            .HasForeignKey(b => b.BasketId);
+            .HasForeignKey(b => b.BasketId)
+            .OnDelete(DeleteBehavior.Cascade);
 
             //One To One Relationships between BasketItem and Product
             builder

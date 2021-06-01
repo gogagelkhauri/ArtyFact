@@ -3,7 +3,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace Infrastructure.Data.Migrations
 {
-    public partial class InitialModel : Migration
+    public partial class Initial : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -361,8 +361,7 @@ namespace Infrastructure.Data.Migrations
                         name: "FK_OrderItem_Products_ProductId",
                         column: x => x.ProductId,
                         principalTable: "Products",
-                        principalColumn: "Id",
-                        onDelete: ReferentialAction.Restrict);
+                        principalColumn: "Id");
                 });
 
             migrationBuilder.CreateIndex(
@@ -373,8 +372,7 @@ namespace Infrastructure.Data.Migrations
             migrationBuilder.CreateIndex(
                 name: "IX_BasketItems_ProductId",
                 table: "BasketItems",
-                column: "ProductId",
-                unique: true);
+                column: "ProductId");
 
             migrationBuilder.CreateIndex(
                 name: "IX_Baskets_UserId",
@@ -390,8 +388,7 @@ namespace Infrastructure.Data.Migrations
             migrationBuilder.CreateIndex(
                 name: "IX_OrderItem_ProductId",
                 table: "OrderItem",
-                column: "ProductId",
-                unique: true);
+                column: "ProductId");
 
             migrationBuilder.CreateIndex(
                 name: "IX_Orders_UserId",

@@ -21,7 +21,7 @@ namespace Infrastructure.Data.Configuration
             builder.HasOne<UserProfile>(s => s.UserProfile)
                     .WithOne(ad => ad.User)
                     .HasForeignKey<UserProfile>(ad => ad.UserId);
-           
+            
             //change Identity table name
             builder.ToTable(name: "User");
         }

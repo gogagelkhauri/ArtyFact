@@ -126,8 +126,7 @@ namespace Infrastructure.Data.Migrations
 
                     b.HasIndex("OrderId");
 
-                    b.HasIndex("ProductId")
-                        .IsUnique();
+                    b.HasIndex("ProductId");
 
                     b.ToTable("OrderItem");
                 });
@@ -503,9 +502,9 @@ namespace Infrastructure.Data.Migrations
                         .IsRequired();
 
                     b.HasOne("Domain.Entities.Product", "Product")
-                        .WithOne("OrderItem")
-                        .HasForeignKey("Domain.Entities.OrderItem", "ProductId")
-                        .OnDelete(DeleteBehavior.Restrict)
+                        .WithMany("OrderItems")
+                        .HasForeignKey("ProductId")
+                        .OnDelete(DeleteBehavior.ClientNoAction)
                         .IsRequired();
 
                     b.Navigation("Order");
@@ -643,7 +642,7 @@ namespace Infrastructure.Data.Migrations
                 {
                     b.Navigation("BasketItems");
 
-                    b.Navigation("OrderItem");
+                    b.Navigation("OrderItems");
                 });
 
             modelBuilder.Entity("Domain.Entities.User.ApplicationUser", b =>

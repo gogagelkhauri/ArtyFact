@@ -23,14 +23,14 @@ namespace Infrastructure.Data.Configuration
             builder
             .HasOne<Order>(b => b.Order)
             .WithMany(b => b.OrderItems)
-            .HasForeignKey(b => b.OrderId);
+            .HasForeignKey(b => b.OrderId)
+            .OnDelete(DeleteBehavior.Cascade);
 
-            
             builder
-            .HasOne<Product>(p => p.Product)
-            .WithOne(b => b.OrderItem)
-            .HasForeignKey<OrderItem>(p => p.ProductId)
-            .OnDelete(DeleteBehavior.Restrict);
+           .HasOne<Product>(p => p.Product)
+           .WithMany(b => b.OrderItems)
+           .HasForeignKey(p => p.ProductId)
+           .OnDelete(DeleteBehavior.ClientNoAction);
         }
     }
 }

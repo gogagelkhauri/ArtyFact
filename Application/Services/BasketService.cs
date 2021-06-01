@@ -52,7 +52,7 @@ namespace Application.Services
         public async Task AddToBasket(int userId,int productId)
         {
             var basket = await GetOrCreateBasket(userId);
-            var exists = basket.BasketItems.Where(x => x.ProductId == productId);
+            BasketItem? exists = basket.BasketItems.Where(x => x.ProductId == productId).FirstOrDefault();
             if(exists == null)
             {
                 var product = await _productRepository.GetByIdAsync(productId);
