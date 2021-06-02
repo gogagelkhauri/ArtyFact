@@ -65,14 +65,14 @@ namespace Web.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public IActionResult Order(Order order)
+        public async Task<IActionResult> Order(Order order)
         {
             if(ModelState.IsValid)
             {
                 var user = _userManager.Users.Include(u => u.UserProfile)
                 .SingleOrDefault(u => u.UserName == HttpContext.User.Identity.Name);
 
-                _orderService.CreateOrderAsync(user.UserProfile.Id,order);
+                await _orderService.CreateOrderAsync(user.UserProfile.Id,order);
 
             }
             return Redirect("/");

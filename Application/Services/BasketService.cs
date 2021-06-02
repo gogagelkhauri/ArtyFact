@@ -39,12 +39,12 @@ namespace Application.Services
             var basket = await _repository.GetBySpecification(spec);
             if(basket == null)
             {
-                var newBasket = new Basket() 
+                basket = new Basket() 
                 {
                     UserId = userId,
                     BasketItems = new List<BasketItem>()
                 };
-                await _repository.AddAsync(newBasket);
+                await _repository.AddAsync(basket);
             }
             return basket;
         }
@@ -52,7 +52,7 @@ namespace Application.Services
         public async Task AddToBasket(int userId,int productId)
         {
             var basket = await GetOrCreateBasket(userId);
-            BasketItem? exists = basket.BasketItems.Where(x => x.ProductId == productId).FirstOrDefault();
+            var exists = basket.BasketItems.Where(x => x.ProductId == productId).FirstOrDefault();
             if(exists == null)
             {
                 var product = await _productRepository.GetByIdAsync(productId);
@@ -64,7 +64,9 @@ namespace Application.Services
                 });
 
                 await _repository.UpdateAsync(basket);
+
             }
+            
         }
 
         public async Task RemoveFromBasket(int userId,int productId)

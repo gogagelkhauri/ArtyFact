@@ -22,13 +22,21 @@ namespace Application.Services
             _basketRepo = basketRepo;
         }
 
+        public async Task<Order> CreateOrder(Order order,int userId)
+        {
+            order.UserId = userId;
+            order.OrderItems = new List<OrderItem>();
+            await _orderRepo.AddAsync(order);
+            return order;
+        }
+
         public async Task CreateOrderAsync(int userId, Order order)
         {
             var spec = new GetUsersBasketWithItems(userId);
             var basket = await _basketRepo.GetBySpecification(spec);
 
-            order.UserId = userId;
-            order.OrderItems = new List<OrderItem>();
+            var orderInDb = await CreateOrder(order,userId);
+           // order.OrderItems = new List<OrderItem>();
             var orderItems = basket.BasketItems.Select(basketItem =>
             {
                 var orderItem = new OrderItem() { Price = basketItem.Price, ProductId = basketItem.ProductId };
@@ -36,7 +44,7 @@ namespace Application.Services
             }).ToList();
             order.OrderItems.AddRange(orderItems);
 
-            await _orderRepo.AddAsync(order);
+            await _orderRepo.UpdateAsync(order);
             await _basketRepo.DeleteAsync(basket);
         }
     }
