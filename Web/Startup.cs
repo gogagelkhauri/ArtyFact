@@ -19,6 +19,7 @@ using Domain.Interfaces;
 using Domain.Entities;
 using Application.Services;
 using Domain.Entities.Basket;
+using Stripe;
 
 namespace Web
 {
@@ -76,8 +77,8 @@ namespace Web
             services.AddScoped<IRepository<UserProfile>,EfRepository<UserProfile>>();
 
             //Product
-            services.AddScoped<IProductService,ProductService>();
-            services.AddScoped<IRepository<Product>,EfRepository<Product>>();
+            services.AddScoped<IProductService,Application.Services.ProductService>();
+            services.AddScoped<IRepository<Domain.Entities.Product>,EfRepository<Domain.Entities.Product>>();
 
             //Basket
             services.AddScoped<IBasketService,BasketService>();
@@ -87,9 +88,10 @@ namespace Web
             services.AddScoped<IRepository<BasketItem>,EfRepository<BasketItem>>();
 
             //Order
-            services.AddScoped<IOrderService, OrderService>();
-            services.AddScoped<IRepository<Order>, EfRepository<Order>>();
+            services.AddScoped<IOrderService, Application.Services.OrderService>();
+            services.AddScoped<IRepository<Domain.Entities.Order>, EfRepository<Domain.Entities.Order>>();
 
+            StripeConfiguration.ApiKey = Configuration["Stripe:SecretKey"];
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -104,8 +106,8 @@ namespace Web
                 app.UseExceptionHandler("/Home/Error");
                 // The default HSTS value is 30 days. You may want to change this for production scenarios, see https://aka.ms/aspnetcore-hsts.
                 app.UseHsts();
-            }
             app.UseHttpsRedirection();
+            }
             app.UseStaticFiles();
 
 

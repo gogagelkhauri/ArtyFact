@@ -4,6 +4,7 @@ using Domain.Interfaces.Services;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
+using Stripe;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -43,7 +44,7 @@ namespace Web.Controllers
         {
             var user = _userManager.Users.Include(u => u.UserProfile)
             .SingleOrDefault(u => u.UserName == HttpContext.User.Identity.Name);
-            await _basketService.AddToBasket(user.UserProfile.Id,productId);
+            await _basketService.AddToBasket(user.UserProfile.Id, productId);
             return Redirect("/Basket");
         }
 
@@ -53,8 +54,8 @@ namespace Web.Controllers
         {
             var user = _userManager.Users.Include(u => u.UserProfile)
             .SingleOrDefault(u => u.UserName == HttpContext.User.Identity.Name);
-            
-            await _basketService.RemoveFromBasket(user.UserProfile.Id,productId);
+
+            await _basketService.RemoveFromBasket(user.UserProfile.Id, productId);
             return Redirect("/Basket");
         }
 
@@ -65,17 +66,44 @@ namespace Web.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Order(Order order)
+        public async Task<IActionResult> Order(Domain.Entities.Order order)
         {
-            if(ModelState.IsValid)
+            if (ModelState.IsValid)
             {
                 var user = _userManager.Users.Include(u => u.UserProfile)
                 .SingleOrDefault(u => u.UserName == HttpContext.User.Identity.Name);
 
-                await _orderService.CreateOrderAsync(user.UserProfile.Id,order);
+                await _orderService.CreateOrderAsync(user.UserProfile.Id, order);
 
             }
             return Redirect("/");
+        }
+
+        [HttpGet]
+        public IActionResult Processing(string stripeToken, string stripeEmail)
+        {
+            return View();
+        }
+
+            [HttpPost]
+        public IActionResult ProcessingPayment(string stripeToken, string stripeEmail)
+        {
+            int amount = 100;
+            Dictionary<string, string> Metadata = new Dictionary<string, string>();
+            Metadata.Add("Product", "RubberDuck");
+            Metadata.Add("Quantity", "10");
+            var options = new ChargeCreateOptions
+            {
+                Amount = amount,
+                Currency = "USD",
+                Description = "Buying 10 rubber ducks",
+                Source = stripeToken,
+                ReceiptEmail = stripeEmail,
+                Metadata = Metadata
+            };
+            var service = new ChargeService();
+            Charge charge = service.Create(options);
+            return View();
         }
     }
 }

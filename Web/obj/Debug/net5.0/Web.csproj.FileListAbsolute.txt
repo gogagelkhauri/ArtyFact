@@ -964,3 +964,5 @@ C:\Users\gogag\OneDrive\Desktop\ArtyFact-Back\Web\obj\Debug\net5.0\Web.pdb
 C:\Users\gogag\OneDrive\Desktop\ArtyFact-Back\Web\obj\Debug\net5.0\Web.genruntimeconfig.cache
 C:\Users\gogag\OneDrive\Desktop\ArtyFact-Back\Web\obj\Debug\net5.0\Razor\Views\Basket\Checkout.cshtml.g.cs
 D:\work\.netCore\ArtyFact-Back\Web\obj\Debug\net5.0\Razor\Views\Basket\Checkout.cshtml.g.cs
+D:\work\.netCore\ArtyFact-Back\Web\bin\Debug\net5.0\Stripe.net.dll
+D:\work\.netCore\ArtyFact-Back\Web\obj\Debug\net5.0\Razor\Views\Basket\Processing.cshtml.g.cs
