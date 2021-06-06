@@ -1,12 +1,12 @@
 {
   "version": 2,
-  "dgSpecHash": "t0hl7OjSrJ40jFrlNZfk/kpcuu7AhcCYXWMNXSu6OziGB7uiooBsKYe7aoaU/xt5DRYgYsICD5wB745vua5HWg==",
+  "dgSpecHash": "CRpOVNRvl22knAk1RYAlLeDOn79po8UqYgVAuNXqDwJCNsVQu8KcGJDFfADi8OjRElzCeiuK65h9GPAvi74rzQ==",
   "success": true,
-  "projectFilePath": "D:\\work\\.netCore\\ArtyFact-Back\\Shared\\Shared.csproj",
+  "projectFilePath": "C:\\Users\\gogag\\OneDrive\\Desktop\\ArtyFact-Back\\Shared\\Shared.csproj",
   "expectedPackageFiles": [
-    "C:\\Users\\g.gelkhauri\\.nuget\\packages\\microsoft.aspnetcore.http.features\\5.0.4\\microsoft.aspnetcore.http.features.5.0.4.nupkg.sha512",
-    "C:\\Users\\g.gelkhauri\\.nuget\\packages\\microsoft.extensions.primitives\\5.0.0\\microsoft.extensions.primitives.5.0.0.nupkg.sha512",
-    "C:\\Users\\g.gelkhauri\\.nuget\\packages\\system.io.pipelines\\5.0.1\\system.io.pipelines.5.0.1.nupkg.sha512"
+    "C:\\Users\\gogag\\.nuget\\packages\\microsoft.aspnetcore.http.features\\5.0.4\\microsoft.aspnetcore.http.features.5.0.4.nupkg.sha512",
+    "C:\\Users\\gogag\\.nuget\\packages\\microsoft.extensions.primitives\\5.0.0\\microsoft.extensions.primitives.5.0.0.nupkg.sha512",
+    "C:\\Users\\gogag\\.nuget\\packages\\system.io.pipelines\\5.0.1\\system.io.pipelines.5.0.1.nupkg.sha512"
   ],
   "logs": []
 }

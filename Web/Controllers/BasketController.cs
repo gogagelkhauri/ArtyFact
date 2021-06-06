@@ -85,7 +85,7 @@ namespace Web.Controllers
             return View();
         }
 
-            [HttpPost]
+        [HttpPost]
         public IActionResult ProcessingPayment(string stripeToken, string stripeEmail)
         {
             int amount = 100;
