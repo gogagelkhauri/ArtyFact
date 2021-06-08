@@ -37,9 +37,11 @@ namespace Web
         {
             services.AddControllersWithViews();
 
+            services.AddSession();
+
             services.AddDbContext<ApplicationDbContext>(options =>
                 options.UseSqlServer(
-                    Configuration.GetConnectionString("DefaultConnection")), ServiceLifetime.Transient);
+                    Configuration.GetConnectionString("DefaultConnection1")), ServiceLifetime.Transient);
             
             services.AddDefaultIdentity<ApplicationUser>(options => options.SignIn.RequireConfirmedAccount = false)
                 .AddRoles<IdentityRole>()
@@ -106,8 +108,10 @@ namespace Web
                 app.UseExceptionHandler("/Home/Error");
                 // The default HSTS value is 30 days. You may want to change this for production scenarios, see https://aka.ms/aspnetcore-hsts.
                 app.UseHsts();
-            app.UseHttpsRedirection();
+                app.UseHttpsRedirection();
             }
+
+            app.UseSession();
             app.UseStaticFiles();
 
 

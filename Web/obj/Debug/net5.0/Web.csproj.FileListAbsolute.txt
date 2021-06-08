@@ -963,10 +963,10 @@ C:\Users\gogag\OneDrive\Desktop\ArtyFact-Back\Web\obj\Debug\net5.0\ref\Web.dll
 C:\Users\gogag\OneDrive\Desktop\ArtyFact-Back\Web\obj\Debug\net5.0\Web.pdb
 C:\Users\gogag\OneDrive\Desktop\ArtyFact-Back\Web\obj\Debug\net5.0\Web.genruntimeconfig.cache
 C:\Users\gogag\OneDrive\Desktop\ArtyFact-Back\Web\obj\Debug\net5.0\Razor\Views\Basket\Checkout.cshtml.g.cs
-D:\work\.netCore\ArtyFact-Back\Web\obj\Debug\net5.0\Razor\Views\Basket\Checkout.cshtml.g.cs
 D:\work\.netCore\ArtyFact-Back\Web\bin\Debug\net5.0\Stripe.net.dll
-D:\work\.netCore\ArtyFact-Back\Web\obj\Debug\net5.0\Razor\Views\Basket\Processing.cshtml.g.cs
 C:\Users\gogag\OneDrive\Desktop\ArtyFact-Back\Web\bin\Debug\net5.0\Stripe.net.dll
 C:\Users\gogag\OneDrive\Desktop\ArtyFact-Back\Web\obj\Debug\net5.0\Razor\Views\Basket\Processing.cshtml.g.cs
 C:\Users\gogag\OneDrive\Desktop\ArtyFact-Back\Web\obj\Debug\net5.0\Razor\Views\Order\Processing.cshtml.g.cs
 C:\Users\gogag\OneDrive\Desktop\ArtyFact-Back\Web\obj\Debug\net5.0\Razor\Views\Order\Processing1.cshtml.g.cs
+D:\work\.netCore\ArtyFact-Back\Web\obj\Debug\net5.0\Razor\Views\Order\Processing.cshtml.g.cs
+D:\work\.netCore\ArtyFact-Back\Web\obj\Debug\net5.0\Razor\Views\Order\CustomerInformation.cshtml.g.cs

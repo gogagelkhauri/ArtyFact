@@ -10,6 +10,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Web.Helpers;
 using Web.ViewModels;
 
 namespace Web.Controllers
@@ -33,29 +34,27 @@ namespace Web.Controllers
             _orderService = orderService;
             _config = config;
         }
-        public string Index()
-        {
-            return "works";
-        }
 
         
-
-        public IActionResult Checkout()
+        [HttpGet]
+        public IActionResult CustomerInformation()
         {
             return View();
         }
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Order(Domain.Entities.Order order)
+        public IActionResult CustomerInformation(CustomerInformationViewModel viewModel)
         {
             if (ModelState.IsValid)
             {
-                var user = _userManager.Users.Include(u => u.UserProfile)
-                .SingleOrDefault(u => u.UserName == HttpContext.User.Identity.Name);
+                SessionHelper.SetObjectAsJson(HttpContext.Session, "CustomerInfo", viewModel);
 
-                await _orderService.CreateOrderAsync(user.UserProfile.Id, order);
+                //var user = _userManager.Users.Include(u => u.UserProfile)
+                //.SingleOrDefault(u => u.UserName == HttpContext.User.Identity.Name);
 
+                //await _orderService.CreateOrderAsync(user.UserProfile.Id, order);
+                return Redirect("/Processing");
             }
             return Redirect("/");
         }
@@ -63,37 +62,49 @@ namespace Web.Controllers
         [HttpGet]
         public IActionResult Processing()
         {
-            var viewModel = new ProcessingViewModel();
-           // var publicKey =_config.GetSection("Stripe").GetSection("PublicKey");
-            viewModel.PublicKey =_config.GetValue<string>("Stripe:PublicKey");
-            return View(viewModel);
-        }
-
-        [HttpGet]
-        public IActionResult Processing1()
-        {
-            return View();
+            var customerInfo = SessionHelper.GetObjectFromJson<CustomerInformationViewModel>(HttpContext.Session, "CustomerInfo");
+            if(customerInfo != null)
+            {
+                var viewModel = new ProcessingViewModel();
+                // var publicKey =_config.GetSection("Stripe").GetSection("PublicKey");
+                viewModel.PublicKey =_config.GetValue<string>("Stripe:PublicKey");
+                return View(viewModel);
+            }
+            return Redirect("/");
         }
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public IActionResult ProcessingPayment( string stripeEmail,string stripeToken)
+        public async Task<IActionResult> ProcessingPayment(string stripeEmail,string stripeToken)
         {
-            int amount = 100;
+            var user = _userManager.Users.Include(u => u.UserProfile)
+           .SingleOrDefault(u => u.UserName == HttpContext.User.Identity.Name);
+            var basket = await _basketService.GetOrCreateBasket(user.UserProfile.Id);
+            float total = 0;
             Dictionary<string, string> Metadata = new Dictionary<string, string>();
-            Metadata.Add("Product", "RubberDuck");
-            Metadata.Add("Quantity", "10");
+
+            foreach(var item in basket.BasketItems)
+            {
+                total += item.Price;
+                Metadata.Add("Product", item.Product.Name);
+            }
+
+            //int amount = 100;
+            //Metadata.Add("Quantity", "10");
             var options = new ChargeCreateOptions
             {
-                Amount = amount,
+                Amount = Convert.ToInt64(total),
                 Currency = "USD",
-                Description = "Buying 10 rubber ducks",
+                Description = "Buying Products From Artyfact",
                 Source = stripeToken,
                 ReceiptEmail = stripeEmail,
                 Metadata = Metadata
             };
             var service = new ChargeService();
             Charge charge = service.Create(options);
+
+            SessionHelper.Remove(HttpContext.Session, "CustomerInfo");
+
             return Redirect("/");
         }
     }

@@ -1,4 +1,4 @@
-@model Domain.Entities.Order
+@model Web.ViewModels.CustomerInformationViewModel
 @{
     ViewData["Title"] = "Basket";
     Layout = "~/Views/Shared/_Layout.cshtml";
@@ -44,7 +44,7 @@
         </div>
         <div class="col-md-8 order-md-1">
           <h4 class="mb-3">Billing Form</h4>
-          <form method="POST" action="/Basket/Order">
+          <form method="POST" action="/Order/CustomerInformation">
               @Html.AntiForgeryToken()
 
               <div class="mb-3">

@@ -28,10 +28,6 @@ namespace Application.Services
             _basketItemRepository = basketItemRepository;
         }
 
-        // public Task<Basket> AddToBasket(int id)
-        // {
-        //     throw new System.NotImplementedException();
-        // }
 
         public async Task<Basket> GetOrCreateBasket(int userId)
         {
