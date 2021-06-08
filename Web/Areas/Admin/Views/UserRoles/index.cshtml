@@ -16,12 +16,12 @@
     </thead>
     <tbody>
         @Html.ActionLink(
-         linkText: "Add User",
-         actionName: "Create",
-         controllerName: "User",
-         routeValues: null,
-         htmlAttributes: new {@class = "btn btn-primary"}
-     )
+            linkText: "Add User",
+            actionName: "Create",
+            controllerName: "User",
+            routeValues: null,
+            htmlAttributes: new {@class = "btn btn-primary"}
+        )
         @foreach (var user in Model)
         {
         <tr>
@@ -34,12 +34,12 @@
             <td>
                 
                 @Html.ActionLink(
-              linkText: "Edit",
-              actionName: "Update",
-              controllerName: "User",
-              routeValues: new { id = @user.UserId},
-              htmlAttributes: new { @class = "btn btn-warning" }
-          )
+                    linkText: "Edit",
+                    actionName: "Update",
+                    controllerName: "User",
+                    routeValues: new { id = @user.UserId},
+                    htmlAttributes: new { @class = "btn btn-warning" }
+                )
                 <form asp-controller="User" asp-action="Delete" asp-route-id="@user.UserId" method="post">
                     <button type="submit" class="btn btn-sm btn-danger">
                         Delete
