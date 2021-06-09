@@ -54,7 +54,7 @@ namespace Web.Controllers
                 //.SingleOrDefault(u => u.UserName == HttpContext.User.Identity.Name);
 
                 //await _orderService.CreateOrderAsync(user.UserProfile.Id, order);
-                return Redirect("/Processing");
+                return Redirect("/Order/Processing");
             }
             return Redirect("/");
         }
@@ -66,7 +66,6 @@ namespace Web.Controllers
             if(customerInfo != null)
             {
                 var viewModel = new ProcessingViewModel();
-                // var publicKey =_config.GetSection("Stripe").GetSection("PublicKey");
                 viewModel.PublicKey =_config.GetValue<string>("Stripe:PublicKey");
                 return View(viewModel);
             }
@@ -77,34 +76,49 @@ namespace Web.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> ProcessingPayment(string stripeEmail,string stripeToken)
         {
-            var user = _userManager.Users.Include(u => u.UserProfile)
-           .SingleOrDefault(u => u.UserName == HttpContext.User.Identity.Name);
-            var basket = await _basketService.GetOrCreateBasket(user.UserProfile.Id);
-            float total = 0;
-            Dictionary<string, string> Metadata = new Dictionary<string, string>();
-
-            foreach(var item in basket.BasketItems)
+            var customerInfo = SessionHelper.GetObjectFromJson<CustomerInformationViewModel>(HttpContext.Session, "CustomerInfo");
+            if (customerInfo != null)
             {
-                total += item.Price;
-                Metadata.Add("Product", item.Product.Name);
+                var user = _userManager.Users.Include(u => u.UserProfile)
+                    .SingleOrDefault(u => u.UserName == HttpContext.User.Identity.Name);
+
+                var basket = await _basketService.GetOrCreateBasket(user.UserProfile.Id);
+                float total = 0;
+                Dictionary<string, string> Metadata = new Dictionary<string, string>();
+
+                foreach (var item in basket.BasketItems)
+                {
+                    total += item.Price;
+                    Metadata.Add("Product", item.Product.Name);
+                    Metadata.Add("Price", "$"+item.Price.ToString());
+                }
+
+                //int amount = 100;
+                //Metadata.Add("Quantity", "10");
+                var options = new ChargeCreateOptions
+                {
+                    Amount = Convert.ToInt64(total * 100),
+                    Currency = "USD",
+                    Description = "Buying Products From Artyfact",
+                    Source = stripeToken,
+                    ReceiptEmail = stripeEmail,
+                    Metadata = Metadata
+                };
+                var service = new ChargeService();
+                Charge charge = service.Create(options);
+
+                var order = new Domain.Entities.Order
+                {
+                    UserId = user.UserProfile.Id,
+                    Address = customerInfo.Address,
+                    PostCode = Convert.ToInt32(customerInfo.PostCode),
+                    City = customerInfo.City,
+                    Phone = customerInfo.Phone
+                };
+                await _orderService.CreateOrderAsync(user.UserProfile.Id, order);
+
+                SessionHelper.Remove(HttpContext.Session, "CustomerInfo");
             }
-
-            //int amount = 100;
-            //Metadata.Add("Quantity", "10");
-            var options = new ChargeCreateOptions
-            {
-                Amount = Convert.ToInt64(total),
-                Currency = "USD",
-                Description = "Buying Products From Artyfact",
-                Source = stripeToken,
-                ReceiptEmail = stripeEmail,
-                Metadata = Metadata
-            };
-            var service = new ChargeService();
-            Charge charge = service.Create(options);
-
-            SessionHelper.Remove(HttpContext.Session, "CustomerInfo");
-
             return Redirect("/");
         }
     }
