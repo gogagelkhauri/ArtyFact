@@ -109,6 +109,7 @@ namespace Application.Services
             var user = _userManager.Users.Include(u => u.UserProfile)
                                         .ThenInclude(u => u.UserCategories)
                                         .ThenInclude(u => u.Category)
+                                        .Include(u => u.UserProfile.Products)
                                         .SingleOrDefault(u => u.UserName == userEmail);
 
             return user;

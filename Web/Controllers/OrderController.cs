@@ -42,6 +42,12 @@ namespace Web.Controllers
             return View();
         }
 
+        [HttpGet]
+        public IActionResult MyOrders()
+        {
+            return View();
+        }
+
         [HttpPost]
         [ValidateAntiForgeryToken]
         public IActionResult CustomerInformation(CustomerInformationViewModel viewModel)
