@@ -43,9 +43,16 @@ namespace Web.Controllers
         }
 
         [HttpGet]
-        public IActionResult MyOrders()
+        public async Task<IActionResult> MyOrders()
         {
-            return View();
+            var user = _userManager.Users.Include(u => u.UserProfile)
+                    .SingleOrDefault(u => u.UserName == HttpContext.User.Identity.Name);
+            var orders = await _orderService.GetMyOrders(user.UserProfile.Id);
+            var viewModel = new MyOrdersViewModel
+            {
+                Order = orders
+             };
+            return View(viewModel);
         }
 
         [HttpPost]

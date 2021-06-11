@@ -47,5 +47,12 @@ namespace Application.Services
             await _orderRepo.UpdateAsync(order);
             await _basketRepo.DeleteAsync(basket);
         }
+
+        public async Task<Order> GetMyOrders(int userId)
+        {
+            var spec = new GetOrderByUserId(userId);
+            var order  = await _orderRepo.GetBySpecification(spec);
+            return order;
+        }
     }
 }

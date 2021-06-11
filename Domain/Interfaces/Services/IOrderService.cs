@@ -10,5 +10,6 @@ namespace Domain.Interfaces.Services
     public interface IOrderService
     {
         Task CreateOrderAsync(int userId, Order order);
+        Task<Order> GetMyOrders(int userId);
     }
 }
