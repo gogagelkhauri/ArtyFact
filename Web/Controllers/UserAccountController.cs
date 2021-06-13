@@ -32,10 +32,10 @@ namespace Web.Controllers
         }
 
         [HttpGet]  
-        public IActionResult Profile(string username)  
+        public async Task<IActionResult> Profile(string username)  
         {  
             //var user = await _userManager.FindByNameAsync(username);
-            var user = _userProfileService.GetUserProfile(username);
+            var user = await _userProfileService.GetUserProfile(username);
             var viewModel = new UserProfileViewModel
             {
                 User = user
@@ -99,6 +99,10 @@ namespace Web.Controllers
             return Redirect("/UserAccount/Profile?username=" + User.Identity.Name);
         }
 
+        public void Artists()
+        {
+            var artists = _userManager;
+        }
 
 
     }  

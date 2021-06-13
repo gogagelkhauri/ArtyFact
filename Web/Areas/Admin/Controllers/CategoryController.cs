@@ -1,11 +1,13 @@
 using System.Threading.Tasks;
 using Domain.DTO;
 using Domain.Interfaces.Services;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace Web.Areas.Admin.Controlles
 {
     [Area("Admin")]  
+    [Authorize(Roles = "Admin")]
     public class CategoryController : Controller  
     {  
         private readonly ICategoryService _categoryService;

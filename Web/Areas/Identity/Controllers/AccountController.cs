@@ -194,6 +194,15 @@ namespace Web.Areas.Identity.Controllers
         {
             return View();
         }
+
+        [HttpGet]
+        [AllowAnonymous]
+        public IActionResult AccessDenied(string returnUrl = null)
+        {
+            // workaround
+            return Redirect("/Identity/Account/Login");
+
+        }
     }  
 
 }

@@ -1,0 +1,154 @@
+
+
+/* ****************************************** LOGIN FORM ****************************************** */
+
+.login-container {
+    width: 30%;
+    height: 60%;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: rgb(32, 32, 32);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    border-radius: 15px;
+    box-shadow: 2px 2px 40px 2px rgba(77, 77, 77, 0.815);
+}
+
+.title {
+    text-align: center;
+    width: 100%;
+    margin-top: 1rem;
+}
+
+.title h2 {
+    color: rgb(240, 240, 240);
+    font-weight: 400;
+    font-size: 2rem;
+}
+
+.login-container form {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.username {
+    margin-bottom: 1rem;
+    width: 100%;
+    text-align: center;
+}
+
+.username input {
+    padding: .5rem;
+    border: none;
+    background: transparent;
+    border-bottom: 1px solid rgb(240, 240, 240);
+    font-size: 1rem;
+    color: rgb(240, 240, 240);
+    outline: none;
+    width: 55%;
+}
+
+.username input::placeholder {
+    color: rgb(240, 240, 240);
+    opacity: 1;
+}
+
+.password {
+    margin-bottom: 1rem;
+    width: 100%;
+    text-align: center;
+}
+
+.password input {
+    padding: .5rem;
+    border: none;
+    background: transparent;
+    border-bottom: 1px solid rgb(240, 240, 240);
+    font-size: 1rem;
+    color: rgb(240, 240, 240);
+    outline: none;
+    width: 55%;
+}
+
+.password input::placeholder {
+    color: rgb(240, 240, 240);
+    opacity: 1;
+}
+
+.help {
+    display: flex;
+    width: 70%;
+    justify-content: space-around;
+    align-items: center;
+    padding: 1rem;
+}
+
+.remember p {
+    display: inline-block;
+    color: rgb(240, 240, 240);
+    font-size: .8rem;
+}
+
+.forgot a {
+    text-decoration: none;
+    font-size: .8rem;
+    color: rgb(212, 87, 87);
+}
+
+.btn-login {
+    margin-top: 1rem;
+}
+
+.btn-login button {
+    padding: .5rem;
+    width: 100px;
+    font-size: 1rem;
+    border-radius: 8px;
+    background: transparent;
+    border: 1px solid rgb(240, 240, 240);
+    color: rgb(240, 240, 240);
+    cursor: pointer;
+}
+
+.btn-login button:hover {
+    border: none;
+    background-color: rgb(240, 240, 240);
+    color: rgb(32, 32, 32);
+    transition: .3s;
+}
+
+.option--register {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 1rem;
+}
+
+.option--register p {
+    color: rgb(240, 240, 240);
+    font-size: .8rem;
+    font-weight: 700;
+}
+
+.option--register a {
+    text-decoration: none;
+    color: rgb(240, 240, 240);
+    background-color: rgb(14, 122, 41);
+    padding: .5rem;
+    border-radius: 8px;
+    margin-top: 1rem;
+}
+
+.option--register a:hover {
+    background-color: rgb(240, 240, 240);
+    color: rgb(14, 122, 41);
+    transition: .3s;
+}  

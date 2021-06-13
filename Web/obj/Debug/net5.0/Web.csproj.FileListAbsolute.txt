@@ -969,3 +969,6 @@ D:\work\.netCore\ArtyFact-Back\Web\obj\Debug\net5.0\Razor\Views\Order\Processing
 D:\work\.netCore\ArtyFact-Back\Web\obj\Debug\net5.0\Razor\Views\Order\CustomerInformation.cshtml.g.cs
 C:\Users\gogag\OneDrive\Desktop\ArtyFact-Back\Web\obj\Debug\net5.0\Razor\Views\Order\CustomerInformation.cshtml.g.cs
 D:\work\.netCore\ArtyFact-Back\Web\obj\Debug\net5.0\Razor\Views\Order\MyOrders.cshtml.g.cs
+C:\Users\gogag\OneDrive\Desktop\ArtyFact-Back\Web\obj\Debug\net5.0\Razor\Views\Order\MyOrders.cshtml.g.cs
+C:\Users\gogag\OneDrive\Desktop\ArtyFact-Back\Web\obj\Debug\net5.0\Razor\Areas\Identity\Views\Account\Login2.cshtml.g.cs
+C:\Users\gogag\OneDrive\Desktop\ArtyFact-Back\Web\obj\Debug\net5.0\Razor\Views\Shared\_Layout2.cshtml.g.cs

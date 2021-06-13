@@ -104,13 +104,14 @@ namespace Application.Services
             return userProfileDTO;
         }
 
-        public ApplicationUser GetUserProfile(string userEmail)
+        public async Task<ApplicationUser> GetUserProfile(string userEmail)
         {
-            var user = _userManager.Users.Include(u => u.UserProfile)
+            var user = await _userManager.Users.Include(u => u.UserProfile)
                                         .ThenInclude(u => u.UserCategories)
                                         .ThenInclude(u => u.Category)
                                         .Include(u => u.UserProfile.Products)
-                                        .SingleOrDefault(u => u.UserName == userEmail);
+                                        .AsSplitQuery()
+                                        .SingleOrDefaultAsync(u => u.UserName == userEmail);
 
             return user;
         }
