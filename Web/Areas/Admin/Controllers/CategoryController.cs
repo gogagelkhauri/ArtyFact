@@ -29,6 +29,7 @@ namespace Web.Areas.Admin.Controlles
 
 
         [HttpPost]
+        [ValidateAntiForgeryToken]
         public async Task<IActionResult> Store(CategoryDTO categoryDTO)
         {
             var existingCategory = await _categoryService.GetCategoryByName(categoryDTO.Name);
@@ -74,9 +75,6 @@ namespace Web.Areas.Admin.Controlles
 
             await _categoryService.UpdateCategory(categoryDTO.Id,categoryDTO);
             return RedirectToAction("Index", "Category", new { area = "Admin" });
-            
-
-            //return BadRequest(ModelState.GetModelStateErrors());
         }
     }
 }

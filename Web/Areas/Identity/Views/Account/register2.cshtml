@@ -1,0 +1,72 @@
+@model Web.Areas.Identity.ViewModels.RegisterViewModel  
+@{  
+    ViewData["Title"] = "Register";  
+    Layout = "~/Views/Shared/_Layout.cshtml";  
+}  
+<div class="container">  
+    <h1>Register</h1> 
+    <form action="/Identity/Account/Register" method="post">  
+  
+        <div class="registerdiv">  
+            <div class="form-group col-sm-12">  
+                <label asp-for="@Model.FirstName" class="col-lg-3 control-label">First Name</label>  
+                <br>  
+                <div class="col-lg-9">  
+                    @Html.TextBoxFor(m => m.FirstName, new { placeholder = "", @class = "form-control" })  
+                    @Html.ValidationMessageFor(m => m.FirstName, "", new { @class = "text-danger" })  
+                </div>  
+            </div>  
+
+            <div class="form-group col-sm-12">  
+                <label asp-for="@Model.LastName" class="col-lg-3 control-label">Last Name</label>  
+                <br>  
+                <div class="col-lg-9">  
+                    @Html.TextBoxFor(m => m.LastName, new { placeholder = "", @class = "form-control" })  
+                    @Html.ValidationMessageFor(m => m.LastName, "", new { @class = "text-danger" })  
+                </div>  
+            </div>  
+             <div class="form-group col-sm-12">  
+                <label asp-for="@Model.UserName" class="col-lg-3 control-label">UserName</label>  
+                <br>  
+                <div class="col-lg-9">  
+                    @Html.TextBoxFor(m => m.UserName, new { placeholder = "", @class = "form-control" })  
+                    @Html.ValidationMessageFor(m => m.UserName, "", new { @class = "text-danger" })  
+                </div>  
+            </div>  
+  
+  
+            <div class="form-group col-sm-12">  
+                <label asp-for="@Model.Email" class="col-lg-3 control-label">Email</label>  
+                <br>  
+                <div class="col-lg-9">  
+                    @Html.TextBoxFor(m => m.Email, new { placeholder = "", @class = "form-control" })  
+                    @Html.ValidationMessageFor(m => m.Email, "", new { @class = "text-danger" })  
+                </div>  
+            </div>  
+  
+            <div class="form-group col-sm-12">  
+                <label asp-for="@Model.Password" class="col-lg-3 control-label">Password</label>  
+                <br>  
+                <div class="col-lg-9">  
+                    @Html.PasswordFor(m => m.Password, new { placeholder = "", @class = "form-control" })  
+                    @Html.ValidationMessageFor(m => m.Password, "", new { @class = "text-danger" })  
+                </div>  
+            </div>  
+  
+            <div class="form-group col-sm-12">  
+                <label asp-for="@Model.ConfirmPassword" class="col-lg-3 control-label">Confirm Password</label>  
+                <br>  
+                <div class="col-lg-9">  
+                    @Html.PasswordFor(m => m.ConfirmPassword, new { placeholder = "", @class = "form-control" })  
+                    @Html.ValidationMessageFor(m => m.ConfirmPassword, "", new { @class = "text-danger" })  
+                </div>  
+            </div>  
+  
+            <div class="form-group">  
+                <div class="col-sm-12 btn-submit">  
+                    <button type="submit" class="btn btn-success">Sign Up</button>  
+                </div>  
+            </div>  
+        </div>  
+    </form>  
+</div>  
