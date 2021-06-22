@@ -44,7 +44,8 @@ namespace Infrastructure.Data
             builder.Entity<Order>()
             .HasOne<UserProfile>(b => b.User)
             .WithMany(b => b.Orders)
-            .HasForeignKey(b => b.UserId);
+            .HasForeignKey(b => b.UserId)
+            .OnDelete(DeleteBehavior.Restrict);
             
 
             //One To Many Relationship Between ProductDetail and PaintType

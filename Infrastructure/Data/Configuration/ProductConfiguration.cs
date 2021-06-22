@@ -28,7 +28,8 @@ namespace Infrastructure.Data.Configuration
             builder
             .HasOne<UserProfile>(p => p.User)
             .WithMany(p => p.Products)
-            .HasForeignKey(p => p.UserId);
+            .HasForeignKey(p => p.UserId)
+            .OnDelete(DeleteBehavior.Cascade);
         }
     }
 }

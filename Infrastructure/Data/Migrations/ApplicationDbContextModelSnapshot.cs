@@ -487,7 +487,7 @@ namespace Infrastructure.Data.Migrations
                     b.HasOne("Domain.Entities.User.UserProfile", "User")
                         .WithMany("Orders")
                         .HasForeignKey("UserId")
-                        .OnDelete(DeleteBehavior.Cascade)
+                        .OnDelete(DeleteBehavior.Restrict)
                         .IsRequired();
 
                     b.Navigation("User");
@@ -504,7 +504,7 @@ namespace Infrastructure.Data.Migrations
                     b.HasOne("Domain.Entities.Product", "Product")
                         .WithMany("OrderItems")
                         .HasForeignKey("ProductId")
-                        .OnDelete(DeleteBehavior.ClientNoAction)
+                        .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
                     b.Navigation("Order");
@@ -546,7 +546,8 @@ namespace Infrastructure.Data.Migrations
                 {
                     b.HasOne("Domain.Entities.User.ApplicationUser", "User")
                         .WithOne("UserProfile")
-                        .HasForeignKey("Domain.Entities.User.UserProfile", "UserId");
+                        .HasForeignKey("Domain.Entities.User.UserProfile", "UserId")
+                        .OnDelete(DeleteBehavior.Cascade);
 
                     b.Navigation("User");
                 });

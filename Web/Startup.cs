@@ -54,7 +54,10 @@ namespace Web
                 options.LoginPath = $"/Identity/account/login";  
                 options.LogoutPath = $"/Identity/account/logout";  
             });  
-
+            services.Configure<SecurityStampValidatorOptions>(options =>
+            {
+                options.ValidationInterval = TimeSpan.FromMinutes(0);
+            });
             //automapper
             services.AddAutoMapper(typeof(Startup));
 
@@ -92,6 +95,10 @@ namespace Web
             //Order
             services.AddScoped<IOrderService, Application.Services.OrderService>();
             services.AddScoped<IRepository<Domain.Entities.Order>, EfRepository<Domain.Entities.Order>>();
+
+            //Post
+            services.AddScoped<IPostService, PostService>();
+            services.AddScoped<IRepository<Post>, EfRepository<Post>>();
 
             StripeConfiguration.ApiKey = Configuration["Stripe:SecretKey"];
         }

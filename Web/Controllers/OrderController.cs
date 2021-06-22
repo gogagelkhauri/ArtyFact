@@ -39,9 +39,17 @@ namespace Web.Controllers
 
         
         [HttpGet]
-        public IActionResult CustomerInformation()
+        public async Task<IActionResult> CustomerInformation()
         {
-            return View();
+            var user = _userManager.Users.Include(u => u.UserProfile)
+            .SingleOrDefault(u => u.UserName == HttpContext.User.Identity.Name);
+            var basket = await _basketService.GetOrCreateBasket(user.UserProfile.Id);
+            if(basket == null || basket.BasketItems.Count < 1)
+            {
+                return Redirect("/Basket");
+            }
+            var viewModel = new CustomerInformationViewModel() {Basket = basket};
+            return View(viewModel);
         }
 
         [HttpGet]
@@ -130,6 +138,8 @@ namespace Web.Controllers
                     City = customerInfo.City,
                     Phone = customerInfo.Phone
                 };
+                var status = charge.Status;
+               
                 await _orderService.CreateOrderAsync(user.UserProfile.Id, order);
 
                 SessionHelper.Remove(HttpContext.Session, "CustomerInfo");

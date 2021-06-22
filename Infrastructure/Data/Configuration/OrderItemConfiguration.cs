@@ -30,7 +30,7 @@ namespace Infrastructure.Data.Configuration
            .HasOne<Product>(p => p.Product)
            .WithMany(b => b.OrderItems)
            .HasForeignKey(p => p.ProductId)
-           .OnDelete(DeleteBehavior.ClientNoAction);
+           .OnDelete(DeleteBehavior.Cascade);
         }
     }
 }

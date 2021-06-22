@@ -1,4 +1,6 @@
-﻿@model Web.ViewModels.EditProductViewModel
+﻿@using Microsoft.AspNetCore.Identity
+@inject SignInManager<Domain.Entities.User.ApplicationUser> SignInManager
+@model Web.ViewModels.EditProductViewModel
 @{
     ViewData["Title"] = "Edit Product";
     Layout = "~/Views/Shared/_Layout.cshtml";
@@ -9,7 +11,7 @@
 }
 
 <div class="container">
-    @Html.ActionLink("Back", "Products", "Product", new { Area = "" }, new { @class = "btn btn-primary float-right mb-2" })
+    <a href="/UserAccount/Profile?userName=@User.Identity.Name" class="btn btn-primary float-right mb-2">Back</a>
     <form method="post" action="/Product/Update" enctype="multipart/form-data">
         @Html.AntiForgeryToken()
         <input type="hidden" asp-for="@Model.Product.Id" value="@Model.Product.Id" />

@@ -30,7 +30,8 @@ namespace Infrastructure.Data.Configuration
             builder
             .HasOne<Product>(p => p.Product)
             .WithMany(b => b.BasketItems)
-            .HasForeignKey(p => p.ProductId);
+            .HasForeignKey(p => p.ProductId)
+            .OnDelete(DeleteBehavior.Cascade);
 
             builder.Property(i => i.Price)
             .IsRequired(true)

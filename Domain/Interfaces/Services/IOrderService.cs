@@ -11,5 +11,6 @@ namespace Domain.Interfaces.Services
     {
         Task CreateOrderAsync(int userId, Order order);
         Task<Order> GetMyOrders(int userId);
+        Task DeleteOrders(int userId);
     }
 }

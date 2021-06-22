@@ -10,5 +10,16 @@ namespace Domain.Entities.Basket
         public int UserId { get; set; }
         public UserProfile User { get; set; }
         public List<BasketItem> BasketItems { get; set; }
+
+        public float GetTotal()
+        {
+            var total = 0f;
+            foreach(var item in BasketItems)
+            {
+                total += item.Product.Price;
+            }
+            return total;
+
+        }
     }
 }

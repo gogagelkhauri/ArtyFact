@@ -20,7 +20,8 @@ namespace Infrastructure.Data.Configuration
             //One To One Relationships between ApplicationUser and UserProfile
             builder.HasOne<UserProfile>(s => s.UserProfile)
                     .WithOne(ad => ad.User)
-                    .HasForeignKey<UserProfile>(ad => ad.UserId);
+                    .HasForeignKey<UserProfile>(ad => ad.UserId)
+                    .OnDelete(DeleteBehavior.Cascade);
             
             //change Identity table name
             builder.ToTable(name: "User");

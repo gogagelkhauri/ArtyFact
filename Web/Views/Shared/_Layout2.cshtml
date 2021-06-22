@@ -1,3 +1,5 @@
+@using Microsoft.AspNetCore.Identity
+@inject SignInManager<Domain.Entities.User.ApplicationUser> SignInManager
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -7,18 +9,39 @@
     <link rel="stylesheet" href="~/css/layout2.css">
     <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@300;400;600&display=swap" rel="stylesheet"> 
     @await RenderSectionAsync("Styles", required: false)
-    <title>Login</title>
+    <title>@ViewData["Title"]</title>
 </head>
 <body>
     <div class="nav--container">
         <nav class="main-nav">
             <div class="logo-container">
-                <a href="/"><img src="../img/logo.svg" alt="Logo Inc"></a>
+                <a href="/"><img src="~/img/logo.svg" alt="Logo Inc"></a>
             </div>
     
             <ul class="nav-bar">
-                <li><a href="/">Blog</a></li>
-                <li><a href="/">Artists</a></li>
+                @if (ViewData["Title"].ToString() != "Artists")
+                {
+                    <li><a href="/UserAccount/Artists">Artists</a></li>
+                }
+           
+            @if (SignInManager.IsSignedIn(User))
+            {
+                    <li><a href="/UserAccount/Profile?userName=@User.Identity.Name">Profile</a></li>
+                    <li><a href="/basket">Basket</a></li>
+                    <li>
+                        <form id="logoutForm" method="Post" action="/Identity/Account/Logout">
+                            <a onclick="document.getElementById('logoutForm').submit();" style="cursor: pointer">Logout</a>
+                        </form>
+                    </li>
+                    
+            }
+            else
+            {
+                @if (ViewData["Title"].ToString() != "Login")
+                {
+                <li><a href="/Identity/Account/Login">Sign In</a></li>
+                }
+            }
             </ul>
         </nav>
     </div>

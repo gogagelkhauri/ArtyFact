@@ -83,38 +83,41 @@ namespace Web.Controllers
                 try
                 {
                     await _productService.AddProduct(viewModel.Product);
-                    return Redirect("/Product/Products");
+                    return Redirect("/UserAccount/Profile?userName=" + user.UserName);
                 }
                 catch(Exception)
                 {
-                    return Redirect("/Product/Products");
+                    return Redirect("/UserAccount/Profile?userName=" + user.UserName);
                 }
             }
-            return View("/Product", viewModel);
+            return View("/AddProduct", viewModel);
         }
 
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Delete(int id)
         {
-
+            var user = _userManager.Users.Include(u => u.UserProfile)
+                                        .SingleOrDefault(u => u.UserName == HttpContext.User.Identity.Name);
             if (ModelState.IsValid && id != 0)
             {
                 await _productService.DeleteProduct(id);
             }
 
-            return RedirectToAction("Products", "Product");
+            return Redirect("/UserAccount/Profile?userName=" + user.UserName);
         }
 
 
         public async Task<IActionResult> Edit(int id)
         {
+             var user = _userManager.Users.Include(u => u.UserProfile)
+                                        .SingleOrDefault(u => u.UserName == HttpContext.User.Identity.Name);
             if (id > 0)
             {
                 var product = await _productService.GetProduct(id);
 
                 if (product == null)
-                    return Redirect("/Product/Products");
+                    return Redirect("/UserAccount/Profile?userName=" + user.UserName);
 
                 var categories = await _categoryService.GetAllCategories();
                 var viewModel = new EditProductViewModel
@@ -127,12 +130,14 @@ namespace Web.Controllers
                 return View(viewModel);
             }
 
-            return Redirect("/Product/Products");
+            return Redirect("/UserAccount/Profile?userName=" + user.UserName);
         }
 
         [HttpPost]
         public async Task<IActionResult> Update(EditProductViewModel viewModel)
         {
+            var user = _userManager.Users.Include(u => u.UserProfile)
+                                        .SingleOrDefault(u => u.UserName == HttpContext.User.Identity.Name);
             if (!ModelState.IsValid)
             {
                 //bad
@@ -146,11 +151,11 @@ namespace Web.Controllers
             try
             {
                 await _productService.UpdateProduct(viewModel.Product.Id, viewModel.Product);
-                return Redirect("/Product/Product/" + viewModel.Product.Id);
+                return Redirect("/UserAccount/Profile?userName=" + user.UserName);
             }
             catch(Exception)
             {
-                return Redirect("/Product/Products");
+                return Redirect("/UserAccount/Profile?userName=" + user.UserName);
             }
             
         }

@@ -1,132 +1,134 @@
 ﻿@model Domain.Entities.Basket.Basket
 @{
     ViewData["Title"] = "Basket";
-    Layout = "~/Views/Shared/_Layout.cshtml";
+    Layout = "";
+    //Layout = "~/Views/Shared/_Layout.cshtml";
 }
-@section Styles
-{
-   
-    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet">
-}
-    @* <form method="post"> *@
-        <div class="container mt-2">
-            <div class="wrapper wrapper-content animated fadeInRight">
-                <div class="row">
-                    <div class="col-md-9">
-                        <div class="ibox">
-                            <div class="ibox-title">
-                                <span class="pull-right">(<strong>@Model.BasketItems.Count()</strong>) items</span>
-                                <h5>Items in your cart</h5>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cart</title>
+    <link rel="stylesheet" href="~/css/Front/cart.css">
+    <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@300;400;600&display=swap" rel="stylesheet">
+</head>
+<body>
+    <header>
+        <div class="header--container">
+            <div class="logo--container">
+                <a href="/">
+                    <svg width="50" height="47" viewBox="0 0 50 47" fill="red" xmlns="http://www.w3.org/2000/svg">
+                        <path fill-rule="evenodd" clip-rule="evenodd" d="M29.1601 2.92698C27.2758 -0.594311 22.2273 -0.594312 20.3431 2.92698L0.81637 39.418C-1.44009 43.6348 2.94287 48.309 7.29591 46.328L22.6805 39.3267C23.9963 38.728 25.5068 38.728 26.8226 39.3267L42.2072 46.328C46.5602 48.309 50.9432 43.6349 48.6868 39.418L29.1601 2.92698ZM22.4804 31.0601C23.4898 32.8084 26.0133 32.8084 27.0227 31.0601L31.4109 23.4595C32.6866 21.2499 30.3757 18.7045 28.0535 19.7613L25.8378 20.7696C25.1477 21.0837 24.3554 21.0837 23.6653 20.7696L21.4496 19.7613C19.1273 18.7045 16.8165 21.2499 18.0922 23.4595L22.4804 31.0601Z" fill="rgb(32, 32, 32)"/>
+                    </svg>  
+                </a>    
+            </div>
+            <nav>
+                <ul>
+                    <li><a href="/UserAccount/Profile?userName=@User.Identity.Name">Profile</a></li>
+                    <li>
+                        <form id="logoutForm" method="Post" action="/Identity/Account/Logout">
+                            <a onclick="document.getElementById('logoutForm').submit();" style="cursor: pointer">Logout</a>
+                        </form>
+                    </li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <section>
+        @if(@Model.BasketItems.Count > 0)
+        {
+
+       
+        <div class="cart--wrapper">
+            <div class="cart--items__list">
+               
+                @foreach (var item in @Model.BasketItems)
+                {
+                    <div class="cart--items">
+                        <div class="product--description">
+                            <div class="cart--item__image">
+                                <img src="@item.Product.ImageURL" alt="product1">
                             </div>
-                            @*@for (int i = 0; i < Model.BasketModel.Items.Count; i++)
-                            {
-                                var item = Model.BasketModel.Items[i];*@
-                                @foreach (var item in @Model.BasketItems)
-                                {
-                                <div class="ibox-content">
-                                    <div class="table-responsive">
-                                        <table class="table shoping-cart-table">
-                                            <tbody>
-                                                <tr>
-                                                    <td width="90">
-
-                                                        <img src="https://via.placeholder.com/150" width="90">
-
-                                                    </td>
-                                                    <td class="desc">
-                                                        <h3>
-                                                            <a href="#" class="text-navy">
-                                                                 @item.Product.Name
-                                                            </a>
-                                                        </h3>
-                                                        <p class="small">
-                                                            It is a long established fact that a reader will be distracted by the readable
-                                                            content of a page when looking at its layout. The point of using Lorem Ipsum is
-                                                        </p>
-                                                        <dl class="small m-b-none">
-                                                            <dt>Description lists</dt>
-                                                            <dd>A description list is perfect for defining terms.</dd>
-                                                        </dl>
-
-                                                        <div class="m-t-sm">
-                                                            <form id="remove_form" method="post" action="/Basket/Remove">
-                                                                <input type="hidden" name="productId" value="@item.ProductId" />
-                                                                @Html.AntiForgeryToken()
-                                                                <!-- Button trigger modal -->
-                                                                <button type="submit"><i class="fa fa-trash"></i> Remove item</button>
-                                                                @* <a href="" id="remove_button" class="text-muted"><i class="fa fa-trash"></i> Remove item</a>  *@
-                                                            </form>
-                                                        </div>
-                                                    </td>
-
-                                                    <td>
-                                                        $@item.Price
-                                                    </td>
-                                                    <td width="85">
-                                                        <input type="hidden" name="" value="" />
-                                                        <input type="number" class="form-control" min="0" name="" value="">
-                                                    </td>
-                                                    
-                                                </tr>
-                                            </tbody>
-                                        </table>
-                                    </div>
-
-                                </div>
-                                }
-                            @*}*@
-                            <div class="ibox-content">
-                                @*<a asp-page="./Checkout" class="btn btn-primary pull-right"><i class="fa fa fa-shopping-cart"></i> Checkout</a>*@
-                                <a href="/" class="btn btn-white"><i class="fa fa-arrow-left"></i> Continue shopping</a>
-                                <a href="/Order/CustomerInformation" class="btn btn-white float-right"><i class="fa fa-arrow-right"></i> Checkout</a>
-
+                                
+                            <div class="cart--item__details">
+                                <h2>@item.Product.Name</h2>
+                                <p>Description: @Html.Raw(@item.Product.Description)</p>
+                                <p class="price">@item.Price GEL</p>
+                                <form method="post" action="/Basket/Remove">
+                                        <input type="hidden" name="productId" value="@item.ProductId" />
+                                        @Html.AntiForgeryToken()
+                                        <!-- Button trigger modal -->
+                                        <button type="submit">Remove</button>
+                                </form>
+                                
                             </div>
                         </div>
-
                     </div>
-                    <div class="col-md-3">
-                        <div class="ibox">
-                            <div class="ibox-title">
-                                <h5>Cart Summary</h5>
-                            </div>
-                            <div class="ibox-content">
-                                <span>
-                                    Total
-                                </span>
-                                <h2 class="font-bold">
-                                    $  @*@Model.BasketModel.Total().ToString("N2")*@555
-                                </h2>
+                }
 
-                                <hr>
-                                <span class="text-muted small">
-                                    *For United States, France and Germany applicable sales tax will be applied
-                                </span>
-                                <div class="m-t-sm">
-                                    <div class="btn-group">
-                                        @*<a asp-page="./Checkout" class="btn btn-primary btn-sm">Checkout</a>*@
 
-                                        <button class="btn btn-warning btn-sm" name="updatebutton" value="" type="submit"
-                                                asp-page-handler="Update">
-                                            Update
-                                        </button>
-                                        <a href="#" class="btn btn-danger btn-sm"> Cancel</a>
-                                    </div>
-                                </div>
-                            </div>
+            </div>
+    
+            <div class="cart--summary__wrapper">
+                <div class="cart--summary">
+                    <div class="cart--summary__title">
+                        <h2>Summary</h2>
+                    </div>
+
+                    <div class="cart--summary__content">
+                        <h2>TOTAL: @Model.GetTotal() GEL</h2>
+                        <div class="checkout--button">
+                            <a href="/Order/CustomerInformation">Checkout</a>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
-    @* </form> *@
-@section Scripts
-{
-    <script>
-        $('#remove_button').on('click',function(){
-            console.log('clicked');
-            $('#remove_form')
-            .attr("action", '/Basket/Remove')
-            .submit();
-        });
-    </script>
-}
+         }
+         else
+         {
+            <h1 style="text-align: center;">There is no tems in your cart</h1>
+         }
+    </section>
+
+    <footer>
+        <div class="footer--container">
+            <div class="footer--title">
+                <img src="../img/logo.svg" alt="footerLogo">
+                <h1>Artifact</h1>
+            </div>
+
+            <div class="footer--content">
+                <div class="left--panel">
+                    <h2>Contact</h2>
+                    <div class="left--panel--content">
+                        <p>Email</p>
+                        <p>Facebook</p>
+                        <p>Instagram</p>
+                    </div>
+                </div>
+                
+                <div class="center--panel">
+                    <h2>Help</h2>
+                    <div class="center--panel--content">
+                        <p>For Artists</p>
+                        <p>How to Use Artifact</p>
+                    </div>
+                </div>
+                
+                <div class="right--panel">
+                    <h2>About</h2>
+                    <div class="right--panel--content">
+                        <p>The Website</p>
+                        <p>Team</p>
+                        <p>Terms & Conditions</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>

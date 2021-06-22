@@ -1,0 +1,61 @@
+@model Web.ViewModels.CancelAccountViewModel
+@{
+    ViewData["Title"] = "Edit Profile";
+    //Layout = "~/Views/Shared/_Layout.cshtml";
+    Layout = "";
+}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="~/css/Front/cancel.css">
+    <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@300;400;600&display=swap" rel="stylesheet">
+    <title>Deactivate</title>
+</head>
+<body>
+
+    <div class="container">
+        <div class="settings__panel">
+            <div class="settings__title--panel">
+                <div class="general">
+                   <a href="/UserAccount/EditProfile">General</a>
+                </div>
+                
+                <div class="security">
+                   <a href="/UserAccount/ChangePassword">Privacy & Security</a>
+                </div>
+                
+                <div class="cancel-account" style="border-left: 4px solid seagreen;">
+                    <a href="/UserAccount/Cancel">Cancel Account</a>
+                </div>
+            </div>
+            <!--Diactivate Account-->
+            <div class="content-diactivate appear">
+                <form asp-action="Cancel" asp-controller="UserAccount" method="post" >  
+                    @Html.AntiForgeryToken()
+                    <div class="old-password"> 
+                        <textarea name="" id="" cols="30" rows="7" placeholder="Why are you disabling your account?"></textarea>
+                    </div>
+
+                    <div class="confirm-password">
+                        @Html.PasswordFor(m => m.Password, new { placeholder = "Password"})  <br>
+                        @Html.PasswordFor(m => m.ConfirmPassword, new { placeholder = "Confirm Password"})  <br>
+                        
+                    </div>
+                    @Html.ValidationMessageFor(m => m.Password, "") 
+                    @Html.ValidationMessageFor(m => m.ConfirmPassword, "")   
+                    <div class="button-change">
+                        <button class="btn-primary">Diactivate Account</button>
+                    </div>
+
+                    <div class="help">
+                        <a href="/Identity/Account/ForgotPassword">Forgot Your Password?</a>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

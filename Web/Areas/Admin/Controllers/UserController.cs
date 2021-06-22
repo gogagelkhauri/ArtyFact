@@ -1,6 +1,9 @@
 using Domain.Entities.User;
+using Domain.Interfaces.Services;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -10,16 +13,24 @@ using Web.Areas.Admin.ViewModels;
 namespace Web.Areas.Admin.Controlles
 {
     [Area("Admin")]  
+    [Authorize(Roles = "Admin")]
     public class UserController : Controller
     {
         private UserManager<ApplicationUser> userManager;
         private IPasswordHasher<ApplicationUser> passwordHasher;
+        private readonly IBasketService _basketService;
+        private readonly IOrderService _orderService;
 
 
-        public UserController(UserManager<ApplicationUser> usrMgr, IPasswordHasher<ApplicationUser> passwordHash)
+        public UserController(UserManager<ApplicationUser> usrMgr,
+                                IPasswordHasher<ApplicationUser> passwordHash,
+                                IBasketService basketService,
+                                IOrderService orderService)
         {
             userManager = usrMgr;
             passwordHasher = passwordHash;
+            _basketService = basketService;
+            _orderService = orderService;
         }
 
 
@@ -100,15 +111,17 @@ namespace Web.Areas.Admin.Controlles
         [HttpPost]
         public async Task<IActionResult> Delete(string id)
         {
-            ApplicationUser user = await userManager.FindByIdAsync(id);
+            ApplicationUser user = await userManager.Users.Include(u => u.UserProfile).Where(u => u.Id == id).SingleOrDefaultAsync();
             if (user != null)
             {
+                await _basketService.DeleteBasket(user.UserProfile.Id);
+                await _orderService.DeleteOrders(user.UserProfile.Id);
                 IdentityResult result = await userManager.DeleteAsync(user);
                 if (result.Succeeded)
                     return Redirect("/Admin/UserRoles");
                 else
-                    //    Errors(result);
-                    BadRequest();
+                    ModelState.AddModelError("", "Something is wrong");
+                    return Redirect("/Admin/UserRoles");
             }
             else
                 ModelState.AddModelError("", "User Not Found");

@@ -54,5 +54,15 @@ namespace Application.Services
             var order  = await _orderRepo.GetBySpecification(spec);
             return order;
         }
+
+        public async Task DeleteOrders(int userId)
+        {
+            var spec = new GetOrderByUserId(userId);
+            var order  = await _orderRepo.GetAllBySpecification(spec);
+            if(order != null)
+            {
+                await _orderRepo.DeleteRangeAsync(order);
+            }
+        }
     }
 }

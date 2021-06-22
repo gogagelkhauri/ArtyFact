@@ -88,6 +88,25 @@ namespace Web.Mapping
                 //.ForMember(dest => dest.ProductDetail, o => o.MapFrom(src => src.ProductDetail))
                 .ForAllOtherMembers(x => x.Ignore());
 
+                CreateMap<Post, PostDTO>()
+                    .ForMember(dest => dest.Id, o => o.MapFrom(src => src.Id))
+                    .ForMember(dest => dest.Title, o => o.MapFrom(src => src.Title))
+                    .ForMember(dest => dest.Date, o => o.MapFrom(src => src.Date))
+                    .ForMember(dest => dest.Description, o => o.MapFrom(src => src.Description))
+                    .ForMember(dest => dest.UserId, o => o.MapFrom(src => src.UserId))
+                    .ForMember(dest => dest.User, o => o.MapFrom(src => src.User))
+                    .ForMember(dest => dest.ImageURL, o => o.MapFrom(src => src.ImageURL));
+
+                CreateMap<PostDTO,Post>()
+                .ForMember(dest => dest.Id, o => o.MapFrom(src => src.Id))
+                .ForMember(dest => dest.Title, o => o.MapFrom(src => src.Title))
+                .ForMember(dest => dest.Date, o => o.MapFrom(src => src.Date))
+                .ForMember(dest => dest.Description, o => o.MapFrom(src => src.Description))
+                .ForMember(dest => dest.UserId, o => o.MapFrom(src => src.UserId))
+                .ForMember(dest => dest.User, o => o.MapFrom(src => src.User))
+                .ForMember(dest => dest.ImageURL, o => o.MapFrom(src => src.ImageURL));
+
+
 
         }
     }

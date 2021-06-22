@@ -2,6 +2,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Domain.Entities.User;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
@@ -10,6 +11,7 @@ using Web.Areas.Admin.ViewModels;
 namespace Web.Areas.Admin.Controlles
 {
     [Area("Admin")] 
+    [Authorize(Roles = "Admin")]
     public class UserRolesController : Controller
     {
         private readonly UserManager<ApplicationUser> _userManager;

@@ -16,13 +16,13 @@ namespace Domain.DTO
         // [AllowedExtensions(new string[] { ".jpg", ".jpeg", ".png" })]
         public IFormFile ActualImage { get; set; }
         public string Image { get; set; }
-        [Required]
+        //[Required]
         public string Gender { get; set; }
-        [Required]
+        //[Required]
         public string FacebookURL { get; set; }
-        [Required]
+        //[Required]
         public string InstagramURL { get; set; }
-        [Required]
+        //[Required]
         public string WorkDescription { get; set; }
         public List<UserCategoryDTO> UserCategories { get; set; }
         //public string UserId { get; set; }

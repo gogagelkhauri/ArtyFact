@@ -45,6 +45,13 @@ namespace Application.Services
             return basket;
         }
 
+        public async Task<Basket> GetBasket(int userId)
+        {
+            var spec = new GetUsersBasketWithItems(userId);
+            var basket = await _repository.GetBySpecification(spec);
+            return basket;
+        }
+
         public async Task AddToBasket(int userId,int productId)
         {
             var basket = await GetOrCreateBasket(userId);
@@ -75,6 +82,15 @@ namespace Application.Services
             basket.BasketItems.Remove(basketItem);
             
             await _repository.UpdateAsync(basket);
+        }
+
+        public async Task DeleteBasket(int userId)
+        {
+            var basket = await GetBasket(userId);
+            if(basket != null)
+            {
+                await _repository.DeleteAsync(basket);
+            }
         }
     }
 }

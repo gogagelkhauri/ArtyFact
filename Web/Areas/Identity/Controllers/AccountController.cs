@@ -28,7 +28,10 @@ namespace Web.Areas.Identity.Controllers
         [HttpGet]  
         [AllowAnonymous]  
         public IActionResult Login()  
-        {  
+        {   if (User.Identity.IsAuthenticated)
+            {   
+                return RedirectToAction("Index", "Home", new { area = "" });
+            }
             LoginViewModel model = new LoginViewModel();  
             return View(model);  
         }  
@@ -48,11 +51,11 @@ namespace Web.Areas.Identity.Controllers
                 // }  
                 if (await userManager.CheckPasswordAsync(user, model.Password) == false)  
                 {  
-                    ModelState.AddModelError("message", "Invalid credentials");  
+                    ModelState.AddModelError("Password", "Invalid credentials");  
                     return View(model);  
                 }  
     
-                var result = await signInManager.PasswordSignInAsync(user.UserName, model.Password, model.RememberMe, false);  
+                var result = await signInManager.PasswordSignInAsync(user.UserName, model.Password,false, false);  
     
                 if (result.Succeeded)  
                 {  
@@ -82,8 +85,12 @@ namespace Web.Areas.Identity.Controllers
         [HttpGet, AllowAnonymous]  
         public IActionResult Register()  
         {  
+            if (User.Identity.IsAuthenticated)
+            { 
+                return RedirectToAction("Index", "Home", new { area = "" });
+            }  
             RegisterViewModel model = new RegisterViewModel();  
-            return View(model);  
+            return View(model);
             //return "Goga";
         }  
 
@@ -126,7 +133,7 @@ namespace Web.Areas.Identity.Controllers
                 }  
                 else  
                 {  
-                    ModelState.AddModelError("message", "Email already exists.");  
+                    ModelState.AddModelError("Email", "Email already exists.");  
                     return View(request);  
                 }  
             }  
@@ -137,6 +144,11 @@ namespace Web.Areas.Identity.Controllers
         [HttpGet]
         public IActionResult ForgotPassword()
         {
+            if (User.Identity.IsAuthenticated)
+            { 
+                return RedirectToAction("Index", "Home", new { area = "" });
+            }  
+
             return View();
         }
 
@@ -158,12 +170,20 @@ namespace Web.Areas.Identity.Controllers
         }
         public IActionResult ForgotPasswordConfirmation()
         {
+            if (User.Identity.IsAuthenticated)
+            { 
+                return RedirectToAction("Index", "Home", new { area = "" });
+            }  
             return View();
         }
 
         [HttpGet]
         public IActionResult ResetPassword(string token, string email)
         {
+            if (User.Identity.IsAuthenticated)
+            { 
+                return RedirectToAction("Index", "Home", new { area = "" });
+            }  
             var model = new ResetPasswordViewModel { Token = token, Email = email };
             return View(model);
         }
@@ -192,6 +212,10 @@ namespace Web.Areas.Identity.Controllers
         [HttpGet]
         public IActionResult ResetPasswordConfirmation()
         {
+            if (User.Identity.IsAuthenticated)
+            { 
+                return RedirectToAction("Index", "Home", new { area = "" });
+            }  
             return View();
         }
 
@@ -199,10 +223,11 @@ namespace Web.Areas.Identity.Controllers
         [AllowAnonymous]
         public IActionResult AccessDenied(string returnUrl = null)
         {
-            // workaround
             return Redirect("/Identity/Account/Login");
 
         }
+
+
     }  
 
 }

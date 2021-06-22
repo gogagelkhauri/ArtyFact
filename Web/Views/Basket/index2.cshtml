@@ -1,0 +1,114 @@
+@model Domain.Entities.Basket.Basket
+@{
+    ViewData["Title"] = "Basket";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+@section Styles
+{
+   
+    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet">
+}
+    @* <form method="post"> *@
+        <div class="container mt-2">
+            <div class="wrapper wrapper-content animated fadeInRight">
+                <div class="row">
+                    <div class="col-md-9">
+                        <div class="ibox">
+                            <div class="ibox-title">
+                                <span class="pull-right">(<strong>@Model.BasketItems.Count()</strong>) items</span>
+                                <h5>Items in your cart</h5>
+                            </div>
+                            @*@for (int i = 0; i < Model.BasketModel.Items.Count; i++)
+                            {
+                                var item = Model.BasketModel.Items[i];*@
+                                @foreach (var item in @Model.BasketItems)
+                                {
+                                <div class="ibox-content">
+                                    <div class="table-responsive">
+                                        <table class="table shoping-cart-table">
+                                            <tbody>
+                                                <tr>
+                                                    <td width="90">
+
+                                                        <img src="https://via.placeholder.com/150" width="90">
+
+                                                    </td>
+                                                    <td class="desc">
+                                                        <h3>
+                                                            <a href="#" class="text-navy">
+                                                                 @item.Product.Name
+                                                            </a>
+                                                        </h3>
+                                                        <p class="small">
+                                                            It is a long established fact that a reader will be distracted by the readable
+                                                            content of a page when looking at its layout. The point of using Lorem Ipsum is
+                                                        </p>
+                                                        <dl class="small m-b-none">
+                                                            <dt>Description lists</dt>
+                                                            <dd>A description list is perfect for defining terms.</dd>
+                                                        </dl>
+
+                                                        <div class="m-t-sm">
+                                                            <form id="remove_form" method="post" action="/Basket/Remove">
+                                                                <input type="hidden" name="productId" value="@item.ProductId" />
+                                                                @Html.AntiForgeryToken()
+                                                                <!-- Button trigger modal -->
+                                                                <button type="submit"><i class="fa fa-trash"></i> Remove item</button>
+                                                                @* <a href="" id="remove_button" class="text-muted"><i class="fa fa-trash"></i> Remove item</a>  *@
+                                                            </form>
+                                                        </div>
+                                                    </td>
+
+                                                    <td>
+                                                        $@item.Price
+                                                    </td>
+                                                    
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                    </div>
+
+                                </div>
+                                }
+                            @*}*@
+                            <div class="ibox-content">
+                                @*<a asp-page="./Checkout" class="btn btn-primary pull-right"><i class="fa fa fa-shopping-cart"></i> Checkout</a>*@
+                                <a href="/" class="btn btn-white"><i class="fa fa-arrow-left"></i> Continue shopping</a>
+                                <a href="/Order/CustomerInformation" class="btn btn-white float-right"><i class="fa fa-arrow-right"></i> Checkout</a>
+
+                            </div>
+                        </div>
+
+                    </div>
+                    <div class="col-md-3">
+                        <div class="ibox">
+                            <div class="ibox-title">
+                                <h5>Cart Summary</h5>
+                            </div>
+                            <div class="ibox-content">
+                                <span>
+                                    Total
+                                </span>
+                                <h2 class="font-bold">
+                                    $  @*@Model.BasketModel.Total().ToString("N2")*@
+                                </h2>
+
+                                
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    @* </form> *@
+@section Scripts
+{
+    <script>
+        $('#remove_button').on('click',function(){
+            console.log('clicked');
+            $('#remove_form')
+            .attr("action", '/Basket/Remove')
+            .submit();
+        });
+    </script>
+}

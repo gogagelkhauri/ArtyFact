@@ -1,3 +1,5 @@
+@using Microsoft.AspNetCore.Identity
+@inject SignInManager<Domain.Entities.User.ApplicationUser> SignInManager
 @model Web.ViewModels.AddProductViewModel
 @{
     ViewData["Title"] = "Create Product";
@@ -8,7 +10,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Trumbowyg/2.23.0/ui/trumbowyg.min.css" integrity="sha512-iw/TO6rC/bRmSOiXlanoUCVdNrnJBCOufp2s3vhTPyP1Z0CtTSBNbEd5wIo8VJanpONGJSyPOZ5ZRjZ/ojmc7g==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 }
 <div class="container">
-    @Html.ActionLink("Back", "Products", "Product", new { Area = "" }, new { @class = "btn btn-primary float-right mb-2" })
+    <a href="/UserAccount/Profile?userName=@User.Identity.Name" class="btn btn-primary float-right mb-2">Back</a>
     <form method="post" action="/Product/Store" enctype="multipart/form-data">
         @Html.AntiForgeryToken()
         <div class="form-group">

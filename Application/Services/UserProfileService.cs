@@ -116,5 +116,20 @@ namespace Application.Services
             return user;
         }
 
+        public async Task<List<ApplicationUser>> GetAllProfile()
+        {
+            var user = await _userManager.Users.Include(u => u.UserProfile)
+                                        .ThenInclude(u => u.UserCategories)
+                                        .ThenInclude(u => u.Category)
+                                        .Include(u => u.UserProfile.Products)
+                                        .AsSplitQuery()
+                                        .Where(x => x.UserProfile.UserCategories.Count > 0)
+                                        .ToListAsync();
+
+            return user;
+        }
+
+        
+
     }
 }

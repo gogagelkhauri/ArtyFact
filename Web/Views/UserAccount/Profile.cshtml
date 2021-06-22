@@ -1,104 +1,231 @@
+@using Microsoft.AspNetCore.Identity
+@inject SignInManager<Domain.Entities.User.ApplicationUser> SignInManager
 @model Web.ViewModels.UserProfileViewModel
 @{
 ViewData["Title"] = "User Profile";
-Layout = "~/Views/Shared/_Layout.cshtml";  
+//Layout = "~/Views/Shared/_Layout.cshtml";  
+  Layout = "";  
 }
-@section Styles{
-    <link rel="stylesheet" href="~/css/UserProfile.css" />  
-}
-
-<div class="container">
-    <div class="main-body">
-    
-          <!-- Breadcrumb -->
-          <nav aria-label="breadcrumb" class="main-breadcrumb">
-            <ol class="breadcrumb">
-              <li class="breadcrumb-item"><a href="index.html">Home</a></li>
-              <li class="breadcrumb-item"><a href="javascript:void(0)">User</a></li>
-              <li class="breadcrumb-item active" aria-current="page">User Profile</li>
-            </ol>
-          </nav>
-          <!-- /Breadcrumb -->
-    
-          <div class="row gutters-sm">
-            <div class="col-md-4 mb-3">
-              <div class="card">
-                <div class="card-body">
-                  <div class="d-flex flex-column align-items-center text-center">
-                    <img src="https://bootdey.com/img/Content/avatar/avatar7.png" alt="Admin" class="rounded-circle" width="150">
-                    <div class="mt-3">
-                      <h4>@Model.User.UserName</h4>
-                      <a href="/UserAccount/EditProfile?username=@Model.User.UserName" class="btn btn-primary">Edit Profile</a>
-                    </div>
-                  </div>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>User Profile</title>
+    <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@300;400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="~/css/Front/profile.css">
+</head>
+<body>
+    <header>
+        <div class="nav-wrapper">
+            <nav class="main-nav">
+                <div class="logo-container">
+                    <a href="/"><img src="~/img/logo.svg" alt="Logo Inc"></a>
                 </div>
-              </div>
-              <div class="card mt-3">
-                <ul class="list-group list-group-flush">
-                  <li class="list-group-item d-flex justify-content-between align-items-center flex-wrap">
-                    <h6 class="mb-0"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-instagram mr-2 icon-inline text-danger"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line></svg>Instagram</h6>
-                    <span class="text-secondary">@Model.User.UserProfile.InstagramURL</span>
-                  </li>
-                  <li class="list-group-item d-flex justify-content-between align-items-center flex-wrap">
-                    <h6 class="mb-0"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-facebook mr-2 icon-inline text-primary"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"></path></svg>Facebook</h6>
-                    <span class="text-secondary">@Model.User.UserProfile.FacebookURL</span>
-                  </li>
+        
+                <ul class="nav-bar">
+                    <li><a href="/UserAccount/Artists">Artists</a></li>
+                    @if (SignInManager.IsSignedIn(User))
+                     {
+                            <li><a href="/basket">Basket</a></li>
+
+                            @if( Model.User.UserName != Model.AuthUser.UserName){
+                                <li><a href="/UserAccount/Profile?userName=@User.Identity.Name">Profile</a></li>
+
+                            }
+                     }
+                    @if (!SignInManager.IsSignedIn(User))
+                    {
+                        <li><a href="/Identity/Account/Login">Sign In</a></li>
+                    }
+                    @* @if (SignInManager.IsSignedIn(User))
+                     {
+                         <li>
+                        <form id="logoutForm" method="Post" action="/Identity/Account/Logout">
+                            <a onclick="document.getElementById('logoutForm').submit();" style="cursor: pointer">Logout</a>
+                        </form>
+                         </li>
+                     }
+                     else
+                     {
+                        <li><a href="/Identity/Account/Login">Sign In</a></li>
+                     } *@
                 </ul>
-              </div>
+            </nav>
+
+            <div class="settings">
+                <img src="~/img/settings.svg" alt="">
             </div>
-            <div class="col-md-8">
-              <div class="card mb-3">
-                <div class="card-body">
-                  <div class="row">
-                    <div class="col-sm-3">
-                      <h6 class="mb-0">Full Name</h6>
-                    </div>
-                    <div class="col-sm-9 text-secondary">
-                      @Model.User.FirstName  @Model.User.LastName
-                    </div>
-                  </div>
-                  <hr>
-                  <div class="row">
-                    <div class="col-sm-3">
-                      <h6 class="mb-0">Email</h6>
-                    </div>
-                    <div class="col-sm-9 text-secondary">
-                      @Model.User.Email
-                    </div>
-                  </div>
-                  <hr>
-                  <div class="row">
-                    <div class="col-sm-3">
-                      <h6 class="mb-0">Categories</h6>
-                    </div>
-                    <div class="col-sm-9 text-secondary">
-@*                       
-                      @foreach (var cat in @Model.User.UserProfile.UserCategories)
-                      {
-                          @cat.Category.Name
-                      } *@
-                    </div>
-                  </div>
-                </div>
-              </div>
-            @foreach(var product in @Model.User.UserProfile.Products)
-            {
-
-
-              <div class="row gutters-sm">
-                <div class="col-sm mb-3">
-                  <div class="card h-100">
-                    <div class="card-body">
-                      <h6 class="d-flex align-items-center mb-3">@product.Name</h6>
-                    </div>
-                  </div>
-                </div>
-              </div>
-
-            
-                
-            }
-            </div>
-          </div>
         </div>
-    </div>
+        @if(SignInManager.IsSignedIn(User)){
+        @if(Model.User.UserName == Model.AuthUser.UserName){
+        <!--modal settings-->
+        <div class="bg__modal--settings">
+            <div class="modal__content--settings">
+                <div class="close">+</div>
+                <div class="form">
+                    <div class="general">
+                        <a href="/UserAccount/EditProfile">General</a>
+                    </div>
+                    <div class="security">
+                        <a href="/UserAccount/ChangePassword">Privacy & Security</a>
+                    </div>
+                    <div class="logout">
+                        <form id="logoutForm" method="Post" action="/Identity/Account/Logout">
+                            <a onclick="document.getElementById('logoutForm').submit();" style="cursor: pointer">Logout</a>
+                        </form>
+                    </div>
+                    <div class="cancel-account">
+                        <a href="/UserAccount/Cancel">Cancel Account</a>
+                    </div>
+                    
+                </div>
+            </div>
+        </div>
+        }
+        }
+    
+        <div class="profile-container">
+            <div class="profile__image">
+                @if(Model.User.UserProfile.Image != null)
+                {
+                    <img src="@Model.User.UserProfile.Image" alt="">
+                }
+                else
+                {
+                    <img src="~/img/octane.jpg" alt="">
+                }
+            </div>
+    
+            <div class="profile__description">
+                <h2>@Model.User.FirstName @Model.User.LastName</h2>
+                @if(Model.User.UserProfile.UserCategories.Count > 0)
+                {
+                    <p>Interests: @foreach (var cat in Model.User.UserProfile.UserCategories)
+                            {   
+                                @cat.Category.Name 
+                            }
+                    </p>
+
+                }
+
+                @if(Model.User.UserProfile.WorkDescription != null)
+                {
+                    <p>@Model.User.UserProfile.WorkDescription</p>
+                }
+                @if(Model.User.UserName == Model.AuthUser.UserName){
+                    <a href="/Product/AddProduct"><img src="~/img/add.png" alt=""></a>
+                }
+        </div>
+    </header>
+
+    <section>
+        <div class="product-container">
+            @foreach (var product in Model.User.UserProfile.Products)
+            {
+                
+                <div class="product">
+                    <div class="product__image--main">
+                        <img src="@product.ImageURL" alt="productMain" style="width: 100%; height: 100%; object-fit: cover;">
+                    </div>
+                        
+                    <div class="product--description">
+                    <h1>@product.Name</h1>
+                    <h2>@product.Price GEL</h2>
+                    <h3>Category: @product.Category.Name</h3>
+                    <p>@Html.Raw(product.Description)</p>
+                        @if(SignInManager.IsSignedIn(User)){
+                            @if(Model.User.UserName != Model.AuthUser.UserName){
+                                <div class="btn--cart">
+                                    <form method="post" action="/Basket/Add">
+                                        <input type="hidden" name="productId" value="@product.Id" />
+                                        @Html.AntiForgeryToken()
+                                        <!-- Button trigger modal -->
+                                        <button type="submit">
+                                            Add to Cart
+                                        </button>
+                                    </form>
+                                </div>
+
+                            }
+                        }
+                        
+                    </div>
+                    @if(SignInManager.IsSignedIn(User)){
+                    @if( Model.User.UserName == Model.AuthUser.UserName){
+                        <div style="float:left;display:flex">
+                            <div style="margin-right:15px"><a href="/Product/Edit/@product.Id"><i class="fa fa-edit"></i></a></div>
+                            <div style="margin-right:15px">
+                                @* <a href="">
+                                <i class="fa fa-trash-o"></i>
+                                </a> *@
+
+                                    <form method="post" action="/Product/Delete">
+                                        <input type="hidden" name="id" value="@product.Id" />
+                                        @Html.AntiForgeryToken()
+                                        <!-- Button trigger modal -->
+                                        <button type="submit" class="delete-btn">
+                                            <i class="fa fa-trash-o"></i>
+                                        </button>
+                                    </form>
+                                </div>
+                        </div>
+                    }
+                    }
+                </div>
+            }
+        </div>
+    </section>
+    
+    <footer>
+        <div class="footer--container">
+            <div class="footer--title">
+                <img src="~/img/logo.svg" alt="footerLogo">
+                <h1>Artifact</h1>
+            </div>
+
+            <div class="footer--content">
+                <div class="left--panel">
+                    <h2>Contact</h2>
+                    <div class="left--panel--content">
+                        <p>Email</p>
+                        <p>Facebook</p>
+                        <p>Instagram</p>
+                    </div>
+                </div>
+                
+                <div class="center--panel">
+                    <h2>Help</h2>
+                    <div class="center--panel--content">
+                        <p>Fort Collectors</p>
+                        <p>For Artists</p>
+                    </div>
+                </div>
+                
+                <div class="right--panel">
+                    <h2>About</h2>
+                    <div class="right--panel--content">
+                        <p>The Website</p>
+                        <p>Team</p>
+                        <p>Terms & Conditions</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        document.querySelector('.close').addEventListener('click', function() {
+            document.querySelector('.bg__modal--settings').style.display = 'none';
+            document.body.style.overflow = 'auto';
+        });
+
+        document.querySelector('.profile__image').addEventListener('click', function() {
+            document.querySelector('.bg__modal--settings').style.display = 'flex';
+            document.body.style.overflow = 'hidden';
+        });
+    </script>
+</body>
+</html>

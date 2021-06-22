@@ -11,5 +11,6 @@ namespace Domain.Interfaces.Services
         Task AddToBasket(int userId,int productId);
         Task RemoveFromBasket(int userId,int productId);
         Task<Basket> GetOrCreateBasket(int userId);
+        Task DeleteBasket(int userId);
     }
 }

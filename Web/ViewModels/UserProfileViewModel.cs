@@ -7,5 +7,6 @@ namespace Web.ViewModels
     {
         //public UserProfileDTO UserProfile { get; set; }
         public ApplicationUser User { get; set; }
+        public ApplicationUser AuthUser { get; set; }
     }
 }
