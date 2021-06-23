@@ -1,3 +1,9 @@
+
+@{
+    ViewData["Title"] = "Posts";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
 @using Microsoft.AspNetCore.Identity
 @inject SignInManager<Domain.Entities.User.ApplicationUser> SignInManager
 @model Web.Areas.Admin.ViewModels.AddPostViewModel

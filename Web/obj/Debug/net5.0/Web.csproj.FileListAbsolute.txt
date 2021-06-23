@@ -980,3 +980,15 @@ C:\Users\gogag\OneDrive\Desktop\ArtyFact-Back\Web\obj\Debug\net5.0\Razor\Views\U
 C:\Users\gogag\OneDrive\Desktop\ArtyFact-Back\Web\obj\Debug\net5.0\Razor\Views\UserAccount\EditProfile2.cshtml.g.cs
 C:\Users\gogag\OneDrive\Desktop\ArtyFact-Back\Web\obj\Debug\net5.0\Razor\Views\Basket\index2.cshtml.g.cs
 C:\Users\gogag\OneDrive\Desktop\ArtyFact-Back\Web\obj\Debug\net5.0\Razor\Areas\Admin\Views\Post\index.cshtml.g.cs
+D:\work\.netCore\ArtyFact-Back\Web\obj\Debug\net5.0\Razor\Areas\Admin\Views\Post\AddPost.cshtml.g.cs
+D:\work\.netCore\ArtyFact-Back\Web\obj\Debug\net5.0\Razor\Areas\Admin\Views\Post\index.cshtml.g.cs
+D:\work\.netCore\ArtyFact-Back\Web\obj\Debug\net5.0\Razor\Areas\Identity\Views\Account\Login2.cshtml.g.cs
+D:\work\.netCore\ArtyFact-Back\Web\obj\Debug\net5.0\Razor\Areas\Identity\Views\Account\register2.cshtml.g.cs
+D:\work\.netCore\ArtyFact-Back\Web\obj\Debug\net5.0\Razor\Views\Basket\index2.cshtml.g.cs
+D:\work\.netCore\ArtyFact-Back\Web\obj\Debug\net5.0\Razor\Views\Shared\_Layout2.cshtml.g.cs
+D:\work\.netCore\ArtyFact-Back\Web\obj\Debug\net5.0\Razor\Views\UserAccount\Artists.cshtml.g.cs
+D:\work\.netCore\ArtyFact-Back\Web\obj\Debug\net5.0\Razor\Views\UserAccount\cancel.cshtml.g.cs
+D:\work\.netCore\ArtyFact-Back\Web\obj\Debug\net5.0\Razor\Views\UserAccount\ChangePassword.cshtml.g.cs
+D:\work\.netCore\ArtyFact-Back\Web\obj\Debug\net5.0\Razor\Views\UserAccount\EditProfile2.cshtml.g.cs
+D:\work\.netCore\ArtyFact-Back\Web\obj\Debug\net5.0\Razor\Views\UserAccount\Profile2.cshtml.g.cs
+D:\work\.netCore\ArtyFact-Back\Web\obj\Debug\net5.0\Razor\Areas\Admin\Views\Post\EditPost.cshtml.g.cs

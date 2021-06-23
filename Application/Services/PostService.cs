@@ -47,14 +47,22 @@ namespace Application.Services
             return postDTOFromDb;
         }
 
-        public Task Delete(int id)
+        public async Task Delete(int id)
         {
-            throw new System.NotImplementedException();
+            var post = await _postRepo.GetByIdAsync(id);
+            if (post != null)
+            {
+                var OldfilePath = Path.Combine(_env.WebRootPath, post.ImageURL.Replace("/", "\\").Remove(0, 1));
+                File.Delete(OldfilePath);
+                await _postRepo.DeleteAsync(post);
+            }
         }
 
-        public Task<Post> GetPost(int id)
+        public async Task<PostDTO> GetPost(int id)
         {
-            throw new System.NotImplementedException();
+            var post = await _postRepo.GetByIdAsync(id);
+            var postDTO = _mapper.Map<PostDTO>(post);
+            return postDTO;
         }
 
         public  async Task<List<Post>> GetPosts()
@@ -64,9 +72,37 @@ namespace Application.Services
             return posts;
         }
 
-        public Task Update(Post post)
+        public async Task Update(int id, PostDTO postDTO)
         {
-            throw new System.NotImplementedException();
+            var post = await _postRepo.GetByIdAsync(id);
+
+            post.Title = postDTO.Title;
+            post.Description = postDTO.Description;
+
+            if (postDTO.GetActualImage() != null)
+            {
+                if (postDTO.ImageURL != null)
+                {
+                    var OldfilePath = Path.Combine(_env.WebRootPath, postDTO.ImageURL.Replace("/", "\\").Remove(0, 1));
+                    File.Delete(OldfilePath);
+                }
+
+                var fileName = Path.GetFileName(postDTO.GetActualImage().FileName);
+                var newName = Guid.NewGuid().ToString("n").Substring(0, 8) + Path.GetExtension(postDTO.GetActualImage().FileName);
+                var filePath = Path.Combine(_env.WebRootPath, "images\\product", newName);
+                post.ImageURL = "/images/product/" + newName;
+
+
+                using (var fileSteam = new FileStream(filePath, FileMode.Create))
+                {
+                    await postDTO.GetActualImage().CopyToAsync(fileSteam);
+                }
+            }
+
+
+
+            await _postRepo.UpdateAsync(post);
         }
+
     }
 }

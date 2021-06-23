@@ -1,0 +1,57 @@
+﻿@using Microsoft.AspNetCore.Identity
+@inject SignInManager<Domain.Entities.User.ApplicationUser> SignInManager
+@model Web.Areas.Admin.ViewModels.EditPostViewModel
+@{
+    ViewData["Title"] = "Edit Product";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+@section Styles
+{
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Trumbowyg/2.23.0/ui/trumbowyg.min.css" integrity="sha512-iw/TO6rC/bRmSOiXlanoUCVdNrnJBCOufp2s3vhTPyP1Z0CtTSBNbEd5wIo8VJanpONGJSyPOZ5ZRjZ/ojmc7g==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+}
+<div class="container">
+    <a href="/Admin/Post/Index" class="btn btn-primary float-right mb-2">Back</a>
+    <form method="post" action="/Admin/Post/Update" enctype="multipart/form-data">
+        @Html.AntiForgeryToken()
+        <input type="hidden" asp-for="@Model.Post.Id" value="@Model.Post.Id" />
+        <div class="form-group">
+            @Html.LabelFor(m => m.Post.Title)
+            @Html.TextBoxFor(m => m.Post.Title, new { placeholder = "Enter Title", @class = "form-control" })
+            <span asp-validation-for="Post.Title" class="text-danger"></span>
+        </div>
+        <div class="form-group">
+            @Html.LabelFor(m => m.Post.Description)
+            <textarea asp-for="@Model.Post.Description" id="editor" class="form-control" cols="30" rows="10"></textarea>
+            <span asp-validation-for="Post.Description" class="text-danger"></span>
+        </div>
+
+        <img class="esh-catalog-thumbnail" id="readImg" src="@Model.Post.ImageURL" style="width:100px;height:100px" />
+        <div class="form-group">
+            @Html.LabelFor(m => m.ActualImage)
+            <input type="file" onchange="readURL(this);" asp-for="@Model.ActualImage" class="form-control" />
+            <span asp-validation-for="ActualImage" class="text-danger"></span>
+        </div>
+
+        <button type="submit" class="btn btn-primary">Submit</button>
+    </form>
+
+</div>
+
+@section Scripts {
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Trumbowyg/2.23.0/trumbowyg.min.js" integrity="sha512-sffB9/tXFFTwradcJHhojkhmrCj0hWeaz8M05Aaap5/vlYBfLx5Y7woKi6y0NrqVNgben6OIANTGGlojPTQGEw==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
+    <partial name="_ValidationScriptsPartial" />
+    <script>
+        $('#editor').trumbowyg();
+        function readURL(input) {
+            if (input.files && input.files[0]) {
+                var reader = new FileReader();
+                reader.onload = function (e) {
+                    $('#readImg')
+                        .attr('src', e.target.result);
+                };
+                reader.readAsDataURL(input.files[0]);
+            }
+        }
+    </script>
+}

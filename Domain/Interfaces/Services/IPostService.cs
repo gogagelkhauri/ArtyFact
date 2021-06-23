@@ -9,13 +9,13 @@ namespace Domain.Interfaces.Services
     {
         Task<List<Post>> GetPosts();
 
-        Task<Post> GetPost(int id);
+        Task<PostDTO> GetPost(int id);
         Task<PostDTO> Create(PostDTO postDTO);
 
         Task Delete(int id);
         
 
-        Task Update(Post post);
+        Task Update(int id, PostDTO postDTO);
 
     }
 }

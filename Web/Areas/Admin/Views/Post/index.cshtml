@@ -6,7 +6,7 @@
   
   
 <div class="container">  
-    <a href="/Admin/Post/Create" class = "btn btn-success float-right mb-2" >Create Post</a>
+    <a href="/Admin/Post/AddPost" class = "btn btn-success float-right mb-2" >Create Post</a>
     <table class="table table-striped table-dark">
         <thead>
             <tr>
@@ -22,9 +22,9 @@
                     <th scope="row">@item.Id</th>
                     <td>@item.Title</td>
                     <td>
-                        <a href="/Admin/Posts/Edit/@item.Id" class = "btn btn-warning" >Edit</a>
+                        <a href="/Admin/Post/EditPost/@item.Id" class = "btn btn-warning" >Edit</a>
                         <div>
-                            <form method="post" action="/Admin/Posts/Delete">
+                            <form method="post" action="/Admin/Post/Delete">
                                 <input type="hidden" name="id" value="@item.Id" />
                                 @Html.AntiForgeryToken()
                                 <!-- Button trigger modal -->

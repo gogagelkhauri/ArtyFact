@@ -36,9 +36,13 @@ namespace Web.Areas.Admin.Controllers
         }
 
         [HttpGet]
-        public IActionResult Create()
+        public IActionResult AddPost()
         {
-            return View();
+            var viewModel = new AddPostViewModel
+            {
+               Post = new Domain.DTO.PostDTO()
+            };
+            return View(viewModel);
         }
 
         [HttpPost]
@@ -46,14 +50,14 @@ namespace Web.Areas.Admin.Controllers
         {
             var user = _userManager.Users.Include(u => u.UserProfile)
                                         .SingleOrDefault(u => u.UserName == HttpContext.User.Identity.Name);
-            viewModel.Product.UserId = user.UserProfile.Id;
+            viewModel.Post.UserId = user.UserProfile.Id;
             if (ModelState.IsValid)
             {
-                viewModel.Product.SetActualImage(viewModel.ActualImage);
+                viewModel.Post.SetActualImage(viewModel.ActualImage);
                 try
                 {
-                    await _productService.AddProduct(viewModel.Product);
-                    return Redirect("/UserAccount/Profile?userName=" + user.UserName);
+                    await _postService.Create(viewModel.Post);
+                    return Redirect("/Admin/Post");
                 }
                 catch(Exception)
                 {
@@ -61,6 +65,69 @@ namespace Web.Areas.Admin.Controllers
                 }
             }
             return View("/Create", viewModel);
+        }
+
+        public async Task<IActionResult> EditPost(int id)
+        {
+            //var user = _userManager.Users.Include(u => u.UserProfile)
+            //                           .SingleOrDefault(u => u.UserName == HttpContext.User.Identity.Name);
+            if (id > 0)
+            {
+                var post = await _postService.GetPost(id);
+
+                if (post == null)
+                    return Redirect("/Admin/Post");
+
+                var viewModel = new EditPostViewModel
+                {
+                    Post = post
+                };
+
+
+                return View(viewModel);
+            }
+
+            return Redirect("/Admin/Post");
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> Update(EditPostViewModel viewModel)
+        {
+            
+            if (!ModelState.IsValid)
+            {
+                //bad
+                return View("EditPost", viewModel);
+            }
+
+            if (viewModel.ActualImage != null)
+            {
+                viewModel.Post.SetActualImage(viewModel.ActualImage);
+            }
+            try
+            {
+                await _postService.Update(viewModel.Post.Id, viewModel.Post);
+                return Redirect("/Admin/Post");
+            }
+            catch (Exception)
+            {
+                return Redirect("/Admin/Post");
+            }
+
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> Delete(int id)
+        {
+            //var user = _userManager.Users.Include(u => u.UserProfile)
+            //                            .SingleOrDefault(u => u.UserName == HttpContext.User.Identity.Name);
+            if (ModelState.IsValid && id != 0)
+            {
+                await _postService.Delete(id);
+            }
+
+            return Redirect("/Admin/Post");
         }
     }
 }

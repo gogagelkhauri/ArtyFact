@@ -1,0 +1,17 @@
+D:\work\.netCore\ArtyFact-Back\Application\bin\Release\net5.0\Application.deps.json
+D:\work\.netCore\ArtyFact-Back\Application\bin\Release\net5.0\Application.dll
+D:\work\.netCore\ArtyFact-Back\Application\bin\Release\net5.0\ref\Application.dll
+D:\work\.netCore\ArtyFact-Back\Application\bin\Release\net5.0\Application.pdb
+D:\work\.netCore\ArtyFact-Back\Application\bin\Release\net5.0\Domain.dll
+D:\work\.netCore\ArtyFact-Back\Application\bin\Release\net5.0\Shared.dll
+D:\work\.netCore\ArtyFact-Back\Application\bin\Release\net5.0\Domain.pdb
+D:\work\.netCore\ArtyFact-Back\Application\bin\Release\net5.0\Shared.pdb
+D:\work\.netCore\ArtyFact-Back\Application\obj\Release\net5.0\Application.csprojAssemblyReference.cache
+D:\work\.netCore\ArtyFact-Back\Application\obj\Release\net5.0\Application.GeneratedMSBuildEditorConfig.editorconfig
+D:\work\.netCore\ArtyFact-Back\Application\obj\Release\net5.0\Application.AssemblyInfoInputs.cache
+D:\work\.netCore\ArtyFact-Back\Application\obj\Release\net5.0\Application.AssemblyInfo.cs
+D:\work\.netCore\ArtyFact-Back\Application\obj\Release\net5.0\Application.csproj.CoreCompileInputs.cache
+D:\work\.netCore\ArtyFact-Back\Application\obj\Release\net5.0\Application.csproj.CopyComplete
+D:\work\.netCore\ArtyFact-Back\Application\obj\Release\net5.0\Application.dll
+D:\work\.netCore\ArtyFact-Back\Application\obj\Release\net5.0\ref\Application.dll
+D:\work\.netCore\ArtyFact-Back\Application\obj\Release\net5.0\Application.pdb

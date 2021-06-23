@@ -1,0 +1,9 @@
+D:\work\.netCore\ArtyFact-Back\Web\obj\Release\net5.0\Web.csprojAssemblyReference.cache
+D:\work\.netCore\ArtyFact-Back\Web\obj\Release\net5.0\Web.GeneratedMSBuildEditorConfig.editorconfig
+D:\work\.netCore\ArtyFact-Back\Web\obj\Release\net5.0\Web.AssemblyInfoInputs.cache
+D:\work\.netCore\ArtyFact-Back\Web\obj\Release\net5.0\Web.AssemblyInfo.cs
+D:\work\.netCore\ArtyFact-Back\Web\obj\Release\net5.0\Web.csproj.CoreCompileInputs.cache
+D:\work\.netCore\ArtyFact-Back\Web\obj\Release\net5.0\Web.MvcApplicationPartsAssemblyInfo.cs
+D:\work\.netCore\ArtyFact-Back\Web\obj\Release\net5.0\Web.MvcApplicationPartsAssemblyInfo.cache
+D:\work\.netCore\ArtyFact-Back\Web\obj\Release\net5.0\Web.RazorAssemblyInfo.cache
+D:\work\.netCore\ArtyFact-Back\Web\obj\Release\net5.0\Web.RazorAssemblyInfo.cs
