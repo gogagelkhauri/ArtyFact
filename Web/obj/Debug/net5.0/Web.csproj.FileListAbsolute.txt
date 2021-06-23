@@ -992,3 +992,5 @@ D:\work\.netCore\ArtyFact-Back\Web\obj\Debug\net5.0\Razor\Views\UserAccount\Chan
 D:\work\.netCore\ArtyFact-Back\Web\obj\Debug\net5.0\Razor\Views\UserAccount\EditProfile2.cshtml.g.cs
 D:\work\.netCore\ArtyFact-Back\Web\obj\Debug\net5.0\Razor\Views\UserAccount\Profile2.cshtml.g.cs
 D:\work\.netCore\ArtyFact-Back\Web\obj\Debug\net5.0\Razor\Areas\Admin\Views\Post\EditPost.cshtml.g.cs
+D:\work\.netCore\ArtyFact-Back\Web\obj\Debug\net5.0\Razor\Views\Blog\Index.cshtml.g.cs
+D:\work\.netCore\ArtyFact-Back\Web\obj\Debug\net5.0\Razor\Views\Blog\Post.cshtml.g.cs

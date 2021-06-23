@@ -17,5 +17,7 @@ namespace Domain.Interfaces.Services
 
         Task Update(int id, PostDTO postDTO);
 
+        Task<PostDTO> GetPostWithUser(int id);
+
     }
 }

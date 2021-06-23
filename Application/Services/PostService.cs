@@ -9,6 +9,7 @@ using Domain.DTO;
 using Domain.Entities;
 using Domain.Interfaces;
 using Domain.Interfaces.Services;
+using Domain.Specifications;
 using Microsoft.AspNetCore.Hosting;
 
 namespace Application.Services
@@ -61,6 +62,14 @@ namespace Application.Services
         public async Task<PostDTO> GetPost(int id)
         {
             var post = await _postRepo.GetByIdAsync(id);
+            var postDTO = _mapper.Map<PostDTO>(post);
+            return postDTO;
+        }
+
+        public async Task<PostDTO> GetPostWithUser(int id)
+        {
+            var spec = new GetPostWithUserSpecification(id);
+            var post = await _postRepo.GetBySpecification(spec);
             var postDTO = _mapper.Map<PostDTO>(post);
             return postDTO;
         }
