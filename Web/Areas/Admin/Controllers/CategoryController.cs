@@ -7,7 +7,7 @@ using Microsoft.AspNetCore.Mvc;
 namespace Web.Areas.Admin.Controlles
 {
     [Area("Admin")]  
-    [Authorize(Roles = "Admin")]
+    //[Authorize(Roles = "Admin")]
     public class CategoryController : Controller  
     {  
         private readonly ICategoryService _categoryService;
@@ -68,7 +68,7 @@ namespace Web.Areas.Admin.Controlles
         public async Task<IActionResult> Update(CategoryDTO categoryDTO)
         {
             var existingCategory = await _categoryService.GetCategory(categoryDTO.Id);
-            if (!ModelState.IsValid  || existingCategory != null)
+            if (!ModelState.IsValid)
             {
                 return View("edit", categoryDTO);
             }

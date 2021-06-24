@@ -8,4 +8,4 @@ dotnet ef database update -c ApplicationDbContext -p ../Infrastructure/Infrastru
 
 dotnet ef migrations add Initial --context ApplicationDbContext -p ../Infrastructure/Infrastructure.csproj -s Web.csproj -o Data/Migrations
 
-dotnet ef migrations add AddCascading --context ApplicationDbContext -p ../Infrastructure/Infrastructure.csproj -s Web.csproj -o Data/Migrations
+dotnet ef migrations add AddPostStatus --context ApplicationDbContext -p ../Infrastructure/Infrastructure.csproj -s Web.csproj -o Data/Migrations

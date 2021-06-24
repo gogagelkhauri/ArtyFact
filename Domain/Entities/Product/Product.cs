@@ -17,5 +17,6 @@ namespace Domain.Entities
         public Category Category { get; set; }
         public List<BasketItem> BasketItems { get; set; }
         public List<OrderItem> OrderItems { get; set; }
+        public bool Status { get; set; }
     }
 }

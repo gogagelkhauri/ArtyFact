@@ -11,7 +11,7 @@ using Web.Areas.Admin.ViewModels;
 namespace Web.Areas.Admin.Controlles
 {
     [Area("Admin")] 
-    [Authorize(Roles = "Admin")]
+    //[Authorize(Roles = "Admin")]
     public class UserRolesController : Controller
     {
         private readonly UserManager<ApplicationUser> _userManager;

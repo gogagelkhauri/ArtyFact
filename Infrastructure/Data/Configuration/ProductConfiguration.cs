@@ -18,6 +18,9 @@ namespace Infrastructure.Data.Configuration
         /// <param name="builder">Builder.</param>
         public void Configure(EntityTypeBuilder<Product> builder)
         {
+            builder.Property(p => p.Status)
+                .HasDefaultValue(false)
+                .ValueGeneratedOnAdd();
             //One To Many Relationship Between Product and Category
             builder
             .HasOne<Category>(p => p.Category)

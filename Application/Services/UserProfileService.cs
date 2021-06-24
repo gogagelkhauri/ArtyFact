@@ -110,6 +110,7 @@ namespace Application.Services
                                         .ThenInclude(u => u.UserCategories)
                                         .ThenInclude(u => u.Category)
                                         .Include(u => u.UserProfile.Products)
+                                        .ThenInclude(u=> u.Category)
                                         .AsSplitQuery()
                                         .SingleOrDefaultAsync(u => u.UserName == userEmail);
 

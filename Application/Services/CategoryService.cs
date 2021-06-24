@@ -51,10 +51,13 @@ namespace Application.Services
 
         public async Task UpdateCategory(int id,CategoryDTO categoryDTO)
         {
-            //var category = await _repository.GetByIdAsync(id);
-            var category = _mapper.Map<Category>(categoryDTO);
-            category.Id = id;
-            await _repository.UpdateAsync(category);
+            var category = await _repository.GetByIdAsync(id);
+            //var category = _mapper.Map<Category>(categoryDTO);
+            if(category != null)
+            {
+                category.Name = categoryDTO.Name;
+                await _repository.UpdateAsync(category);
+            }
         }
 
         public async Task<CategoryDTO> GetCategoryByName(string name)
