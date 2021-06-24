@@ -98,6 +98,8 @@ namespace Web.Controllers
             }
             var viewModel = new EditProfileViewModel
             {
+                UserName = user.UserName,
+                Email = user.Email,
                 UserProfile = profileDTO,
                 UserCategories = manageCategories
                // Categories = categoryDTO
@@ -116,6 +118,29 @@ namespace Web.Controllers
             }
             var user = _userManager.Users.Include(u => u.UserProfile)
                     .SingleOrDefault(u => u.UserName == HttpContext.User.Identity.Name);
+
+            if(viewModel.UserName != user.UserName || viewModel.Email != user.Email)
+            {
+                if (viewModel.UserName != user.UserName)
+                {
+                    var userCheck = await _userManager.Users.SingleOrDefaultAsync(u => u.UserName == viewModel.UserName);
+                    if (userCheck == null)
+                    {
+                        user.UserName = viewModel.UserName;
+                    }
+                }
+                if (viewModel.Email != user.Email)
+                {
+                    var userCheck = await _userManager.FindByEmailAsync(viewModel.Email);
+                    if (userCheck == null)
+                    {
+                        user.Email = viewModel.Email;
+                    }
+                }
+
+                await _userManager.UpdateAsync(user);
+            }
+
             viewModel.UserProfile.Id = user.UserProfile.Id;
             await _userProfileService.UpdateUserProfile(viewModel.UserProfile,viewModel.UserCategories);
           

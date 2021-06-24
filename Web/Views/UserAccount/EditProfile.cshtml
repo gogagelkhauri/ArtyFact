@@ -35,47 +35,55 @@
               <!--General Section-->  
             <div class="content-general">
                 
-                <form method="post" action="/UserAccount/UpdateProfile" enctype="multipart/form-data">  
+                <form method="post" action="/UserAccount/UpdateProfile" enctype="multipart/form-data">
                     @Html.AntiForgeryToken()
                     <div class="profile__image">
                         <div class="image-container">
-                            @if(Model.UserProfile.Image != null)
+                            @if (Model.UserProfile.Image != null)
                             {
                                 <img src="@Model.UserProfile.Image" id="output" style="width: 75px; height: 75px; border-radius: 100%; object-fit: cover;margin-left:20px">
                             }
                             else
                             {
-                            <img src="~/img/octane.jpg" id="output" style="width: 75px; height: 75px; border-radius: 100%; object-fit: cover;">
+                                <img src="~/img/octane.jpg" id="output" style="width: 75px; height: 75px; border-radius: 100%; object-fit: cover;">
 
                             }
-                        </div>   
+                        </div>
                         <div class="info">
                             <h2>@User.Identity.Name</h2>
-                            <p><input type="file"  accept="image/*" asp-for="@Model.UserProfile.ActualImage" id="file"  onchange="loadFile(event)" style="display: none;"></p>
+                            <p><input type="file" accept="image/*" asp-for="@Model.UserProfile.ActualImage" id="file" onchange="loadFile(event)" style="display: none;"></p>
                             <p><label for="file" style="cursor: pointer;">Change Profile Picture</label></p>
                         </div>
                     </div>
+                    <div class="contact">
+                        @Html.TextBoxFor(m => m.Email, new { placeholder = "Email" })
+                        <span asp-validation-for="Email" class="text-danger"></span>
+                    </div>
 
+                    <div class="contact">
+                        @Html.TextBoxFor(m => m.UserName, new { placeholder = "UserName" })
+                        <span asp-validation-for="UserName" class="text-danger"></span>
+                    </div>
 
-                    <div class="about">                           
+                    <div class="about">
                         @* <input type="text" placeholder="Website"> *@
-                        @Html.TextAreaFor(m => m.UserProfile.WorkDescription, new { @class = "form-control",@rows=7, @cols=30,placeholder="Bio" })
+                        @Html.TextAreaFor(m => m.UserProfile.WorkDescription, new { @class = "form-control", @rows = 7, @cols = 30, placeholder = "Bio" })
                         <span asp-validation-for="UserProfile.WorkDescription" class="text-danger"></span>
                     </div>
 
-                    <div class="contact">                          
+                    <div class="contact">
                         @Html.TextBoxFor(m => m.UserProfile.FacebookURL, new { placeholder = "Facebook URL" })
                         <span asp-validation-for="UserProfile.FacebookURL" class="text-danger"></span>
                     </div>
 
-                    <div class="contact">                          
+                    <div class="contact">
                         @Html.TextBoxFor(m => m.UserProfile.InstagramURL, new { placeholder = "Instagram URL" })
                         <span asp-validation-for="UserProfile.InstagramURL" class="text-danger"></span>
                     </div>
 
-                    <div class="gender">                         
+                    <div class="gender">
                         <input type="text" asp-for="@Model.UserProfile.Gender" placeholder="Gender">
-                         <span asp-validation-for="UserProfile.Gender" class="text-danger"></span>
+                        <span asp-validation-for="UserProfile.Gender" class="text-danger"></span>
                     </div>
 
                     <div class="gender">
@@ -85,13 +93,13 @@
                                 <div class="form-check m-1">
                                     <input type="hidden" asp-for="@Model.UserCategories[i].CategoryId" />
                                     <input type="hidden" asp-for="@Model.UserCategories[i].CategoryName" />
-                                    <input asp-for="@Model.UserCategories[i].Selected" class="form-check-input" /> 
+                                    <input asp-for="@Model.UserCategories[i].Selected" class="form-check-input" />
                                     <label class="form-check-label" asp-for="@Model.UserCategories[i].Selected" style="margin-left:45px">
                                         @Model.UserCategories[i].CategoryName
                                     </label>
                                 </div>
                             }
-                        
+
                         </div>
                     </div>
 
