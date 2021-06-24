@@ -994,3 +994,4 @@ D:\work\.netCore\ArtyFact-Back\Web\obj\Debug\net5.0\Razor\Views\UserAccount\Prof
 D:\work\.netCore\ArtyFact-Back\Web\obj\Debug\net5.0\Razor\Areas\Admin\Views\Post\EditPost.cshtml.g.cs
 D:\work\.netCore\ArtyFact-Back\Web\obj\Debug\net5.0\Razor\Views\Blog\Index.cshtml.g.cs
 D:\work\.netCore\ArtyFact-Back\Web\obj\Debug\net5.0\Razor\Views\Blog\Post.cshtml.g.cs
+D:\work\.netCore\ArtyFact-Back\Web\obj\Debug\net5.0\Razor\Areas\Admin\Views\ManageProducts\Index.cshtml.g.cs

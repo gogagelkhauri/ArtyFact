@@ -12,5 +12,7 @@ namespace Domain.Interfaces.Services
         Task<List<ProductDTO>> GetAllproducts();
         Task UpdateProduct(int id, ProductDTO productDTO);
         Task DeleteProduct(int id);
+        Task<List<ProductDTO>> GetPendingPosts();
+        Task Approve(int id);
     }
 }

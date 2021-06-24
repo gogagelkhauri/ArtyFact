@@ -10,6 +10,9 @@ namespace Domain.DTO
         public int Id { get; set; }
         [Required]
         public string Name { get; set; }
+
+        public bool Status { get; set; }
+
         public bool InStock { get; set; }
         [Required]
         public string Description { get; set; }

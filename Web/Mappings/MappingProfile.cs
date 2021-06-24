@@ -72,6 +72,7 @@ namespace Web.Mapping
                 .ForMember(dest => dest.UserId, o => o.MapFrom(src => src.UserId))
                 .ForMember(dest => dest.Category, o => o.MapFrom(src => src.Category))
                 .ForMember(dest => dest.CategoryId, o => o.MapFrom(src => src.CategoryId))
+                .ForMember(dest => dest.Status, o => o.MapFrom(src => src.Status))
                 //.ForMember(dest => dest.ProductDetail, o => o.MapFrom(src => src.ProductDetail))
                 .ForAllOtherMembers(x => x.Ignore());
 
@@ -85,6 +86,7 @@ namespace Web.Mapping
                 .ForMember(dest => dest.UserId, o => o.MapFrom(src => src.UserId))
                 .ForMember(dest => dest.Category, o => o.MapFrom(src => src.Category))
                 .ForMember(dest => dest.CategoryId, o => o.MapFrom(src => src.CategoryId))
+                .ForMember(dest => dest.Status, o => o.MapFrom(src => src.Status))
                 //.ForMember(dest => dest.ProductDetail, o => o.MapFrom(src => src.ProductDetail))
                 .ForAllOtherMembers(x => x.Ignore());
 

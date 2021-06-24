@@ -59,7 +59,13 @@ namespace Web.Controllers
 
         [HttpGet]  
         public async Task<IActionResult> AddProduct()  
-        {  
+        {
+            var user = _userManager.Users.Include(u => u.UserProfile)
+                                        .SingleOrDefault(u => u.UserName == HttpContext.User.Identity.Name);
+            if(user.UserProfile.UserCategories.Count == 0)
+            {
+                return Redirect("/UserAccount/Profile?userName=" + user.UserName);
+            }
             //var user = await _userManager.FindByNameAsync(username);
             var categories = await  _categoryService.GetAllCategories();
             var viewModel = new AddProductViewModel
@@ -118,6 +124,9 @@ namespace Web.Controllers
 
                 if (product == null)
                     return Redirect("/UserAccount/Profile?userName=" + user.UserName);
+
+                if(product.UserId != user.UserProfile.Id)
+                    return Redirect("/");
 
                 var categories = await _categoryService.GetAllCategories();
                 var viewModel = new EditProductViewModel

@@ -86,6 +86,15 @@ namespace Application.Services
             return paintTypeDTO;
         }
 
+        public async Task<List<ProductDTO>> GetPendingPosts()
+        {
+            var spec = new GetPendingProductsSpecification();
+            var products = await _productRepository.GetAllBySpecification(spec);
+            var paintTypeDTO = products.Select(x => _mapper.Map<ProductDTO>(x)).ToList();
+
+            return paintTypeDTO;
+        }
+
         public async Task<ProductDTO> GetProduct(int id)
         {
             var spec = new ProductWithDetailAndPaintType(id);
@@ -130,6 +139,17 @@ namespace Application.Services
 
             
             await _productRepository.UpdateAsync(product);
+        }
+
+
+        public async Task Approve(int id)
+        {
+            var product = await _productRepository.GetByIdAsync(id);
+            if(product != null && product.Status == false)
+            {
+                product.Status = true;
+                await _productRepository.UpdateAsync(product);
+            }
         }
     }
 }
