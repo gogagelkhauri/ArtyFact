@@ -1,0 +1,40 @@
+@model List<Domain.Entities.User.ApplicationUser>
+@{  
+    ViewData["Title"] = "Artists";  
+    Layout = "~/Views/Shared/_Layout2.cshtml";  
+} 
+@section Styles
+{
+    <link rel="stylesheet" href="~/css/Front/artist.css">
+}
+<div class="container1">
+    @foreach (var item in Model)
+    {
+        
+        <div class="card">
+            <a href="/UserAccount/Profile?userName=@item.UserName">
+            <div class="card-header">
+                @if(item.UserProfile.Image != null)
+                {
+                    <img src="@item.UserProfile.Image" alt="rover" />
+                }
+                else{
+                    <img src="~/img/octane.jpg" alt="rover" />
+                }
+            </div>
+            </a>
+            <div class="card-body">
+                @foreach (var cat in item.UserProfile.UserCategories)
+                {   
+                    <span class="tag tag-teal">@cat.Category.Name </span>
+                }
+            <div class="user">
+                <div class="user-info">
+                <h5>@item.UserName</h5>
+                </div>
+            </div>
+            </div>
+        </div>
+        
+    }
+  </div>

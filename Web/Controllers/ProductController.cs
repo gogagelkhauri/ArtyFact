@@ -61,6 +61,8 @@ namespace Web.Controllers
         public async Task<IActionResult> AddProduct()  
         {
             var user = _userManager.Users.Include(u => u.UserProfile)
+                                        .ThenInclude(p => p.UserCategories)
+                                        .ThenInclude(p => p.Category)
                                         .SingleOrDefault(u => u.UserName == HttpContext.User.Identity.Name);
             if(user.UserProfile.UserCategories.Count == 0)
             {

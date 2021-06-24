@@ -995,3 +995,10 @@ D:\work\.netCore\ArtyFact-Back\Web\obj\Debug\net5.0\Razor\Areas\Admin\Views\Post
 D:\work\.netCore\ArtyFact-Back\Web\obj\Debug\net5.0\Razor\Views\Blog\Index.cshtml.g.cs
 D:\work\.netCore\ArtyFact-Back\Web\obj\Debug\net5.0\Razor\Views\Blog\Post.cshtml.g.cs
 D:\work\.netCore\ArtyFact-Back\Web\obj\Debug\net5.0\Razor\Areas\Admin\Views\ManageProducts\Index.cshtml.g.cs
+C:\Users\gogag\OneDrive\Desktop\ArtyFact-Back\Web\obj\Debug\net5.0\Razor\Areas\Admin\Views\ManageProducts\Index.cshtml.g.cs
+C:\Users\gogag\OneDrive\Desktop\ArtyFact-Back\Web\obj\Debug\net5.0\Razor\Areas\Admin\Views\Post\AddPost.cshtml.g.cs
+C:\Users\gogag\OneDrive\Desktop\ArtyFact-Back\Web\obj\Debug\net5.0\Razor\Areas\Admin\Views\Post\EditPost.cshtml.g.cs
+C:\Users\gogag\OneDrive\Desktop\ArtyFact-Back\Web\obj\Debug\net5.0\Razor\Views\Blog\Index.cshtml.g.cs
+C:\Users\gogag\OneDrive\Desktop\ArtyFact-Back\Web\obj\Debug\net5.0\Razor\Views\Blog\Post.cshtml.g.cs
+C:\Users\gogag\OneDrive\Desktop\ArtyFact-Back\Web\obj\Debug\net5.0\Razor\Views\Blog\index2.cshtml.g.cs
+C:\Users\gogag\OneDrive\Desktop\ArtyFact-Back\Web\obj\Debug\net5.0\Razor\Views\UserAccount\Artists2.cshtml.g.cs
