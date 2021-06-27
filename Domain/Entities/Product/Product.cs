@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using Domain.Entities.Basket;
 using Domain.Entities.User;
@@ -18,5 +19,6 @@ namespace Domain.Entities
         public List<BasketItem> BasketItems { get; set; }
         public List<OrderItem> OrderItems { get; set; }
         public bool Status { get; set; }
+        public DateTime CreateDate { get; set; }
     }
 }

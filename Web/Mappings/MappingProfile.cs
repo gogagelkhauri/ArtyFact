@@ -10,8 +10,12 @@ namespace Web.Mapping
         public MappingProfile()
         {
 
-            CreateMap<CategoryDTO,Category>();
-            CreateMap<Category,CategoryDTO>();
+            CreateMap<CategoryDTO,Category>()
+            .ForMember(dest => dest.ImageURL, o => o.MapFrom(src => src.ImageURL))
+            .ForMember(dest => dest.Name, o => o.MapFrom(src => src.Name));
+            CreateMap<Category,CategoryDTO>()
+            .ForMember(dest => dest.ImageURL, o => o.MapFrom(src => src.ImageURL))
+            .ForMember(dest => dest.Name, o => o.MapFrom(src => src.Name));
 
             CreateMap<UserProfileDTO,UserProfile>()
                 .ForMember(dest => dest.Image, o => o.MapFrom(src => src.Image))
@@ -73,7 +77,8 @@ namespace Web.Mapping
                 .ForMember(dest => dest.Category, o => o.MapFrom(src => src.Category))
                 .ForMember(dest => dest.CategoryId, o => o.MapFrom(src => src.CategoryId))
                 .ForMember(dest => dest.Status, o => o.MapFrom(src => src.Status))
-                //.ForMember(dest => dest.ProductDetail, o => o.MapFrom(src => src.ProductDetail))
+                .ForMember(dest => dest.CreateDate, o => o.MapFrom(src => src.CreateDate))
+                .ForMember(dest => dest.User, o => o.MapFrom(src => src.User))
                 .ForAllOtherMembers(x => x.Ignore());
 
                 CreateMap<ProductDTO, Product>()
@@ -87,7 +92,8 @@ namespace Web.Mapping
                 .ForMember(dest => dest.Category, o => o.MapFrom(src => src.Category))
                 .ForMember(dest => dest.CategoryId, o => o.MapFrom(src => src.CategoryId))
                 .ForMember(dest => dest.Status, o => o.MapFrom(src => src.Status))
-                //.ForMember(dest => dest.ProductDetail, o => o.MapFrom(src => src.ProductDetail))
+                .ForMember(dest => dest.CreateDate, o => o.MapFrom(src => src.CreateDate))
+                .ForMember(dest => dest.User, o => o.MapFrom(src => src.User))
                 .ForAllOtherMembers(x => x.Ignore());
 
                 CreateMap<Post, PostDTO>()

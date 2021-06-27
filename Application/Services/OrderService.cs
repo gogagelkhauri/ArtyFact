@@ -15,11 +15,13 @@ namespace Application.Services
     {
         private readonly IRepository<Order> _orderRepo;
         private readonly IRepository<Basket> _basketRepo;
+        private readonly IRepository<Product> _productRepo;
 
-        public OrderService(IRepository<Order> orderRepo, IRepository<Basket> basketRepo)
+        public OrderService(IRepository<Order> orderRepo, IRepository<Basket> basketRepo,IRepository<Product> productRepo)
         {
             _orderRepo = orderRepo;
             _basketRepo = basketRepo;
+            _productRepo = productRepo;
         }
 
         public async Task<Order> CreateOrder(Order order,int userId)
@@ -40,18 +42,36 @@ namespace Application.Services
             var orderItems = basket.BasketItems.Select(basketItem =>
             {
                 var orderItem = new OrderItem() { Price = basketItem.Price, ProductId = basketItem.ProductId };
+                var productsList = basketItem.Product;
                 return orderItem;
             }).ToList();
+
+            
             order.OrderItems.AddRange(orderItems);
 
+
+            var productsList = basket.BasketItems.Select(basketItem =>
+            {
+                var productsList = basketItem.Product;
+                productsList.InStock = false;
+                return productsList;
+            }).ToList();
+
+
+
+            await _productRepo.UpdateMany(productsList);
             await _orderRepo.UpdateAsync(order);
             await _basketRepo.DeleteAsync(basket);
         }
 
-        public async Task<Order> GetMyOrders(int userId)
+        public async Task<List<Order>> GetMyOrders(int userId)
         {
             var spec = new GetOrderByUserId(userId);
-            var order  = await _orderRepo.GetBySpecification(spec);
+            var order  = await _orderRepo.GetAllBySpecification(spec);
+            if(order == null)
+            {
+                return new List<Order>() {};
+            }
             return order;
         }
 

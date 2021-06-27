@@ -214,3 +214,12 @@ form input::placeholder {
     font-size: .8rem;
     cursor: pointer;
 }
+
+.cats{
+    position: relative;
+    float: right;
+}
+
+.card-body{
+        
+}

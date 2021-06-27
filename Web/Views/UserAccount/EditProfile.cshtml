@@ -16,6 +16,7 @@
 </head>
 <body>
     <div class="container">
+        <a href="/UserAccount/Profile?userName=@User.Identity.Name" style="text-decoration: none;color:black;position:relative;top:20px;left:40px">Back</a>
         <div class="settings__panel">
             <div class="settings__title--panel">
                 <div class="general" style="border-left: 4px solid seagreen;">
@@ -45,7 +46,7 @@
                             }
                             else
                             {
-                                <img src="~/img/octane.jpg" id="output" style="width: 75px; height: 75px; border-radius: 100%; object-fit: cover;">
+                                <img src="~/img/octane.jpg" id="output" style="width: 75px; height: 75px; border-radius: 100%; object-fit: cover; margin-left:20px">
 
                             }
                         </div>
@@ -55,15 +56,14 @@
                             <p><label for="file" style="cursor: pointer;">Change Profile Picture</label></p>
                         </div>
                     </div>
-                    <div class="contact">
+                    <div class="name">
                         @Html.TextBoxFor(m => m.Email, new { placeholder = "Email" })
                         <span asp-validation-for="Email" class="text-danger"></span>
-                    </div>
-
-                    <div class="contact">
-                        @Html.TextBoxFor(m => m.UserName, new { placeholder = "UserName" })
+                         @Html.TextBoxFor(m => m.UserName, new { placeholder = "UserName" })
                         <span asp-validation-for="UserName" class="text-danger"></span>
                     </div>
+
+                   
 
                     <div class="about">
                         @* <input type="text" placeholder="Website"> *@
@@ -71,26 +71,22 @@
                         <span asp-validation-for="UserProfile.WorkDescription" class="text-danger"></span>
                     </div>
 
-                    <div class="contact">
+                    <div class="name">
                         @Html.TextBoxFor(m => m.UserProfile.FacebookURL, new { placeholder = "Facebook URL" })
                         <span asp-validation-for="UserProfile.FacebookURL" class="text-danger"></span>
-                    </div>
-
-                    <div class="contact">
                         @Html.TextBoxFor(m => m.UserProfile.InstagramURL, new { placeholder = "Instagram URL" })
                         <span asp-validation-for="UserProfile.InstagramURL" class="text-danger"></span>
-                    </div>
-
-                    <div class="gender">
-                        <input type="text" asp-for="@Model.UserProfile.Gender" placeholder="Gender">
+                         <input type="text" asp-for="@Model.UserProfile.Gender" placeholder="Gender">
                         <span asp-validation-for="UserProfile.Gender" class="text-danger"></span>
                     </div>
 
-                    <div class="gender">
-                        <div class="card-body">
+
+                   
+
+                    <div class="name" >
                             @for (int i = 0; i < Model.UserCategories.Count; i++)
                             {
-                                <div class="form-check m-1">
+                               <div>
                                     <input type="hidden" asp-for="@Model.UserCategories[i].CategoryId" />
                                     <input type="hidden" asp-for="@Model.UserCategories[i].CategoryName" />
                                     <input asp-for="@Model.UserCategories[i].Selected" class="form-check-input" />
@@ -100,7 +96,6 @@
                                 </div>
                             }
 
-                        </div>
                     </div>
 
                     <div class="button-submit">

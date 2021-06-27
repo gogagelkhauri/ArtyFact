@@ -19,10 +19,7 @@
             </div>
     
             <ul class="nav-bar">
-                @if (ViewData["Title"].ToString() != "Artists")
-                {
-                    <li><a href="/UserAccount/Artists">Artists</a></li>
-                }
+            <li><a href="/UserAccount/Artists">Artists</a></li>
            
             @if (SignInManager.IsSignedIn(User))
             {

@@ -109,11 +109,10 @@ namespace Web.Controllers
                 float total = 0;
                 Dictionary<string, string> Metadata = new Dictionary<string, string>();
 
-                foreach (var item in basket.BasketItems)
+                for(int i = 0; i < basket.BasketItems.Count; i++)
                 {
-                    total += item.Price;
-                    Metadata.Add("Product", item.Product.Name);
-                    Metadata.Add("Price", "$"+item.Price.ToString());
+                    total += basket.BasketItems[i].Price;
+                    Metadata.Add("Product " + i, "Name :"+ basket.BasketItems[i].Product.Name + " Price: " + basket.BasketItems[i].Price.ToString());
                 }
 
                 //int amount = 100;

@@ -1,19 +1,45 @@
-@model Domain.DTO.CategoryDTO
+@model Web.Areas.Admin.ViewModels.AddCategoryViewModel
 @{
-ViewData["Title"] = "Create Category";
-Layout = "~/Views/Shared/_Layout.cshtml";  
+    ViewData["Title"] = "Create Category";
+    Layout = "~/Views/Shared/_Layout.cshtml";  
 }
 
 <div class="container">
     @Html.ActionLink("Back", "Index", "Category", new { Area = "Admin" }, new { @class = "btn btn-primary float-right mb-2" })
-    <form method="post" action="/Admin/Category/Store">
+    <form method="post" action="/Admin/Category/Store" enctype="multipart/form-data">
         @Html.AntiForgeryToken()
         <div class="form-group">
-            @Html.LabelFor(m => m.Name)
-            @Html.TextBoxFor(m => m.Name, new { placeholder = "Enter Title", @class = "form-control" })
-            <span asp-validation-for="Name" class="text-danger"></span>
+            @Html.LabelFor(m => m.Category.Name)
+            @Html.TextBoxFor(m => m.Category.Name, new { placeholder = "Enter Title", @class = "form-control" })
+            <span asp-validation-for="Category.Name" class="text-danger"></span>
+        </div>
+
+        <img class="esh-catalog-thumbnail" id="readImg" src="@Model.Category.ImageURL" style="width:100px;height:100px" />
+        <div class="form-group">
+            @Html.LabelFor(m => m.ActualImage)
+            <input type="file" onchange="readURL(this);" asp-for="@Model.ActualImage" class="form-control" />
+            <span asp-validation-for="ActualImage" class="text-danger"></span>
         </div>
         <button type="submit" class="btn btn-primary">Submit</button>
     </form>
 
 </div>
+
+@section Scripts {
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Trumbowyg/2.23.0/trumbowyg.min.js" integrity="sha512-sffB9/tXFFTwradcJHhojkhmrCj0hWeaz8M05Aaap5/vlYBfLx5Y7woKi6y0NrqVNgben6OIANTGGlojPTQGEw==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
+    <partial name="_ValidationScriptsPartial" />
+    <script>
+        $('#editor').trumbowyg();
+        function readURL(input) {
+            if (input.files && input.files[0]) {
+                var reader = new FileReader();
+                reader.onload = function (e) {
+                    $('#readImg')
+                        .attr('src', e.target.result);
+                };
+                reader.readAsDataURL(input.files[0]);
+            }
+        }
+    </script>
+}

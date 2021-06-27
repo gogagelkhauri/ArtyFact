@@ -1,0 +1,152 @@
+section {
+    width: 50%;
+    margin-top: 1rem;
+    display: flex;
+    flex-direction: column;
+}
+
+section form button {
+    width: 5vw;
+    padding: 1rem;
+    border: none;
+    background-color: rgb(32, 32, 32);
+    color: white;
+    font-size: 1rem;
+    font-family: 'Quicksand', sans-serif;
+    margin-left: 1rem;
+    margin-top: 1rem;
+    border-radius: 1rem;
+    cursor: pointer;
+}
+
+section form button:hover {
+    background-color: rgb(43, 43, 43);
+}
+
+form .product--name {
+    width: 15vw;
+    padding: 1rem;
+    background: transparent;
+    border: 1px solid rgb(32, 32, 32);
+    border-radius: 1rem;
+    margin-left: 1rem;
+}
+
+form .product--name::placeholder {
+    color: rgb(32, 32, 32);
+    opacity: 1;
+    font-family: 'Quicksand', sans-serif;
+    font-size: 1rem;
+}
+
+form .dropdown-container {
+    width: 20vw;
+    padding: 1rem;
+}
+
+form .select-box {
+    display: flex;
+    flex-direction: column;
+}
+
+form .options-container {
+    color: rgb(32, 32, 32);
+    max-height: 0;
+    width: 100%;
+    opacity: 0;
+    transition: all .4s;
+    border-radius: 15px;
+    overflow: hidden;
+    order: 1;
+}
+
+form .selected {
+    border: 1px solid rgb(32, 32, 32);
+    border-radius: 15px;
+    margin-bottom: .5rem;
+    color: rgb(32, 32, 32);
+    position: relative;
+    order: 0;
+}
+
+form .selected::after {
+    content: "";
+    background: url('../img/arrow-down.svg');
+    background-size: contain;
+    background-repeat: no-repeat;
+    position: absolute;
+    height: 100%;
+    width: 1rem;
+    right: 1rem;
+    top: 1rem;
+    transition: all 0.4s;
+}
+
+form .options-container.active {
+    max-height: 240px;
+    opacity: 1;
+    overflow-y: scroll;
+}
+
+form .options-container.active + .selected::after {
+    transform: rotateX(180deg);
+    top: -14px;
+}
+
+form .option,
+.selected {
+    padding: 12px 24px;
+    cursor: pointer;
+}
+
+form .option:hover {
+    background: rgb(240, 240, 240);
+    color: rgb(32, 32, 32);
+}
+
+form .select-box
+label {
+    cursor: pointer;
+}
+ 
+form .radio {
+    display: none;
+}
+
+form .product--description {
+    border: 1px solid rgb(32, 32, 32);
+    border-radius: 1rem;
+    margin-left: 1rem;
+    resize: none;
+    width: 30vw;
+    height: 40vh;
+    padding: 1rem;
+}
+
+form .product--price {
+    width: 15vw;
+    background: transparent;
+    border: 1px solid rgb(32, 32, 32);
+    border-radius: 1rem;
+    padding: 1rem;
+    margin-left: 1rem;
+    margin-top: 1rem;
+}
+
+form .product--price::placeholder {
+    font-family: 'Quicksand', sans-serif;
+    font-size: 1rem;
+    opacity: 1;
+    color: rgb(32, 32, 32);
+}
+
+form .upload--image {
+    margin-left: 1rem;
+    margin-top: 1rem;
+}
+
+form section p img {
+    border-radius: 1rem;
+    margin-left: 1rem;
+    margin-top: 1rem;
+}

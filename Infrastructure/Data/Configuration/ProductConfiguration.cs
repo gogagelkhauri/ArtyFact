@@ -21,6 +21,10 @@ namespace Infrastructure.Data.Configuration
             builder.Property(p => p.Status)
                 .HasDefaultValue(false)
                 .ValueGeneratedOnAdd();
+
+            builder.Property(p => p.InStock)
+            .HasDefaultValue(true)
+            .ValueGeneratedOnAdd();
             //One To Many Relationship Between Product and Category
             builder
             .HasOne<Category>(p => p.Category)

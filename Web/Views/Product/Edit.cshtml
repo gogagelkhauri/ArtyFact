@@ -2,73 +2,81 @@
 @inject SignInManager<Domain.Entities.User.ApplicationUser> SignInManager
 @model Web.ViewModels.EditProductViewModel
 @{
-    ViewData["Title"] = "Edit Product";
-    Layout = "~/Views/Shared/_Layout.cshtml";
+    ViewData["Title"] = "Create Product";
+    Layout = "~/Views/Shared/_blogLayout.cshtml";
 }
 @section Styles
 {
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Trumbowyg/2.23.0/ui/trumbowyg.min.css" integrity="sha512-iw/TO6rC/bRmSOiXlanoUCVdNrnJBCOufp2s3vhTPyP1Z0CtTSBNbEd5wIo8VJanpONGJSyPOZ5ZRjZ/ojmc7g==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="~/css/Front/add-product.css">
 }
+<section>
+    <form method="post" action="/Product/Store" enctype="multipart/form-data">
+     @Html.AntiForgeryToken()
 
-<div class="container">
-    <a href="/UserAccount/Profile?userName=@User.Identity.Name" class="btn btn-primary float-right mb-2">Back</a>
-    <form method="post" action="/Product/Update" enctype="multipart/form-data">
-        @Html.AntiForgeryToken()
-        <input type="hidden" asp-for="@Model.Product.Id" value="@Model.Product.Id" />
-        <div class="form-group">
-            @Html.LabelFor(m => m.Product.Name)
-            @Html.TextBoxFor(m => m.Product.Name, new { placeholder = "Enter Title", @class = "form-control" })
+            @Html.TextBoxFor(m => m.Product.Name, new { placeholder = "Name", @class = "product--name" })
             <span asp-validation-for="Product.Name" class="text-danger"></span>
-        </div>
-        <div class="form-group">
-            @Html.LabelFor(m => m.Product.Description)
-            <textarea asp-for="@Model.Product.Description" id="editor" class="form-control" cols="30" rows="10"></textarea>
-            <span asp-validation-for="Product.Description" class="text-danger"></span>
-        </div>
+        
+        <div class="dropdown-container">
+                    
+            <div class="select-box">
 
-        <div class="form-group">
-            @Html.LabelFor(m => m.Product.Category)
-            <select asp-for="@Model.Product.CategoryId" class="form-control">
-                <option value="">Choose Category</option>
-                @foreach (var item in @Model.Categories)
-                {
-                    <option value="@item.Id">@item.Name</option>
-                }
-            </select>
-            <span asp-validation-for="Product.CategoryId" class="text-danger"></span>
-        </div>
+                <!-- class > active -->
+                <div class="options-container">
+                     @foreach (var item in @Model.Categories)
+                    {
+                        <div class="option">
+                            <input type="radio" value="@item.Id" class="radio" id="@item.Name" asp-for="@Model.Product.CategoryId" >
+                            <label for="@item.Name">@item.Name</label>
+                        </div>
+                    }
+                </div>
 
-        <div class="form-group">
-            @Html.LabelFor(m => m.Product.Price)
-            <input asp-for="@Model.Product.Price" type="number" class="form-control" placeholder="Enter Price" />
-            <span asp-validation-for="Product.Price" class="text-danger"></span>
-        </div>
-        <img class="esh-catalog-thumbnail" id="readImg" src="@Model.Product.ImageURL" style="width:100px;height:100px" />
-        <div class="form-group">
-            @Html.LabelFor(m => m.ActualImage)
-            <input type="file" onchange="readURL(this);" asp-for="@Model.ActualImage" class="form-control" />
-            <span asp-validation-for="ActualImage" class="text-danger"></span>
+                <div class="selected">
+                    Category
+                </div>
+            </div>
         </div>
 
-        <button type="submit" class="btn btn-primary">Submit</button>
-    </form>
+         <textarea asp-for="@Model.Product.Description" id="editor" class="product--description" placeholder="Product Description..."></textarea><br>
+         <span asp-validation-for="Product.Description" class="text-danger"></span>
+        
+        <input asp-for="@Model.Product.Price" type="text" class="product--price" placeholder="Price" />
+        <span asp-validation-for="Product.Price" class="text-danger"></span>
 
-</div>
+        <p><input type="file" accept="image/*" onchange="loadFile(event)" id="file" asp-for="@Model.ActualImage" style="display: none;" /></p>
+        <span asp-validation-for="ActualImage" class="text-danger"></span>
+        <p class="upload--image"><label for="file" style="cursor: pointer;">Upload Image</label></p>
+        <p><img id="output" width="200" src="@Model.Product.ImageURL" style="width: 100px;height:100px;margin-left:20px;margin-top:10px"/></p>
 
-@section Scripts {
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/Trumbowyg/2.23.0/trumbowyg.min.js" integrity="sha512-sffB9/tXFFTwradcJHhojkhmrCj0hWeaz8M05Aaap5/vlYBfLx5Y7woKi6y0NrqVNgben6OIANTGGlojPTQGEw==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
-    <partial name="_ValidationScriptsPartial" />
-    <script>
-        $('#editor').trumbowyg();
-        function readURL(input) {
-            if (input.files && input.files[0]) {
-                var reader = new FileReader();
-                reader.onload = function (e) {
-                    $('#readImg')
-                        .attr('src', e.target.result);
-                };
-                reader.readAsDataURL(input.files[0]);
-            }
-        }
-    </script>
-}
+        <script>
+            var loadFile = function(event) {
+                var image = document.getElementById('output');
+                image.src = URL.createObjectURL(event.target.files[0]);
+            };
+        </script>
+
+        <button type="submit">Submit</button>
+        </form>
+    </section>
+    @section Scripts{
+        <script>
+            const selected = document.querySelector(".selected");
+            const optionsContainer = document.querySelector(".options-container");
+
+            const optionsList = document.querySelectorAll(".option");
+
+            selected.addEventListener("click", () => {
+                optionsContainer.classList.toggle("active");
+            });
+
+            optionsList.forEach(o => {
+                o.addEventListener("click", () => {
+                selected.innerHTML = o.querySelector("label").innerHTML;
+                optionsContainer.classList.remove("active");
+                });
+            });
+        </script>
+    }
+
+
+

@@ -7,10 +7,7 @@
 @using Microsoft.AspNetCore.Identity
 @inject SignInManager<Domain.Entities.User.ApplicationUser> SignInManager
 @model Web.Areas.Admin.ViewModels.AddPostViewModel
-@{
-    ViewData["Title"] = "Create Product";
-    Layout = "~/Views/Shared/_Layout.cshtml";
-}
+
 @section Styles
 {
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Trumbowyg/2.23.0/ui/trumbowyg.min.css" integrity="sha512-iw/TO6rC/bRmSOiXlanoUCVdNrnJBCOufp2s3vhTPyP1Z0CtTSBNbEd5wIo8VJanpONGJSyPOZ5ZRjZ/ojmc7g==" crossorigin="anonymous" referrerpolicy="no-referrer" />

@@ -3,6 +3,7 @@ using Domain.DTO;
 using Domain.Interfaces.Services;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using Web.Areas.Admin.ViewModels;
 
 namespace Web.Areas.Admin.Controlles
 {
@@ -24,20 +25,27 @@ namespace Web.Areas.Admin.Controlles
 
         public IActionResult Create()
         {
-            return View();
+
+            var viewModel = new AddCategoryViewModel
+            {
+               Category = new Domain.DTO.CategoryDTO()
+            };
+
+            return View(viewModel);
         }
 
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Store(CategoryDTO categoryDTO)
+        public async Task<IActionResult> Store(AddCategoryViewModel viewModel)
         {
-            var existingCategory = await _categoryService.GetCategoryByName(categoryDTO.Name);
+            var existingCategory = await _categoryService.GetCategoryByName(viewModel.Category.Name);
             if(!ModelState.IsValid || existingCategory != null)
             {
-                return View("create", categoryDTO);
+                return View("create", viewModel);
             }
-            await  _categoryService.AddCategory(categoryDTO);
+            viewModel.Category.SetActualImage(viewModel.ActualImage);
+            await  _categoryService.AddCategory(viewModel.Category);
             return RedirectToAction("Index", "Category", new { area = "Admin" });
         }
 
@@ -56,24 +64,33 @@ namespace Web.Areas.Admin.Controlles
 
         public async Task<IActionResult> Edit(int id)
         {
-            var category = await _categoryService.GetCategory(id);
-            if(category != null)
-                return View(category);
-            return RedirectToAction("Index", "Category", new { area = "Admin" });
+            if (id > 0)
+            {
+                var category = await _categoryService.GetCategory(id);
+                if(category != null)
+                    return View(new EditCategoryViewModel(){Category = category});
+                return RedirectToAction("Index", "Category", new { area = "Admin" });
+            }
+            return Redirect("/Admin/Category");
             
         }
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Update(CategoryDTO categoryDTO)
+        public async Task<IActionResult> Update(EditCategoryViewModel viewModel)
         {
-            var existingCategory = await _categoryService.GetCategory(categoryDTO.Id);
+            var existingCategory = await _categoryService.GetCategory(viewModel.Category.Id);
             if (!ModelState.IsValid)
             {
-                return View("edit", categoryDTO);
+                return View("edit", viewModel);
             }
 
-            await _categoryService.UpdateCategory(categoryDTO.Id,categoryDTO);
+            if (viewModel.ActualImage != null)
+            {
+                viewModel.Category.SetActualImage(viewModel.ActualImage);
+            }
+
+            await _categoryService.UpdateCategory(viewModel.Category.Id,viewModel.Category);
             return RedirectToAction("Index", "Category", new { area = "Admin" });
         }
     }

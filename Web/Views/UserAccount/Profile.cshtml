@@ -2,63 +2,13 @@
 @inject SignInManager<Domain.Entities.User.ApplicationUser> SignInManager
 @model Web.ViewModels.UserProfileViewModel
 @{
-ViewData["Title"] = "User Profile";
-//Layout = "~/Views/Shared/_Layout.cshtml";  
-  Layout = "";  
+    ViewData["Title"] = "User Profile";
+    Layout = "~/Views/Shared/_blogLayout.cshtml";  
 }
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>User Profile</title>
-    <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@300;400;600&display=swap" rel="stylesheet">
+
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="stylesheet" href="~/css/Front/profile.css">
-</head>
-<body>
-    <header>
-        <div class="nav-wrapper">
-            <nav class="main-nav">
-                <div class="logo-container">
-                    <a href="/"><img src="~/img/logo.svg" alt="Logo Inc"></a>
-                </div>
-        
-                <ul class="nav-bar">
-                    <li><a href="/UserAccount/Artists">Artists</a></li>
-                    @if (SignInManager.IsSignedIn(User))
-                     {
-                            <li><a href="/basket">Basket</a></li>
 
-                            @if( Model.User.UserName != Model.AuthUser.UserName){
-                                <li><a href="/UserAccount/Profile?userName=@User.Identity.Name">Profile</a></li>
-
-                            }
-                     }
-                    @if (!SignInManager.IsSignedIn(User))
-                    {
-                        <li><a href="/Identity/Account/Login">Sign In</a></li>
-                    }
-                    @* @if (SignInManager.IsSignedIn(User))
-                     {
-                         <li>
-                        <form id="logoutForm" method="Post" action="/Identity/Account/Logout">
-                            <a onclick="document.getElementById('logoutForm').submit();" style="cursor: pointer">Logout</a>
-                        </form>
-                         </li>
-                     }
-                     else
-                     {
-                        <li><a href="/Identity/Account/Login">Sign In</a></li>
-                     } *@
-                </ul>
-            </nav>
-
-            <div class="settings">
-                <img src="~/img/settings.svg" alt="">
-            </div>
-        </div>
         @if(SignInManager.IsSignedIn(User)){
         @if(Model.User.UserName == Model.AuthUser.UserName){
         <!--modal settings-->
@@ -66,6 +16,7 @@ ViewData["Title"] = "User Profile";
             <div class="modal__content--settings">
                 <div class="close">+</div>
                 <div class="form">
+                  
                     <div class="general">
                         <a href="/UserAccount/EditProfile">General</a>
                     </div>
@@ -80,7 +31,12 @@ ViewData["Title"] = "User Profile";
                     <div class="cancel-account">
                         <a href="/UserAccount/Cancel">Cancel Account</a>
                     </div>
-                    
+                      @if (User.IsInRole("Admin"))
+                    {
+                         <div class="logout">
+                            <a href="/Admin/Home">Admin</a>
+                        </div>
+                    }
                 </div>
             </div>
         </div>
@@ -105,8 +61,15 @@ ViewData["Title"] = "User Profile";
                 {
                     <p>Interests: @foreach (var cat in Model.User.UserProfile.UserCategories)
                             {   
-                                @cat.Category.Name 
-                            }
+                                @cat.Category.Name  <text>&nbsp;</text>
+                            } 
+                    </p>
+
+                }
+
+                @if(Model.User.UserProfile.Products.Where(p => p.InStock == false).Count() > 0)
+                {
+                    <p>Sold products: @Model.User.UserProfile.Products.Where(p => p.InStock == false).Count()
                     </p>
 
                 }
@@ -123,7 +86,7 @@ ViewData["Title"] = "User Profile";
 
     <section>
         <div class="product-container">
-            @foreach (var product in Model.User.UserProfile.Products)
+            @foreach (var product in Model.User.UserProfile.Products.Where(p => p.InStock == true))
             {
                 
                 <div class="product">
@@ -156,7 +119,7 @@ ViewData["Title"] = "User Profile";
                     @if(SignInManager.IsSignedIn(User)){
                     @if( Model.User.UserName == Model.AuthUser.UserName){
                         <div style="float:left;display:flex">
-                            <div style="margin-right:15px"><a href="/Product/Edit/@product.Id"><i class="fa fa-edit"></i></a></div>
+                            <div style="margin-right:15px;"><a href="/Product/Edit/@product.Id" class="edit-btn"><i class="fa fa-edit" style="padding: 2px;"></i></a></div>
                             <div style="margin-right:15px">
                                 @* <a href="">
                                 <i class="fa fa-trash-o"></i>
@@ -179,43 +142,8 @@ ViewData["Title"] = "User Profile";
         </div>
     </section>
     
-    <footer>
-        <div class="footer--container">
-            <div class="footer--title">
-                <img src="~/img/logo.svg" alt="footerLogo">
-                <h1>Artifact</h1>
-            </div>
-
-            <div class="footer--content">
-                <div class="left--panel">
-                    <h2>Contact</h2>
-                    <div class="left--panel--content">
-                        <p>Email</p>
-                        <p>Facebook</p>
-                        <p>Instagram</p>
-                    </div>
-                </div>
-                
-                <div class="center--panel">
-                    <h2>Help</h2>
-                    <div class="center--panel--content">
-                        <p>Fort Collectors</p>
-                        <p>For Artists</p>
-                    </div>
-                </div>
-                
-                <div class="right--panel">
-                    <h2>About</h2>
-                    <div class="right--panel--content">
-                        <p>The Website</p>
-                        <p>Team</p>
-                        <p>Terms & Conditions</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </footer>
-
+@section Scripts
+{
     <script>
         document.querySelector('.close').addEventListener('click', function() {
             document.querySelector('.bg__modal--settings').style.display = 'none';
@@ -227,5 +155,4 @@ ViewData["Title"] = "User Profile";
             document.body.style.overflow = 'hidden';
         });
     </script>
-</body>
-</html>
+}

@@ -36,7 +36,7 @@ namespace Infrastructure.Data
             return await specificationResult.FirstOrDefaultAsync();
         }
 
-        public async Task<IList<T>> GetAllBySpecification(ISpecification<T> spec) 
+        public async Task<List<T>> GetAllBySpecification(ISpecification<T> spec) 
         {
             var specificationResult = ApplySpecification(spec);
             return await specificationResult.ToListAsync();
@@ -91,12 +91,15 @@ namespace Infrastructure.Data
             return evaluator.GetQuery(_dbContext.Set<T>().AsQueryable(), spec);
         }
 
-        public void UpdateMany(ISpecification<T> spec)
+        public async Task UpdateMany(List<Product> products)
         {
-            var entity = this.GetBySpecification(spec);
-            //_dbContext.TryUpdateManyToMany();
-            _dbContext.Entry(entity).State = EntityState.Modified;
-            _dbContext.SaveChangesAsync();
+            foreach (var entity in products)
+            {
+                _dbContext.Entry(entity).State = EntityState.Modified;
+                
+            }
+            
+            await _dbContext.SaveChangesAsync();
         }
 
         // public void TryUpdateManyToMany<T, TKey>(IEnumerable<T> currentItems, IEnumerable<T> newItems, Func<T, TKey> getKey) where T : BaseEntity

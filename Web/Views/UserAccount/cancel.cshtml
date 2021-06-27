@@ -17,6 +17,7 @@
 <body>
 
     <div class="container">
+         <a href="/UserAccount/Profile?userName=@User.Identity.Name" style="text-decoration: none;color:black;position:relative;top:20px;left:40px">Back</a>
         <div class="settings__panel">
             <div class="settings__title--panel">
                 <div class="general">
@@ -35,9 +36,6 @@
             <div class="content-diactivate appear">
                 <form asp-action="Cancel" asp-controller="UserAccount" method="post" >  
                     @Html.AntiForgeryToken()
-                    <div class="old-password"> 
-                        <textarea name="" id="" cols="30" rows="7" placeholder="Why are you disabling your account?"></textarea>
-                    </div>
 
                     <div class="confirm-password">
                         @Html.PasswordFor(m => m.Password, new { placeholder = "Password"})  <br>

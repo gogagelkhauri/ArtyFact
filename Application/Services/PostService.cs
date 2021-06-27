@@ -76,7 +76,8 @@ namespace Application.Services
 
         public  async Task<List<Post>> GetPosts()
         {
-            var posts = await _postRepo.ListAsync();
+            var spec = new GetPostsWithUserSpecification();
+            var posts = await _postRepo.GetAllBySpecification(spec);
             
             return posts;
         }

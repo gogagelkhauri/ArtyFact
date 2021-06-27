@@ -145,7 +145,7 @@ namespace Web.Controllers
             await _userProfileService.UpdateUserProfile(viewModel.UserProfile,viewModel.UserCategories);
           
 
-            return Redirect("/UserAccount/Profile?username=" + User.Identity.Name);
+            return Redirect("/UserAccount/Profile?username=" +user.UserName);
         }
 
         [AllowAnonymous]

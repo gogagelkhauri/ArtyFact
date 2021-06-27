@@ -1,31 +1,11 @@
 @model List<Domain.Entities.User.ApplicationUser>
 @{  
     ViewData["Title"] = "Artists";  
-    Layout = "";  
+    Layout = "~/Views/Shared/_blogLayout.cshtml";  
 } 
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Artists</title>
+@section Styles{
     <link rel="stylesheet" href="~/css/Front/artist.css">
-    <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@300;400;600&display=swap" rel="stylesheet">
-</head>
-<body>
-    <div class="nav-wrapper">
-        <nav class="main-nav">
-            <div class="logo-container">
-                <a href="/"><img src="../img/logo.svg" alt="Logo Inc"></a>
-            </div>
-    
-            <ul class="nav-bar">
-                <li><a href="../pages/blog.html">Blog</a></li>
-                <li><a href="signin.html">Sign In</a></li>
-            </ul>
-        </nav>
-    </div>
+}
 
     <div class="section--title">
         <h2>Artists</h2>
@@ -45,50 +25,10 @@
                         <img src="~/img/octane.jpg" alt="rover" style="width: 300px; height: 400px; object-fit: cover; border-radius: 1rem;" />
                     }
                     <h2><a href="/UserAccount/Profile?userName=@item.UserName">@item.UserName</a></h2>
-                    @foreach (var cat in item.UserProfile.UserCategories)
-                    {   
-                        <p>@cat.Category.Name, </p>
-                    }
+                    
                 </div>
             }
         </div>
     </section>
 
-    <footer>
-        <div class="footer--container">
-            <div class="footer--title">
-                <img src="../img/logo.svg" alt="footerLogo">
-                <h1>Artifact</h1>
-            </div>
-
-            <div class="footer--content">
-                <div class="left--panel">
-                    <h2>Contact</h2>
-                    <div class="left--panel--content">
-                        <p>Email</p>
-                        <p>Facebook</p>
-                        <p>Instagram</p>
-                    </div>
-                </div>
-                
-                <div class="center--panel">
-                    <h2>Help</h2>
-                    <div class="center--panel--content">
-                        <p>For Artists</p>
-                        <p>How to Use Artifact</p>
-                    </div>
-                </div>
-                
-                <div class="right--panel">
-                    <h2>About</h2>
-                    <div class="right--panel--content">
-                        <p>The Website</p>
-                        <p>Team</p>
-                        <p>Terms & Conditions</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </footer>
-</body>
-</html>
+    

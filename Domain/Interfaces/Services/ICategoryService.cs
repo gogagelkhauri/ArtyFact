@@ -13,5 +13,6 @@ namespace Domain.Interfaces.Services
         Task<List<CategoryDTO>> GetAllCategories();
         Task UpdateCategory(int id,CategoryDTO categoryDTO);
         Task DeleteCategory(int id);
+        Task<List<Category>> GetMostSoldCategories();
     }
 }

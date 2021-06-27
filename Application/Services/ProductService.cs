@@ -66,10 +66,10 @@ namespace Application.Services
             return productDTOFromDb;
         }
 
-        public async Task DeleteProduct(int id)
+        public async Task DeleteProduct(int id,int userId)
         {
             var product = await _productRepository.GetByIdAsync(id);
-            if(product != null)
+            if(product != null && product.UserId == userId)
             {
                 var OldfilePath = Path.Combine(_env.WebRootPath, product.ImageURL.Replace("/", "\\").Remove(0, 1));
                 File.Delete(OldfilePath);
@@ -81,7 +81,7 @@ namespace Application.Services
         {
             var spec = new ProductsWithDetailAndPaintType();
             var paintTypes = await _productRepository.GetAllBySpecification(spec);
-            var paintTypeDTO = paintTypes.Select(x => _mapper.Map<ProductDTO>(x)).ToList();
+            var paintTypeDTO = paintTypes.Select(x => _mapper.Map<ProductDTO>(x)).OrderByDescending(p => p.CreateDate).ToList();
             
             return paintTypeDTO;
         }
@@ -93,6 +93,15 @@ namespace Application.Services
             var paintTypeDTO = products.Select(x => _mapper.Map<ProductDTO>(x)).ToList();
 
             return paintTypeDTO;
+        }
+
+        public async Task<List<ProductDTO>> GetProtudtsByCategory(string category)
+        {
+            var spec = new GetProductsByCategorySpec(category);
+            var products = await _productRepository.GetAllBySpecification(spec);
+            var productDTO = products.Select(x => _mapper.Map<ProductDTO>(x)).ToList();
+
+            return productDTO;
         }
 
         public async Task<ProductDTO> GetProduct(int id)

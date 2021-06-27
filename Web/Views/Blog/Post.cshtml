@@ -1,15 +1,81 @@
 ﻿@model Domain.DTO.PostDTO
 @{
-    ViewData["Title"] = "Create Product";
-    Layout = "~/Views/Shared/_Layout.cshtml";
+    ViewData["Title"] = "";
+    Layout = "";
 }
-<div class="container">
-    <a href="/blog" class="btn btn-primary float-right mb-2">Back</a>
-    <h1>@Model.Title</h1>
-    <div>
-        <img src="@Model.ImageURL" style="width:150px;height: 150px;" alt="Image">
-    </div>
-    <p>Description: <br> @Html.Raw(Model.Description)</p>
-    <p>Price: @Model.Date</p>
-    <p>Category: @Model.User.User.UserName</p>
-</div>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Blog-Content</title>
+    <link rel="stylesheet" href="~/css/Front/blog-content.css">
+    <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@300;400;600&display=swap" rel="stylesheet">
+</head>
+<body>
+    <header id="header">
+        <div class="image--container">
+            <img src="@Model.ImageURL" alt="">
+            <div class="black--effect"></div>
+            <h1 class="blog--title">@Model.Title</h1>
+            <a href="/blog">
+                <div class="navigation">
+                    <svg width="24" height="16" viewBox="0 0 24 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M0.292892 7.2929C-0.0976315 7.68342 -0.0976314 8.31658 0.292893 8.70711L6.65686 15.0711C7.04738 15.4616 7.68054 15.4616 8.07107 15.0711C8.46159 14.6805 8.46159 14.0474 8.07107 13.6569L2.41421 8L8.07107 2.34315C8.46159 1.95262 8.46159 1.31946 8.07107 0.928934C7.68054 0.538409 7.04738 0.538409 6.65685 0.928934L0.292892 7.2929ZM24 7L1 7L1 9L24 9L24 7Z" fill="white"/>
+                    </svg>
+                    <a href="/blog">Back To Blog</a>
+                </div>
+            </a>
+        </div>
+    </header>
+
+    <section>
+        <div class="blog--content">
+            <p>
+                @Model.Description
+            </p>
+            <div class="blog--author">
+                <em>by @Model.User.User.UserName</em>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="footer--container">
+            <div class="footer--title">
+                <img src="~/img/logo.svg" alt="footerLogo">
+                <h1>Artifact</h1>
+            </div>
+
+            <div class="footer--content">
+                <div class="left--panel">
+                    <h2>Contact</h2>
+                    <div class="left--panel--content">
+                        <p>Email</p>
+                        <p>Facebook</p>
+                        <p>Instagram</p>
+                    </div>
+                </div>
+                
+                <div class="center--panel">
+                    <h2>Help</h2>
+                    <div class="center--panel--content">
+                        <p>For Artists</p>
+                        <p>How to Use Artifact</p>
+                    </div>
+                </div>
+                
+                <div class="right--panel">
+                    <h2>About</h2>
+                    <div class="right--panel--content">
+                        <p>The Website</p>
+                        <p>Team</p>
+                        <p>Terms & Conditions</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>

@@ -1,0 +1,157 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Quicksand', sans-serif;
+}
+
+header {
+    position: fixed;
+}
+
+.image--container {
+    width: 100vw;
+    height: 30vh;
+    background-color: red;
+    position: relative;
+}
+
+.image--container 
+img {
+    height: 100%;
+    width: 100%;
+    object-fit: cover;
+}
+
+.image--container 
+.black--effect {
+    height: 100%;
+    width: 100%;
+    object-fit: cover;
+    background-color: black;
+    position: absolute;
+    top: 0;
+    opacity: .4;
+}
+
+.blog--title {
+    color: white;
+    font-size: 6rem;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-weight: 400;
+}
+
+.navigation {
+    position: absolute;
+    width: 11rem;
+    top: 0;
+    left: 0;
+    padding: 1.5rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    cursor: pointer;
+}
+
+.navigation a {
+    text-decoration: none;
+    color: white;
+    font-weight: 300;
+}
+
+.blog--content {
+    width: 75vw;
+    margin: auto;
+    padding: 6rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.blog--content p {
+    font-family: 'Quicksand', sans-serif;
+    font-weight: 400;
+    font-size: 1.5rem;
+    line-height: 3rem;
+}
+
+.blog--author {
+    width: 10vw;
+    padding: 2rem;
+    margin-top: 2rem;
+    background-color: rgb(32, 32, 32);
+    color: white;
+    text-align: center;
+    border-radius: 1rem;
+    font-weight: 400;
+    font-size: 1rem;
+}
+
+footer {
+    width: 100%;
+    background-color: rgb(32, 32, 32);
+    margin-top: 1rem;
+  }
+  
+  .footer--container {
+    padding: 2rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .footer--container
+  h2 {
+    font-weight: 400;
+  }
+  
+  .footer--title {
+    display: flex;
+  }
+  
+  .footer--title
+  h1 {
+    color: rgb(240, 240, 240);
+    margin-left: 1rem;
+  }
+  
+  .footer--content {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 4rem;
+    width: 30%;
+  }
+  
+  .left--panel {
+    color: rgb(240, 240, 240);
+  }
+  
+  .left--panel--content {
+    margin-top: 1rem;
+  }
+  
+  .center--panel {
+    color: rgb(240, 240, 240);
+  }
+  
+  .center--panel--content {
+    margin-top: 1rem;
+  }
+  
+  .right--panel {
+    color: rgb(240, 240, 240);
+    font-weight: 400;
+  }
+  
+  .right--panel--content {
+    margin-top: 1rem;
+    font-weight: 300;
+  }

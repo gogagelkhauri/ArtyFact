@@ -1,0 +1,97 @@
+@using Microsoft.AspNetCore.Identity
+@inject SignInManager<Domain.Entities.User.ApplicationUser> SignInManager
+    @{  
+    ViewData["Title"] = "";  
+} 
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Blog</title>
+    <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@300;400;600&display=swap" rel="stylesheet">
+    <link href="~/css/Front/Layout/blogLayout.css" rel="stylesheet">
+    @await RenderSectionAsync("Styles", required: false)
+    
+</head>
+<body>
+    <div class="nav-wrapper">
+        <nav class="main-nav">
+            <div class="logo-container">
+                <a href="/"><img src="~/img/logo.svg" alt="Logo Inc"></a>
+            </div>
+    
+            <ul class="nav-bar">
+                @if (ViewContext.RouteData.Values.Where(v => v.Key == "action").FirstOrDefault().Value.ToString() != "Artists")
+                {
+                    <li><a href="/UserAccount/Artists">Artists</a></li>
+                }
+
+                @if (ViewContext.RouteData.Values["Controller"].ToString() != "Blog" && ViewContext.RouteData.Values["Action"].ToString() != "Index")
+                {
+                    <li><a href="/Blog">Blog</a></li>
+                }
+                
+                @if (SignInManager.IsSignedIn(User))
+                {
+                    <li><a href="/basket">Basket</a></li>
+
+                    //@if( Model.User.UserName != Model.AuthUser.UserName){
+                        @if (ViewContext.RouteData.Values.Where(v => v.Key == "action").FirstOrDefault().Value.ToString() != "Profile")
+                        {
+                            <li><a href="/UserAccount/Profile?userName=@User.Identity.Name">Profile</a></li>
+                        }
+                    //}
+
+                }
+                else
+                {
+                    <li><a href="/Identity/Account/Login">Sign In</a></li>
+                }
+            </ul>
+        </nav>
+    </div>
+
+    
+    @RenderBody()
+
+    <footer>
+        <div class="footer--container">
+            <div class="footer--title">
+                <img src="~/img/logo.svg" alt="footerLogo">
+                <h1>Artifact</h1>
+            </div>
+
+            <div class="footer--content">
+                <div class="left--panel">
+                    <h2>Contact</h2>
+                    <div class="left--panel--content">
+                        <p>Email</p>
+                        <p>Facebook</p>
+                        <p>Instagram</p>
+                    </div>
+                </div>
+                
+                <div class="center--panel">
+                    <h2>Help</h2>
+                    <div class="center--panel--content">
+                        <p>For Artists</p>
+                        <p>How to Use Artifact</p>
+                    </div>
+                </div>
+                
+                <div class="right--panel">
+                    <h2>About</h2>
+                    <div class="right--panel--content">
+                        <p>The Website</p>
+                        <p>Team</p>
+                        <p>Terms & Conditions</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+    @await RenderSectionAsync("Scripts", required: false)
+</body>
+</html>

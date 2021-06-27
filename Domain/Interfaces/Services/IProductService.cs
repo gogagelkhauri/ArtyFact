@@ -11,8 +11,9 @@ namespace Domain.Interfaces.Services
         Task<ProductDTO> GetProduct(int id);
         Task<List<ProductDTO>> GetAllproducts();
         Task UpdateProduct(int id, ProductDTO productDTO);
-        Task DeleteProduct(int id);
+        Task DeleteProduct(int id,int userId);
         Task<List<ProductDTO>> GetPendingPosts();
         Task Approve(int id);
+        Task<List<ProductDTO>> GetProtudtsByCategory(string category);
     }
 }

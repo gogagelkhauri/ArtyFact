@@ -34,12 +34,20 @@ namespace Web.Controllers
         }
 
         [HttpGet]  
-        public IActionResult Products()  
+        public async Task<IActionResult> Products(string category = null)  
         {  
             //var user = await _userManager.FindByNameAsync(username);
-            var product = _productService.GetAllproducts().Result;
-            
-            return View(product);  
+           
+            if(category != null)
+            {
+                var product = await _productService.GetProtudtsByCategory(category);
+                return View(product);  
+            }
+            else
+            {
+                var product = await _productService.GetAllproducts(); 
+                return View(product);  
+            }
         }
 
         public async Task<IActionResult> Product(int id)
@@ -85,6 +93,8 @@ namespace Web.Controllers
             var user = _userManager.Users.Include(u => u.UserProfile)
                                         .SingleOrDefault(u => u.UserName == HttpContext.User.Identity.Name);
             viewModel.Product.UserId = user.UserProfile.Id;
+            viewModel.Product.CreateDate = DateTime.Now;
+            viewModel.Product.Status = false;
             if (ModelState.IsValid)
             {
                 viewModel.Product.SetActualImage(viewModel.ActualImage);
@@ -98,7 +108,7 @@ namespace Web.Controllers
                     return Redirect("/UserAccount/Profile?userName=" + user.UserName);
                 }
             }
-            return View("/AddProduct", viewModel);
+            return Redirect("/product/AddProduct");
         }
 
         [HttpPost]
@@ -109,7 +119,7 @@ namespace Web.Controllers
                                         .SingleOrDefault(u => u.UserName == HttpContext.User.Identity.Name);
             if (ModelState.IsValid && id != 0)
             {
-                await _productService.DeleteProduct(id);
+                await _productService.DeleteProduct(id,user.UserProfile.Id);
             }
 
             return Redirect("/UserAccount/Profile?userName=" + user.UserName);

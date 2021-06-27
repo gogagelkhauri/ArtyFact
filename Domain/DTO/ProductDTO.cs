@@ -1,5 +1,6 @@
 ﻿using System;
 using System.ComponentModel.DataAnnotations;
+using Domain.Entities.User;
 using Microsoft.AspNetCore.Http;
 using Shared.Validations;
 
@@ -16,6 +17,7 @@ namespace Domain.DTO
         public bool InStock { get; set; }
         [Required]
         public string Description { get; set; }
+        public DateTime CreateDate { get; set; }
         
         // [DisplayFormat( NullDisplayText = "Choose Image" )]
         // [Required(ErrorMessage = "Pick an Image")]
@@ -28,6 +30,7 @@ namespace Domain.DTO
         //[Required]
         public float Price { get; set; }
         public int UserId { get; set; }
+        public UserProfile User { get; set; }
         [Required(ErrorMessage = "Pick an Category")]
         public int CategoryId { get; set; }
         public CategoryDTO Category { get; set; }

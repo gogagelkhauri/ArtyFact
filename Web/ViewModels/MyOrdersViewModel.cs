@@ -8,6 +8,6 @@ namespace Web.ViewModels
 {
     public class MyOrdersViewModel
     {
-        public Order Order { get; set; }
+        public List<Order> Order { get; set; }
     }
 }

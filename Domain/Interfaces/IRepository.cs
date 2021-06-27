@@ -13,10 +13,10 @@ namespace Domain.Interfaces
         Task<T> AddAsync(T entity);
         Task UpdateAsync(T entity);
         void Update(T entity);
+        Task UpdateMany(List<Product> spec);
         Task DeleteAsync(T entity);
         Task DeleteRangeAsync(IList<T> entity);
         Task<T> GetBySpecification(ISpecification<T> spec);
-        Task<IList<T>> GetAllBySpecification(ISpecification<T> spec);
-        //void TryUpdateManyToMany<T, TKey>(IEnumerable<T> currentItems, IEnumerable<T> newItems, Func<T, TKey> getKey);
+        Task<List<T>> GetAllBySpecification(ISpecification<T> spec);
     }
 }
