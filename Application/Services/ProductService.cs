@@ -116,38 +116,43 @@ namespace Application.Services
         {
             var spec = new ProductWithDetailAndPaintType(id);
             var product = await _productRepository.GetBySpecification(spec);
-
-            product.Name = productDTO.Name;
-            product.InStock = productDTO.InStock;
-            product.Description = productDTO.Description;
-            product.Price = productDTO.Price;
-
-            if (productDTO.GetActualImage() != null)
+            if(product.User.Id == productDTO.UserId)
             {
-                if (product.ImageURL != null)
+                product.Name = productDTO.Name;
+                product.Description = productDTO.Description;
+                product.Price = productDTO.Price;
+
+                var category = await _categoryRepo.GetByIdAsync(productDTO.CategoryId);
+                if (category == null)
+                    throw new Exception();
+                
+                product.CategoryId = productDTO.CategoryId; 
+
+                if (productDTO.GetActualImage() != null)
                 {
-                    var OldfilePath = Path.Combine(_env.WebRootPath, product.ImageURL.Replace("/", "\\").Remove(0, 1));
-                    File.Delete(OldfilePath);
+                    if (product.ImageURL != null)
+                    {
+                        var OldfilePath = Path.Combine(_env.WebRootPath, product.ImageURL.Replace("/", "\\").Remove(0, 1));
+                        File.Delete(OldfilePath);
+                    }
+
+                    var fileName = Path.GetFileName(productDTO.GetActualImage().FileName);
+                    var newName = Guid.NewGuid().ToString("n").Substring(0, 8) + Path.GetExtension(productDTO.GetActualImage().FileName);
+                    var filePath = Path.Combine(_env.WebRootPath, "images\\product", newName);
+                    product.ImageURL = "/images/product/" + newName;
+
+
+                    using (var fileSteam = new FileStream(filePath, FileMode.Create))
+                    {
+                        await productDTO.GetActualImage().CopyToAsync(fileSteam);
+                    }
                 }
 
-                var fileName = Path.GetFileName(productDTO.GetActualImage().FileName);
-                var newName = Guid.NewGuid().ToString("n").Substring(0, 8) + Path.GetExtension(productDTO.GetActualImage().FileName);
-                var filePath = Path.Combine(_env.WebRootPath, "images\\product", newName);
-                product.ImageURL = "/images/product/" + newName;
+                
 
-
-                using (var fileSteam = new FileStream(filePath, FileMode.Create))
-                {
-                    await productDTO.GetActualImage().CopyToAsync(fileSteam);
-                }
+                
+                await _productRepository.UpdateAsync(product);
             }
-
-            var category = await _categoryRepo.GetByIdAsync(productDTO.CategoryId);
-            if (category == null)
-                throw new Exception();
-
-            
-            await _productRepository.UpdateAsync(product);
         }
 
 

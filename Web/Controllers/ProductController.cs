@@ -160,6 +160,8 @@ namespace Web.Controllers
         {
             var user = _userManager.Users.Include(u => u.UserProfile)
                                         .SingleOrDefault(u => u.UserName == HttpContext.User.Identity.Name);
+
+            viewModel.Product.UserId = user.UserProfile.Id;
             if (!ModelState.IsValid)
             {
                 //bad

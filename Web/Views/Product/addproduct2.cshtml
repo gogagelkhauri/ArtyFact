@@ -1,0 +1,78 @@
+@using Microsoft.AspNetCore.Identity
+@inject SignInManager<Domain.Entities.User.ApplicationUser> SignInManager
+@model Web.ViewModels.AddProductViewModel
+@{
+    ViewData["Title"] = "Create Product";
+    Layout = "~/Views/Shared/_blogLayout.cshtml";
+}
+@section Styles
+{
+    <link rel="stylesheet" href="~/css/Front/add-product.css">
+}
+<section>
+    <form method="post" action="/Product/Store" enctype="multipart/form-data">
+     @Html.AntiForgeryToken()
+
+            @Html.TextBoxFor(m => m.Product.Name, new { placeholder = "Name", @class = "product--name" })
+            <span asp-validation-for="Product.Name" class="text-danger"></span>
+
+        <div>
+            <select asp-for="@Model.Product.CategoryId" style="width: 15vw;
+                margin-left: 1rem;
+                margin-bottom: 1rem;
+                padding: 1rem;
+                border-radius: 1rem;
+                margin-top: 8px;
+            ">
+                <option >Select Category</option>
+                @foreach (var item in @Model.Categories)
+                {
+                    <option value="@item.Id">@item.Name</option>
+                }
+            </select>
+            <span asp-validation-for="Product.CategoryId" class="text-danger"></span>
+        </div>
+
+         <textarea asp-for="@Model.Product.Description" id="editor" class="product--description" placeholder="Product Description..."></textarea><br>
+         <span asp-validation-for="Product.Description" class="text-danger"></span>
+        
+        <input asp-for="@Model.Product.Price" type="text" class="product--price" placeholder="Price" />
+        <span asp-validation-for="Product.Price" class="text-danger"></span>
+
+        <p><input type="file" onchange="loadFile(event)" id="file" asp-for="@Model.ActualImage" style="display: none;" /></p>
+        <span asp-validation-for="ActualImage" class="text-danger"></span>
+        <p class="upload--image"><label for="file" style="cursor: pointer;">Upload Image</label></p>
+        <p><img id="output" width="200" /></p>
+
+        <script>
+            var loadFile = function(event) {
+                var image = document.getElementById('output');
+                image.src = URL.createObjectURL(event.target.files[0]);
+            };
+        </script>
+
+        <button type="submit">Submit</button>
+        </form>
+    </section>
+    @section Scripts{
+        <script>
+            const selected = document.querySelector(".selected");
+            const optionsContainer = document.querySelector(".options-container");
+
+            const optionsList = document.querySelectorAll(".option");
+
+            selected.addEventListener("click", () => {
+                optionsContainer.classList.toggle("active");
+            });
+
+            optionsList.forEach(o => {
+                o.addEventListener("click", () => {
+                selected.innerHTML = o.querySelector("label").innerHTML;
+                optionsContainer.classList.remove("active");
+                });
+            });
+        </script>
+    }
+
+
+

@@ -1,4 +1,6 @@
-﻿@using Microsoft.AspNetCore.Identity
+﻿
+
+@using Microsoft.AspNetCore.Identity
 @inject SignInManager<Domain.Entities.User.ApplicationUser> SignInManager
 @model Web.ViewModels.EditProductViewModel
 @{
@@ -10,31 +12,27 @@
     <link rel="stylesheet" href="~/css/Front/add-product.css">
 }
 <section>
-    <form method="post" action="/Product/Store" enctype="multipart/form-data">
+    <form method="post" action="/Product/Update" enctype="multipart/form-data">
      @Html.AntiForgeryToken()
-
+    <input type="hidden" asp-for="@Model.Product.Id">
             @Html.TextBoxFor(m => m.Product.Name, new { placeholder = "Name", @class = "product--name" })
             <span asp-validation-for="Product.Name" class="text-danger"></span>
         
-        <div class="dropdown-container">
-                    
-            <div class="select-box">
-
-                <!-- class > active -->
-                <div class="options-container">
-                     @foreach (var item in @Model.Categories)
-                    {
-                        <div class="option">
-                            <input type="radio" value="@item.Id" class="radio" id="@item.Name" asp-for="@Model.Product.CategoryId" >
-                            <label for="@item.Name">@item.Name</label>
-                        </div>
-                    }
-                </div>
-
-                <div class="selected">
-                    Category
-                </div>
-            </div>
+       <div>
+            <select asp-for="@Model.Product.CategoryId" style="width: 15vw;
+                margin-left: 1rem;
+                margin-bottom: 1rem;
+                padding: 1rem;
+                border-radius: 1rem;
+                margin-top: 8px;
+            ">
+                <option >Select Category</option>
+                @foreach (var item in Model.Categories)
+                {
+                    <option value="@item.Id">@item.Name</option>
+                }
+            </select>
+            <span asp-validation-for="Product.CategoryId" class="text-danger"></span>
         </div>
 
          <textarea asp-for="@Model.Product.Description" id="editor" class="product--description" placeholder="Product Description..."></textarea><br>

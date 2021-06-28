@@ -22,11 +22,12 @@
                 margin-bottom: 1rem;
                 padding: 1rem;
                 border-radius: 1rem;
+                margin-top: 8px;
             ">
                 <option >Select Category</option>
-                @foreach (var item in @Model.Categories)
+                @foreach (var item in Model.Categories)
                 {
-                    <option value="@Model.Product.CategoryId">@item.Name</option>
+                    <option value="@item.Id">@item.Name</option>
                 }
             </select>
             <span asp-validation-for="Product.CategoryId" class="text-danger"></span>
@@ -41,7 +42,7 @@
         <p><input type="file" onchange="loadFile(event)" id="file" asp-for="@Model.ActualImage" style="display: none;" /></p>
         <span asp-validation-for="ActualImage" class="text-danger"></span>
         <p class="upload--image"><label for="file" style="cursor: pointer;">Upload Image</label></p>
-        <p><img id="output" width="200" /></p>
+        <p><img id="output" width="200" style="width: 100px;height:100px;margin-left:20px;margin-top:10px"/></p>
 
         <script>
             var loadFile = function(event) {
