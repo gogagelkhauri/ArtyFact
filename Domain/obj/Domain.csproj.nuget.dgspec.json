@@ -1,20 +1,23 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\gogag\\OneDrive\\Desktop\\ArtyFact-Back\\Domain\\Domain.csproj": {}
+    "D:\\work\\.netCore\\end\\ArtyFact-Back\\Domain\\Domain.csproj": {}
   },
   "projects": {
-    "C:\\Users\\gogag\\OneDrive\\Desktop\\ArtyFact-Back\\Domain\\Domain.csproj": {
+    "D:\\work\\.netCore\\end\\ArtyFact-Back\\Domain\\Domain.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\gogag\\OneDrive\\Desktop\\ArtyFact-Back\\Domain\\Domain.csproj",
+        "projectUniqueName": "D:\\work\\.netCore\\end\\ArtyFact-Back\\Domain\\Domain.csproj",
         "projectName": "Domain",
-        "projectPath": "C:\\Users\\gogag\\OneDrive\\Desktop\\ArtyFact-Back\\Domain\\Domain.csproj",
-        "packagesPath": "C:\\Users\\gogag\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\gogag\\OneDrive\\Desktop\\ArtyFact-Back\\Domain\\obj\\",
+        "projectPath": "D:\\work\\.netCore\\end\\ArtyFact-Back\\Domain\\Domain.csproj",
+        "packagesPath": "C:\\Users\\g.gelkhauri\\.nuget\\packages\\",
+        "outputPath": "D:\\work\\.netCore\\end\\ArtyFact-Back\\Domain\\obj\\",
         "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
+        ],
         "configFilePaths": [
-          "C:\\Users\\gogag\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\g.gelkhauri\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -28,8 +31,8 @@
           "net5.0": {
             "targetAlias": "net5.0",
             "projectReferences": {
-              "C:\\Users\\gogag\\OneDrive\\Desktop\\ArtyFact-Back\\Shared\\Shared.csproj": {
-                "projectPath": "C:\\Users\\gogag\\OneDrive\\Desktop\\ArtyFact-Back\\Shared\\Shared.csproj"
+              "D:\\work\\.netCore\\end\\ArtyFact-Back\\Shared\\Shared.csproj": {
+                "projectPath": "D:\\work\\.netCore\\end\\ArtyFact-Back\\Shared\\Shared.csproj"
               }
             }
           }
@@ -72,21 +75,24 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.100\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.202\\RuntimeIdentifierGraph.json"
         }
       }
     },
-    "C:\\Users\\gogag\\OneDrive\\Desktop\\ArtyFact-Back\\Shared\\Shared.csproj": {
+    "D:\\work\\.netCore\\end\\ArtyFact-Back\\Shared\\Shared.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\gogag\\OneDrive\\Desktop\\ArtyFact-Back\\Shared\\Shared.csproj",
+        "projectUniqueName": "D:\\work\\.netCore\\end\\ArtyFact-Back\\Shared\\Shared.csproj",
         "projectName": "Shared",
-        "projectPath": "C:\\Users\\gogag\\OneDrive\\Desktop\\ArtyFact-Back\\Shared\\Shared.csproj",
-        "packagesPath": "C:\\Users\\gogag\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\gogag\\OneDrive\\Desktop\\ArtyFact-Back\\Shared\\obj\\",
+        "projectPath": "D:\\work\\.netCore\\end\\ArtyFact-Back\\Shared\\Shared.csproj",
+        "packagesPath": "C:\\Users\\g.gelkhauri\\.nuget\\packages\\",
+        "outputPath": "D:\\work\\.netCore\\end\\ArtyFact-Back\\Shared\\obj\\",
         "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
+        ],
         "configFilePaths": [
-          "C:\\Users\\gogag\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\g.gelkhauri\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -132,7 +138,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.100\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.202\\RuntimeIdentifierGraph.json"
         }
       }
     }

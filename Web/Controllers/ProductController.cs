@@ -33,7 +33,8 @@ namespace Web.Controllers
           _userManager = userManager;
         }
 
-        [HttpGet]  
+        [HttpGet]
+        [AllowAnonymous]
         public async Task<IActionResult> Products(string category = null)  
         {  
             //var user = await _userManager.FindByNameAsync(username);

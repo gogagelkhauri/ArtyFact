@@ -1,12 +1,164 @@
-﻿@model List<Domain.Entities.Post>
+﻿@using Microsoft.AspNetCore.Identity
+@inject SignInManager<Domain.Entities.User.ApplicationUser> SignInManager
 @{
-    ViewData["Title"] = "Home Page";
-    Layout = "~/Views/Shared/_blogLayout.cshtml";
+    ViewData["Title"] = "HomePage";
+    Layout = "";
 }
-@section Styles{
-    @* <link rel="stylesheet" href="~/css/Front/blog.css"> *@
-}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="~/css/Front/style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@300;400;600&display=swap" rel="stylesheet">
+    <title>Artifact</title>
+</head>
+<body>
+    <nav class="site--nav grid">
+        <h1>Artifact</h1>
 
-<div class="section--title">
-    <h2>Home</h2>
-</div>
+        <ul>
+            <li><a href="/Blog">Blog</a></li>
+            <li><a href="/UserAccount/Artists">Artists</a></li>
+            @if (!SignInManager.IsSignedIn(User))
+            {
+                <li><a href="/Identity/Account/Register">Sign Up</a></li>
+                <li><a href="/Identity/Account/Login">Log In</a></li>
+            }
+            else
+            {
+
+                <li><a href="/UserAccount/Profile?userName=@User.Identity.Name">Profile</a></li>
+            }
+        </ul>
+    </nav>
+
+    <section id="welcome" class="grid">
+        <div class="welcome--text">
+            <h2>Where your <br> art matters. </h2>
+            <p class="leading">
+                Showcase your best artwork with our website,
+                run your business like a pro
+                and let everybody know about you.
+            </p>
+            <a href="/Identity/Account/Login" class="button">Get Started</a>
+        </div>
+
+        <div class="welcome--image">
+            <img src="~/img/Logo.png" alt="pic of artifact logo">
+        </div>
+    </section>
+
+    <section id="categories">
+        <div class="categories grid categories_grid">
+            <a href="/Product/Products?category=jewellery">
+                <img src="~/img/jewellery.jpg" alt="pic of jewellery">
+                <h3>Jewellery</h3>
+            </a>
+
+            <a href="/Product/Products?category=pottery">
+                <img src="~/img/pottery.jpg" alt="pic of pottery">
+                <h3>Pottery</h3>
+            </a>
+
+            <a href="/Product/Products?category=pottery">
+                <img src="~/img/recents.jpg" alt="pic of recents">
+                <h3>Recents</h3>
+            </a>
+
+            <a href="/Product/Products?category=sculpting">
+                <img src="~/img/sculpting.jpg" alt="pic of sculpting">
+                <h3>Sculpting</h3>
+            </a>
+
+            <a href="/Product/Products?category=digitalArt">
+                <img src="~/img/digitalArt.jpg" alt="pic of digital art">
+                <h3>Digital Art</h3>
+            </a>
+
+            <a href="/Product/Products?category=painting">
+                <img src="~/img/painting.jpg" alt="pic of painting">
+                <h3>Paintings</h3>
+            </a>
+
+            <a href="/Product/Products?category=photograph" class="last--category">
+                <img src="~/img/photograph.jpg" alt="pic of photograph">
+                <h3>Photograph</h3>
+            </a>
+
+            <a href="/UserAccount/Artists" class="categories__centered">
+                <img src="~/img/topArtists.jpg" alt="pic of artists">
+                <h3>Top Selling Artists</h3>
+            </a>
+
+            <a href="/Category" class="categories__centered">
+                <img src="~/img/topCategory.jpg" alt="pic of a workshop">
+                <h3>Top Selling Categories</h3>
+            </a>
+
+            <a href="/Product/Products" class="categories__centered">
+                <img src="~/img/topProduct.jpg" alt="pic of mona lisa">
+                <h3>Top Selling Products</h3>
+            </a>
+        </div>
+    </section>
+
+    <section id="about--project">
+        <h2>What is Artifact</h2>
+        <p>
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Fugiat, voluptate natus harum aliquam optio dolor voluptates cumque perspiciatis minus dignissimos iste dolorem nulla animi in illum magni, saepe nostrum vel?
+            Eveniet magnam esse libero sequi ipsa deserunt, mollitia dolor nesciunt, deleniti omnis, quisquam voluptate cupiditate dolorum inventore. Aliquam cum earum provident omnis voluptas consectetur vel voluptatum quas. Adipisci, recusandae dolor?
+            Esse necessitatibus non eveniet voluptatibus ex, dolorum vel quam rerum excepturi odio distinctio nisi molestiae maxime accusantium commodi illum. Ut eligendi, cupiditate nobis ipsum neque quo dolorem veniam rem maiores.Lorem ipsum dolor sit amet consectetur adipisicing elit. Fugiat, voluptate natus harum aliquam optio dolor voluptates cumque perspiciatis minus dignissimos iste dolorem nulla animi in illum magni, saepe nostrum vel?
+            Eveniet magnam esse libero sequi ipsa deserunt, mollitia dolor nesciunt, deleniti omnis, quisquam voluptate cupiditate dolorum inventore. Aliquam cum earum provident omnis voluptas consectetur vel voluptatum quas. Adipisci, recusandae dolor?
+            Esse necessitatibus non eveniet voluptatibus ex, dolorum vel quam rerum excepturi odio distinctio nisi molestiae maxime accusantium commodi illum. Ut eligendi, cupiditate nobis ipsum neque quo dolorem veniam rem maiores.
+        </p>
+    </section>
+
+    <section id="story--artist">
+        <h2>Story of a Family Member</h2>
+        <!-- <img src="img/artist.jpg" alt="pic of an artist"> -->
+        <p>
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Vitae, eius nemo? Officiis officia accusamus, iure dolorum iste harum. Cupiditate ut quis voluptate sint non a minima iusto reprehenderit error molestiae!
+            Ratione cupiditate voluptatum eveniet quod voluptas nisi, aliquam quibusdam obcaecati magnam nemo error enim, tenetur rerum hic velit, reprehenderit pariatur repudiandae. Ea fugiat odio nemo consectetur esse quia? Quae, qui!
+            Tempore aliquam saepe eos! Sequi quaerat libero at ullam adipisci, provident error inventore aspernatur ut unde hic. Iste aut magnam ipsam illum facilis, distinctio molestiae vero at saepe illo. Aperiam?
+        </p>
+    </section>
+
+    <section id="story--collector">
+        <h2>Story of a Family Member</h2>
+        <!-- <img src="img/collector.jpg" alt="pic of a collector"> -->
+        <p>
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Vitae, eius nemo? Officiis officia accusamus, iure dolorum iste harum. Cupiditate ut quis voluptate sint non a minima iusto reprehenderit error molestiae!
+            Ratione cupiditate voluptatum eveniet quod voluptas nisi, aliquam quibusdam obcaecati magnam nemo error enim, tenetur rerum hic velit, reprehenderit pariatur repudiandae. Ea fugiat odio nemo consectetur esse quia? Quae, qui!
+            Tempore aliquam saepe eos! Sequi quaerat libero at ullam adipisci, provident error inventore aspernatur ut unde hic. Iste aut magnam ipsam illum facilis, distinctio molestiae vero at saepe illo. Aperiam?
+        </p>
+    </section>
+
+
+    <footer id="site--footer">
+        <div class="footer--title">
+            <h3>Artifact</h3>
+        </div>
+
+        <div class="footer--content">
+            <ul class="contact">
+                <li>Contact</li>
+                <li><a href="\">Facebook</a></li>
+                <li><a href="\">Instagram</a></li>
+                <li>+995514735115</li>
+            </ul>
+
+            <ul class="help">
+                <li>Help</li>
+                <li><a href="/Account/Identity/Login">Membership</a></li>
+            </ul>
+
+            <ul class="about">
+                <li>About</li>
+                <li><a href="#about--project">The Website</a></li>
+            </ul>
+        </div>
+    </footer>
+</body>
+</html>
