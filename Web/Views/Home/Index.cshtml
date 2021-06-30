@@ -42,7 +42,13 @@
                 run your business like a pro
                 and let everybody know about you.
             </p>
-            <a href="/Identity/Account/Login" class="button">Get Started</a>
+            @if (!SignInManager.IsSignedIn(User))
+            {
+                <a href="/Identity/Account/Login" class="button">Get Started</a>
+            }
+            else{
+                <a href="/UserAccount/Artists" class="button">Explore Artists</a>
+            }
         </div>
 
         <div class="welcome--image">
@@ -106,32 +112,26 @@
 
     <section id="about--project">
         <h2>What is Artifact</h2>
-        <p>
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Fugiat, voluptate natus harum aliquam optio dolor voluptates cumque perspiciatis minus dignissimos iste dolorem nulla animi in illum magni, saepe nostrum vel?
-            Eveniet magnam esse libero sequi ipsa deserunt, mollitia dolor nesciunt, deleniti omnis, quisquam voluptate cupiditate dolorum inventore. Aliquam cum earum provident omnis voluptas consectetur vel voluptatum quas. Adipisci, recusandae dolor?
-            Esse necessitatibus non eveniet voluptatibus ex, dolorum vel quam rerum excepturi odio distinctio nisi molestiae maxime accusantium commodi illum. Ut eligendi, cupiditate nobis ipsum neque quo dolorem veniam rem maiores.Lorem ipsum dolor sit amet consectetur adipisicing elit. Fugiat, voluptate natus harum aliquam optio dolor voluptates cumque perspiciatis minus dignissimos iste dolorem nulla animi in illum magni, saepe nostrum vel?
-            Eveniet magnam esse libero sequi ipsa deserunt, mollitia dolor nesciunt, deleniti omnis, quisquam voluptate cupiditate dolorum inventore. Aliquam cum earum provident omnis voluptas consectetur vel voluptatum quas. Adipisci, recusandae dolor?
-            Esse necessitatibus non eveniet voluptatibus ex, dolorum vel quam rerum excepturi odio distinctio nisi molestiae maxime accusantium commodi illum. Ut eligendi, cupiditate nobis ipsum neque quo dolorem veniam rem maiores.
+        <p style="width: 80vw;margin:auto; padding: 4rem;line-height: 2rem">
+           
+         Artifact is a platform for art enthusiasts to find out about different artists and support their work. It provides a space for art to be demonstrated and sold in all kinds of ways, be it woodwork, painting, pottery and so on.   
         </p>
     </section>
 
     <section id="story--artist">
         <h2>Story of a Family Member</h2>
         <!-- <img src="img/artist.jpg" alt="pic of an artist"> -->
-        <p>
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Vitae, eius nemo? Officiis officia accusamus, iure dolorum iste harum. Cupiditate ut quis voluptate sint non a minima iusto reprehenderit error molestiae!
-            Ratione cupiditate voluptatum eveniet quod voluptas nisi, aliquam quibusdam obcaecati magnam nemo error enim, tenetur rerum hic velit, reprehenderit pariatur repudiandae. Ea fugiat odio nemo consectetur esse quia? Quae, qui!
-            Tempore aliquam saepe eos! Sequi quaerat libero at ullam adipisci, provident error inventore aspernatur ut unde hic. Iste aut magnam ipsam illum facilis, distinctio molestiae vero at saepe illo. Aperiam?
+        <p style="width: 80vw;margin:auto; padding: 4rem;line-height: 2rem">
+        I’ve always been interested in art.Gaining knowledge about new artists, collecting their works and so on. I believe that within all of us, is a desire to create one way or another, we enjoy being in the surroundings of beautiful things. Since joining Artifact, it has become so much easier for me to browse and support popular as well as new artists. It gives me the ability to acquire information of many different artforms with just a few clicks, as well as gain information about the artist's views, inspiration and so on.
+     
         </p>
     </section>
 
     <section id="story--collector">
-        <h2>Story of a Family Member</h2>
+        <h2>Story of a Collector</h2>
         <!-- <img src="img/collector.jpg" alt="pic of a collector"> -->
-        <p>
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Vitae, eius nemo? Officiis officia accusamus, iure dolorum iste harum. Cupiditate ut quis voluptate sint non a minima iusto reprehenderit error molestiae!
-            Ratione cupiditate voluptatum eveniet quod voluptas nisi, aliquam quibusdam obcaecati magnam nemo error enim, tenetur rerum hic velit, reprehenderit pariatur repudiandae. Ea fugiat odio nemo consectetur esse quia? Quae, qui!
-            Tempore aliquam saepe eos! Sequi quaerat libero at ullam adipisci, provident error inventore aspernatur ut unde hic. Iste aut magnam ipsam illum facilis, distinctio molestiae vero at saepe illo. Aperiam?
+        <p style="width: 80vw;margin:auto; padding: 4rem;line-height: 2rem">
+        I’ve known I wanted to create beautiful paintings since the age of 10. Bringing your views and feelings onto a canvas is a process so dear to my heart, it can’t be put into words. However, as a creative person, it is often difficult to be your own work manager at the same time. I was having a hard time trying to promote my paintings to the world and make a living out of it. Artifact has brought nothing but comfort to my creative process. It gave me and many other artists a platform where you can trust the site and just keep focusing on your craft. This completely changed my work ethic for the better. Artifact brought me back to creating art, rather than stressing about how I show it to others.    
         </p>
     </section>
 
@@ -151,7 +151,7 @@
 
             <ul class="help">
                 <li>Help</li>
-                <li><a href="/Account/Identity/Login">Membership</a></li>
+                <li><a href="/Identity/Account/Login">Membership</a></li>
             </ul>
 
             <ul class="about">

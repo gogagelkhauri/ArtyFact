@@ -47,7 +47,7 @@
             <div class="profile__image">
                 @if(Model.User.UserProfile.Image != null)
                 {
-                    <img src="@Model.User.UserProfile.Image" alt="">
+                    <img src="@Model.User.UserProfile.Image" style="object-fit: cover;" alt="">
                 }
                 else
                 {
@@ -84,14 +84,14 @@
         </div>
     </header>
 
-    <section>
+    <section style="min-height:140px;">
         <div class="product-container">
             @foreach (var product in Model.User.UserProfile.Products.Where(p => p.InStock == true))
             {
                 
                 <div class="product">
                     <div class="product__image--main">
-                        <img src="@product.ImageURL" alt="productMain" style="width: 100%; height: 100%; object-fit: cover;">
+                        <img src="@product.ImageURL" alt="productMain" style="width: 100%;  height: 200px; object-fit: cover;">
                     </div>
                         
                     <div class="product--description">
@@ -101,17 +101,18 @@
                     <p>@Html.Raw(product.Description)</p>
                         @if(SignInManager.IsSignedIn(User)){
                             @if(Model.User.UserName != Model.AuthUser.UserName){
+                                <p>
                                 <div class="btn--cart">
                                     <form method="post" action="/Basket/Add">
                                         <input type="hidden" name="productId" value="@product.Id" />
                                         @Html.AntiForgeryToken()
                                         <!-- Button trigger modal -->
-                                        <button type="submit">
+                                        <button type="submit" style="margin-top:50px">
                                             Add to Cart
                                         </button>
                                     </form>
                                 </div>
-
+                                </p>
                             }
                         }
                         
@@ -119,7 +120,7 @@
                     @if(SignInManager.IsSignedIn(User)){
                     @if( Model.User.UserName == Model.AuthUser.UserName){
                         <div style="float:left;display:flex">
-                            <div style="margin-right:15px;"><a href="/Product/Edit/@product.Id" class="edit-btn"><i class="fa fa-edit" style="padding: 2px;"></i></a></div>
+                            <div style="margin-right:15px; margin-top:2px"><a href="/Product/Edit/@product.Id" class="edit-btn"><i class="fa fa-edit" style="padding: 2px;"></i></a></div>
                             <div style="margin-right:15px">
                                 @* <a href="">
                                 <i class="fa fa-trash-o"></i>

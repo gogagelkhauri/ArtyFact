@@ -31,6 +31,7 @@ namespace Domain.DTO
         public float Price { get; set; }
         public int UserId { get; set; }
         public UserProfile User { get; set; }
+        
         [Required(ErrorMessage = "Pick an Category")]
         public int CategoryId { get; set; }
         public CategoryDTO Category { get; set; }

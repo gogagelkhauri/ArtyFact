@@ -144,10 +144,10 @@ namespace Web.Areas.Identity.Controllers
         [HttpGet]
         public IActionResult ForgotPassword()
         {
-            if (User.Identity.IsAuthenticated)
-            { 
-                return RedirectToAction("Index", "Home", new { area = "" });
-            }  
+            // if (User.Identity.IsAuthenticated)
+            // { 
+            //     return RedirectToAction("Index", "Home", new { area = "" });
+            // }  
 
             return View();
         }
@@ -170,20 +170,20 @@ namespace Web.Areas.Identity.Controllers
         }
         public IActionResult ForgotPasswordConfirmation()
         {
-            if (User.Identity.IsAuthenticated)
-            { 
-                return RedirectToAction("Index", "Home", new { area = "" });
-            }  
+            // if (User.Identity.IsAuthenticated)
+            // { 
+            //     return RedirectToAction("Index", "Home", new { area = "" });
+            // }  
             return View();
         }
 
         [HttpGet]
         public IActionResult ResetPassword(string token, string email)
         {
-            if (User.Identity.IsAuthenticated)
-            { 
-                return RedirectToAction("Index", "Home", new { area = "" });
-            }  
+            // if (User.Identity.IsAuthenticated)
+            // { 
+            //     return RedirectToAction("Index", "Home", new { area = "" });
+            // }  
             var model = new ResetPasswordViewModel { Token = token, Email = email };
             return View(model);
         }
@@ -212,10 +212,10 @@ namespace Web.Areas.Identity.Controllers
         [HttpGet]
         public IActionResult ResetPasswordConfirmation()
         {
-            if (User.Identity.IsAuthenticated)
-            { 
-                return RedirectToAction("Index", "Home", new { area = "" });
-            }  
+            // if (User.Identity.IsAuthenticated)
+            // { 
+            //     return RedirectToAction("Index", "Home", new { area = "" });
+            // }  
             return View();
         }
 

@@ -13,6 +13,7 @@ namespace Domain.Specifications
         public GetPendingProductsSpecification()
         {
             Query.Where(o => o.Status == false).Include(x => x.Category);
+            Query.Include(x => x.User).ThenInclude(u => u.User);
         }
     }
 }

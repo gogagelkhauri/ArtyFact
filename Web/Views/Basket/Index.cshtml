@@ -38,20 +38,23 @@
         </div>
     </header>
 
-    <section>
+    <section style="min-height:550px">
         @if(@Model.BasketItems.Count > 0)
         {
 
        
         <div class="cart--wrapper">
             <div class="cart--items__list">
-               
+
+                <div class="cart--items__title">
+                    <h1>Your Cart (@Model.BasketItems.Count)</h1>
+                </div>
                 @foreach (var item in @Model.BasketItems)
                 {
                     <div class="cart--items">
                         <div class="product--description">
-                            <div class="cart--item__image">
-                                <img src="@item.Product.ImageURL" alt="product1">
+                            <div class="cart--item__image"  >
+                                <img width="200px" height="200px"  src="@item.Product.ImageURL" alt="product1">
                             </div>
                                 
                             <div class="cart--item__details">
@@ -95,40 +98,14 @@
          }
     </section>
 
-    <footer>
+    <footer >
         <div class="footer--container">
-            <div class="footer--title" style="margin-top:50px">
+            <div class="footer--title" >
                 <img src="../img/logo.svg" alt="footerLogo">
                 <h1>Artifact</h1>
             </div>
 
-            <div class="footer--content">
-                <div class="left--panel">
-                    <h2>Contact</h2>
-                    <div class="left--panel--content">
-                        <p>Email</p>
-                        <p>Facebook</p>
-                        <p>Instagram</p>
-                    </div>
-                </div>
-                
-                <div class="center--panel">
-                    <h2>Help</h2>
-                    <div class="center--panel--content">
-                        <p>For Artists</p>
-                        <p>How to Use Artifact</p>
-                    </div>
-                </div>
-                
-                <div class="right--panel">
-                    <h2>About</h2>
-                    <div class="right--panel--content">
-                        <p>The Website</p>
-                        <p>Team</p>
-                        <p>Terms & Conditions</p>
-                    </div>
-                </div>
-            </div>
+           
         </div>
     </footer>
 </body>

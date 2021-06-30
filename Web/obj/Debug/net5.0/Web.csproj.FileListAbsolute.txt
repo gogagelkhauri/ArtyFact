@@ -2021,3 +2021,4 @@ E:\ArtyFact-Back\Web\obj\Debug\net5.0\Web.pdb
 E:\ArtyFact-Back\Web\obj\Debug\net5.0\Web.genruntimeconfig.cache
 E:\ArtyFact-Back\Web\obj\Debug\net5.0\Razor\Views\Product\addproduct2.cshtml.g.cs
 E:\ArtyFact-Back\Web\obj\Debug\net5.0\Razor\Views\Product\edit2.cshtml.g.cs
+E:\ArtyFact-Back\Web\obj\Debug\net5.0\Razor\Views\Order\customerinfo2.cshtml.g.cs

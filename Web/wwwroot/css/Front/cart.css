@@ -68,11 +68,11 @@ section {
 }
 
 .cart--item__image {
-    width: 30%;
+   
 }
 
 .cart--item__image img {
-    width: 100%;
+    
     object-fit: cover;
 }
 

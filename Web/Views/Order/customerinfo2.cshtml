@@ -1,0 +1,73 @@
+@model Web.ViewModels.CustomerInformationViewModel
+@{
+    ViewData["Title"] = "Basket";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="container">
+
+      <div class="row">
+        <div class="col-md-4 order-md-2 mb-4">
+          <h4 class="d-flex justify-content-between align-items-center mb-3">
+            <span class="text-muted">Your cart</span>
+            <span class="badge badge-secondary badge-pill">3</span>
+          </h4>
+              
+          
+          <ul class="list-group mb-3">
+          @foreach (var item in Model.Basket.BasketItems)
+          {
+            <li class="list-group-item d-flex justify-content-between lh-condensed">
+              <div>
+                <h6 class="my-0">@item.Product.Name</h6>
+                <small class="text-muted">Brief description</small>
+              </div>
+              <span class="text-muted">@item.Product.Price GEL</span>
+            </li>
+          }
+          </ul>
+
+          
+        </div>
+        <div class="col-md-8 order-md-1">
+          <h4 class="mb-3">Billing Form</h4>
+          <form method="POST" action="/Order/CustomerInformation">
+              @Html.AntiForgeryToken()
+
+              <div class="mb-3">
+                  <label for="address">Address</label>
+                  <input asp-for="@Model.Address" type="text" class="form-control" id="address" required>
+                  <span asp-validation-for="Address" class="text-danger"></span>
+              </div>
+
+              <div class="mb-3">
+                  <label for="phone">Phone</label>
+                  <input asp-for="@Model.Phone" type="text" class="form-control" id="phone" required>
+                  <span asp-validation-for="Phone" class="text-danger"></span>
+              </div>
+
+
+              <div class="row">
+                  <div class="col-md-5 mb-3">
+                      <label for="country">City</label>
+                      <select class="custom-select d-block w-100" id="country" asp-for="@Model.City" required>
+                          <option value="">Choose...</option>
+                          <option value="Tbilisi">Tbilisi</option>
+                      </select>
+                      <div class="invalid-feedback">
+                          Please select a valid country.
+                      </div>
+                  </div>
+                  <div class="col-md-3 mb-3">
+                      <label for="zip">Zip</label>
+                      <input type="text" class="form-control" asp-for="@Model.PostCode" id="zip" placeholder="" required>
+                      <div class="invalid-feedback">
+                          Zip code required.
+                      </div>
+                  </div>
+              </div>
+              <button class="btn btn-primary btn-lg btn-block" type="submit">Continue to checkout</button>
+          </form>
+        </div>
+    </div>
+</div>

@@ -1,3 +1,5 @@
+@using Microsoft.AspNetCore.Identity
+@inject SignInManager<Domain.Entities.User.ApplicationUser> SignInManager
 @model List<Domain.DTO.ProductDTO> 
 @{  
     ViewData["Title"] = "Products";  
@@ -10,7 +12,7 @@
         <h2>Products</h2>
     </div>
 
-    <section>
+    <section style="min-height:400px">
         <div class="artists--wrapper">
             @if(Model.Count() > 0)
             {
@@ -19,8 +21,10 @@
                     <div class="artist--content">
                         <img src="@item.ImageURL" alt="rover" style="width: 300px; height: 400px; object-fit: cover; border-radius: 1rem;" />
                 
-                        <h2><a href="/product/product/@item.Id">@item.Name</a></h2>
+                        <h2>@item.Name</h2>
                         <p>Author: <b> <a href="/UserAccount/Profile?userName=@item.User.User.UserName">@item.User.User.UserName</a></b></p>
+                         @if (SignInManager.IsSignedIn(User))
+                         {
                         <p>
                             <div class="">
                                 <form method="post" action="/Basket/Add">
@@ -43,6 +47,7 @@
                                 </form>
                             </div>
                         </p>
+                         }
                     </div>
                 }
             }
